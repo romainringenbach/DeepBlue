@@ -109,7 +109,7 @@ void fragment(){
 render_priority = 0
 shader = SubResource( 2 )
 shader_param/size = Vector2( 1030, 600 )
-shader_param/r = 20.0
+shader_param/r = 40.0
 _sections_unfolded = [ "shader_param" ]
 
 [node name="WorldEnvironment" type="WorldEnvironment" index="0"]
@@ -235,6 +235,7 @@ bones = [  ]
 _sections_unfolded = [ "Z Index" ]
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground" index="4"]
+editor/display_folded = true
 z_index = 6
 motion_scale = Vector2( 1, 1 )
 motion_offset = Vector2( 0, 0 )
@@ -406,10 +407,10 @@ invert_enable = false
 invert_border = 100.0
 bones = [  ]
 script = ExtResource( 2 )
-_sections_unfolded = [ "Material", "material", "polygon" ]
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index", "material", "polygon" ]
 
 [node name="Camera2D" type="Camera2D" parent="Polygon2D" index="0"]
-position = Vector2( 511.733, 300.715 )
+position = Vector2( 510, 300 )
 scale = Vector2( 1, 1 )
 z_index = 10
 anchor_mode = 1

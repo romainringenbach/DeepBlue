@@ -24,12 +24,13 @@ func _update_zoom(incr, zoom_anchor):
     if old_zoom == _current_zoom_level:
         return
     
-    var zoom_center = zoom_anchor - get_offset()
-    var ratio = 1-_current_zoom_level/old_zoom
-    #set_offset(get_offset() + zoom_center*ratio)
+    #var zoom_center = zoom_anchor - get_offset()
+    #var ratio = 1-_current_zoom_level/old_zoom
+    #set_offset(get_offset() + _position*ratio)
     
     set_zoom(Vector2(_current_zoom_level, _current_zoom_level))
-    position = _position
+    print ("test ", position , "\n")
+    position = Vector2(1030/2.0,600/2.0)
     emit_signal("zoomed",get_camera_screen_center ( ))
 
 
@@ -38,6 +39,7 @@ func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here.
 	make_current()
+
 	
 func _input(event):
 	

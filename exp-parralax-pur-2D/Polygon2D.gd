@@ -1,4 +1,5 @@
 extends Polygon2D
+
 signal position_changed(new_position)
 # class member variables go here, for example:
 # var a = 2
@@ -6,6 +7,8 @@ signal position_changed(new_position)
 const MOVE_SPEED = 150
 var _position = Vector2(0,0)
 var _delta = 0
+
+var _size = Vector2(1300,600)
 
 func _ready():
 	pass
@@ -26,4 +29,4 @@ func _process(delta):
 
 	position = position + velocity*_delta
 	_position = position
-	emit_signal("position_changed",_position);
+	emit_signal("position_changed",_size/2.0);
