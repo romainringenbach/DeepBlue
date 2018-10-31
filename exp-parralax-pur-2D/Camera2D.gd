@@ -29,7 +29,6 @@ func _update_zoom(incr, zoom_anchor):
     #set_offset(get_offset() + _position*ratio)
     
     set_zoom(Vector2(_current_zoom_level, _current_zoom_level))
-    print ("test ", position , "\n")
     position = Vector2(1030/2.0,600/2.0)
     emit_signal("zoomed",get_camera_screen_center ( ))
 
