@@ -4,8 +4,8 @@ signal zoomed(camera_center)
 
 
 
-const MAX_ZOOM_LEVEL = 0.5
-const MIN_ZOOM_LEVEL = 4.0
+const MAX_ZOOM_LEVEL = 1
+const MIN_ZOOM_LEVEL = 10
 const ZOOM_INCREMENT = 0.05
 
 
@@ -29,7 +29,7 @@ func _update_zoom(incr, zoom_anchor):
     #set_offset(get_offset() + _position*ratio)
     
     set_zoom(Vector2(_current_zoom_level, _current_zoom_level))
-    position = Vector2(1030/2.0,600/2.0)
+    position = Vector2(960/2.0,540/2.0)
     emit_signal("zoomed",get_camera_screen_center ( ))
 
 

@@ -12,3 +12,4 @@ func _process(delta):
 func _on_Polygon2D_position_changed(velocity):
 	_velocity = velocity
 	print(_velocity,"\n")
+
