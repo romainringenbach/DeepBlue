@@ -4,7 +4,7 @@ signal position_changed(velocity)
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-const MOVE_SPEED = 150
+const MOVE_SPEED = 300
 
 func _ready():
 	pass
