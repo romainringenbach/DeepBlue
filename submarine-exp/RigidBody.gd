@@ -1,12 +1,16 @@
 extends RigidBody
 
 const MASS = 100
-const SPEED = 0
+
 
 const rotation_acc = 1
 const max_rotation_velocity = 20
 
-var speed = 0
+const max_speed_acceleration = 2 #in fact : -1 to 1
+const speed_loss = 0.5
+const max_speed_velocity = 20
+
+var speed_acceleration = 0
 
 var rotate_left = false
 var rotate_right = false
@@ -38,9 +42,21 @@ func _integrate_forces ( state ):
 		elif state.angular_velocity[1] < 0.0:
 			state.angular_velocity += Vector3(0,rotation_acc*state.step,0)
 	
-
+	if speed_acceleration != 0.0:
+		if state.linear_velocity[0] > -max_speed_velocity and state.linear_velocity[0] < max_speed_velocity:
+			state.linear_velocity += Vector3(speed_acceleration * state.step,0,0)
+	else:
+		if state.linear_velocity[0] > 0.0:
+			state.linear_velocity += Vector3(-speed_loss * state.step,0,0)
+			if 	state.linear_velocity[0] < 0.0:
+				state.linear_velocity[0] = 0.0
+		elif state.linear_velocity[0] < 0.0:
+			state.linear_velocity += Vector3(speed_loss * state.step,0,0)
+			if 	state.linear_velocity[0] > 0.0:
+				state.linear_velocity[0] = 0.0
+		
 func _on_speed_value_changed(value):
-	speed = SPEED*value/100.0
+	speed_acceleration = max_speed_acceleration*value/100.0-1.0
 
 
 func _on_mass_value_changed(value):
