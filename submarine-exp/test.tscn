@@ -149,43 +149,21 @@ angular_velocity = Vector3( 0, 0, 0 )
 angular_damp = -1.0
 script = ExtResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="RigidBody" index="0"]
+[node name="InterpolatedCamera" type="InterpolatedCamera" parent="RigidBody" index="0"]
 
-transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 0 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 8 )
-skeleton = NodePath("..")
-material/0 = null
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape" type="CollisionShape" parent="RigidBody" index="1"]
-
-shape = SubResource( 9 )
-disabled = false
-
-[node name="InterpolatedCamera" type="InterpolatedCamera" parent="RigidBody" index="2"]
-
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 1.02728, 0, 0 )
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 2.45278, 0, 0 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
 h_offset = 0.0
 v_offset = 0.0
-doppler_tracking = 0
+doppler_tracking = 2
 projection = 0
-current = false
-fov = 70.0
+current = true
+fov = 100.0
 size = 1.0
-near = 0.05
-far = 100.0
+near = 0.005
+far = 50.0
 target = NodePath("")
 speed = 1.0
 enabled = false
@@ -256,6 +234,28 @@ editable = true
 tick_count = 0
 ticks_on_borders = false
 focus_mode = 2
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody" index="1"]
+
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 8 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody" index="2"]
+
+shape = SubResource( 9 )
+disabled = false
 
 [node name="mine1" parent="." index="1" instance=ExtResource( 2 )]
 
