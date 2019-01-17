@@ -10,7 +10,7 @@
 
 resource_name = "Material.001"
 render_priority = 0
-flags_transparent = true
+flags_transparent = false
 flags_unshaded = false
 flags_vertex_lighting = false
 flags_no_depth_test = false
@@ -30,7 +30,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 0.972656, 0.94606, 0.94606, 0.501961 )
+albedo_color = Color( 0.972656, 0.94606, 0.94606, 1 )
 metallic = 0.5
 metallic_specular = 0.5
 metallic_texture_channel = 3
@@ -79,11 +79,11 @@ _sections_unfolded = [ "Geometry", "material" ]
 
 [node name="Lamp1" type="SpotLight" parent="." index="2"]
 
-transform = Transform( -1, -3.82137e-15, 8.74228e-08, -8.74228e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, 0, 0.1, 0 )
+transform = Transform( -1, -3.82137e-15, 8.74228e-08, -8.74228e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, 0, 0.097848, 0 )
 layers = 1
-light_color = Color( 0.242188, 1, 0, 1 )
-light_energy = 16.0
-light_indirect_energy = 1.0
+light_color = Color( 1, 0, 0, 1 )
+light_energy = 2.0
+light_indirect_energy = 2.0
 light_negative = false
 light_specular = 0.5
 light_bake_mode = 1
@@ -94,9 +94,9 @@ shadow_bias = 0.15
 shadow_contact = 0.0
 shadow_reverse_cull_face = false
 editor_only = false
-spot_range = 3.21712
+spot_range = 4.0
 spot_attenuation = 1.0
-spot_angle = 89.99
+spot_angle = 100.0
 spot_angle_attenuation = 1.0
 _sections_unfolded = [ "Light", "Spot", "Transform" ]
 

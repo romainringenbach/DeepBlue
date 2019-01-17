@@ -18,6 +18,7 @@ bounce = 0.0
 constant_linear_velocity = Vector3( 0, 0, 0 )
 constant_angular_velocity = Vector3( 0, 0, 0 )
 script = ExtResource( 1 )
+light_color = null
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]
 
