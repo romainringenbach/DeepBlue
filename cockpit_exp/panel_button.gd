@@ -24,6 +24,15 @@ export (Color) var color7
 export (String) var label8
 export (Color) var color8
 
+signal on_button_1()
+signal on_button_2()
+signal on_button_3()
+signal on_button_4()
+signal on_button_5()
+signal on_button_6()
+signal on_button_7()
+signal on_button_8()
+
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
@@ -59,3 +68,35 @@ func _ready():
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 #	pass
+
+
+func _on_Button1_left_click():
+	emit_signal("on_button_1")
+
+
+func _on_Button2_left_click():
+	emit_signal("on_button_2")
+
+
+func _on_Button3_left_click():
+	emit_signal("on_button_3")
+
+
+func _on_Button4_left_click():
+	emit_signal("on_button_4")
+
+
+func _on_Button5_left_click():
+	emit_signal("on_button_5")
+
+
+func _on_Button6_left_click():
+	emit_signal("on_button_6")
+
+
+func _on_Button7_left_click():
+	emit_signal("on_button_7")
+
+
+func _on_Button8_left_click():
+	emit_signal("on_button_8")

@@ -26,3 +26,7 @@ func _on_StaticBody_input_event(camera, event, click_position, click_normal, sha
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == 1:
 			emit_signal("left_click")
+
+
+func _on_Button6_left_click():
+	pass # replace with function body

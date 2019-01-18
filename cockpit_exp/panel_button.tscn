@@ -132,4 +132,20 @@ text_label = ""
 transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.12, 0.0652456, -0.29 )
 text_label = ""
 
+[connection signal="left_click" from="Button1" to="." method="_on_Button1_left_click"]
+
+[connection signal="left_click" from="Button2" to="." method="_on_Button2_left_click"]
+
+[connection signal="left_click" from="Button3" to="." method="_on_Button3_left_click"]
+
+[connection signal="left_click" from="Button4" to="." method="_on_Button4_left_click"]
+
+[connection signal="left_click" from="Button5" to="." method="_on_Button5_left_click"]
+
+[connection signal="left_click" from="Button6" to="." method="_on_Button6_left_click"]
+
+[connection signal="left_click" from="Button7" to="." method="_on_Button7_left_click"]
+
+[connection signal="left_click" from="Button8" to="." method="_on_Button8_left_click"]
+
 

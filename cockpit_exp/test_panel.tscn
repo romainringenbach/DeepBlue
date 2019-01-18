@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://panel_button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SpotLight.gd" type="Script" id=2]
 
 [sub_resource type="Environment" id=1]
 
@@ -81,7 +82,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Ambient Light" ]
 
-[node name="WorldEnvironment" type="WorldEnvironment" index="0"]
+[node name="WorldEnvironment" type="WorldEnvironment"]
 
 environment = SubResource( 1 )
 
@@ -144,6 +145,9 @@ spot_range = 5.0
 spot_attenuation = 1.0
 spot_angle = 24.578
 spot_angle_attenuation = 1.0
+script = ExtResource( 2 )
 _sections_unfolded = [ "Light", "Spot" ]
+
+[connection signal="on_button_1" from="MeshInstance" to="SpotLight" method="_on_MeshInstance_on_button_1"]
 
 
