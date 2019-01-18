@@ -6,13 +6,16 @@ extends StaticBody
 
 signal left_click()
 
+export (int) var type = 0
+
 export (Color) var light_color
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	if $"Scene Root/Lamp1".light_color == null and light_color != null:
-		$"Scene Root/Lamp1".light_color = light_color
+	
+	$"Scene Root".type = type
+	$"Scene Root/Lamp1".light_color = light_color
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.

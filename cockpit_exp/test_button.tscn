@@ -81,13 +81,14 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Ambient Light" ]
 
-[node name="WorldEnvironment" type="WorldEnvironment"]
+[node name="WorldEnvironment" type="WorldEnvironment" index="0"]
 
 environment = SubResource( 1 )
 
 [node name="StaticBody" parent="." index="0" instance=ExtResource( 1 )]
 
 _sections_unfolded = [ "Pause", "Visibility" ]
+type = 1
 light_color = Color( 0.0546875, 1, 0, 1 )
 
 [node name="OmniLight" type="OmniLight" parent="." index="1"]
