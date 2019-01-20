@@ -5,7 +5,7 @@
 [ext_resource path="res://button.tscn" type="PackedScene" id=3]
 [ext_resource path="res://label.tscn" type="PackedScene" id=4]
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=1]
 
 render_priority = 0
 flags_transparent = false
@@ -57,9 +57,9 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo" ]
 
-[sub_resource type="CylinderMesh" id=1]
+[sub_resource type="CylinderMesh" id=2]
 
-material = SubResource( 3 )
+material = SubResource( 1 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 top_radius = 1.0
 bottom_radius = 1.0
@@ -67,7 +67,7 @@ height = 2.0
 radial_segments = 64
 rings = 4
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=3]
 
 render_priority = 0
 flags_transparent = false
@@ -119,9 +119,9 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo" ]
 
-[sub_resource type="SphereMesh" id=2]
+[sub_resource type="SphereMesh" id=4]
 
-material = SubResource( 4 )
+material = SubResource( 3 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 radius = 1.0
 height = 2.0
@@ -163,7 +163,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -180,7 +180,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 2 )
+mesh = SubResource( 4 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -189,13 +189,11 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.03, 0.0651402, -0.3 )
 _sections_unfolded = [ "Transform" ]
-type = 0
 
 [node name="Button2" parent="." index="2" instance=ExtResource( 3 )]
 
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.03, 0.0651402, -0.1 )
 _sections_unfolded = [ "Transform" ]
-type = 0
 
 [node name="Label1" parent="." index="3" instance=ExtResource( 4 )]
 

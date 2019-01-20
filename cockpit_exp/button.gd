@@ -15,7 +15,9 @@ func _ready():
 	# Initialization here
 	
 	$"Scene Root".type = type
-	$"Scene Root/Lamp1".light_color = light_color
+	
+	if (light_color != null):
+		$"Scene Root/Lamp1".light_color = light_color
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
@@ -29,7 +31,3 @@ func _on_StaticBody_input_event(camera, event, click_position, click_normal, sha
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == 1:
 			emit_signal("left_click")
-
-
-func _on_Button6_left_click():
-	pass # replace with function body
