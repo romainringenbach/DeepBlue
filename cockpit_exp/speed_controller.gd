@@ -18,7 +18,9 @@ func _ready():
 #	pass
 
 func change_speed(delta):
-	$Cylinder_001.rotate_x(-delta.y * 0.01)
+	if $Cylinder_001.rotation_degrees.x  + delta.y >= -15 and $Cylinder_001.rotation_degrees.x  + delta.y <= 78:
+		$Cylinder_001.rotate_x(delta.y * 0.01)
+	
 
 
 func _on_StaticBody_input_event(camera, event, click_position, click_normal, shape_idx):
@@ -26,20 +28,12 @@ func _on_StaticBody_input_event(camera, event, click_position, click_normal, sha
 		if event.pressed and event.button_index == 1:
 			last_position = event.position
 			left_click_pressed = true
-	if event is InputEventMouseMotion and left_click_pressed:
-		_change_speed(event.position - last_position)
-		last_position = event.position
-	elif event is InputEventMouseButton:
-		if event.pressed == false and event.button_index == 1:
+		elif event.pressed == false and event.button_index == 1:
 			left_click_pressed = false
-
-func _on_StaticBody2_input_event(camera, event, click_position, click_normal, shape_idx):
-	if event is InputEventMouseMotion and left_click_pressed:
-		_change_speed(event.position - last_position)
+	elif event is InputEventMouseMotion and left_click_pressed:
+		change_speed(event.position - last_position)
 		last_position = event.position
-	elif event is InputEventMouseButton:
-		if event.pressed == false and event.button_index == 1:
-			left_click_pressed = false
+		
 
-func _on_StaticBody2_mouse_exited():
+func _on_StaticBody_mouse_exited():
 	left_click_pressed = false

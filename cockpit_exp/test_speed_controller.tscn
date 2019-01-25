@@ -4,9 +4,7 @@
 
 [node name="Spatial" type="Spatial" index="0"]
 
-[node name="Scene Root" parent="." index="0" instance=ExtResource( 1 )]
-
-[node name="Camera" type="Camera" parent="." index="1"]
+[node name="Camera" type="Camera" parent="." index="0"]
 
 transform = Transform( 0.920118, 0, -0.391642, 0, 1, 0, 0.391642, 0, 0.920118, -2.89407, 1.88727, 4.02132 )
 keep_aspect = 1
@@ -22,7 +20,7 @@ size = 1.0
 near = 0.05
 far = 100.0
 
-[node name="SpotLight" type="SpotLight" parent="." index="2"]
+[node name="SpotLight" type="SpotLight" parent="." index="1"]
 
 transform = Transform( 1, 0, 0, 0, 0.03115, 0.999515, 0, -0.999515, 0.03115, 0, 3.53136, 1.07017 )
 layers = 1
@@ -43,5 +41,9 @@ spot_range = 5.0
 spot_attenuation = 1.0
 spot_angle = 45.0
 spot_angle_attenuation = 1.0
+
+[node name="Scene Root" parent="." index="2" instance=ExtResource( 1 )]
+
+editor/display_folded = true
 
 
