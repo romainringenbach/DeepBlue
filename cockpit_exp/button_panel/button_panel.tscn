@@ -1,0 +1,155 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://button_panel/panel_button.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://button_panel/button_panel.gd" type="Script" id=2]
+[ext_resource path="res://button/button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://label/label.tscn" type="PackedScene" id=4]
+
+
+
+
+
+[sub_resource type="ShaderMaterial" id=1]
+
+render_priority = 0
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+
+[sub_resource type="ShaderMaterial" id=3]
+
+render_priority = 0
+
+[node name="MeshInstance" type="MeshInstance"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 1 )
+skeleton = NodePath("..")
+material/0 = SubResource( 1 )
+material/1 = SubResource( 2 )
+material/2 = SubResource( 3 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Geometry", "LOD", "Transform", "material" ]
+label1 = null
+color1 = null
+label2 = null
+color2 = null
+label3 = null
+color3 = null
+label4 = null
+color4 = null
+label5 = null
+color5 = null
+label6 = null
+color6 = null
+label7 = null
+color7 = null
+label8 = null
+color8 = null
+
+[node name="Button1" parent="." index="0" instance=ExtResource( 3 )]
+
+transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.0946739, 0.065596, 0.310664 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Button2" parent="." index="1" instance=ExtResource( 3 )]
+
+transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.0946738, 0.065596, 0.110664 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Button3" parent="." index="2" instance=ExtResource( 3 )]
+
+transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.0946738, 0.065596, -0.0893355 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Button4" parent="." index="3" instance=ExtResource( 3 )]
+
+transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.0946738, 0.065596, -0.289336 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Button5" parent="." index="4" instance=ExtResource( 3 )]
+
+transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.0553262, 0.065596, 0.310664 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Button6" parent="." index="5" instance=ExtResource( 3 )]
+
+transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.0553262, 0.065596, 0.110664 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Button7" parent="." index="6" instance=ExtResource( 3 )]
+
+transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.0553262, 0.065596, -0.0893355 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Button8" parent="." index="7" instance=ExtResource( 3 )]
+
+transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.0553262, 0.065596, -0.289336 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label1" parent="." index="8" instance=ExtResource( 4 )]
+
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, -0.02, 0.0652456, 0.31 )
+text_label = ""
+
+[node name="Label2" parent="." index="9" instance=ExtResource( 4 )]
+
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, -0.02, 0.0652456, 0.11 )
+text_label = ""
+
+[node name="Label3" parent="." index="10" instance=ExtResource( 4 )]
+
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, -0.02, 0.0652456, -0.09 )
+text_label = ""
+
+[node name="Label4" parent="." index="11" instance=ExtResource( 4 )]
+
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, -0.02, 0.0652456, -0.29 )
+text_label = ""
+
+[node name="Label5" parent="." index="12" instance=ExtResource( 4 )]
+
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.12, 0.0652456, 0.31 )
+text_label = ""
+
+[node name="Label6" parent="." index="13" instance=ExtResource( 4 )]
+
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.12, 0.0652456, 0.11 )
+text_label = ""
+
+[node name="Label7" parent="." index="14" instance=ExtResource( 4 )]
+
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.12, 0.0652456, -0.09 )
+text_label = ""
+
+[node name="Label8" parent="." index="15" instance=ExtResource( 4 )]
+
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.12, 0.0652456, -0.29 )
+text_label = ""
+
+[connection signal="left_click" from="Button1" to="." method="_on_Button1_left_click"]
+
+[connection signal="left_click" from="Button2" to="." method="_on_Button2_left_click"]
+
+[connection signal="left_click" from="Button3" to="." method="_on_Button3_left_click"]
+
+[connection signal="left_click" from="Button4" to="." method="_on_Button4_left_click"]
+
+[connection signal="left_click" from="Button5" to="." method="_on_Button5_left_click"]
+
+[connection signal="left_click" from="Button6" to="." method="_on_Button6_left_click"]
+
+[connection signal="left_click" from="Button7" to="." method="_on_Button7_left_click"]
+
+[connection signal="left_click" from="Button8" to="." method="_on_Button8_left_click"]
+
+
