@@ -28,8 +28,8 @@ disabled = false
 
 [node name="Scene Root" parent="." index="1" instance=ExtResource( 2 )]
 
-[connection signal="input_event" from="." to="Scene Root" method="_on_StaticBody_input_event"]
-
 [connection signal="input_event" from="." to="." method="_on_StaticBody_input_event"]
+
+[connection signal="input_event" from="." to="Scene Root" method="_on_StaticBody_input_event"]
 
 
