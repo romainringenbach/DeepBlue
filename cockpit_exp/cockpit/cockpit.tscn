@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://cockpit/cockpit_brut.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cockpit/InterpolatedCamera.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://screen_panel/screen_panel.tscn" type="PackedScene" id=5]
 [ext_resource path="res://main_controller/main_controller.tscn" type="PackedScene" id=6]
 [ext_resource path="res://speed_controller/speed_controller_panel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://cockpit/sonar_bg.jpg" type="Texture" id=8]
 
 [sub_resource type="ViewportTexture" id=1]
 
@@ -97,16 +98,28 @@ _sections_unfolded = [ "Ambient Light" ]
 
 code = "shader_type canvas_item;
 
+varying vec2 uv_cercle;
+uniform sampler2D bg;
+
+void vertex(){
+	uv_cercle = VERTEX;
+}
+
 void fragment() {
-    vec4 color = texture(TEXTURE,UV);
-	float grey_level = (color.r + color.g + color.b)/3.0;
-	float binary = round(grey_level);
-	color.r = 0.0;
-	color.g = binary;
-	color.b = 0.0;
-	color.a = 1.0;
+    vec4 color = vec4(0,0,0,1);
+	vec2 size = vec2(1000,1000);
+	float distance = length(size/2.0-uv_cercle);
+	if (distance <= 400.0){
+		color = texture(TEXTURE,UV);
+		float grey_level = (color.r + color.g + color.b)/3.0;
+		float binary = round(grey_level);
+		color.r = 0.0;
+		color.g = binary;
+		color.b = 0.0;
+		color.a = 1.0;
+	}
 	
-	COLOR = color;
+	COLOR = color + texture(bg,UV);
 }
 "
 
@@ -114,6 +127,8 @@ void fragment() {
 
 render_priority = 0
 shader = SubResource( 4 )
+shader_param/bg = ExtResource( 8 )
+_sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="ViewportTexture" id=6]
 
@@ -216,7 +231,7 @@ _sections_unfolded = [ "Render Target", "Rendering" ]
 
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="Viewport" index="0"]
 
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0 )
+transform = Transform( -1, 3.25841e-07, 0, -1.12515e-10, -0.000345306, 1, 3.25841e-07, 1, 0.000345306, 0, 2, 0 )
 keep_aspect = 1
 cull_mask = 524287
 environment = SubResource( 7 )
@@ -233,34 +248,6 @@ target = NodePath("")
 speed = 1.0
 enabled = false
 _sections_unfolded = [ "Transform" ]
-
-[node name="DirectionalLight" type="DirectionalLight" parent="Viewport" index="1"]
-
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.1, 0 )
-visible = false
-layers = 524288
-light_color = Color( 1, 1, 1, 1 )
-light_energy = 1.0
-light_indirect_energy = 1.0
-light_negative = false
-light_specular = 0.5
-light_bake_mode = 1
-light_cull_mask = -1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_bias = 0.1
-shadow_contact = 0.0
-shadow_reverse_cull_face = false
-editor_only = false
-directional_shadow_mode = 2
-directional_shadow_split_1 = 0.1
-directional_shadow_split_2 = 0.2
-directional_shadow_split_3 = 0.5
-directional_shadow_blend_splits = false
-directional_shadow_normal_bias = 0.8
-directional_shadow_bias_split_scale = 0.25
-directional_shadow_depth_range = 0
-directional_shadow_max_distance = 200.0
 
 [node name="Viewport2" type="Viewport" parent="." index="9"]
 
@@ -295,8 +282,6 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 40.0
-margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -305,6 +290,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = SubResource( 6 )
 stretch_mode = 0
-_sections_unfolded = [ "Material" ]
+_sections_unfolded = [ "Margin", "Material", "Rect" ]
 
 
