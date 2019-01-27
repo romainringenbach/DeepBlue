@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://main_controller.dae" type="PackedScene" id=1]
+[ext_resource path="res://main_controller/main_controller.dae" type="PackedScene" id=1]
+[ext_resource path="res://main_controller/main_controller.gd" type="Script" id=2]
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=1]
 
 render_priority = 0
 flags_transparent = false
@@ -53,7 +54,7 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="SpatialMaterial" id=5]
+[sub_resource type="SpatialMaterial" id=2]
 
 render_priority = 0
 flags_transparent = false
@@ -121,7 +122,7 @@ surfaces/0 = {
 "vertex_count": 6709
 }
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=4]
 
 render_priority = 0
 flags_transparent = false
@@ -172,7 +173,7 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 
 resource_name = "down"
 length = 1.0
@@ -191,7 +192,7 @@ tracks/0/keys = {
 "values": [ Vector3( 57.9613, 9.04677e-06, -90 ), Vector3( 51.6633, 7.73719e-06, -90 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 
 resource_name = "left"
 length = 1.0
@@ -210,7 +211,7 @@ tracks/0/keys = {
 "values": [ Vector3( 7.05105e-06, 1.87477, 90 ), Vector3( -10, 1.87477, 90 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=7]
 
 resource_name = "r_down"
 length = 1.0
@@ -229,7 +230,7 @@ tracks/0/keys = {
 "values": [ Vector3( 51.6633, 1e-05, -90 ), Vector3( 57.9613, 1e-05, -90 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=8]
 
 resource_name = "r_left"
 length = 1.0
@@ -248,7 +249,7 @@ tracks/0/keys = {
 "values": [ Vector3( -10, 1.87477, 90 ), Vector3( 0, 1.87477, 90 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=9]
 
 resource_name = "r_right"
 length = 1.0
@@ -267,7 +268,7 @@ tracks/0/keys = {
 "values": [ Vector3( 10, 1.87477, 90 ), Vector3( 0, 1.87477, 90 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=10]
 
 resource_name = "r_up"
 length = 1.0
@@ -286,7 +287,7 @@ tracks/0/keys = {
 "values": [ Vector3( 60.864, 9.85705e-06, -90 ), Vector3( 57.9613, 1e-05, -90 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=11]
 
 resource_name = "right"
 length = 1.0
@@ -305,7 +306,7 @@ tracks/0/keys = {
 "values": [ Vector3( 7.05105e-06, 1.87477, 90 ), Vector3( 10, 1.87477, 90 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=12]
 
 resource_name = "up"
 length = 1.0
@@ -326,15 +327,17 @@ tracks/0/keys = {
 
 [node name="Scene Root" instance=ExtResource( 1 )]
 
+script = ExtResource( 2 )
+
 [node name="Cube" parent="." index="0"]
 
-material/0 = SubResource( 4 )
+material/0 = SubResource( 1 )
 _sections_unfolded = [ "material" ]
 
 [node name="Cylinder" parent="." index="1"]
 
 transform = Transform( -4.3008e-08, 0.12, 7.40706e-09, -0.0530492, -1.79601e-08, -0.0678152, -0.084769, -4.9643e-08, 0.0424393, 0.00380272, 0.0985366, 0.0158061 )
-material/0 = SubResource( 5 )
+material/0 = SubResource( 2 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="Cube_002" type="MeshInstance" parent="Cylinder" index="0"]
@@ -351,19 +354,23 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 3 )
 skeleton = NodePath("..")
-material/0 = SubResource( 6 )
+material/0 = SubResource( 4 )
 _sections_unfolded = [ "Transform", "material" ]
+
+[node name="Cube_002" parent="." index="2"]
+
+visible = false
 
 [node name="AnimationPlayer" parent="." index="3"]
 
-anims/down = SubResource( 7 )
-anims/left = SubResource( 8 )
-anims/r_down = SubResource( 9 )
-anims/r_left = SubResource( 10 )
-anims/r_right = SubResource( 11 )
-anims/r_up = SubResource( 12 )
-anims/right = SubResource( 13 )
-anims/up = SubResource( 14 )
+anims/down = SubResource( 5 )
+anims/left = SubResource( 6 )
+anims/r_down = SubResource( 7 )
+anims/r_left = SubResource( 8 )
+anims/r_right = SubResource( 9 )
+anims/r_up = SubResource( 10 )
+anims/right = SubResource( 11 )
+anims/up = SubResource( 12 )
 blend_times = [ "r_right", "down", 0.5, "r_right", "left", 0.5, "r_right", "r_down", 0.5, "r_right", "r_left", 0.5, "r_right", "r_right", 0.5, "r_right", "r_up", 0.5, "r_right", "right", 0.5, "r_right", "up", 0.5 ]
 
 
