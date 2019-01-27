@@ -156,7 +156,7 @@ _sections_unfolded = [ "Editor", "Light", "Omni", "Spot", "Transform" ]
 [node name="Plane" parent="." index="4"]
 
 material/0 = ExtResource( 4 )
-_sections_unfolded = [ "material" ]
+_sections_unfolded = [ "Transform", "material" ]
 
 [node name="AnimationPlayer" parent="." index="5"]
 
