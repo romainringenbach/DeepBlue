@@ -5,10 +5,6 @@
 [ext_resource path="res://button/button.tscn" type="PackedScene" id=3]
 [ext_resource path="res://label/label.tscn" type="PackedScene" id=4]
 
-
-
-
-
 [sub_resource type="ShaderMaterial" id=1]
 
 render_priority = 0
@@ -39,22 +35,22 @@ material/1 = SubResource( 2 )
 material/2 = SubResource( 3 )
 script = ExtResource( 2 )
 _sections_unfolded = [ "Geometry", "LOD", "Transform", "material" ]
-label1 = null
-color1 = null
-label2 = null
-color2 = null
-label3 = null
-color3 = null
-label4 = null
-color4 = null
-label5 = null
-color5 = null
-label6 = null
-color6 = null
-label7 = null
-color7 = null
-label8 = null
-color8 = null
+label1 = "nothing"
+color1 = Color( 1, 1, 1, 1 )
+label2 = "nothing"
+color2 = Color( 1, 1, 1, 1 )
+label3 = "nothing"
+color3 = Color( 1, 1, 1, 1 )
+label4 = "nothing"
+color4 = Color( 1, 1, 1, 1 )
+label5 = "nothing"
+color5 = Color( 1, 1, 1, 1 )
+label6 = "nothing"
+color6 = Color( 1, 1, 1, 1 )
+label7 = "nothing"
+color7 = Color( 1, 1, 1, 1 )
+label8 = "nothing"
+color8 = Color( 1, 1, 1, 1 )
 
 [node name="Button1" parent="." index="0" instance=ExtResource( 3 )]
 
