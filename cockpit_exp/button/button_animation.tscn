@@ -99,7 +99,7 @@ tracks/0/keys = {
 "values": [ true, false, true, false, true, false ]
 }
 
-[node name="Scene Root" instance=ExtResource( 1 )]
+[node name="Scene Root" index="0" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
