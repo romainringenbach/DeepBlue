@@ -10,6 +10,8 @@ export (int) var type = 0
 
 export (Color) var light_color
 
+var toggle = false
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
@@ -31,3 +33,7 @@ func _on_StaticBody_input_event(camera, event, click_position, click_normal, sha
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == 1:
 			emit_signal("left_click")
+			if toggle == false:
+				toggle = true
+			else:
+				toggle = false

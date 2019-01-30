@@ -35,11 +35,11 @@ func look_leftright_rotation(rotation = 0):
 	"""
 	var r_rotation = Yaw.get_rotation() + Vector3(0, rotation, 0)
 	
-	if r_rotation.y < PI / -2:
-		r_rotation.y = PI / -2
+	if r_rotation.y < -1.4:
+		r_rotation.y = -1.4
 		print("merde")
-	if r_rotation.y > PI / 2:
-		r_rotation.y = PI / 2
+	if r_rotation.y > 1.4:
+		r_rotation.y = 1.4
 		print("merde2")
 	
 	return r_rotation
