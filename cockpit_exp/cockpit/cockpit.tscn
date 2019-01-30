@@ -139,7 +139,7 @@ resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("Viewport")
 
-[node name="Spatial" type="Spatial"]
+[node name="Spatial" type="Spatial" index="0"]
 
 script = ExtResource( 1 )
 
@@ -252,7 +252,7 @@ fov = 70.0
 size = 19.0223
 near = 0.05
 far = 100.0
-target = NodePath("")
+target = NodePath("../..")
 speed = 1.0
 enabled = false
 _sections_unfolded = [ "Transform" ]

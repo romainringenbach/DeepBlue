@@ -3,13 +3,13 @@ extends RigidBody
 #export var TURN_SPEED = 7
 #export var LOW_THRUST = 50
 #export var MED_THRUST = 100
-export var FULL_THRUST = 150
+export var FULL_THRUST = 100
 export var STEER_FORCE_LR = 1.5
 export var STEER_FORCE_UD = 0.8
 
-const MAX_VEL = 22 * 22 # en m/s
+var speed = 0.0;
 
-var thrust = Vector3(0,0,0)
+var thrust = Vector3()
 var linvel = 0
 
 var impulse_left = false
@@ -17,10 +17,15 @@ var impulse_right = false
 var impulse_up = false
 var impulse_down = false
 
+var player_direction = Vector3()
+
 func _ready():
 	pass
 
 func get_input():
+	
+	player_direction = -$Cockpit/Yaw/InterpolatedCamera.get_global_transform().basis.z
+	
 	if Input.is_action_pressed("ui_left"):
 		impulse_left = true
 	if Input.is_action_just_released("ui_left"):
@@ -49,9 +54,7 @@ func _process(delta):
 
 func _integrate_forces(state):
 	linvel = state.linear_velocity.length_squared()
-	if (linvel <= MAX_VEL):
-		var force = self.get_transform().basis.xform(thrust)
-		state.add_force(force, Vector3(0,0,0))
+	state.add_force(player_direction*speed, Vector3(0,0,0))
 	if (impulse_left):
 		state.apply_torque_impulse(Vector3(0,STEER_FORCE_LR,0))
 	if (impulse_right):
@@ -62,5 +65,8 @@ func _integrate_forces(state):
 		state.apply_torque_impulse(Vector3(0,0,STEER_FORCE_UD))
 
 
-func _on_Cockpit_speed_changed(speed):
-	thrust = Vector3(0,0,FULL_THRUST*speed)
+func _on_Cockpit_speed_changed(speed_percent):
+	
+	speed = FULL_THRUST*speed_percent
+	
+	#thrust = Vector3(0,0,FULL_THRUST*speed)

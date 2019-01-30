@@ -29,7 +29,7 @@ unzoom=[ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_
 
 [physics]
 
-3d/default_linear_damp=0.6
+3d/physics_engine="Bullet"
 
 [rendering]
 
