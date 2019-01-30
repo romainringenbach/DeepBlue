@@ -11,13 +11,14 @@ extents = Vector3( 1, 1, 1 )
 
 input_ray_pickable = true
 input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-friction = 1.0
+collision_layer = 524288
+collision_mask = 524288
+friction = 0.0
 bounce = 0.0
 constant_linear_velocity = Vector3( 0, 0, 0 )
 constant_angular_velocity = Vector3( 0, 0, 0 )
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
 type = 0
 light_color = null
 

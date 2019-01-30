@@ -20,9 +20,16 @@ func _ready():
 #	pass
 
 func change_speed(delta):
-	if $Cylinder_001.rotation_degrees.x  + delta.y >= -15 and $Cylinder_001.rotation_degrees.x  + delta.y <= 78:
+	if $Cylinder_001.rotation_degrees.x  + delta.y>= -15 and $Cylinder_001.rotation_degrees.x  + delta.y <= 78:
 		$Cylinder_001.rotate_x(delta.y * 0.01)
-		emit_signal("position_changed", ($Cylinder_001.rotation_degrees.x+15)/(78+15))
+		
+		var percent = 1-($Cylinder_001.rotation_degrees.x+15)/(78+15)
+		if percent < 0.1:
+			percent = 0.0
+		if percent > 0.9:
+			percent = 1.0
+		
+		emit_signal("position_changed", percent)
 	
 
 

@@ -32,6 +32,7 @@ func _update_speed():
 		
 
 func _on_Scene_Root_position_changed(percent):
+	print(percent)
 	real_speed = percent
 	_update_speed()
 
