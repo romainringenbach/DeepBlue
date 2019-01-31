@@ -29,7 +29,7 @@ func _process(delta):
 	if r.z < -0.01 or r.z > 0.01:
 		rotate_z(r.z)
 	if r.y < -0.01 or r.y > 0.01:
-		rotate_y(r.y)
+		rotate_y(r.y+PI)
 	
 	
 	

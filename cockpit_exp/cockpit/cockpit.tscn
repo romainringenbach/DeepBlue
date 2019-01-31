@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://cockpit/cockpit.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/cockpit_brut.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://cockpit/sonar_bg.jpg" type="Texture" id=10]
 [ext_resource path="res://cockpit/TopSpots.gd" type="Script" id=11]
 [ext_resource path="res://cockpit/LongRangeSpots.gd" type="Script" id=12]
+[ext_resource path="res://light/light.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ViewportTexture" id=1]
 
@@ -180,11 +181,8 @@ pas = 5
 
 [node name="Radio" parent="." index="2" instance=ExtResource( 4 )]
 
-transform = Transform( 0.559773, -0.827998, 0.0327461, -0.827311, -0.560677, -0.0346159, 0.0470218, -0.00771414, -0.998864, 0.6, 0.4, 0.15 )
-color1 = Color( 1, 1, 1, 1 )
-color2 = Color( 1, 1, 1, 1 )
-label1 = "nothing"
-label2 = "nothing"
+transform = Transform( 0.5, -0.866025, -3.25841e-07, -0.866025, -0.5, 0, -1.62921e-07, 2.82187e-07, -1, 0.65, 0.4, 0.15 )
+_sections_unfolded = [ "Transform", "material" ]
 
 [node name="Buttons_1" parent="." index="3" instance=ExtResource( 5 )]
 
@@ -456,12 +454,31 @@ spot_angle = 9.5757
 spot_angle_attenuation = 1.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="OmniLight" type="OmniLight" parent="." index="12"]
+[node name="Light" parent="." index="12" instance=ExtResource( 13 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
+transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-08, 0, -1.62921e-08, -0.05, 0, 0.999471, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Light4" parent="." index="13" instance=ExtResource( 13 )]
+
+transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-08, 0, -1.62921e-08, -0.05, -0.1, 0.899471, 1.15 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Light2" parent="." index="14" instance=ExtResource( 13 )]
+
+transform = Transform( 8.14604e-09, 0.05, -1.62921e-08, 0.05, -8.14603e-09, 1.65806e-08, 1.65806e-08, -1.62921e-08, -0.05, -1.00847, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Light3" parent="." index="15" instance=ExtResource( 13 )]
+
+transform = Transform( 1.41065e-08, -0.05, 4.37114e-09, -0.05, -1.41065e-08, -1.65806e-08, 1.65806e-08, -4.37113e-09, -0.05, 1.00847, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="OmniLight" type="OmniLight" parent="." index="16"]
+
 layers = 1
-light_color = Color( 0.183594, 0, 0, 1 )
-light_energy = 1.0
+light_color = Color( 0.027451, 0, 0.552941, 1 )
+light_energy = 0.7
 light_indirect_energy = 1.0
 light_negative = false
 light_specular = 0.5
@@ -473,8 +490,54 @@ shadow_bias = 0.15
 shadow_contact = 0.0
 shadow_reverse_cull_face = false
 editor_only = false
-omni_range = 5.0
-omni_attenuation = 1.0
+omni_range = 1.2
+omni_attenuation = 0.189464
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Light", "Omni" ]
+
+[node name="OmniLight2" type="OmniLight" parent="." index="17"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9 )
+layers = 1
+light_color = Color( 0.0304403, 0, 0.554688, 1 )
+light_energy = 0.7
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 1.2
+omni_attenuation = 0.189464
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Light", "Omni" ]
+
+[node name="OmniLight3" type="OmniLight" parent="." index="18"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8 )
+layers = 1
+light_color = Color( 0.027451, 0, 0.552941, 1 )
+light_energy = 0.7
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 1.2
+omni_attenuation = 0.189464
 omni_shadow_mode = 1
 omni_shadow_detail = 1
 _sections_unfolded = [ "Light", "Omni" ]
