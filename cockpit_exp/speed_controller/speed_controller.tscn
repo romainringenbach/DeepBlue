@@ -144,7 +144,7 @@ disabled = false
 [node name="Cylinder" parent="." index="1"]
 
 material/0 = SubResource( 2 )
-_sections_unfolded = [ "material" ]
+_sections_unfolded = [ "Geometry", "material" ]
 
 [node name="Cylinder_001" parent="." index="2"]
 

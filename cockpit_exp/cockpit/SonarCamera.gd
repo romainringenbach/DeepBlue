@@ -16,20 +16,20 @@ func _ready():
 func _process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
-	global_transform.origin = get_node(target).global_transform.origin + tra
+	global_transform.origin = get_node(target).global_transform.origin + Vector3(0,tra.y,0)
 	var _rot = get_node(target).global_transform.basis.get_euler()
 	
 	var rot = global_transform.basis.get_euler()
 	
-	var r = Vector3(ori_rot.x - rot.x,_rot.y-rot.y,ori_rot.z - rot.z)
+	var r = Vector3(ori_rot.x - rot.x,_rot.y-rot.y+PI,ori_rot.z - rot.z)
 	
 	
-	if r.x < -0.01 or r.x > 0.01:
+	if r.x < -0.1 or r.x > 0.1:
 		rotate_x(r.x)
-	if r.z < -0.01 or r.z > 0.01:
+	if r.z < -0.1 or r.z > 0.1:
 		rotate_z(r.z)
-	if r.y < -0.01 or r.y > 0.01:
-		rotate_y(r.y+PI)
+	if r.y < -0.1 or r.y > 0.1:
+		rotate_y(r.y)
 	
 	
 	

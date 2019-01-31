@@ -51,6 +51,7 @@ func _process(delta):
 
 
 func _integrate_forces(state):
+	print(global_transform.basis.get_euler().z)
 	state.add_force(player_direction*current_speed, Vector3())
 	if (impulse_left):
 		state.apply_torque_impulse(Vector3(0,STEER_FORCE_LR,0))
