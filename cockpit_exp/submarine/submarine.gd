@@ -57,9 +57,13 @@ func _integrate_forces(state):
 	if (impulse_right):
 		state.apply_torque_impulse(Vector3(0,-STEER_FORCE_LR,0))
 	if (impulse_up):
-		state.apply_torque_impulse(Vector3(0,0,-STEER_FORCE_UD))
+		state.apply_torque_impulse(Vector3(-STEER_FORCE_UD,0,0))
 	if (impulse_down):
-		state.apply_torque_impulse(Vector3(0,0,STEER_FORCE_UD))
+		state.apply_torque_impulse(Vector3(STEER_FORCE_UD,0,0))
+	if rotation.z < -0.1:
+		state.apply_torque_impulse(Vector3(0,0,STEER_FORCE_UD/5))
+	if rotation.z > 0.1:
+		state.apply_torque_impulse(Vector3(0,0,-STEER_FORCE_UD/5))
 
 func _on_Cockpit_speed_changed(speed_percent):
 	
