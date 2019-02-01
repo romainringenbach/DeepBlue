@@ -27,7 +27,7 @@ func _process(delta):
 	
 	var ry = _rot.y-rot.y
 	
-	if ry < -0.1 or ry > 0.1:
+	if ry < -0.01 or ry > 0.01:
 		rotate_y(ry)
 	
 	

@@ -1,0 +1,127 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://free_models/buildings.dae" type="PackedScene" id=1]
+[ext_resource path="res://pseudo_level/building.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 1.8693, 3.98725, 1.18142 )
+
+[node name="Scene Root" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+
+[node name="Highrise_1" parent="." index="0"]
+
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, 0, 0, 0 )
+visible = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="Highrise_2" parent="." index="1"]
+
+transform = Transform( -1.62921e-09, 0.01, -4.37114e-10, 0, -4.37114e-10, -0.01, -0.01, -1.62921e-09, 0, 0, 0, 0 )
+visible = false
+
+[node name="Highrise_3" parent="." index="2"]
+
+transform = Transform( 7.54979e-10, 0.01, 7.54979e-10, 0, 7.54979e-10, -0.01, -0.01, 7.54979e-10, 0, 0, 0, 0 )
+visible = false
+
+[node name="Highrise_4" parent="." index="3"]
+
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, 0, 0, 0 )
+visible = false
+
+[node name="Highrise_5" parent="." index="4"]
+
+transform = Transform( 7.54979e-10, 0.01, 7.54979e-10, 0, 7.54979e-10, -0.01, -0.01, 7.54979e-10, 0, 0, 0, 0 )
+visible = false
+
+[node name="Highrise_6" parent="." index="5"]
+
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, 0, 0, 0 )
+visible = false
+
+[node name="Highrise_7" parent="." index="6"]
+
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, 0, 0, 0 )
+visible = false
+
+[node name="Highrise_8" parent="." index="7"]
+
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, 0, 0, 0 )
+visible = false
+
+[node name="Highrise_9" parent="." index="8"]
+
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, 0, 0, 0 )
+visible = false
+
+[node name="Highrise_10" parent="." index="9"]
+
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, 0, 0, 0 )
+visible = false
+
+[node name="Highrise_11" parent="." index="10"]
+
+transform = Transform( 0.009999, 0.000141108, 1.06533e-11, 0, 7.54979e-10, -0.01, -0.000141108, 0.009999, 7.54904e-10, 0, 0, 0 )
+visible = false
+
+[node name="Highrise_12" parent="." index="11"]
+
+transform = Transform( 7.54979e-10, 0.01, 7.54979e-10, 0, 7.54979e-10, -0.01, -0.01, 7.54979e-10, 0, 0, 0, 0 )
+visible = false
+
+[node name="highrise_13" parent="." index="12"]
+
+transform = Transform( 0.000151567, 0.00999885, -4.37064e-10, 0, -4.37114e-10, -0.01, -0.00999885, 0.000151567, -6.62521e-12, 0, 0, 0 )
+visible = false
+
+[node name="Highrise_14" parent="." index="13"]
+
+transform = Transform( 7.54979e-10, 0.01, 7.54979e-10, 0, 7.54979e-10, -0.01, -0.01, 7.54979e-10, 0, 0, 0, 0 )
+visible = false
+
+[node name="Highrise_15" parent="." index="14"]
+
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, 0, 0, 0 )
+visible = false
+
+[node name="Highrise_16" parent="." index="15"]
+
+transform = Transform( 7.54979e-10, -0.01, -7.54979e-10, 0, 7.54979e-10, -0.01, 0.01, 7.54979e-10, 0, 0, 0, 0 )
+visible = false
+
+[node name="Highrise_17" parent="." index="16"]
+
+transform = Transform( -0.01, 8.74228e-10, 8.74228e-10, -8.74228e-10, -4.37114e-10, -0.01, -8.74228e-10, -0.01, 4.37114e-10, 0, 0, 0 )
+visible = false
+
+[node name="Highrise_18" parent="." index="17"]
+
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, 0, 0, 0 )
+visible = false
+
+[node name="Highrise_19" parent="." index="18"]
+
+transform = Transform( 0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, 0, 0, 0 )
+visible = false
+
+[node name="StaticBody" type="StaticBody" parent="." index="20"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30599, 0 )
+shape = SubResource( 1 )
+disabled = false
+
+

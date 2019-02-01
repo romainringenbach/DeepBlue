@@ -14,8 +14,8 @@ func _ready():
 func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
-	$Viewport2/TextureRect.material.set_shader_param("top",$TopView.get_texture())
-	$Viewport2/TextureRect.material.set_shader_param("bottom",$BottomView.get_texture())
+	$SonarActif/TextureRect.material.set_shader_param("top",$TopView.get_texture())
+	$SonarActif/TextureRect.material.set_shader_param("bottom",$BottomView.get_texture())
 
 
 func _on_Speed_controller_speed_changed(speed):

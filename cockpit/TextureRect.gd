@@ -1,8 +1,7 @@
 extends TextureRect
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+var current = null
+var pre = null
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -12,4 +11,13 @@ func _ready():
 func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
-	texture = get_parent().get_parent()
+	pass
+
+func _on_Timer_timeout():
+	
+	current = get_parent().get_parent().get_node("SonarActif").get_texture()
+	if pre != null:
+		material.set_shader_param("current",current)
+		material.set_shader_param("previous",pre)
+		print("eeee")
+	pre = current

@@ -1,0 +1,13 @@
+[remap]
+
+importer="MagicaVoxel-Importer"
+type="Mesh"
+path="res://.import/chain_base.vox-59d0e5fac9a991e2ff745efb66dd65ec.mesh"
+
+[deps]
+
+source_file="res://vox_models/mine/chain_base.vox"
+dest_files=[ "res://.import/chain_base.vox-59d0e5fac9a991e2ff745efb66dd65ec.mesh" ]
+
+[params]
+

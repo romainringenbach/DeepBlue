@@ -93,7 +93,7 @@ subdivide_depth = 0
 
 extents = Vector3( 1, 1, 1 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" index="0"]
+[node name="WorldEnvironment" type="WorldEnvironment"]
 
 environment = SubResource( 1 )
 
