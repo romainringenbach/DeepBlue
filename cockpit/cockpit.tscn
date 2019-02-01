@@ -139,32 +139,32 @@ void fragment() {
 }
 "
 
-[sub_resource type="ViewportTexture" id=4]
+[sub_resource type="ViewportTexture" id=8]
 
 resource_local_to_scene = true
 flags = 0
-viewport_path = NodePath("Viewport")
+viewport_path = NodePath("BottomView")
 
-[sub_resource type="ViewportTexture" id=5]
+[sub_resource type="ViewportTexture" id=9]
 
 resource_local_to_scene = true
 flags = 0
-viewport_path = NodePath("Viewport")
+viewport_path = NodePath("TopView")
 
 [sub_resource type="ShaderMaterial" id=6]
 
 render_priority = 0
 shader = SubResource( 3 )
 shader_param/bg = ExtResource( 10 )
-shader_param/top = SubResource( 5 )
-shader_param/bottom = SubResource( 4 )
+shader_param/top = SubResource( 9 )
+shader_param/bottom = SubResource( 8 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="ViewportTexture" id=7]
+[sub_resource type="ViewportTexture" id=10]
 
 resource_local_to_scene = true
 flags = 0
-viewport_path = NodePath("Viewport")
+viewport_path = NodePath("TopView")
 
 [node name="Spatial" type="Spatial"]
 
@@ -216,6 +216,8 @@ label1 = "TopSpot"
 color1 = Color( 0.0924628, 0.335938, 0.0905457, 1 )
 label2 = "LongRangeSpot"
 color2 = Color( 0.0901961, 0.333333, 0.0901961, 1 )
+label8 = "Shield"
+color8 = Color( 1, 0, 0, 1 )
 
 [node name="Screen_1" parent="." index="4" instance=ExtResource( 6 )]
 
@@ -236,7 +238,7 @@ _sections_unfolded = [ "Transform" ]
 transform = Transform( -4.88762e-08, 0, -0.3, 0.229813, 0.192836, -3.74413e-08, 0.192836, -0.229813, -3.1417e-08, -0.35, -0.35, 0.65 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Viewport3" type="Viewport" parent="." index="8"]
+[node name="TopView" type="Viewport" parent="." index="8"]
 
 arvr = false
 size = Vector2( 1000, 1000 )
@@ -244,7 +246,7 @@ own_world = false
 world = null
 transparent_bg = false
 msaa = 0
-hdr = true
+hdr = false
 disable_3d = false
 usage = 2
 debug_draw = 0
@@ -261,9 +263,14 @@ shadow_atlas_quad_0 = 2
 shadow_atlas_quad_1 = 2
 shadow_atlas_quad_2 = 3
 shadow_atlas_quad_3 = 4
-_sections_unfolded = [ "Render Target" ]
+_sections_unfolded = [ "Physics", "Render Target", "Rendering", "Shadow Atlas" ]
 
-[node name="InterpolatedCamera2" type="InterpolatedCamera" parent="Viewport3" index="0"]
+[node name="Yaw" type="Spatial" parent="TopView" index="0"]
+
+script = ExtResource( 9 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="camera" type="InterpolatedCamera" parent="TopView/Yaw" index="0"]
 
 transform = Transform( -1, 5.77123e-09, -1.12515e-10, 1.14508e-10, 0.000345306, -1, -5.77117e-09, -1, -0.000345306, 0, -10, 0 )
 keep_aspect = 1
@@ -281,10 +288,9 @@ far = 100.0
 target = NodePath("../..")
 speed = 1.0
 enabled = false
-script = ExtResource( 9 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Viewport" type="Viewport" parent="." index="9"]
+[node name="BottomView" type="Viewport" parent="." index="9"]
 
 arvr = false
 size = Vector2( 1000, 1000 )
@@ -309,11 +315,16 @@ shadow_atlas_quad_0 = 2
 shadow_atlas_quad_1 = 2
 shadow_atlas_quad_2 = 3
 shadow_atlas_quad_3 = 4
-_sections_unfolded = [ "Render Target", "Rendering" ]
+_sections_unfolded = [ "Render Target", "Rendering", "Shadow Atlas" ]
 
-[node name="InterpolatedCamera" type="InterpolatedCamera" parent="Viewport" index="0"]
+[node name="Yaw" type="Spatial" parent="BottomView" index="0"]
 
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 10, 0 )
+script = ExtResource( 9 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="camera" type="InterpolatedCamera" parent="BottomView/Yaw" index="0"]
+
+transform = Transform( -1, 3.25841e-07, 0, -1.12515e-10, -0.000345306, 1, 3.25841e-07, 1, 0.000345306, 0, 10, 0 )
 keep_aspect = 1
 cull_mask = 524287
 environment = SubResource( 2 )
@@ -329,7 +340,6 @@ far = 100.0
 target = NodePath("../..")
 speed = 1.0
 enabled = false
-script = ExtResource( 9 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Viewport2" type="Viewport" parent="." index="10"]
@@ -371,7 +381,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = SubResource( 7 )
+texture = SubResource( 10 )
 stretch_mode = 0
 _sections_unfolded = [ "Margin", "Material", "Rect" ]
 
@@ -618,6 +628,8 @@ _sections_unfolded = [ "Light", "Omni" ]
 [connection signal="on_button_1" from="Buttons_1" to="TopSpots" method="_on_Buttons_1_on_button_1"]
 
 [connection signal="on_button_2" from="Buttons_1" to="LongRangeSpots" method="_on_Buttons_1_on_button_2"]
+
+[connection signal="on_button_8" from="Buttons_1" to="Cockpit" method="_on_Buttons_1_on_button_8"]
 
 [connection signal="speed_changed" from="Speed_controller" to="." method="_on_Speed_controller_speed_changed"]
 

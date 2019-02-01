@@ -18,8 +18,8 @@ var player_direction = Vector3()
 
 func _ready():
 	player_direction = $Cockpit.get_global_transform().basis.z
-	$Cockpit/Viewport/InterpolatedCamera.target = get_path()
-	$Cockpit/Viewport3/InterpolatedCamera2.target = get_path()
+	$Cockpit/TopView/Yaw.target = get_path()
+	$Cockpit/BottomView/Yaw.target = get_path()
 
 func get_input():
 	
