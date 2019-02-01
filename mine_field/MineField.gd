@@ -1,7 +1,7 @@
 extends Node
 
-var mine = preload("res://Mine.tscn")
-const poissonDisc = preload("res://PoissonDiscSampling.gd")
+var mine = preload("res://mine_field/Mine.tscn")
+const poissonDisc = preload("res://mine_field/PoissonDiscSampling.gd")
 
 export (float) var radius = 10
 export (Vector2) var region_size = Vector2(100, 100)
