@@ -139,28 +139,28 @@ void fragment() {
 }
 "
 
-[sub_resource type="ViewportTexture" id=6]
+[sub_resource type="ViewportTexture" id=4]
 
 resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="ViewportTexture" id=7]
+[sub_resource type="ViewportTexture" id=5]
 
 resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=6]
 
 render_priority = 0
 shader = SubResource( 3 )
 shader_param/bg = ExtResource( 10 )
-shader_param/top = SubResource( 7 )
-shader_param/bottom = SubResource( 6 )
+shader_param/top = SubResource( 5 )
+shader_param/bottom = SubResource( 4 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="ViewportTexture" id=5]
+[sub_resource type="ViewportTexture" id=7]
 
 resource_local_to_scene = true
 flags = 0
@@ -360,7 +360,7 @@ shadow_atlas_quad_3 = 4
 
 [node name="TextureRect" type="TextureRect" parent="Viewport2" index="0"]
 
-material = SubResource( 4 )
+material = SubResource( 6 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -371,7 +371,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = SubResource( 5 )
+texture = SubResource( 7 )
 stretch_mode = 0
 _sections_unfolded = [ "Margin", "Material", "Rect" ]
 
