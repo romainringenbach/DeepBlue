@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://cockpit/cockpit.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/cockpit_brut.tscn" type="PackedScene" id=2]
@@ -11,23 +11,24 @@
 [ext_resource path="res://cockpit/SonarCamera.gd" type="Script" id=9]
 [ext_resource path="res://cockpit/sonar_bg.jpg" type="Texture" id=10]
 [ext_resource path="res://cockpit/TextureRect.gd" type="Script" id=11]
-[ext_resource path="res://cockpit/TopSpots.gd" type="Script" id=12]
-[ext_resource path="res://cockpit/LongRangeSpots.gd" type="Script" id=13]
-[ext_resource path="res://light/light.tscn" type="PackedScene" id=14]
+[ext_resource path="res://cockpit/array.png" type="Texture" id=12]
+[ext_resource path="res://cockpit/TopSpots.gd" type="Script" id=13]
+[ext_resource path="res://cockpit/LongRangeSpots.gd" type="Script" id=14]
+[ext_resource path="res://light/light.tscn" type="PackedScene" id=15]
 
-[sub_resource type="ViewportTexture" id=11]
+[sub_resource type="ViewportTexture" id=1]
 
 resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("SonarActif")
 
-[sub_resource type="ViewportTexture" id=12]
+[sub_resource type="ViewportTexture" id=2]
 
 resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("SonarPassif")
 
-[sub_resource type="Environment" id=2]
+[sub_resource type="Environment" id=3]
 
 background_mode = 0
 background_sky_custom_fov = 0.0
@@ -106,7 +107,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Ambient Light" ]
 
-[sub_resource type="Shader" id=3]
+[sub_resource type="Shader" id=4]
 
 code = "shader_type canvas_item;
 
@@ -146,58 +147,78 @@ void fragment() {
 }
 "
 
-[sub_resource type="ViewportTexture" id=8]
+[sub_resource type="ViewportTexture" id=5]
 
 resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("BottomView")
 
-[sub_resource type="ViewportTexture" id=9]
+[sub_resource type="ViewportTexture" id=6]
 
 resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("TopView")
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=7]
 
 render_priority = 0
-shader = SubResource( 3 )
+shader = SubResource( 4 )
 shader_param/bg = ExtResource( 10 )
-shader_param/top = SubResource( 9 )
-shader_param/bottom = SubResource( 8 )
+shader_param/top = SubResource( 6 )
+shader_param/bottom = SubResource( 5 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="ViewportTexture" id=10]
+[sub_resource type="ViewportTexture" id=8]
 
 resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("TopView")
 
-[sub_resource type="Shader" id=13]
+[sub_resource type="Shader" id=9]
 
 code = "shader_type canvas_item;
 
-uniform sampler2D previous;
-uniform sampler2D current;
+uniform sampler2D data;
+uniform int slide;
 
 void fragment() {
     vec4 color = vec4(0,0,0,1);
-	vec4 pc = texture(previous,UV);
-	vec4 cc = texture(current,UV);
-
-	color.g = abs(cc.g - pc.g);
+	
+	vec2 uv = UV;
+	uv.x += float(slide)/1000.0;
+	if (uv.x > 1.0){
+		uv.x-=1.0;
+	}
+	uv.y = 0.0;
+	
+	vec4 data_value = texture(data,uv);
+	
+	if ((1.0-UV.y) > data_value.r){
+		color.g = 0.0;
+	} else {
+		color.g = 1.0;
+	}
+	
+	//color.r = UV.y;
 	
 	COLOR = color;
 }
 "
 
-[sub_resource type="ShaderMaterial" id=14]
+[sub_resource type="ShaderMaterial" id=10]
 
 render_priority = 0
-shader = SubResource( 13 )
-shader_param/previous = ExtResource( 10 )
-shader_param/current = ExtResource( 10 )
+shader = SubResource( 9 )
+shader_param/slide = null
 _sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="ImageTexture" id=11]
+
+flags = 7
+storage = 0
+lossy_quality = 0.0
+flags = 7
+size = Vector2( 0, 0 )
 
 [node name="Spatial" type="Spatial"]
 
@@ -255,12 +276,12 @@ color8 = Color( 1, 0, 0, 1 )
 [node name="Screen_1" parent="." index="4" instance=ExtResource( 6 )]
 
 transform = Transform( 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 0, 0, 1, -0.65, -0.25, 0.15 )
-viewport_texture = SubResource( 11 )
+viewport_texture = SubResource( 1 )
 
 [node name="Screen_2" parent="." index="5" instance=ExtResource( 6 )]
 
 transform = Transform( -0.5, 0.866025, 0, -0.866025, -0.5, 0, 0, 0, 1, -0.55, 0.4, 0.15 )
-viewport_texture = SubResource( 12 )
+viewport_texture = SubResource( 2 )
 
 [node name="Main_controller" parent="." index="6" instance=ExtResource( 7 )]
 
@@ -308,15 +329,15 @@ _sections_unfolded = [ "Transform" ]
 
 transform = Transform( -1, 5.77123e-09, -1.12515e-10, 1.14508e-10, 0.000345306, -1, -5.77117e-09, -1, -0.000345306, 0, -10, 0 )
 keep_aspect = 1
-cull_mask = 524287
-environment = SubResource( 2 )
+cull_mask = 262144
+environment = SubResource( 3 )
 h_offset = 0.0
 v_offset = 0.0
 doppler_tracking = 0
 projection = 1
 current = true
 fov = 70.0
-size = 99.5429
+size = 80.0
 near = 0.05
 far = 100.0
 target = NodePath("../..")
@@ -360,15 +381,15 @@ _sections_unfolded = [ "Transform" ]
 
 transform = Transform( -1, 3.25841e-07, 0, -1.12515e-10, -0.000345306, 1, 3.25841e-07, 1, 0.000345306, 0, 10, 0 )
 keep_aspect = 1
-cull_mask = 524287
-environment = SubResource( 2 )
+cull_mask = 262144
+environment = SubResource( 3 )
 h_offset = 0.0
 v_offset = 0.0
 doppler_tracking = 0
 projection = 1
 current = true
 fov = 70.0
-size = 99.5429
+size = 80.0
 near = 0.05
 far = 100.0
 target = NodePath("../..")
@@ -404,7 +425,7 @@ shadow_atlas_quad_3 = 4
 
 [node name="TextureRect" type="TextureRect" parent="SonarActif" index="0"]
 
-material = SubResource( 6 )
+material = SubResource( 7 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -415,7 +436,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = SubResource( 10 )
+texture = SubResource( 8 )
 stretch_mode = 0
 _sections_unfolded = [ "Margin", "Material", "Rect" ]
 
@@ -447,7 +468,7 @@ shadow_atlas_quad_3 = 4
 
 [node name="TextureRect" type="TextureRect" parent="SonarPassif" index="0"]
 
-material = SubResource( 14 )
+material = SubResource( 10 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -458,23 +479,18 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = SubResource( 10 )
+texture = SubResource( 8 )
 stretch_mode = 0
 script = ExtResource( 11 )
 _sections_unfolded = [ "Margin", "Material", "Rect" ]
-
-[node name="Timer" type="Timer" parent="SonarPassif" index="1"]
-
-process_mode = 1
-wait_time = 0.1
-one_shot = false
-autostart = true
+useless = ExtResource( 12 )
+data = SubResource( 11 )
 
 [node name="TopSpots" type="Spatial" parent="." index="12"]
 
 transform = Transform( -0.99945, 0.0331552, -3.20891e-07, 0.0326515, 0.984266, 0.173648, 0.00575766, 0.173553, -0.984808, 0, 1.15, 1.8 )
 visible = false
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="TopSpot1" type="SpotLight" parent="TopSpots" index="0"]
@@ -573,7 +589,7 @@ _sections_unfolded = [ "Transform" ]
 
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -1.15, 1.8 )
 visible = false
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="LongRangeSpot1" type="SpotLight" parent="LongRangeSpots" index="0"]
@@ -622,22 +638,22 @@ spot_angle = 9.5757
 spot_angle_attenuation = 1.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="Light" parent="." index="14" instance=ExtResource( 14 )]
+[node name="Light" parent="." index="14" instance=ExtResource( 15 )]
 
 transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-08, 0, -1.62921e-08, -0.05, 0, 0.999471, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Light4" parent="." index="15" instance=ExtResource( 14 )]
+[node name="Light4" parent="." index="15" instance=ExtResource( 15 )]
 
 transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-08, 0, -1.62921e-08, -0.05, -0.1, 0.899471, 1.15 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Light2" parent="." index="16" instance=ExtResource( 14 )]
+[node name="Light2" parent="." index="16" instance=ExtResource( 15 )]
 
 transform = Transform( 8.14604e-09, 0.05, -1.62921e-08, 0.05, -8.14603e-09, 1.65806e-08, 1.65806e-08, -1.62921e-08, -0.05, -1.00847, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Light3" parent="." index="17" instance=ExtResource( 14 )]
+[node name="Light3" parent="." index="17" instance=ExtResource( 15 )]
 
 transform = Transform( 1.41065e-08, -0.05, 4.37114e-09, -0.05, -1.41065e-08, -1.65806e-08, 1.65806e-08, -4.37113e-09, -0.05, 1.00847, 0, 0 )
 _sections_unfolded = [ "Transform" ]
@@ -717,7 +733,5 @@ _sections_unfolded = [ "Light", "Omni" ]
 [connection signal="on_button_8" from="Buttons_1" to="Cockpit" method="_on_Buttons_1_on_button_8"]
 
 [connection signal="speed_changed" from="Speed_controller" to="." method="_on_Speed_controller_speed_changed"]
-
-[connection signal="timeout" from="SonarPassif/Timer" to="SonarPassif/TextureRect" method="_on_Timer_timeout"]
 
 

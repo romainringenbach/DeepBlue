@@ -7,7 +7,7 @@ extends Spatial
 
 var last_rot_y = 0
 
-var target
+var target = null
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -18,17 +18,18 @@ func _process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
 	
+	if (target != null): 
 	
-	global_transform.origin = get_node(target).global_transform.origin
-	var _rot = get_node(target).global_transform.basis.get_euler()
-	
-	var rot = global_transform.basis.get_euler()
-	
-	
-	var ry = _rot.y-rot.y
-	
-	if ry < -0.01 or ry > 0.01:
-		rotate_y(ry)
+		global_transform.origin = get_node(target).global_transform.origin
+		var _rot = get_node(target).global_transform.basis.get_euler()
+		
+		var rot = global_transform.basis.get_euler()
+		
+		
+		var ry = _rot.y-rot.y
+		
+		if ry < -0.01 or ry > 0.01:
+			rotate_y(ry)
 	
 	
 	

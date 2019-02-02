@@ -10,7 +10,8 @@ config_version=3
 
 [application]
 
-config/name="cockpit_exp"
+config/name="DeepBlue"
+run/main_scene="res://pseudo_level/level0.tscn"
 config/icon="res://icon.png"
 
 [editor_plugins]

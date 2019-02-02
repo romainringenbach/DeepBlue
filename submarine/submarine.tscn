@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://submarine/submarine.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/cockpit.tscn" type="PackedScene" id=2]
@@ -69,6 +69,10 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo" ]
 
+[sub_resource type="SphereShape" id=4]
+
+radius = 40.0
+
 [node name="Submarine" type="RigidBody"]
 
 input_ray_pickable = true
@@ -129,6 +133,48 @@ skeleton = NodePath("..")
 material/0 = SubResource( 3 )
 _sections_unfolded = [ "Transform", "material" ]
 
+[node name="Area" type="Area" parent="." index="3"]
+
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.0
+angular_damp = 0.0
+priority = 0.0
+monitoring = true
+monitorable = false
+collision_layer = 1
+collision_mask = 1
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+_sections_unfolded = [ "Collision", "Reverb Bus" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
+
+shape = SubResource( 4 )
+disabled = false
+
+[node name="Timer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 0.1
+one_shot = false
+autostart = true
+
 [connection signal="speed_changed" from="Cockpit" to="." method="_on_Cockpit_speed_changed"]
+
+[connection signal="body_shape_entered" from="Area" to="Cockpit" method="_on_Area_body_shape_entered"]
+
+[connection signal="body_shape_exited" from="Area" to="Cockpit" method="_on_Area_body_shape_exited"]
+
+[connection signal="timeout" from="Timer" to="Cockpit" method="_on_Timer_timeout"]
 
 

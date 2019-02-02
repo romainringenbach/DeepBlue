@@ -10,6 +10,7 @@ extents = Vector3( 1.8693, 3.98725, 1.18142 )
 [node name="Scene Root" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Highrise_1" parent="." index="0"]
 
