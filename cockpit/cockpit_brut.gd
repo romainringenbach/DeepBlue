@@ -31,6 +31,6 @@ func _on_Button8_left_click():
 		else:
 			$AnimationPlayer.play("close_shield")
 	elif $AnimationPlayer.current_animation == "open_shield":
-		$AnimationPlayer.play("close_shield")
+		$AnimationPlayer.queue("close_shield")
 	elif $AnimationPlayer.current_animation == "close_shield":
-		$AnimationPlayer.play("open_shield")
+		$AnimationPlayer.queue("open_shield")

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/shield_opening.ogg-03d933103424cc8e7a32f0f83d0a2759.oggstr"
+
+[deps]
+
+source_file="res://cockpit/shield_opening.ogg"
+dest_files=[ "res://.import/shield_opening.ogg-03d933103424cc8e7a32f0f83d0a2759.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
