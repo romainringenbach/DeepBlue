@@ -37,10 +37,10 @@ func look_leftright_rotation(rotation = 0):
 	
 	if r_rotation.y < -1.4:
 		r_rotation.y = -1.4
-		print("merde")
+		#print("merde")
 	if r_rotation.y > 1.4:
 		r_rotation.y = 1.4
-		print("merde2")
+		#print("merde2")
 	
 	return r_rotation
 

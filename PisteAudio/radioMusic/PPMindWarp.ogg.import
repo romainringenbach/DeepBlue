@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PPMindWarp.ogg-409b78eff642cc2d3963a4834a5e0a3c.oggstr"
+
+[deps]
+
+source_file="res://PisteAudio/radioMusic/PPMindWarp.ogg"
+dest_files=[ "res://.import/PPMindWarp.ogg-409b78eff642cc2d3963a4834a5e0a3c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -38,5 +38,3 @@ func _on_data(level):
 			slide = 0
 		material.set_shader_param('slide',slide)
 		material.set_shader_param('data',data)
-	
-	
