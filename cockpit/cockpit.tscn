@@ -266,12 +266,35 @@ _sections_unfolded = [ "Transform", "material" ]
 [node name="Buttons_1" parent="." index="3" instance=ExtResource( 5 )]
 
 transform = Transform( 0.0871558, -0.996195, 4.37114e-08, -0.996195, -0.0871558, 7.57103e-08, -7.16125e-08, -5.01436e-08, -1, 0.75, -2.98023e-08, 0.15 )
-label1 = "TopSpot"
-color1 = Color( 0.0924628, 0.335938, 0.0905457, 1 )
-label2 = "LongRangeSpot"
-color2 = Color( 0.0901961, 0.333333, 0.0901961, 1 )
-label8 = "Shield"
-color8 = Color( 1, 0, 0, 1 )
+
+[node name="Button1" parent="Buttons_1" index="0"]
+
+color = Color( 1, 1, 1, 1 )
+set_up = true
+
+[node name="Button2" parent="Buttons_1" index="1"]
+
+color = Color( 1, 1, 1, 1 )
+set_up = true
+
+[node name="Button8" parent="Buttons_1" index="7"]
+
+type = 2
+color = Color( 1, 0, 0, 1 )
+blinking_duration = 5
+set_up = true
+
+[node name="Label1" parent="Buttons_1" index="8"]
+
+text_label = "SportShortRange"
+
+[node name="Label2" parent="Buttons_1" index="9"]
+
+text_label = "SportLongRange"
+
+[node name="Label8" parent="Buttons_1" index="15"]
+
+text_label = "Shield"
 
 [node name="Screen_1" parent="." index="4" instance=ExtResource( 6 )]
 
@@ -726,12 +749,13 @@ omni_shadow_mode = 1
 omni_shadow_detail = 1
 _sections_unfolded = [ "Light", "Omni" ]
 
-[connection signal="on_button_1" from="Buttons_1" to="TopSpots" method="_on_Buttons_1_on_button_1"]
+[connection signal="left_click" from="Buttons_1/Button1" to="TopSpots" method="_on_Button1_left_click"]
 
-[connection signal="on_button_2" from="Buttons_1" to="LongRangeSpots" method="_on_Buttons_1_on_button_2"]
+[connection signal="left_click" from="Buttons_1/Button2" to="LongRangeSpots" method="_on_Button2_left_click"]
 
-[connection signal="on_button_8" from="Buttons_1" to="Cockpit" method="_on_Buttons_1_on_button_8"]
+[connection signal="left_click" from="Buttons_1/Button8" to="Cockpit" method="_on_Button8_left_click"]
 
 [connection signal="speed_changed" from="Speed_controller" to="." method="_on_Speed_controller_speed_changed"]
 
 
+[editable path="Buttons_1"]

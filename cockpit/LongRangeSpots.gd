@@ -14,8 +14,7 @@ func _ready():
 #	# Update game logic here.
 #	pass
 
-
-func _on_Buttons_1_on_button_2():
+func _on_Button2_left_click():
 	if visible == true:
 		hide()
 	else:

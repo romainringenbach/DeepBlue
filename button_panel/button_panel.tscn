@@ -176,22 +176,6 @@ material/1 = SubResource( 2 )
 material/2 = SubResource( 3 )
 script = ExtResource( 2 )
 _sections_unfolded = [ "Geometry", "LOD", "Transform", "material" ]
-label1 = "nothing"
-color1 = Color( 1, 1, 1, 1 )
-label2 = "nothing"
-color2 = Color( 1, 1, 1, 1 )
-label3 = "nothing"
-color3 = Color( 1, 1, 1, 1 )
-label4 = "nothing"
-color4 = Color( 1, 1, 1, 1 )
-label5 = "nothing"
-color5 = Color( 1, 1, 1, 1 )
-label6 = "nothing"
-color6 = Color( 1, 1, 1, 1 )
-label7 = "nothing"
-color7 = Color( 1, 1, 1, 1 )
-label8 = "nothing"
-color8 = Color( 1, 1, 1, 1 )
 
 [node name="Button1" parent="." index="0" instance=ExtResource( 3 )]
 
@@ -272,21 +256,5 @@ text_label = ""
 
 transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.12, 0.0652456, -0.29 )
 text_label = ""
-
-[connection signal="left_click" from="Button1" to="." method="_on_Button1_left_click"]
-
-[connection signal="left_click" from="Button2" to="." method="_on_Button2_left_click"]
-
-[connection signal="left_click" from="Button3" to="." method="_on_Button3_left_click"]
-
-[connection signal="left_click" from="Button4" to="." method="_on_Button4_left_click"]
-
-[connection signal="left_click" from="Button5" to="." method="_on_Button5_left_click"]
-
-[connection signal="left_click" from="Button6" to="." method="_on_Button6_left_click"]
-
-[connection signal="left_click" from="Button7" to="." method="_on_Button7_left_click"]
-
-[connection signal="left_click" from="Button8" to="." method="_on_Button8_left_click"]
 
 

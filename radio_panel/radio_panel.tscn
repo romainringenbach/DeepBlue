@@ -300,10 +300,6 @@ material/1 = SubResource( 2 )
 material/2 = SubResource( 3 )
 script = ExtResource( 2 )
 _sections_unfolded = [ "material" ]
-color1 = Color( 1, 1, 1, 1 )
-color2 = Color( 1, 1, 1, 1 )
-label1 = "nothing"
-label2 = "nothing"
 
 [node name="MeshInstance" type="MeshInstance" parent="." index="0"]
 
@@ -356,9 +352,5 @@ transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09
 [node name="Label2" parent="." index="4" instance=ExtResource( 4 )]
 
 transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.1, 0.0648082, -0.1 )
-
-[connection signal="left_click" from="Button1" to="." method="_on_Button1_left_click"]
-
-[connection signal="left_click" from="Button2" to="." method="_on_Button2_left_click"]
 
 

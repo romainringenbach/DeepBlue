@@ -229,12 +229,6 @@ material/2 = SubResource( 3 )
 material/3 = SubResource( 4 )
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "material" ]
-color1 = Color( 1, 1, 1, 1 )
-color2 = Color( 1, 1, 1, 1 )
-color3 = Color( 1, 1, 1, 1 )
-label1 = "nothing"
-label2 = "nothing"
-label3 = "nothing"
 viewport_texture = null
 
 [node name="Button1" parent="." index="0" instance=ExtResource( 3 )]
@@ -295,11 +289,5 @@ frame = 0
 region_enabled = false
 region_rect = Rect2( 0, 0, 100, 100 )
 _sections_unfolded = [ "Flags", "Region", "Transform" ]
-
-[connection signal="left_click" from="Button1" to="." method="_on_Button1_left_click"]
-
-[connection signal="left_click" from="Button2" to="." method="_on_Button2_left_click"]
-
-[connection signal="left_click" from="Button3" to="." method="_on_Button3_left_click"]
 
 

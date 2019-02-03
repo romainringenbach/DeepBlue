@@ -1,4 +1,4 @@
-extends StaticBody
+extends Spatial
 
 # class member variables go here, for example:
 # var a = 2
@@ -7,33 +7,73 @@ extends StaticBody
 signal left_click()
 
 export (int) var type = 0
+export (Color) var color = Color()
+export (int) var blinking_duration = 1
+export (bool) var set_up = false
 
-export (Color) var light_color
-
+var blink = false
+var hold = false
 var toggle = false
+var waiting_for_queue_end = false
+var blink_count = 0
+
+func _set_hold_and_blink():
+	if type == 0 or type == 2:
+		hold = true
+	else:
+		hold = false
+		
+	if type == 1 or type == 2:
+		blink = true
+	else:
+		blink = false
+	
+func _set_color():
+	$"Cube.001".material_override.emission = color
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	
-	$"Scene Root".type = type
-	
-	if (light_color != null):
-		$"Scene Root/Lamp1".light_color = light_color
+	if set_up == true:
+		if type >= 2 and type < 0:
+			print('type out of range, 0,1 or 3 are accepted only')
+		else:
+			_set_hold_and_blink()
+			_set_color()
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 #	pass
 
-func set_color(color):
-	$"Scene Root/Lamp1".light_color = color
+
+func set_up_button(ntype,ncolor,nblinking_duration=1):
+	if ntype >= 2 and ntype < 0:
+		print('type out of range, 0,1 or 3 are accepted only')
+	else:
+		type = ntype
+		color = ncolor
+		blinking_duration = nblinking_duration
+		set_up = true
+		_set_hold_and_blink()
+		_set_color()
+	pass
+	
 
 func _on_StaticBody_input_event(camera, event, click_position, click_normal, shape_idx):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == 1:
 			emit_signal("left_click")
-			if toggle == false:
-				toggle = true
-			else:
-				toggle = false
+			$AnimationPlayer.play("default")
+			if set_up == true:
+				if toggle == false:
+					if blink == true:
+						for t in range(blinking_duration):
+							$AnimationPlayer2.queue('blink')
+					if hold == true:
+						$AnimationPlayer2.queue('light_on')
+					toggle = true
+				else:
+					if hold == true:
+						$AnimationPlayer2.queue('light_off')
+					toggle = false

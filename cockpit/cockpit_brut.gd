@@ -17,8 +17,14 @@ func _process(delta):
 	pass
 
 
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "close_shield":
+		shield_closed = true
+	if anim_name == "open_shield":
+		shield_closed = false
 
-func _on_Buttons_1_on_button_8():
+
+func _on_Button8_left_click():
 	if $AnimationPlayer.current_animation == "":
 		if shield_closed == true:
 			$AnimationPlayer.play("open_shield")
@@ -28,9 +34,3 @@ func _on_Buttons_1_on_button_8():
 		$AnimationPlayer.play("close_shield")
 	elif $AnimationPlayer.current_animation == "close_shield":
 		$AnimationPlayer.play("open_shield")
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "close_shield":
-		shield_closed = true
-	if anim_name == "open_shield":
-		shield_closed = false
