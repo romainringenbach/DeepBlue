@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PPCattleDrive.ogg-43d7a7df149143ce0a0b9f75fa4c53bd.oggstr"
+
+[deps]
+
+source_file="res://PisteAudio/radioMusic/PPCattleDrive.ogg"
+dest_files=[ "res://.import/PPCattleDrive.ogg-43d7a7df149143ce0a0b9f75fa4c53bd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

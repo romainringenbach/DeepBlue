@@ -19,5 +19,5 @@ func _on_Timer_timeout():
 	if pre != null:
 		material.set_shader_param("current",current)
 		material.set_shader_param("previous",pre)
-		print("eeee")
+		#print("eeee")
 	pre = current

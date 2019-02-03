@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PPIronHorse.ogg-2512f61d4085c6362a025b0173543202.oggstr"
+
+[deps]
+
+source_file="res://PisteAudio/radioMusic/PPIronHorse.ogg"
+dest_files=[ "res://.import/PPIronHorse.ogg-2512f61d4085c6362a025b0173543202.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
