@@ -6,6 +6,8 @@ extends Spatial
 
 signal left_click()
 
+signal button_blinking_terminated()
+
 export (int) var type = 0
 export (Color) var color = Color()
 export (int) var blinking_duration = 1
@@ -63,17 +65,23 @@ func set_up_button(ntype,ncolor,nblinking_duration=1):
 func _on_StaticBody_input_event(camera, event, click_position, click_normal, shape_idx):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == 1:
-			emit_signal("left_click")
 			$AnimationPlayer.play("default")
 			if set_up == true:
 				if toggle == false:
+					toggle = true
 					if blink == true:
 						for t in range(blinking_duration):
 							$AnimationPlayer2.queue('blink')
 					if hold == true:
 						$AnimationPlayer2.queue('light_on')
-					toggle = true
+					
 				else:
+					toggle = false
 					if hold == true:
 						$AnimationPlayer2.queue('light_off')
-					toggle = false
+			emit_signal("left_click")
+
+func _on_AnimationPlayer2_finish_queue():
+	if type == 1:
+		toggle = false
+	emit_signal("button_blinking_terminated")

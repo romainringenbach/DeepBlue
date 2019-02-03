@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://button/button.dae" type="PackedScene" id=1]
 [ext_resource path="res://button/button.gd" type="Script" id=2]
 [ext_resource path="res://button/Material_001.material" type="Material" id=3]
 [ext_resource path="res://button/Material.material" type="Material" id=4]
+[ext_resource path="res://button/AnimationPlayer2.gd" type="Script" id=5]
 
 [sub_resource type="SpatialMaterial" id=9]
 
@@ -249,6 +250,7 @@ anims/blink = SubResource( 6 )
 anims/light_off = SubResource( 7 )
 anims/light_on = SubResource( 8 )
 blend_times = [  ]
+script = ExtResource( 5 )
 
 [node name="StaticBody" type="StaticBody" parent="." index="6"]
 
@@ -267,9 +269,9 @@ _sections_unfolded = [ "Collision" ]
 shape = SubResource( 4 )
 disabled = false
 
-[connection signal="animation_changed" from="AnimationPlayer2" to="." method="_on_AnimationPlayer2_animation_changed"]
+[connection signal="animation_finished" from="AnimationPlayer2" to="AnimationPlayer2" method="_on_AnimationPlayer2_animation_finished"]
 
-[connection signal="animation_started" from="AnimationPlayer2" to="." method="_on_AnimationPlayer2_animation_started"]
+[connection signal="finish_queue" from="AnimationPlayer2" to="." method="_on_AnimationPlayer2_finish_queue"]
 
 [connection signal="input_event" from="StaticBody" to="." method="_on_StaticBody_input_event"]
 

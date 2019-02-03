@@ -122,13 +122,17 @@ _sections_unfolded = [ "material" ]
 
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.65, 0.0902985, -0.3 )
 _sections_unfolded = [ "Collision", "Transform" ]
-light_color = Color( 0, 1, 0.15625, 1 )
+color = Color( 0, 1, 0.152941, 1 )
+set_up = true
 
 [node name="Boost" parent="." index="3" instance=ExtResource( 3 )]
 
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.65, 0.0902985, 0.3 )
 _sections_unfolded = [ "Collision", "Transform" ]
-light_color = Color( 0, 1, 0.015625, 1 )
+type = 1
+color = Color( 0, 1, 0.15625, 1 )
+blinking_duration = 10
+set_up = true
 
 [node name="Reverse_l" parent="." index="4" instance=ExtResource( 4 )]
 
@@ -143,6 +147,8 @@ text_label = "Boost"
 [connection signal="position_changed" from="Scene Root" to="." method="_on_Scene_Root_position_changed"]
 
 [connection signal="left_click" from="Reverse" to="." method="_on_Reverse_left_click"]
+
+[connection signal="button_blinking_terminated" from="Boost" to="." method="_on_Boost_button_blinking_terminated"]
 
 [connection signal="left_click" from="Boost" to="." method="_on_Boost_left_click"]
 

@@ -88,7 +88,7 @@ environment = SubResource( 1 )
 [node name="StaticBody" parent="." index="0" instance=ExtResource( 1 )]
 
 _sections_unfolded = [ "Pause", "Transform", "Visibility" ]
-type = 2
+type = 1
 color = Color( 0.21875, 1, 0, 1 )
 blinking_duration = 10
 set_up = true
