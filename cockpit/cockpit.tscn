@@ -223,7 +223,7 @@ lossy_quality = 0.0
 flags = 7
 size = Vector2( 0, 0 )
 
-[node name="Spatial" type="Spatial" index="0"]
+[node name="Spatial" type="Spatial"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]

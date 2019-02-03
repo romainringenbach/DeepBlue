@@ -89,7 +89,7 @@ size = Vector2( 2, 2 )
 subdivide_width = 0
 subdivide_depth = 0
 
-[node name="WorldEnvironment" type="WorldEnvironment" index="0"]
+[node name="WorldEnvironment" type="WorldEnvironment"]
 
 environment = SubResource( 1 )
 
