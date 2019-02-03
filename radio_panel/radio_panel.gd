@@ -60,7 +60,7 @@ func _ready():
 	randomize()
 	
 	#Initialise les channels de musique
-	musicChannel = [get_node("MusicChannel1"),get_node("MusicChannel2"),get_node("MusicChannel3")]
+	musicChannel = [$Streams/MusicChannel1,$Streams/MusicChannel2,$Streams/MusicChannel3]
 	
 	#Lance les 3 musiques en stream mais le son est coupe
 	for i in range(0,3):
@@ -98,7 +98,7 @@ func _process(delta):
 	else:
 		var proba = randi()%100
 		if (proba<3 and !noise and playing):
-			noiseSound2 =  get_node("Noise2")
+			noiseSound2 =  $Streams/Noise2
 			var audiostream = load('res://PisteAudio/Radio Tuning Sound Effect.ogg')
 			var begin_time = randf()*(audiostream.get_length()-5)
 			noiseSound2.set_stream(audiostream)
@@ -150,7 +150,7 @@ func _change_music(index):
 func _changeChannel():
 	musicChannel[currentChannel].set_unit_db(-80)
 	currentChannel = (currentChannel+1)%3
-	noiseSound =  get_node("Noise1")
+	noiseSound =  $Streams/Noise1
 	var audiostream = load('res://PisteAudio/Radio Tuning Sound Effect.ogg')
 	var begin_time = randf()*(audiostream.get_length()-2)
 	noiseSound.set_stream(audiostream)

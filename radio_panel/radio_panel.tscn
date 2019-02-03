@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://button_panel/panel_button.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://radio_panel/radio_panel.gd" type="Script" id=2]
 [ext_resource path="res://button/button.tscn" type="PackedScene" id=3]
 [ext_resource path="res://label/label.tscn" type="PackedScene" id=4]
+[ext_resource path="res://radio_panel/radio_audio_streams.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -356,6 +357,8 @@ transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09
 [node name="Label2" parent="." index="4" instance=ExtResource( 4 )]
 
 transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.1, 0.0648082, -0.1 )
+
+[node name="Streams" parent="." index="5" instance=ExtResource( 5 )]
 
 [connection signal="left_click" from="Button1" to="." method="_on_Button1_left_click"]
 
