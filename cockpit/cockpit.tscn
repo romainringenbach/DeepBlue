@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://cockpit/cockpit.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/cockpit_brut.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://cockpit/TopSpots.gd" type="Script" id=13]
 [ext_resource path="res://cockpit/LongRangeSpots.gd" type="Script" id=14]
 [ext_resource path="res://light/light.tscn" type="PackedScene" id=15]
+[ext_resource path="res://alarm/alarm.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ViewportTexture" id=1]
 
@@ -277,6 +278,13 @@ set_up = true
 color = Color( 1, 1, 1, 1 )
 set_up = true
 
+[node name="Button3" parent="Buttons_1" index="2"]
+
+type = 1
+color = Color( 0, 0.0390625, 1, 1 )
+blinking_duration = 10
+set_up = true
+
 [node name="Button8" parent="Buttons_1" index="7"]
 
 type = 2
@@ -318,6 +326,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="TopView" type="Viewport" parent="." index="8"]
 
+editor/display_folded = true
 arvr = false
 size = Vector2( 1000, 1000 )
 own_world = false
@@ -370,6 +379,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="BottomView" type="Viewport" parent="." index="9"]
 
+editor/display_folded = true
 arvr = false
 size = Vector2( 1000, 1000 )
 own_world = false
@@ -422,6 +432,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="SonarActif" type="Viewport" parent="." index="10"]
 
+editor/display_folded = true
 arvr = false
 size = Vector2( 1000, 1000 )
 own_world = false
@@ -465,6 +476,7 @@ _sections_unfolded = [ "Margin", "Material", "Rect" ]
 
 [node name="SonarPassif" type="Viewport" parent="." index="11"]
 
+editor/display_folded = true
 arvr = false
 size = Vector2( 1000, 1000 )
 own_world = false
@@ -511,6 +523,7 @@ data = SubResource( 11 )
 
 [node name="TopSpots" type="Spatial" parent="." index="12"]
 
+editor/display_folded = true
 transform = Transform( -0.99945, 0.0331552, -3.20891e-07, 0.0326515, 0.984266, 0.173648, 0.00575766, 0.173553, -0.984808, 0, 1.15, 1.8 )
 visible = false
 script = ExtResource( 13 )
@@ -610,6 +623,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="LongRangeSpots" type="Spatial" parent="." index="13"]
 
+editor/display_folded = true
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -1.15, 1.8 )
 visible = false
 script = ExtResource( 14 )
@@ -749,9 +763,18 @@ omni_shadow_mode = 1
 omni_shadow_detail = 1
 _sections_unfolded = [ "Light", "Omni" ]
 
+[node name="Alarm" parent="." index="21" instance=ExtResource( 16 )]
+
+transform = Transform( 0.03, 0, 0, 0, -0.03, -9.77524e-09, 0, 9.77524e-09, -0.03, 0, 1.0091, 0.438676 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
 [connection signal="left_click" from="Buttons_1/Button1" to="TopSpots" method="_on_Button1_left_click"]
 
 [connection signal="left_click" from="Buttons_1/Button2" to="LongRangeSpots" method="_on_Button2_left_click"]
+
+[connection signal="button_blinking_terminated" from="Buttons_1/Button3" to="Alarm" method="stop"]
+
+[connection signal="left_click" from="Buttons_1/Button3" to="Alarm" method="play"]
 
 [connection signal="left_click" from="Buttons_1/Button8" to="Cockpit" method="_on_Button8_left_click"]
 

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/54048__guitarguy1985__alarms.wav-16203ea6aa9e764fbb274ed5c419e738.sample"
+
+[deps]
+
+source_file="res://sound_sample/54048__guitarguy1985__alarms.wav"
+dest_files=[ "res://.import/54048__guitarguy1985__alarms.wav-16203ea6aa9e764fbb274ed5c419e738.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
