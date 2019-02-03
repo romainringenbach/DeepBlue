@@ -35,7 +35,7 @@ func _anim(direction, direction_name, opposite_direction_name,player):
 	var opposite_animation_name = opposite_direction_name 
 	var r_opposite_animation_name = "r_"+opposite_direction_name
 	
-	if direction == true and animation_done_status[animation_name] == false and animation_done_status[r_opposite_animation_name] == true:
+	if direction == true and animation_done_status[animation_name] == false and (animation_done_status[r_opposite_animation_name] == true or animation_done_status[r_animation_name] == true):
 		if player.current_animation == "":
 			player.play(animation_name)
 			animation_done_status[r_opposite_animation_name] = false
