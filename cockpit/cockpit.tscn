@@ -1,20 +1,19 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://cockpit/cockpit.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/cockpit_brut.tscn" type="PackedScene" id=2]
 [ext_resource path="res://cockpit/InterpolatedCamera.gd" type="Script" id=3]
 [ext_resource path="res://radio_panel/radio_panel.tscn" type="PackedScene" id=4]
-[ext_resource path="res://radio_panel/radio_panel.gd" type="Script" id=5]
-[ext_resource path="res://PisteAudio/radioMusic/bensound-buddy.ogg" type="AudioStream" id=6]
-[ext_resource path="res://button_panel/button_panel.tscn" type="PackedScene" id=7]
-[ext_resource path="res://screen_panel/screen_panel.tscn" type="PackedScene" id=8]
-[ext_resource path="res://main_controller/main_controller.tscn" type="PackedScene" id=9]
-[ext_resource path="res://speed_controller/speed_controller_panel.tscn" type="PackedScene" id=10]
-[ext_resource path="res://cockpit/sonar_bg.jpg" type="Texture" id=11]
-[ext_resource path="res://cockpit/TextureRect.gd" type="Script" id=12]
-[ext_resource path="res://cockpit/TopSpots.gd" type="Script" id=13]
-[ext_resource path="res://cockpit/LongRangeSpots.gd" type="Script" id=14]
-[ext_resource path="res://light/light.tscn" type="PackedScene" id=15]
+[ext_resource path="res://PisteAudio/radioMusic/bensound-buddy.ogg" type="AudioStream" id=5]
+[ext_resource path="res://button_panel/button_panel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://screen_panel/screen_panel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://main_controller/main_controller.tscn" type="PackedScene" id=8]
+[ext_resource path="res://speed_controller/speed_controller_panel.tscn" type="PackedScene" id=9]
+[ext_resource path="res://cockpit/sonar_bg.jpg" type="Texture" id=10]
+[ext_resource path="res://cockpit/TextureRect.gd" type="Script" id=11]
+[ext_resource path="res://cockpit/TopSpots.gd" type="Script" id=12]
+[ext_resource path="res://cockpit/LongRangeSpots.gd" type="Script" id=13]
+[ext_resource path="res://light/light.tscn" type="PackedScene" id=14]
 
 [sub_resource type="ViewportTexture" id=1]
 
@@ -163,7 +162,7 @@ viewport_path = NodePath("TopView")
 
 render_priority = 0
 shader = SubResource( 4 )
-shader_param/bg = ExtResource( 11 )
+shader_param/bg = ExtResource( 10 )
 shader_param/top = SubResource( 6 )
 shader_param/bottom = SubResource( 5 )
 _sections_unfolded = [ "shader_param" ]
@@ -196,8 +195,8 @@ void fragment() {
 
 render_priority = 0
 shader = SubResource( 9 )
-shader_param/previous = ExtResource( 11 )
-shader_param/current = ExtResource( 11 )
+shader_param/previous = ExtResource( 10 )
+shader_param/current = ExtResource( 10 )
 _sections_unfolded = [ "shader_param" ]
 
 [node name="Spatial" type="Spatial" index="0"]
@@ -216,7 +215,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="Yaw" index="0"]
 
-transform = Transform( -1, 1.5708e-007, -1.50996e-007, 1.5708e-007, 1, 0, 1.50996e-007, -2.37184e-014, -1, 0, 0, -0.298793 )
+transform = Transform( -1, 1.5708e-07, -1.50996e-07, 1.5708e-07, 1, 0, 1.50996e-07, -2.37184e-14, -1, 0, 0, -0.298793 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -240,14 +239,13 @@ pas = 5
 
 [node name="Radio" parent="." index="2" instance=ExtResource( 4 )]
 
-transform = Transform( 0.5, -0.866025, -3.25841e-007, -0.866025, -0.5, 0, -1.62921e-007, 2.82187e-007, -1, 0.65, 0.4, 0.15 )
-script = ExtResource( 5 )
+transform = Transform( 0.5, -0.866025, -3.25841e-07, -0.866025, -0.5, 0, -1.62921e-07, 2.82187e-07, -1, 0.65, 0.4, 0.15 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="MusicChannel1" type="AudioStreamPlayer3D" parent="Radio" index="5"]
 
 transform = Transform( 0.499555, 0.000774732, 0.0211304, 0.000774762, 0.49866, -0.036599, -0.0211305, 0.036599, 0.498211, -0.196651, 0.189857, -0.00960714 )
-stream = ExtResource( 6 )
+stream = ExtResource( 5 )
 attenuation_model = 0
 unit_db = 1.0
 unit_size = 1.0
@@ -268,8 +266,8 @@ _sections_unfolded = [ "Attenuation Filter", "Doppler", "Emission Angle", "Trans
 
 [node name="MusicChannel2" type="AudioStreamPlayer3D" parent="Radio" index="6"]
 
-transform = Transform( 0.25, -0.433013, -7.5498e-008, -0.433013, -0.25, 1.41094e-007, -1.5994e-007, -5.16375e-009, -0.5, 0.00473523, -0.0109782, 0.15 )
-stream = ExtResource( 6 )
+transform = Transform( 0.25, -0.433013, -7.5498e-08, -0.433013, -0.25, 1.41094e-07, -1.5994e-07, -5.16375e-09, -0.5, 0.00473523, -0.0109782, 0.15 )
+stream = ExtResource( 5 )
 attenuation_model = 0
 unit_db = 1.0
 unit_size = 1.0
@@ -290,8 +288,8 @@ _sections_unfolded = [ "Attenuation Filter", "Emission Angle", "Transform" ]
 
 [node name="MusicChannel3" type="AudioStreamPlayer3D" parent="Radio" index="7"]
 
-transform = Transform( 0.25, -0.433013, -7.5498e-008, -0.433013, -0.25, 1.41094e-007, -1.5994e-007, -5.16375e-009, -0.5, 0.00473523, -0.0109782, 0.15 )
-stream = ExtResource( 6 )
+transform = Transform( 0.25, -0.433013, -7.5498e-08, -0.433013, -0.25, 1.41094e-07, -1.5994e-07, -5.16375e-09, -0.5, 0.00473523, -0.0109782, 0.15 )
+stream = ExtResource( 5 )
 attenuation_model = 0
 unit_db = 50.0
 unit_size = 1.0
@@ -350,9 +348,9 @@ attenuation_filter_cutoff_hz = 5000.0
 attenuation_filter_db = -24.0
 doppler_tracking = 0
 
-[node name="Buttons_1" parent="." index="3" instance=ExtResource( 7 )]
+[node name="Buttons_1" parent="." index="3" instance=ExtResource( 6 )]
 
-transform = Transform( 0.0871558, -0.996195, 4.37114e-008, -0.996195, -0.0871558, 7.57103e-008, -7.16125e-008, -5.01436e-008, -1, 0.75, -2.98023e-008, 0.15 )
+transform = Transform( 0.0871558, -0.996195, 4.37114e-08, -0.996195, -0.0871558, 7.57103e-08, -7.16125e-08, -5.01436e-08, -1, 0.75, -2.98023e-08, 0.15 )
 label1 = "TopSpot"
 color1 = Color( 0.0924628, 0.335938, 0.0905457, 1 )
 label2 = "LongRangeSpot"
@@ -360,24 +358,24 @@ color2 = Color( 0.0901961, 0.333333, 0.0901961, 1 )
 label8 = "Shield"
 color8 = Color( 1, 0, 0, 1 )
 
-[node name="Screen_1" parent="." index="4" instance=ExtResource( 8 )]
+[node name="Screen_1" parent="." index="4" instance=ExtResource( 7 )]
 
 transform = Transform( 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 0, 0, 1, -0.65, -0.25, 0.15 )
 viewport_texture = SubResource( 1 )
 
-[node name="Screen_2" parent="." index="5" instance=ExtResource( 8 )]
+[node name="Screen_2" parent="." index="5" instance=ExtResource( 7 )]
 
 transform = Transform( -0.5, 0.866025, 0, -0.866025, -0.5, 0, 0, 0, 1, -0.55, 0.4, 0.15 )
 viewport_texture = SubResource( 2 )
 
-[node name="Main_controller" parent="." index="6" instance=ExtResource( 9 )]
+[node name="Main_controller" parent="." index="6" instance=ExtResource( 8 )]
 
-transform = Transform( -1, 0, -3.25841e-007, 0, 1, 0, 3.25841e-007, 0, -1, 0, -0.65, 0.95 )
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -0.65, 0.95 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Speed_controller" parent="." index="7" instance=ExtResource( 10 )]
+[node name="Speed_controller" parent="." index="7" instance=ExtResource( 9 )]
 
-transform = Transform( -4.88762e-008, 0, -0.3, 0.229813, 0.192836, -3.74413e-008, 0.192836, -0.229813, -3.1417e-008, -0.35, -0.35, 0.65 )
+transform = Transform( -4.88762e-08, 0, -0.3, 0.229813, 0.192836, -3.74413e-08, 0.192836, -0.229813, -3.1417e-08, -0.35, -0.35, 0.65 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="TopView" type="Viewport" parent="." index="8"]
@@ -413,7 +411,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="camera" type="InterpolatedCamera" parent="TopView/Yaw" index="0"]
 
-transform = Transform( -1, 5.77123e-009, -1.12515e-010, 1.14508e-010, 0.000345306, -1, -5.77117e-009, -1, -0.000345306, 0, -10, 0 )
+transform = Transform( -1, 5.77123e-09, -1.12515e-10, 1.14508e-10, 0.000345306, -1, -5.77117e-09, -1, -0.000345306, 0, -10, 0 )
 keep_aspect = 1
 cull_mask = 524287
 environment = SubResource( 3 )
@@ -464,7 +462,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="camera" type="InterpolatedCamera" parent="BottomView/Yaw" index="0"]
 
-transform = Transform( -1, 3.25841e-007, 0, -1.12515e-010, -0.000345306, 1, 3.25841e-007, 1, 0.000345306, 0, 10, 0 )
+transform = Transform( -1, 3.25841e-07, 0, -1.12515e-10, -0.000345306, 1, 3.25841e-07, 1, 0.000345306, 0, 10, 0 )
 keep_aspect = 1
 cull_mask = 524287
 environment = SubResource( 3 )
@@ -566,7 +564,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = SubResource( 8 )
 stretch_mode = 0
-script = ExtResource( 12 )
+script = ExtResource( 11 )
 _sections_unfolded = [ "Margin", "Material", "Rect" ]
 
 [node name="Timer" type="Timer" parent="SonarPassif" index="1"]
@@ -578,14 +576,14 @@ autostart = true
 
 [node name="TopSpots" type="Spatial" parent="." index="12"]
 
-transform = Transform( -0.99945, 0.0331552, -3.20891e-007, 0.0326515, 0.984266, 0.173648, 0.00575766, 0.173553, -0.984808, 0, 1.15, 1.8 )
+transform = Transform( -0.99945, 0.0331552, -3.20891e-07, 0.0326515, 0.984266, 0.173648, 0.00575766, 0.173553, -0.984808, 0, 1.15, 1.8 )
 visible = false
-script = ExtResource( 13 )
+script = ExtResource( 12 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="TopSpot1" type="SpotLight" parent="TopSpots" index="0"]
 
-transform = Transform( 1, 5.23599e-008, 0, -5.23599e-008, 1, 0, 0, 0, 1, 0.6, 0, 0 )
+transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, 0.6, 0, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -608,7 +606,7 @@ _sections_unfolded = [ "Light", "Transform" ]
 
 [node name="TopSpot2" type="SpotLight" parent="TopSpots" index="1"]
 
-transform = Transform( 1, 5.23599e-008, 0, -5.23599e-008, 1, 0, 0, 0, 1, 0.2, 0, 0 )
+transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, 0.2, 0, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -631,7 +629,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="TopSpot3" type="SpotLight" parent="TopSpots" index="2"]
 
-transform = Transform( 1, 5.23599e-008, 0, -5.23599e-008, 1, 0, 0, 0, 1, -0.2, 0, 0 )
+transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, -0.2, 0, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -654,7 +652,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="TopSpot4" type="SpotLight" parent="TopSpots" index="3"]
 
-transform = Transform( 1, 5.23599e-008, 0, -5.23599e-008, 1, 0, 0, 0, 1, -0.6, 0, 0 )
+transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, -0.6, 0, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -677,9 +675,9 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="LongRangeSpots" type="Spatial" parent="." index="13"]
 
-transform = Transform( -1, 0, -3.25841e-007, 0, 1, 0, 3.25841e-007, 0, -1, 0, -1.15, 1.8 )
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -1.15, 1.8 )
 visible = false
-script = ExtResource( 14 )
+script = ExtResource( 13 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="LongRangeSpot1" type="SpotLight" parent="LongRangeSpots" index="0"]
@@ -728,24 +726,24 @@ spot_angle = 9.5757
 spot_angle_attenuation = 1.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="Light" parent="." index="14" instance=ExtResource( 15 )]
+[node name="Light" parent="." index="14" instance=ExtResource( 14 )]
 
-transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-008, 0, -1.62921e-008, -0.05, 0, 0.999471, 0 )
+transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-08, 0, -1.62921e-08, -0.05, 0, 0.999471, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Light4" parent="." index="15" instance=ExtResource( 15 )]
+[node name="Light4" parent="." index="15" instance=ExtResource( 14 )]
 
-transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-008, 0, -1.62921e-008, -0.05, -0.1, 0.899471, 1.15 )
+transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-08, 0, -1.62921e-08, -0.05, -0.1, 0.899471, 1.15 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Light2" parent="." index="16" instance=ExtResource( 15 )]
+[node name="Light2" parent="." index="16" instance=ExtResource( 14 )]
 
-transform = Transform( 8.14604e-009, 0.05, -1.62921e-008, 0.05, -8.14603e-009, 1.65806e-008, 1.65806e-008, -1.62921e-008, -0.05, -1.00847, 0, 0 )
+transform = Transform( 8.14604e-09, 0.05, -1.62921e-08, 0.05, -8.14603e-09, 1.65806e-08, 1.65806e-08, -1.62921e-08, -0.05, -1.00847, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Light3" parent="." index="17" instance=ExtResource( 15 )]
+[node name="Light3" parent="." index="17" instance=ExtResource( 14 )]
 
-transform = Transform( 1.41065e-008, -0.05, 4.37114e-009, -0.05, -1.41065e-008, -1.65806e-008, 1.65806e-008, -4.37113e-009, -0.05, 1.00847, 0, 0 )
+transform = Transform( 1.41065e-08, -0.05, 4.37114e-09, -0.05, -1.41065e-08, -1.65806e-08, 1.65806e-08, -4.37113e-09, -0.05, 1.00847, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="OmniLight" type="OmniLight" parent="." index="18"]

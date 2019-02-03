@@ -5,8 +5,6 @@
 [ext_resource path="res://button/button.tscn" type="PackedScene" id=3]
 [ext_resource path="res://label/label.tscn" type="PackedScene" id=4]
 
-
-
 [sub_resource type="SpatialMaterial" id=1]
 
 render_priority = 0
@@ -353,11 +351,11 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Label1" parent="." index="3" instance=ExtResource( 4 )]
 
-transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.1, 0.0648082, -0.3 )
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.1, 0.0648082, -0.3 )
 
 [node name="Label2" parent="." index="4" instance=ExtResource( 4 )]
 
-transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.1, 0.0648082, -0.1 )
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.1, 0.0648082, -0.1 )
 
 [connection signal="left_click" from="Button1" to="." method="_on_Button1_left_click"]
 

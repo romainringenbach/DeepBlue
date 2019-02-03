@@ -10,7 +10,7 @@ export (String) var label2 = "nothing"
 
 const TRACKS1 = [ 'HitTheRoadSwing', 'BenTomorrow'  ]
 const TRACKS2 = [  'PPCattleDrive', 'PPIronHorse' ]
-const TRACKS3 = [ 'bensound-epic', 'PPMindWarp' ]
+const TRACKS3 = [ 'bensound-epic']
 
 var TRACKS = [TRACKS1, TRACKS2, TRACKS3]
 
@@ -44,7 +44,7 @@ var channelChanged = false
 var switch_channel = false
 
 #Add noise, depart du bruit pour controler sa duree de diffusion
-var start_noise_time
+var start_noise_time = 0
 var start_noise_time2 = 0
 var noise = false
 
