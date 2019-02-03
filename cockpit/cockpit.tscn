@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://cockpit/cockpit.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/cockpit_brut.tscn" type="PackedScene" id=2]
@@ -6,16 +6,18 @@
 [ext_resource path="res://radio_panel/radio_panel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://button_panel/button_panel.tscn" type="PackedScene" id=5]
 [ext_resource path="res://screen_panel/screen_panel.tscn" type="PackedScene" id=6]
-[ext_resource path="res://main_controller/main_controller.tscn" type="PackedScene" id=7]
-[ext_resource path="res://speed_controller/speed_controller_panel.tscn" type="PackedScene" id=8]
-[ext_resource path="res://cockpit/SonarCamera.gd" type="Script" id=9]
-[ext_resource path="res://cockpit/sonar_bg.jpg" type="Texture" id=10]
-[ext_resource path="res://cockpit/TextureRect.gd" type="Script" id=11]
-[ext_resource path="res://cockpit/array.png" type="Texture" id=12]
-[ext_resource path="res://cockpit/TopSpots.gd" type="Script" id=13]
-[ext_resource path="res://cockpit/LongRangeSpots.gd" type="Script" id=14]
-[ext_resource path="res://light/light.tscn" type="PackedScene" id=15]
-[ext_resource path="res://alarm/alarm.tscn" type="PackedScene" id=16]
+[ext_resource path="res://sound_sample/alarm_near_object.ogg" type="AudioStream" id=7]
+[ext_resource path="res://cockpit/SonarAlarm.gd" type="Script" id=8]
+[ext_resource path="res://main_controller/main_controller.tscn" type="PackedScene" id=9]
+[ext_resource path="res://speed_controller/speed_controller_panel.tscn" type="PackedScene" id=10]
+[ext_resource path="res://cockpit/SonarCamera.gd" type="Script" id=11]
+[ext_resource path="res://cockpit/sonar_bg.jpg" type="Texture" id=12]
+[ext_resource path="res://cockpit/TextureRect.gd" type="Script" id=13]
+[ext_resource path="res://cockpit/array.png" type="Texture" id=14]
+[ext_resource path="res://cockpit/TopSpots.gd" type="Script" id=15]
+[ext_resource path="res://cockpit/LongRangeSpots.gd" type="Script" id=16]
+[ext_resource path="res://light/light.tscn" type="PackedScene" id=17]
+[ext_resource path="res://alarm/alarm.tscn" type="PackedScene" id=18]
 
 [sub_resource type="ViewportTexture" id=1]
 
@@ -164,7 +166,7 @@ viewport_path = NodePath("TopView")
 
 render_priority = 0
 shader = SubResource( 4 )
-shader_param/bg = ExtResource( 10 )
+shader_param/bg = ExtResource( 12 )
 shader_param/top = SubResource( 6 )
 shader_param/bottom = SubResource( 5 )
 _sections_unfolded = [ "shader_param" ]
@@ -314,12 +316,44 @@ viewport_texture = SubResource( 1 )
 transform = Transform( -0.5, 0.866025, 0, -0.866025, -0.5, 0, 0, 0, 1, -0.55, 0.4, 0.15 )
 viewport_texture = SubResource( 2 )
 
-[node name="Main_controller" parent="." index="6" instance=ExtResource( 7 )]
+[node name="Button3" parent="Screen_2" index="2"]
+
+type = 3
+color = Color( 1, 0, 0, 1 )
+set_up = true
+
+[node name="Label3" parent="Screen_2" index="5"]
+
+text_label = "Alarm off"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Screen_2" index="7"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0104017, 0.115437, 0 )
+stream = ExtResource( 7 )
+attenuation_model = 0
+unit_db = 5.0
+unit_size = 2.0
+max_db = 5.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 0.0
+out_of_range_mode = 0
+bus = "Master"
+area_mask = 1
+emission_angle_enabled = false
+emission_angle_degrees = 45.0
+emission_angle_filter_attenuation_db = -12.0
+attenuation_filter_cutoff_hz = 5000.0
+attenuation_filter_db = -24.0
+doppler_tracking = 0
+script = ExtResource( 8 )
+
+[node name="Main_controller" parent="." index="6" instance=ExtResource( 9 )]
 
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -0.65, 0.95 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Speed_controller" parent="." index="7" instance=ExtResource( 8 )]
+[node name="Speed_controller" parent="." index="7" instance=ExtResource( 10 )]
 
 transform = Transform( -4.88762e-08, 0, -0.3, 0.229813, 0.192836, -3.74413e-08, 0.192836, -0.229813, -3.1417e-08, -0.35, -0.35, 0.65 )
 _sections_unfolded = [ "Transform" ]
@@ -354,7 +388,7 @@ _sections_unfolded = [ "Physics", "Render Target", "Rendering", "Shadow Atlas" ]
 
 [node name="Yaw" type="Spatial" parent="TopView" index="0"]
 
-script = ExtResource( 9 )
+script = ExtResource( 11 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="camera" type="InterpolatedCamera" parent="TopView/Yaw" index="0"]
@@ -407,7 +441,7 @@ _sections_unfolded = [ "Render Target", "Rendering", "Shadow Atlas" ]
 
 [node name="Yaw" type="Spatial" parent="BottomView" index="0"]
 
-script = ExtResource( 9 )
+script = ExtResource( 11 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="camera" type="InterpolatedCamera" parent="BottomView/Yaw" index="0"]
@@ -476,7 +510,6 @@ _sections_unfolded = [ "Margin", "Material", "Rect" ]
 
 [node name="SonarPassif" type="Viewport" parent="." index="11"]
 
-editor/display_folded = true
 arvr = false
 size = Vector2( 1000, 1000 )
 own_world = false
@@ -516,9 +549,9 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = SubResource( 8 )
 stretch_mode = 0
-script = ExtResource( 11 )
+script = ExtResource( 13 )
 _sections_unfolded = [ "Margin", "Material", "Rect" ]
-useless = ExtResource( 12 )
+useless = ExtResource( 14 )
 data = SubResource( 11 )
 
 [node name="TopSpots" type="Spatial" parent="." index="12"]
@@ -526,7 +559,7 @@ data = SubResource( 11 )
 editor/display_folded = true
 transform = Transform( -0.99945, 0.0331552, -3.20891e-07, 0.0326515, 0.984266, 0.173648, 0.00575766, 0.173553, -0.984808, 0, 1.15, 1.8 )
 visible = false
-script = ExtResource( 13 )
+script = ExtResource( 15 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="TopSpot1" type="SpotLight" parent="TopSpots" index="0"]
@@ -626,7 +659,7 @@ _sections_unfolded = [ "Transform" ]
 editor/display_folded = true
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -1.15, 1.8 )
 visible = false
-script = ExtResource( 14 )
+script = ExtResource( 16 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="LongRangeSpot1" type="SpotLight" parent="LongRangeSpots" index="0"]
@@ -675,22 +708,22 @@ spot_angle = 9.5757
 spot_angle_attenuation = 1.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="Light" parent="." index="14" instance=ExtResource( 15 )]
+[node name="Light" parent="." index="14" instance=ExtResource( 17 )]
 
 transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-08, 0, -1.62921e-08, -0.05, 0, 0.999471, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Light4" parent="." index="15" instance=ExtResource( 15 )]
+[node name="Light4" parent="." index="15" instance=ExtResource( 17 )]
 
 transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-08, 0, -1.62921e-08, -0.05, -0.1, 0.899471, 1.15 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Light2" parent="." index="16" instance=ExtResource( 15 )]
+[node name="Light2" parent="." index="16" instance=ExtResource( 17 )]
 
 transform = Transform( 8.14604e-09, 0.05, -1.62921e-08, 0.05, -8.14603e-09, 1.65806e-08, 1.65806e-08, -1.62921e-08, -0.05, -1.00847, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Light3" parent="." index="17" instance=ExtResource( 15 )]
+[node name="Light3" parent="." index="17" instance=ExtResource( 17 )]
 
 transform = Transform( 1.41065e-08, -0.05, 4.37114e-09, -0.05, -1.41065e-08, -1.65806e-08, 1.65806e-08, -4.37113e-09, -0.05, 1.00847, 0, 0 )
 _sections_unfolded = [ "Transform" ]
@@ -763,7 +796,7 @@ omni_shadow_mode = 1
 omni_shadow_detail = 1
 _sections_unfolded = [ "Light", "Omni" ]
 
-[node name="Alarm" parent="." index="21" instance=ExtResource( 16 )]
+[node name="Alarm" parent="." index="21" instance=ExtResource( 18 )]
 
 transform = Transform( 0.03, 0, 0, 0, -0.03, -9.77524e-09, 0, 9.77524e-09, -0.03, 0, 1.0091, 0.438676 )
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -778,7 +811,10 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [connection signal="left_click" from="Buttons_1/Button8" to="Cockpit" method="_on_Button8_left_click"]
 
+[connection signal="button_blinking_terminated" from="Screen_2/Button3" to="Screen_2/AudioStreamPlayer3D" method="_on_Button3_button_blinking_terminated"]
+
 [connection signal="speed_changed" from="Speed_controller" to="." method="_on_Speed_controller_speed_changed"]
 
 
 [editable path="Buttons_1"]
+[editable path="Screen_2"]

@@ -37,7 +37,7 @@ func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	if set_up == true:
-		if type >= 2 and type < 0:
+		if type >= 3 and type < 0:
 			print('type out of range, 0,1 or 3 are accepted only')
 		else:
 			_set_hold_and_blink()
@@ -50,7 +50,7 @@ func _ready():
 
 
 func set_up_button(ntype,ncolor,nblinking_duration=1):
-	if ntype >= 2 and ntype < 0:
+	if ntype >= 3 and ntype < 0:
 		print('type out of range, 0,1 or 3 are accepted only')
 	else:
 		type = ntype
@@ -81,7 +81,16 @@ func _on_StaticBody_input_event(camera, event, click_position, click_normal, sha
 						$AnimationPlayer2.queue('light_off')
 			emit_signal("left_click")
 
+func blink():
+	toggle = true
+	$AnimationPlayer2.queue('blink')
+
 func _on_AnimationPlayer2_finish_queue():
 	if type == 1:
 		toggle = false
-	emit_signal("button_blinking_terminated")
+		
+	if type == 3 and toggle:
+		$AnimationPlayer2.queue('blink')
+		
+	if toggle == false:
+		emit_signal("button_blinking_terminated")

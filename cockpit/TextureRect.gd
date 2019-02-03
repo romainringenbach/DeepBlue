@@ -30,6 +30,8 @@ func _on_data(level):
 		img.lock()
 		img.set_pixel(slide,0,Color(float(level)/1000.0,0,0,1))
 		img.unlock()
+		if level > 500 :
+			get_parent().get_parent().get_node('Screen_2/AudioStreamPlayer3D').alarm()
 		data.create_from_image(img)
 		slide += 1
 		if slide == 1000:
