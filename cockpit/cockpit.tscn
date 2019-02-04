@@ -52,6 +52,7 @@ size = Vector2( 1, 1 )
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
+minimum_impact_force = 5.0
 
 [node name="Cockpit" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -391,9 +392,8 @@ set_up = true
 
 [node name="Button3" parent="SButton1/Buttons_1" index="2"]
 
-type = 1
+type = 3
 color = Color( 1, 0, 0, 1 )
-blinking_duration = 10
 set_up = true
 
 [node name="Button8" parent="SButton1/Buttons_1" index="7"]
@@ -427,9 +427,7 @@ text_label = "Shield"
 
 [connection signal="left_click" from="SButton1/Buttons_1/Button2" to="LongRangeSpots" method="_on_Button2_left_click"]
 
-[connection signal="button_blinking_terminated" from="SButton1/Buttons_1/Button3" to="Alarm" method="stop"]
-
-[connection signal="left_click" from="SButton1/Buttons_1/Button3" to="Alarm" method="play"]
+[connection signal="left_click" from="SButton1/Buttons_1/Button3" to="Alarm" method="stop"]
 
 [connection signal="left_click" from="SButton1/Buttons_1/Button8" to="Cockpit" method="_on_Button8_left_click"]
 

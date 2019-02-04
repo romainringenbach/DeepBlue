@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://submarine/submarine.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/cockpit.tscn" type="PackedScene" id=2]
@@ -73,6 +73,11 @@ _sections_unfolded = [ "Albedo" ]
 
 radius = 40.0
 
+[sub_resource type="CapsuleShape" id=5]
+
+radius = 1.3213
+height = 6.67976
+
 [node name="Submarine" type="RigidBody"]
 
 input_ray_pickable = true
@@ -82,7 +87,7 @@ collision_mask = 1
 mode = 0
 mass = 200.0
 friction = 1.0
-bounce = 0.0
+bounce = 1.0
 gravity_scale = 0.0
 custom_integrator = false
 continuous_cd = false
@@ -162,19 +167,54 @@ _sections_unfolded = [ "Collision", "Reverb Bus" ]
 shape = SubResource( 4 )
 disabled = false
 
-[node name="Timer" type="Timer" parent="." index="4"]
+[node name="Area2" type="Area" parent="." index="4"]
+
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.0
+angular_damp = 0.0
+priority = 0.0
+monitoring = true
+monitorable = false
+collision_layer = 1
+collision_mask = 1
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+_sections_unfolded = [ "Collision", "Reverb Bus" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area2" index="0"]
+
+shape = SubResource( 5 )
+disabled = false
+
+[node name="Timer" type="Timer" parent="." index="5"]
 
 process_mode = 1
 wait_time = 0.1
 one_shot = false
 autostart = true
 
+[connection signal="body_entered" from="." to="Cockpit" method="_on_Submarine_body_entered"]
+
+[connection signal="collision_impact" from="." to="Cockpit" method="_on_Submarine_collision_impact"]
+
 [connection signal="speed_changed" from="Cockpit" to="." method="_on_Cockpit_speed_changed"]
 
-[connection signal="body_shape_entered" from="Area" to="Cockpit" method="_on_Area_body_shape_entered"]
+[connection signal="body_shape_entered" from="Area" to="." method="_on_Area_body_shape_entered"]
 
-[connection signal="body_shape_exited" from="Area" to="Cockpit" method="_on_Area_body_shape_exited"]
+[connection signal="body_shape_exited" from="Area" to="." method="_on_Area_body_shape_exited"]
 
-[connection signal="timeout" from="Timer" to="Cockpit" method="_on_Timer_timeout"]
+[connection signal="body_shape_entered" from="Area2" to="." method="_on_Area2_body_shape_entered"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 

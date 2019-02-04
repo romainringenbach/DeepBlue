@@ -17,10 +17,11 @@ func _ready():
 #	pass
 
 func play():
-	$AnimationPlayer.queue('alarm')
-	playing = true
-	$AudioStreamPlayer3D.playing = true
-	$Sphere/SpotLight.show()
+	if playing != true:
+		$AnimationPlayer.queue('alarm')
+		playing = true
+		$AudioStreamPlayer3D.playing = true
+		$Sphere/SpotLight.show()
 	
 func stop():
 	playing = false
