@@ -19,8 +19,8 @@ func _ready():
 func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
-	$SonarActif/TextureRect.material.set_shader_param("top",$TopView.get_texture())
-	$SonarActif/TextureRect.material.set_shader_param("bottom",$BottomView.get_texture())
+	$Viewports/SonarActif/TextureRect.material.set_shader_param("top",$Viewports/TopView.get_texture())
+	$Viewports/SonarActif/TextureRect.material.set_shader_param("bottom",$Viewports/BottomView.get_texture())
 	
 
 
@@ -52,4 +52,4 @@ func _on_Timer_timeout():
 		level += max((pos - value['old_body_position']).length()*10,10)/((pos-global_transform.origin).length()/10)
 		value['old_body_position'] = pos
 		
-	$SonarPassif/TextureRect._on_data(level)
+	$Viewports/SonarPassif/TextureRect._on_data(level)

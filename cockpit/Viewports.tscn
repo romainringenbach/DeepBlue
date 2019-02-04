@@ -1,0 +1,398 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://cockpit/SonarCamera.gd" type="Script" id=1]
+[ext_resource path="res://cockpit/sonar_bg.jpg" type="Texture" id=2]
+[ext_resource path="res://cockpit/TextureRect.gd" type="Script" id=3]
+[ext_resource path="res://cockpit/array.png" type="Texture" id=4]
+
+[sub_resource type="Environment" id=1]
+
+background_mode = 0
+background_sky_custom_fov = 0.0
+background_color = Color( 0, 0, 0, 1 )
+background_energy = 1.0
+background_canvas_max_layer = 0
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_energy = 1.0
+ambient_light_sky_contribution = 1.0
+fog_enabled = false
+fog_color = Color( 0.5, 0.6, 0.7, 1 )
+fog_sun_color = Color( 1, 0.9, 0.7, 1 )
+fog_sun_amount = 0.0
+fog_depth_enabled = true
+fog_depth_begin = 10.0
+fog_depth_curve = 1.0
+fog_transmit_enabled = false
+fog_transmit_curve = 1.0
+fog_height_enabled = false
+fog_height_min = 0.0
+fog_height_max = 100.0
+fog_height_curve = 1.0
+tonemap_mode = 0
+tonemap_exposure = 1.0
+tonemap_white = 1.0
+auto_exposure_enabled = false
+auto_exposure_scale = 0.4
+auto_exposure_min_luma = 0.05
+auto_exposure_max_luma = 8.0
+auto_exposure_speed = 0.5
+ss_reflections_enabled = false
+ss_reflections_max_steps = 64
+ss_reflections_fade_in = 0.15
+ss_reflections_fade_out = 2.0
+ss_reflections_depth_tolerance = 0.2
+ss_reflections_roughness = true
+ssao_enabled = false
+ssao_radius = 1.0
+ssao_intensity = 1.0
+ssao_radius2 = 0.0
+ssao_intensity2 = 1.0
+ssao_bias = 0.01
+ssao_light_affect = 0.0
+ssao_color = Color( 0, 0, 0, 1 )
+ssao_quality = 0
+ssao_blur = 3
+ssao_edge_sharpness = 4.0
+dof_blur_far_enabled = false
+dof_blur_far_distance = 10.0
+dof_blur_far_transition = 5.0
+dof_blur_far_amount = 0.1
+dof_blur_far_quality = 1
+dof_blur_near_enabled = false
+dof_blur_near_distance = 2.0
+dof_blur_near_transition = 1.0
+dof_blur_near_amount = 0.1
+dof_blur_near_quality = 1
+glow_enabled = false
+glow_levels/1 = false
+glow_levels/2 = false
+glow_levels/3 = true
+glow_levels/4 = false
+glow_levels/5 = true
+glow_levels/6 = false
+glow_levels/7 = false
+glow_intensity = 0.8
+glow_strength = 1.0
+glow_bloom = 0.0
+glow_blend_mode = 2
+glow_hdr_threshold = 1.0
+glow_hdr_scale = 2.0
+glow_bicubic_upscale = false
+adjustment_enabled = false
+adjustment_brightness = 1.0
+adjustment_contrast = 1.0
+adjustment_saturation = 1.0
+_sections_unfolded = [ "Ambient Light" ]
+
+[sub_resource type="Shader" id=2]
+
+code = "shader_type canvas_item;
+
+varying vec2 uv_cercle;
+uniform sampler2D bg;
+
+uniform sampler2D top;
+uniform sampler2D bottom;
+
+void vertex(){
+	uv_cercle = VERTEX;
+}
+
+void fragment() {
+    vec4 color = vec4(0,0,0,1);
+	vec4 color2 = vec4(0,0,0,1);
+	vec4 color3 = vec4(0,0,0,1);
+	vec2 size = vec2(1000,1000);
+	float distance = length(size/2.0-uv_cercle);
+	if (distance <= 400.0){
+		//color = texture(TEXTURE,UV);
+		color2 = texture(top,UV);
+		color3 = texture(bottom,UV);
+		//float grey_level = (color.r + color.g + color.b)/3.0;
+		//float binary = round(grey_level);
+		float grey_level2 = (color2.r + color2.g + color2.b)/3.0;
+		float binary2 = round(grey_level2);
+		float grey_level3 = (color3.r + color3.g + color3.b)/3.0;
+		float binary3 = round(grey_level3);
+		color.r = 0.0 + binary2*0.1;
+		color.g = binary2*1.0 + binary3*0.5;
+		color.b = 0.0 + binary3*0.1;
+		color.a = 1.0;
+	}
+	
+	COLOR = color + texture(bg,UV);
+}
+"
+
+[sub_resource type="ViewportTexture" id=3]
+
+resource_local_to_scene = true
+flags = 0
+viewport_path = NodePath("BottomView")
+
+[sub_resource type="ViewportTexture" id=4]
+
+resource_local_to_scene = true
+flags = 0
+viewport_path = NodePath("TopView")
+
+[sub_resource type="ShaderMaterial" id=5]
+
+render_priority = 0
+shader = SubResource( 2 )
+shader_param/bg = ExtResource( 2 )
+shader_param/top = SubResource( 4 )
+shader_param/bottom = SubResource( 3 )
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="ViewportTexture" id=6]
+
+resource_local_to_scene = true
+flags = 0
+viewport_path = NodePath("TopView")
+
+[sub_resource type="Shader" id=7]
+
+code = "shader_type canvas_item;
+
+uniform sampler2D data;
+uniform int slide;
+
+void fragment() {
+    vec4 color = vec4(0,0,0,1);
+	
+	vec2 uv = UV;
+	uv.x += float(slide)/1000.0;
+	if (uv.x > 1.0){
+		uv.x-=1.0;
+	}
+	uv.y = 0.0;
+	
+	vec4 data_value = texture(data,uv);
+	
+	if ((1.0-UV.y) > data_value.r){
+		color.g = 0.0;
+	} else {
+		color.g = 1.0;
+	}
+	
+	//color.r = UV.y;
+	
+	COLOR = color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=8]
+
+render_priority = 0
+shader = SubResource( 7 )
+shader_param/slide = null
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="ImageTexture" id=9]
+
+flags = 7
+storage = 0
+lossy_quality = 0.0
+flags = 7
+size = Vector2( 0, 0 )
+
+[node name="Viewports" type="Spatial"]
+
+[node name="TopView" type="Viewport" parent="." index="0"]
+
+editor/display_folded = true
+arvr = false
+size = Vector2( 1000, 1000 )
+own_world = false
+world = null
+transparent_bg = false
+msaa = 0
+hdr = false
+disable_3d = false
+usage = 2
+debug_draw = 0
+render_target_v_flip = false
+render_target_clear_mode = 0
+render_target_update_mode = 3
+audio_listener_enable_2d = false
+audio_listener_enable_3d = false
+physics_object_picking = false
+gui_disable_input = false
+gui_snap_controls_to_pixels = true
+shadow_atlas_size = 0
+shadow_atlas_quad_0 = 2
+shadow_atlas_quad_1 = 2
+shadow_atlas_quad_2 = 3
+shadow_atlas_quad_3 = 4
+_sections_unfolded = [ "Physics", "Render Target", "Rendering", "Shadow Atlas" ]
+
+[node name="Yaw" type="Spatial" parent="TopView" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="camera" type="InterpolatedCamera" parent="TopView/Yaw" index="0"]
+
+transform = Transform( -1, 5.77123e-09, -1.12515e-10, 1.14508e-10, 0.000345306, -1, -5.77117e-09, -1, -0.000345306, 0, -10, 0 )
+keep_aspect = 1
+cull_mask = 262144
+environment = SubResource( 1 )
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 1
+current = true
+fov = 70.0
+size = 80.0
+near = 0.05
+far = 100.0
+target = NodePath("../..")
+speed = 1.0
+enabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="BottomView" type="Viewport" parent="." index="1"]
+
+editor/display_folded = true
+arvr = false
+size = Vector2( 1000, 1000 )
+own_world = false
+world = null
+transparent_bg = false
+msaa = 0
+hdr = false
+disable_3d = false
+usage = 2
+debug_draw = 0
+render_target_v_flip = true
+render_target_clear_mode = 0
+render_target_update_mode = 3
+audio_listener_enable_2d = false
+audio_listener_enable_3d = false
+physics_object_picking = false
+gui_disable_input = false
+gui_snap_controls_to_pixels = true
+shadow_atlas_size = 0
+shadow_atlas_quad_0 = 2
+shadow_atlas_quad_1 = 2
+shadow_atlas_quad_2 = 3
+shadow_atlas_quad_3 = 4
+_sections_unfolded = [ "Render Target", "Rendering", "Shadow Atlas" ]
+
+[node name="Yaw" type="Spatial" parent="BottomView" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="camera" type="InterpolatedCamera" parent="BottomView/Yaw" index="0"]
+
+transform = Transform( -1, 3.25841e-07, 0, -1.12515e-10, -0.000345306, 1, 3.25841e-07, 1, 0.000345306, 0, 10, 0 )
+keep_aspect = 1
+cull_mask = 262144
+environment = SubResource( 1 )
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 1
+current = true
+fov = 70.0
+size = 80.0
+near = 0.05
+far = 100.0
+target = NodePath("../..")
+speed = 1.0
+enabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="SonarActif" type="Viewport" parent="." index="2"]
+
+editor/display_folded = true
+arvr = false
+size = Vector2( 1000, 1000 )
+own_world = false
+world = null
+transparent_bg = false
+msaa = 0
+hdr = true
+disable_3d = false
+usage = 2
+debug_draw = 0
+render_target_v_flip = false
+render_target_clear_mode = 0
+render_target_update_mode = 2
+audio_listener_enable_2d = false
+audio_listener_enable_3d = false
+physics_object_picking = false
+gui_disable_input = false
+gui_snap_controls_to_pixels = true
+shadow_atlas_size = 0
+shadow_atlas_quad_0 = 2
+shadow_atlas_quad_1 = 2
+shadow_atlas_quad_2 = 3
+shadow_atlas_quad_3 = 4
+
+[node name="TextureRect" type="TextureRect" parent="SonarActif" index="0"]
+
+material = SubResource( 5 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = SubResource( 6 )
+stretch_mode = 0
+_sections_unfolded = [ "Margin", "Material", "Rect" ]
+
+[node name="SonarPassif" type="Viewport" parent="." index="3"]
+
+arvr = false
+size = Vector2( 1000, 1000 )
+own_world = false
+world = null
+transparent_bg = false
+msaa = 0
+hdr = true
+disable_3d = false
+usage = 2
+debug_draw = 0
+render_target_v_flip = false
+render_target_clear_mode = 0
+render_target_update_mode = 2
+audio_listener_enable_2d = false
+audio_listener_enable_3d = false
+physics_object_picking = false
+gui_disable_input = false
+gui_snap_controls_to_pixels = true
+shadow_atlas_size = 0
+shadow_atlas_quad_0 = 2
+shadow_atlas_quad_1 = 2
+shadow_atlas_quad_2 = 3
+shadow_atlas_quad_3 = 4
+
+[node name="TextureRect" type="TextureRect" parent="SonarPassif" index="0"]
+
+material = SubResource( 8 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = SubResource( 6 )
+stretch_mode = 0
+script = ExtResource( 3 )
+_sections_unfolded = [ "Margin", "Material", "Rect" ]
+useless = ExtResource( 4 )
+data = SubResource( 9 )
+
+
