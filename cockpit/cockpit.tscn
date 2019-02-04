@@ -48,7 +48,7 @@ lossy_quality = 0.7
 flags = 7
 size = Vector2( 1, 1 )
 
-[node name="Spatial" type="Spatial" index="0"]
+[node name="Spatial" type="Spatial"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -390,12 +390,63 @@ data = SubResource( 4 )
 
 [node name="SButton1" parent="." index="18" instance=ExtResource( 15 )]
 
+[node name="Button1" parent="SButton1/Buttons_1" index="0"]
+
+color = Color( 1, 1, 1, 1 )
+set_up = true
+
+[node name="Button2" parent="SButton1/Buttons_1" index="1"]
+
+color = Color( 1, 1, 1, 1 )
+set_up = true
+
+[node name="Button3" parent="SButton1/Buttons_1" index="2"]
+
+type = 1
+color = Color( 1, 0, 0, 1 )
+blinking_duration = 10
+set_up = true
+
+[node name="Button8" parent="SButton1/Buttons_1" index="7"]
+
+type = 2
+color = Color( 1, 0, 0, 1 )
+blinking_duration = 5
+set_up = true
+
+[node name="Label1" parent="SButton1/Buttons_1" index="8"]
+
+text_label = "Short range spot"
+
+[node name="Label2" parent="SButton1/Buttons_1" index="9"]
+
+text_label = "Long range spot"
+
+[node name="Label3" parent="SButton1/Buttons_1" index="10"]
+
+text_label = "Alarm simu"
+
+[node name="Label8" parent="SButton1/Buttons_1" index="15"]
+
+text_label = "Shield"
+
 [connection signal="speed_changed" from="Speed_controller" to="." method="_on_Speed_controller_speed_changed"]
 
 [connection signal="alarm" from="Viewports/SonarPassif/TextureRect" to="SScreen2" method="_on_TextureRect_alarm"]
+
+[connection signal="left_click" from="SButton1/Buttons_1/Button1" to="TopSpots" method="_on_Button1_left_click"]
+
+[connection signal="left_click" from="SButton1/Buttons_1/Button2" to="LongRangeSpots" method="_on_Button2_left_click"]
+
+[connection signal="button_blinking_terminated" from="SButton1/Buttons_1/Button3" to="Alarm" method="stop"]
+
+[connection signal="left_click" from="SButton1/Buttons_1/Button3" to="Alarm" method="play"]
+
+[connection signal="left_click" from="SButton1/Buttons_1/Button8" to="Cockpit" method="_on_Button8_left_click"]
 
 
 [editable path="SScreen1"]
 [editable path="SScreen2"]
 [editable path="Viewports"]
 [editable path="SButton1"]
+[editable path="SButton1/Buttons_1"]
