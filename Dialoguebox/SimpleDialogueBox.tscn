@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Dialoguebox/SignalLink.gd" type="Script" id=1]
+[ext_resource path="res://Dialoguebox/DialogBoxRadio.png" type="Texture" id=2]
+[ext_resource path="res://Dialoguebox/prstartk.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Dialoguebox/SimpleDialogueBox.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 12
+use_mipmaps = false
+use_filter = false
+extra_spacing_top = 3
+extra_spacing_bottom = 2
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[node name="SimpleDialogueBox" type="Node2D"]
+
+position = Vector2( 534.912, 529.13 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="DialogBox" type="Sprite" parent="." index="0"]
+
+scale = Vector2( 0.65, 0.5 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -370.0
+margin_top = -25.0
+margin_right = 430.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_colors/selection_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 4 )
+_sections_unfolded = [ "Material", "Mouse", "Rect", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+speed = 0.0
+dialogue_text = "Hey Roberto ! Comme ça tu as volé ma femme. Tu pensais t'en tirer sans une égratinure Mc Johnsson? Tu t'es trompé.; Moi jdéconne pas mon ptit gars. J'en ai tué des rigolos dans ton genre.
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Je bois ma tasse de thé et je t'en colles une, et je parle pas de UHU."
+confirm_action = "ui_accept"
+read = false
+fromFile = true
+f = "res://Dialoguebox/Test.txt"
+
+[connection signal="transmit_messages" from="." to="RichTextLabel" method="_on_SimpleDialogueBox_transmit_messages"]
+
+
