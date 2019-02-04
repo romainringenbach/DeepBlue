@@ -7,6 +7,12 @@ extends Spatial
 export (float) var minimum_impact_force = 5.0
 
 signal speed_changed(speed)
+signal gameover()
+
+
+var life = 3
+
+
 
 
 func _ready():
@@ -30,3 +36,17 @@ func _on_Submarine_collision_impact():
 
 	$SButton1/Buttons_1/Button3.blink()
 	$Alarm.play()
+	
+	if $Cockpit.shield_closed == false :
+	
+		$"Measures/Measure 1".down()
+		$"Measures/Measure 2".down()
+		$"Measures/Measure 3".down()
+		$"Measures/Measure 4".down()
+		$"Measures/Measure 5".down()
+		
+		life -= 1
+		if life == 0:
+			emit_signal('gameover')
+		
+	
