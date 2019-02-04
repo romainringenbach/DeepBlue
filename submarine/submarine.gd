@@ -23,7 +23,7 @@ var pos
 var level
 var value
 
-signal collision_impact(impact_force)
+signal collision_impact()
 
 func _ready():
 	player_direction = $Cockpit.get_global_transform().basis.z
@@ -97,8 +97,8 @@ func _integrate_forces(state):
 
 		deviation = acos(final_force.dot(player_direction*current_speed)/(final_force.length()*(player_direction*s).length()))
 	
-		if deviation != 0:
-			emit_signal('collision_impact', abs(deviation * final_force.length()))
+		if deviation != 0 and abs(deviation * final_force.length()) > 30000 and $Area2.get_overlapping_bodies().size() > 1:
+			emit_signal('collision_impact')
 
 
 func _on_Cockpit_speed_changed(speed_percent):

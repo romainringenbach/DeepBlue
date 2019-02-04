@@ -26,8 +26,7 @@ func _on_Speed_controller_speed_changed(speed):
 		
 
 
-func _on_Submarine_collision_impact(impact_force):
-	print(impact_force)
-	if impact_force > 10000:
-		$SButton1/Buttons_1/Button3.blink()
-		$Alarm.play()
+func _on_Submarine_collision_impact():
+
+	$SButton1/Buttons_1/Button3.blink()
+	$Alarm.play()
