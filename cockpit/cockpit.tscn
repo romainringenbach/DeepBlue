@@ -16,23 +16,17 @@
 [ext_resource path="res://cockpit/Viewports.tscn" type="PackedScene" id=14]
 [ext_resource path="res://cockpit/SButton1.tscn" type="PackedScene" id=15]
 
-[sub_resource type="ViewportTexture" id=5]
+[sub_resource type="ViewportTexture" id=1]
 
 resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("Viewports/SonarActif")
 
-[sub_resource type="ViewportTexture" id=6]
-
-resource_local_to_scene = true
-flags = 0
-viewport_path = NodePath("Viewports/SonarPassif")
-
 [sub_resource type="ViewportTexture" id=2]
 
 resource_local_to_scene = true
 flags = 0
-viewport_path = NodePath("Viewports/TopView")
+viewport_path = NodePath("Viewports/SonarPassif")
 
 [sub_resource type="ViewportTexture" id=3]
 
@@ -40,7 +34,13 @@ resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("Viewports/TopView")
 
-[sub_resource type="ImageTexture" id=4]
+[sub_resource type="ViewportTexture" id=4]
+
+resource_local_to_scene = true
+flags = 0
+viewport_path = NodePath("Viewports/TopView")
+
+[sub_resource type="ImageTexture" id=5]
 
 flags = 7
 storage = 0
@@ -64,7 +64,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="Yaw" index="0"]
 
-transform = Transform( -1, 1.5708e-07, -1.50996e-07, 1.5708e-07, 1, 0, 1.50996e-07, -2.37184e-14, -1, 0, 0, -0.298793 )
+transform = Transform( -1, 1.5708e-007, -1.50996e-007, 1.5708e-007, 1, 0, 1.50996e-007, -2.37184e-014, -1, 0, 0, -0.298793 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -88,30 +88,30 @@ pas = 5
 
 [node name="Radio" parent="." index="2" instance=ExtResource( 4 )]
 
-transform = Transform( 0.5, -0.866025, -3.25841e-07, -0.866025, -0.5, 0, -1.62921e-07, 2.82187e-07, -1, 0.65, 0.4, 0.15 )
+transform = Transform( 0.5, -0.866025, -3.25841e-007, -0.866025, -0.5, 0, -1.62921e-007, 2.82187e-007, -1, 0.65, 0.4, 0.15 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="Main_controller" parent="." index="3" instance=ExtResource( 5 )]
 
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -0.65, 0.95 )
+transform = Transform( -1, 0, -3.25841e-007, 0, 1, 0, 3.25841e-007, 0, -1, 0, -0.65, 0.95 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Speed_controller" parent="." index="4" instance=ExtResource( 6 )]
 
-transform = Transform( -4.88762e-08, 0, -0.3, 0.229813, 0.192836, -3.74413e-08, 0.192836, -0.229813, -3.1417e-08, -0.35, -0.35, 0.65 )
+transform = Transform( -4.88762e-008, 0, -0.3, 0.229813, 0.192836, -3.74413e-008, 0.192836, -0.229813, -3.1417e-008, -0.35, -0.35, 0.65 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="TopSpots" type="Spatial" parent="." index="5"]
 
 editor/display_folded = true
-transform = Transform( -0.99945, 0.0331552, -3.20891e-07, 0.0326515, 0.984266, 0.173648, 0.00575766, 0.173553, -0.984808, 0, 1.15, 1.8 )
+transform = Transform( -0.99945, 0.0331552, -3.20891e-007, 0.0326515, 0.984266, 0.173648, 0.00575766, 0.173553, -0.984808, 0, 1.15, 1.8 )
 visible = false
 script = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="TopSpot1" type="SpotLight" parent="TopSpots" index="0"]
 
-transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, 0.6, 0, 0 )
+transform = Transform( 1, 5.23599e-008, 0, -5.23599e-008, 1, 0, 0, 0, 1, 0.6, 0, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -134,7 +134,7 @@ _sections_unfolded = [ "Light", "Transform" ]
 
 [node name="TopSpot2" type="SpotLight" parent="TopSpots" index="1"]
 
-transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, 0.2, 0, 0 )
+transform = Transform( 1, 5.23599e-008, 0, -5.23599e-008, 1, 0, 0, 0, 1, 0.2, 0, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -157,7 +157,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="TopSpot3" type="SpotLight" parent="TopSpots" index="2"]
 
-transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, -0.2, 0, 0 )
+transform = Transform( 1, 5.23599e-008, 0, -5.23599e-008, 1, 0, 0, 0, 1, -0.2, 0, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -180,7 +180,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="TopSpot4" type="SpotLight" parent="TopSpots" index="3"]
 
-transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, -0.6, 0, 0 )
+transform = Transform( 1, 5.23599e-008, 0, -5.23599e-008, 1, 0, 0, 0, 1, -0.6, 0, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -204,7 +204,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="LongRangeSpots" type="Spatial" parent="." index="6"]
 
 editor/display_folded = true
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -1.15, 1.8 )
+transform = Transform( -1, 0, -3.25841e-007, 0, 1, 0, 3.25841e-007, 0, -1, 0, -1.15, 1.8 )
 visible = false
 script = ExtResource( 8 )
 _sections_unfolded = [ "Transform" ]
@@ -257,22 +257,22 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Light" parent="." index="7" instance=ExtResource( 9 )]
 
-transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-08, 0, -1.62921e-08, -0.05, 0, 0.999471, 0 )
+transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-008, 0, -1.62921e-008, -0.05, 0, 0.999471, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Light4" parent="." index="8" instance=ExtResource( 9 )]
 
-transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-08, 0, -1.62921e-08, -0.05, -0.1, 0.899471, 1.15 )
+transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-008, 0, -1.62921e-008, -0.05, -0.1, 0.899471, 1.15 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Light2" parent="." index="9" instance=ExtResource( 9 )]
 
-transform = Transform( 8.14604e-09, 0.05, -1.62921e-08, 0.05, -8.14603e-09, 1.65806e-08, 1.65806e-08, -1.62921e-08, -0.05, -1.00847, 0, 0 )
+transform = Transform( 8.14604e-009, 0.05, -1.62921e-008, 0.05, -8.14603e-009, 1.65806e-008, 1.65806e-008, -1.62921e-008, -0.05, -1.00847, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Light3" parent="." index="10" instance=ExtResource( 9 )]
 
-transform = Transform( 1.41065e-08, -0.05, 4.37114e-09, -0.05, -1.41065e-08, -1.65806e-08, 1.65806e-08, -4.37113e-09, -0.05, 1.00847, 0, 0 )
+transform = Transform( 1.41065e-008, -0.05, 4.37114e-009, -0.05, -1.41065e-008, -1.65806e-008, 1.65806e-008, -4.37113e-009, -0.05, 1.00847, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="OmniLight" type="OmniLight" parent="." index="11"]
@@ -345,14 +345,14 @@ _sections_unfolded = [ "Light", "Omni" ]
 
 [node name="Alarm" parent="." index="14" instance=ExtResource( 10 )]
 
-transform = Transform( 0.03, 0, 0, 0, -0.03, -9.77524e-09, 0, 9.77524e-09, -0.03, 0, 1.0091, 0.438676 )
+transform = Transform( 0.03, 0, 0, 0, -0.03, -9.77524e-009, 0, 9.77524e-009, -0.03, 0, 1.0091, 0.438676 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="SScreen1" parent="." index="15" instance=ExtResource( 11 )]
 
 [node name="Screen_1" parent="SScreen1" index="0"]
 
-viewport_texture = SubResource( 5 )
+viewport_texture = SubResource( 1 )
 
 [node name="SScreen2" parent="." index="16" instance=ExtResource( 12 )]
 
@@ -361,30 +361,19 @@ script = ExtResource( 13 )
 [node name="Screen_2" parent="SScreen2" index="0"]
 
 editor/display_folded = false
-viewport_texture = SubResource( 6 )
+viewport_texture = SubResource( 2 )
 
 [node name="Viewports" parent="." index="17" instance=ExtResource( 14 )]
 
-[node name="TopView" parent="Viewports" index="0"]
-
-editor/display_folded = false
-
-[node name="BottomView" parent="Viewports" index="1"]
-
-editor/display_folded = false
-
-[node name="SonarActif" parent="Viewports" index="2"]
-
-editor/display_folded = false
-
 [node name="TextureRect" parent="Viewports/SonarActif" index="0"]
 
-texture = SubResource( 2 )
+texture = SubResource( 3 )
+_sections_unfolded = [ "Grow Direction", "Margin", "Material", "Rect" ]
 
 [node name="TextureRect" parent="Viewports/SonarPassif" index="0"]
 
-texture = SubResource( 3 )
-data = SubResource( 4 )
+texture = SubResource( 4 )
+data = SubResource( 5 )
 
 [node name="SButton1" parent="." index="18" instance=ExtResource( 15 )]
 

@@ -353,12 +353,12 @@ set_up = true
 
 [node name="Label1" parent="." index="3" instance=ExtResource( 4 )]
 
-transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.1, 0.0648082, -0.3 )
+transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.1, 0.0648082, -0.3 )
 text_label = "On/Off"
 
 [node name="Label2" parent="." index="4" instance=ExtResource( 4 )]
 
-transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.1, 0.0648082, -0.1 )
+transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.1, 0.0648082, -0.1 )
 text_label = "Next channel"
 
 [node name="Streams" parent="." index="5" instance=ExtResource( 5 )]

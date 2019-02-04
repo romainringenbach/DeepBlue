@@ -80,13 +80,15 @@ func _process(delta):
 			noiseSound.stop()
 			switch_channel = false
 		if elapsedTimeNoise *0.001 > 1.0 and !channelChanged:
-			musicChannel[currentChannel].set_unit_db(10)
+			musicChannel[currentChannel].set_unit_db(-10)
 			channelChanged = true
 	
 	#ADD du bruit sur la musique en cours avec une proba de 3 %
 	else:
-		var proba = randi()%100
-		if (proba<3 and !noise and playing):
+		var proba = randf()
+		
+		if (proba<0.0005 and !noise and playing):
+			print(proba)
 			noiseSound2 =  $Streams/Noise2
 			var audiostream = load('res://PisteAudio/Radio Tuning Sound Effect.ogg')
 			var begin_time = randf()*(audiostream.get_length()-5)
@@ -114,7 +116,7 @@ func _on_Button1_left_click():
 	emit_signal("on_button_1")
 	if !playing :
 		playing = true
-		musicChannel[currentChannel].set_unit_db(10)
+		musicChannel[currentChannel].set_unit_db(-10)
 	else:
 		musicChannel[currentChannel].set_unit_db(-80)
 		playing = false

@@ -28,7 +28,7 @@ _sections_unfolded = [ "Attenuation Filter", "Doppler", "Emission Angle", "Trans
 
 [node name="MusicChannel2" type="AudioStreamPlayer3D" parent="." index="1"]
 
-transform = Transform( 0.25, -0.433013, -7.5498e-08, -0.433013, -0.25, 1.41094e-07, -1.5994e-07, -5.16375e-09, -0.5, 0.00473523, -0.0109782, 0.15 )
+transform = Transform( 0.499555, 0.000774732, 0.0211304, 0.000774777, 0.49866, -0.036599, -0.0211305, 0.036599, 0.498211, -0.196651, 0.189857, -0.00960714 )
 stream = ExtResource( 1 )
 attenuation_model = 0
 unit_db = 1.0
@@ -36,46 +36,46 @@ unit_size = 1.0
 max_db = 3.0
 pitch_scale = 1.0
 autoplay = false
-max_distance = 1.0
+max_distance = 2.0
 out_of_range_mode = 0
 bus = "RadioEffect"
 area_mask = 1
 emission_angle_enabled = false
-emission_angle_degrees = 45.0
-emission_angle_filter_attenuation_db = -12.0
+emission_angle_degrees = 90.0
+emission_angle_filter_attenuation_db = 0.0
 attenuation_filter_cutoff_hz = 16000.0
 attenuation_filter_db = 0.0
 doppler_tracking = 0
-_sections_unfolded = [ "Attenuation Filter", "Emission Angle", "Transform" ]
+_sections_unfolded = [ "Attenuation Filter", "Doppler", "Emission Angle", "Transform" ]
 
 [node name="MusicChannel3" type="AudioStreamPlayer3D" parent="." index="2"]
 
-transform = Transform( 0.25, -0.433013, -7.5498e-08, -0.433013, -0.25, 1.41094e-07, -1.5994e-07, -5.16375e-09, -0.5, 0.00473523, -0.0109782, 0.15 )
+transform = Transform( 0.499555, 0.000774732, 0.0211304, 0.000774777, 0.49866, -0.036599, -0.0211305, 0.036599, 0.498211, -0.196651, 0.189857, -0.00960714 )
 stream = ExtResource( 1 )
 attenuation_model = 0
-unit_db = 50.0
+unit_db = 1.0
 unit_size = 1.0
-max_db = 6.0
+max_db = 3.0
 pitch_scale = 1.0
 autoplay = false
-max_distance = 1.0
+max_distance = 2.0
 out_of_range_mode = 0
 bus = "RadioEffect"
 area_mask = 1
 emission_angle_enabled = false
-emission_angle_degrees = 45.0
-emission_angle_filter_attenuation_db = -12.0
+emission_angle_degrees = 90.0
+emission_angle_filter_attenuation_db = 0.0
 attenuation_filter_cutoff_hz = 16000.0
 attenuation_filter_db = 0.0
 doppler_tracking = 0
-_sections_unfolded = [ "Attenuation Filter", "Emission Angle", "Transform" ]
+_sections_unfolded = [ "Attenuation Filter", "Doppler", "Emission Angle", "Transform" ]
 
 [node name="Noise1" type="AudioStreamPlayer3D" parent="." index="3"]
 
-transform = Transform( 1, -4.59741e-14, 0, -4.59741e-14, 1, 0, -2.84217e-14, 2.84217e-14, 1, 0, 0, -3.18083e-09 )
+transform = Transform( 1, -4.59741e-014, 0, -4.59741e-014, 1, 0, -2.84217e-014, 2.84217e-014, 1, 0, 0, -3.18083e-009 )
 stream = null
 attenuation_model = 0
-unit_db = 0.0
+unit_db = -10.0
 unit_size = 1.0
 max_db = 3.0
 pitch_scale = 1.0
@@ -93,10 +93,10 @@ doppler_tracking = 0
 
 [node name="Noise2" type="AudioStreamPlayer3D" parent="." index="4"]
 
-transform = Transform( 1, -4.59741e-14, 0, -4.59741e-14, 1, 0, -2.84217e-14, 2.84217e-14, 1, 0, 0, -3.18083e-09 )
+transform = Transform( 1, -4.59741e-014, 0, -4.59741e-014, 1, 0, -2.84217e-014, 2.84217e-014, 1, 0, 0, -3.18083e-009 )
 stream = null
 attenuation_model = 0
-unit_db = 0.0
+unit_db = -10.0
 unit_size = 1.0
 max_db = 3.0
 pitch_scale = 1.0
