@@ -95,9 +95,9 @@ uniform sampler2D bg;
 uniform sampler2D top;
 uniform sampler2D bottom;
 
-uniform sampler2D greenline;
+uniform sampler2D green_line;
 varying vec2 uv_line;
-uniform float _RotationDegrees = 2.0;
+uniform float rotation_degrees = 2.0;
 
 void vertex(){
 	uv_cercle = VERTEX;
@@ -105,17 +105,20 @@ void vertex(){
 }
 
 void fragment() {
-	vec2 uvValue = uv_line;
-	float s = sin( _RotationDegrees*TIME);
-	float c = cos( _RotationDegrees*TIME);
-	mat2 rotationMatrix = mat2(vec2(c,-s), vec2(s,c));
-	uvValue = (uvValue -0.5) * rotationMatrix + 0.5;
+	vec2 uv_value = UV;
+	float s = sin( rotation_degrees*TIME);
+	float c = cos( rotation_degrees*TIME);
+	mat2 rotation_matrix = mat2(vec2(c,-s), vec2(s,c));
+	uv_value = (uv_value -0.5) * rotation_matrix + 0.5;
 	
 	
     vec4 color = vec4(0,0,0,1);
 	vec4 color2 = vec4(0,0,0,1);
 	vec4 color3 = vec4(0,0,0,1);
 	vec2 size = vec2(1000,1000);
+	
+	vec4 line_color = texture(green_line,uv_value);
+	
 	float distance = length(size/2.0-uv_cercle);
 	if (distance <= 400.0){
 		//color = texture(TEXTURE,UV);
@@ -128,19 +131,36 @@ void fragment() {
 		float grey_level3 = (color3.r + color3.g + color3.b)/3.0;
 		float binary3 = round(grey_level3);
 		color.r = 0.0 + binary2*0.1;
-		color.g = binary2*1.0 + binary3*0.5;
+		color.g = (binary2*1.0 + binary3*0.5) * max(line_color.g,0.2);
 		color.b = 0.0 + binary3*0.1;
 		color.a = 1.0;
 	}
 	
-	COLOR = texture(greenline,uvValue)+ color + texture(bg,UV);
+	COLOR = line_color*0.8 + color + texture(bg,UV);
 }"
 
-[sub_resource type="ViewportTexture" id=3]
+[sub_resource type="ViewportTexture" id=8]
 
 resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("BottomView")
+
+[sub_resource type="ViewportTexture" id=9]
+
+resource_local_to_scene = true
+flags = 0
+viewport_path = NodePath("TopView")
+
+[sub_resource type="ShaderMaterial" id=3]
+
+render_priority = 0
+shader = SubResource( 2 )
+shader_param/rotation_degrees = null
+shader_param/bg = ExtResource( 2 )
+shader_param/top = SubResource( 9 )
+shader_param/bottom = SubResource( 8 )
+shader_param/green_line = ExtResource( 3 )
+_sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="ViewportTexture" id=4]
 
@@ -148,24 +168,7 @@ resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("TopView")
 
-[sub_resource type="ShaderMaterial" id=5]
-
-render_priority = 0
-shader = SubResource( 2 )
-shader_param/_RotationDegrees = 2.0
-shader_param/bg = ExtResource( 2 )
-shader_param/top = SubResource( 4 )
-shader_param/bottom = SubResource( 3 )
-shader_param/greenline = ExtResource( 3 )
-_sections_unfolded = [ "shader_param" ]
-
-[sub_resource type="ViewportTexture" id=6]
-
-resource_local_to_scene = true
-flags = 0
-viewport_path = NodePath("TopView")
-
-[sub_resource type="Shader" id=7]
+[sub_resource type="Shader" id=5]
 
 code = "shader_type canvas_item;
 
@@ -196,14 +199,14 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=8]
+[sub_resource type="ShaderMaterial" id=6]
 
 render_priority = 0
-shader = SubResource( 7 )
+shader = SubResource( 5 )
 shader_param/slide = null
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="ImageTexture" id=9]
+[sub_resource type="ImageTexture" id=7]
 
 flags = 7
 storage = 0
@@ -247,7 +250,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="camera" type="InterpolatedCamera" parent="TopView/Yaw" index="0"]
 
-transform = Transform( -1, 5.77123e-009, -1.12515e-010, 1.14508e-010, 0.000345306, -1, -5.77117e-009, -1, -0.000345306, 0, -10, 0 )
+transform = Transform( -1, 5.77123e-09, -1.12515e-10, 1.14508e-10, 0.000345306, -1, -5.77117e-09, -1, -0.000345306, 0, -10, 0 )
 keep_aspect = 1
 cull_mask = 262144
 environment = SubResource( 1 )
@@ -299,7 +302,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="camera" type="InterpolatedCamera" parent="BottomView/Yaw" index="0"]
 
-transform = Transform( -1, 3.25841e-007, 0, -1.12515e-010, -0.000345306, 1, 3.25841e-007, 1, 0.000345306, 0, 10, 0 )
+transform = Transform( -1, 3.25841e-07, 0, -1.12515e-10, -0.000345306, 1, 3.25841e-07, 1, 0.000345306, 0, 10, 0 )
 keep_aspect = 1
 cull_mask = 262144
 environment = SubResource( 1 )
@@ -345,7 +348,7 @@ shadow_atlas_quad_3 = 4
 
 [node name="TextureRect" type="TextureRect" parent="SonarActif" index="0"]
 
-material = SubResource( 5 )
+material = SubResource( 3 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -356,7 +359,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = SubResource( 6 )
+texture = SubResource( 4 )
 stretch_mode = 0
 _sections_unfolded = [ "Margin", "Material", "Rect" ]
 
@@ -388,7 +391,7 @@ shadow_atlas_quad_3 = 4
 
 [node name="TextureRect" type="TextureRect" parent="SonarPassif" index="0"]
 
-material = SubResource( 8 )
+material = SubResource( 6 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -399,11 +402,11 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = SubResource( 6 )
+texture = SubResource( 4 )
 stretch_mode = 0
 script = ExtResource( 4 )
 _sections_unfolded = [ "Margin", "Material", "Rect" ]
 useless = ExtResource( 5 )
-data = SubResource( 9 )
+data = SubResource( 7 )
 
 
