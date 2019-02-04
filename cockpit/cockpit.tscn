@@ -365,6 +365,8 @@ viewport_texture = SubResource( 6 )
 
 [node name="Viewports" parent="." index="17" instance=ExtResource( 14 )]
 
+editor/display_folded = true
+
 [node name="TopView" parent="Viewports" index="0"]
 
 editor/display_folded = false
