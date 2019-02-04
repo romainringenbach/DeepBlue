@@ -6,7 +6,7 @@
 [ext_resource path="res://button/Material.material" type="Material" id=4]
 [ext_resource path="res://button/AnimationPlayer2.gd" type="Script" id=5]
 
-[sub_resource type="SpatialMaterial" id=9]
+[sub_resource type="SpatialMaterial" id=1]
 
 resource_local_to_scene = true
 render_priority = 0
@@ -59,9 +59,8 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Emission", "Parameters", "Resource" ]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="SpatialMaterial" id=2]
 
-resource_name = "Material.001"
 render_priority = 0
 flags_transparent = false
 flags_unshaded = false
@@ -112,7 +111,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Emission", "Flags" ]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 
 resource_name = "default"
 length = 2.04167
@@ -133,7 +132,7 @@ tracks/1/imported = true
 tracks/1/enabled = true
 tracks/1/keys = PoolRealArray( 0, 1, 0, -0.00205538, 0, 0, 0, 0, 1, 0.9, 0.9, 0.9, 0.0416667, 1, 0, -0.00826372, 0, 0, 0, 0, 1, 0.9, 0.9, 0.9, 0.0833333, 1, 0, -0.0186578, 0, 0, 0, 0, 1, 0.9, 0.9, 0.9, 0.125, 1, 0, -0.0332206, 0, 0, 0, 0, 1, 0.9, 0.9, 0.9, 0.208333, 1, 0, -0.0744625, 0, 0, 0, 0, 1, 0.9, 0.9, 0.9, 1, 1, 0, -0.583573, 0, 0, 0, 0, 1, 0.9, 0.9, 0.9, 1.04167, 1, 0, -0.581518, 0, 0, 0, 0, 1, 0.9, 0.9, 0.9, 1.08333, 1, 0, -0.575309, 0, 0, 0, 0, 1, 0.9, 0.9, 0.9, 1.125, 1, 0, -0.564915, 0, 0, 0, 0, 1, 0.9, 0.9, 0.9, 1.16667, 1, 0, -0.550352, 0, 0, 0, 0, 1, 0.9, 0.9, 0.9, 1.25, 1, 0, -0.50911, 0, 0, 0, 0, 1, 0.9, 0.9, 0.9, 2.04167, 1, 0, 0, 0, 0, 0, 0, 1, 0.9, 0.9, 0.9 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 
 resource_name = "blink"
 length = 1.0
@@ -152,7 +151,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 
 resource_name = "light_off"
 length = 0.5
@@ -171,7 +170,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 
 resource_name = "light_on"
 length = 0.5
@@ -190,7 +189,7 @@ tracks/0/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=7]
 
 extents = Vector3( 1, 1, 1 )
 
@@ -214,8 +213,8 @@ _sections_unfolded = [ "Geometry", "material" ]
 
 transform = Transform( 0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, -0.0267953, 0 )
 layers = 1048575
-material_override = SubResource( 9 )
-material/0 = SubResource( 1 )
+material_override = SubResource( 1 )
+material/0 = SubResource( 2 )
 _sections_unfolded = [ "Geometry", "Visibility", "material" ]
 
 [node name="Lamp" parent="." index="2"]
@@ -236,7 +235,7 @@ _sections_unfolded = [ "Transform", "material" ]
 
 [node name="AnimationPlayer" parent="." index="4"]
 
-"anims/default (copy)" = SubResource( 5 )
+"anims/default (copy)" = SubResource( 3 )
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="5"]
@@ -246,9 +245,9 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/blink = SubResource( 6 )
-anims/light_off = SubResource( 7 )
-anims/light_on = SubResource( 8 )
+anims/blink = SubResource( 4 )
+anims/light_off = SubResource( 5 )
+anims/light_on = SubResource( 6 )
 blend_times = [  ]
 script = ExtResource( 5 )
 
@@ -266,12 +265,10 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 disabled = false
 
-[connection signal="animation_finished" from="AnimationPlayer2" to="AnimationPlayer2" method="_on_AnimationPlayer2_animation_finished"]
-
-[connection signal="finish_queue" from="AnimationPlayer2" to="." method="_on_AnimationPlayer2_finish_queue"]
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_AnimationPlayer2_animation_finished"]
 
 [connection signal="input_event" from="StaticBody" to="." method="_on_StaticBody_input_event"]
 

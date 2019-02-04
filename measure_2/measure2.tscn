@@ -1,7 +1,10 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://measure2.dae" type="PackedScene" id=1]
-[ext_resource path="res://measure2.gd" type="Script" id=2]
+[ext_resource path="res://measure_2/measure2.dae" type="PackedScene" id=1]
+[ext_resource path="res://measure_2/measure2.gd" type="Script" id=2]
+
+
+
 
 [sub_resource type="SpatialMaterial" id=1]
 

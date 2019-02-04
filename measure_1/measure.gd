@@ -14,24 +14,25 @@ func _ready():
 
 func down():
 	if (state != 3):
-		state +=1
-		if (state == 0):
-			$AnimationPlayer.play("down_100-50")
-		elif (state == 1):
-			$AnimationPlayer.play("down_50_20")
-		else:
-			$AnimationPlayer.play("down_20_0")
 		
+		if (state == 0):
+			$AnimationPlayer.queue("down_100-50")
+		elif (state == 1):
+			$AnimationPlayer.queue("down_50_20")
+		else:
+			$AnimationPlayer.queue("down_20_0")
+		state +=1
 
 func up():
 	if (state != 0):
-		state -=1
+		
 		if (state == 2):
-			$AnimationPlayer.play("up_0_20")
+			$AnimationPlayer.queue("up_0_20")
 		elif (state == 1):
-			$AnimationPlayer.play("up_20_50")
+			$AnimationPlayer.queue("up_20_50")
 		else:
-			$AnimationPlayer.play("up_50_100")
+			$AnimationPlayer.queue("up_50_100")
+		state -=1
 	
 func down_full():
 	if (state == 0):
