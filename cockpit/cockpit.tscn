@@ -1,22 +1,23 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://cockpit/cockpit.gd" type="Script" id=1]
-[ext_resource path="res://cockpit/cockpit_brut.tscn" type="PackedScene" id=2]
+[ext_resource path="res://cockpit/Yaw.gd" type="Script" id=2]
 [ext_resource path="res://cockpit/InterpolatedCamera.gd" type="Script" id=3]
 [ext_resource path="res://Dialoguebox/SimpleDialogueBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://radio_panel/radio_panel.tscn" type="PackedScene" id=5]
-[ext_resource path="res://main_controller/main_controller.tscn" type="PackedScene" id=6]
-[ext_resource path="res://speed_controller/speed_controller_panel.tscn" type="PackedScene" id=7]
-[ext_resource path="res://cockpit/TopSpots.gd" type="Script" id=8]
-[ext_resource path="res://cockpit/LongRangeSpots.gd" type="Script" id=9]
-[ext_resource path="res://alarm/alarm.tscn" type="PackedScene" id=10]
-[ext_resource path="res://cockpit/SScreen1.tscn" type="PackedScene" id=11]
-[ext_resource path="res://cockpit/SScreen2.tscn" type="PackedScene" id=12]
-[ext_resource path="res://cockpit/SScreen2.gd" type="Script" id=13]
-[ext_resource path="res://cockpit/Viewports.tscn" type="PackedScene" id=14]
-[ext_resource path="res://cockpit/SButton1.tscn" type="PackedScene" id=15]
-[ext_resource path="res://measure_1/measure.tscn" type="PackedScene" id=16]
-[ext_resource path="res://light/light.tscn" type="PackedScene" id=17]
+[ext_resource path="res://cockpit/cockpit_brut.tscn" type="PackedScene" id=5]
+[ext_resource path="res://radio_panel/radio_panel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://main_controller/main_controller.tscn" type="PackedScene" id=7]
+[ext_resource path="res://speed_controller/speed_controller_panel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://cockpit/TopSpots.gd" type="Script" id=9]
+[ext_resource path="res://cockpit/LongRangeSpots.gd" type="Script" id=10]
+[ext_resource path="res://alarm/alarm.tscn" type="PackedScene" id=11]
+[ext_resource path="res://cockpit/SScreen1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://cockpit/SScreen2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://cockpit/SScreen2.gd" type="Script" id=14]
+[ext_resource path="res://cockpit/Viewports.tscn" type="PackedScene" id=15]
+[ext_resource path="res://cockpit/SButton1.tscn" type="PackedScene" id=16]
+[ext_resource path="res://measure_1/measure.tscn" type="PackedScene" id=17]
+[ext_resource path="res://light/light.tscn" type="PackedScene" id=18]
 
 [sub_resource type="ViewportTexture" id=1]
 
@@ -56,14 +57,12 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 minimum_impact_force = 5.0
 
-[node name="Cockpit" parent="." index="0" instance=ExtResource( 2 )]
+[node name="Yaw" type="Spatial" parent="." index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.20686 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Yaw" type="Spatial" parent="." index="1"]
-
+script = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Visibility" ]
+max_shaky = 5
+max_shaky_fov = 5
 
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="Yaw" index="0"]
 
@@ -73,7 +72,7 @@ cull_mask = 1048575
 environment = null
 h_offset = 0.0
 v_offset = 0.0
-doppler_tracking = 0
+doppler_tracking = 2
 projection = 0
 current = true
 fov = 55.0
@@ -91,17 +90,22 @@ pas = 5
 
 [node name="SimpleDialogueBox" parent="Yaw/InterpolatedCamera" index="0" instance=ExtResource( 4 )]
 
-[node name="Radio" parent="." index="2" instance=ExtResource( 5 )]
+[node name="Cockpit" parent="." index="1" instance=ExtResource( 5 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.20686 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Radio" parent="." index="2" instance=ExtResource( 6 )]
 
 transform = Transform( 0.5, -0.866025, -3.25841e-07, -0.866025, -0.5, 0, -1.62921e-07, 2.82187e-07, -1, 0.65, 0.4, 0.15 )
 _sections_unfolded = [ "Transform", "material" ]
 
-[node name="Main_controller" parent="." index="3" instance=ExtResource( 6 )]
+[node name="Main_controller" parent="." index="3" instance=ExtResource( 7 )]
 
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -0.65, 0.95 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Speed_controller" parent="." index="4" instance=ExtResource( 7 )]
+[node name="Speed_controller" parent="." index="4" instance=ExtResource( 8 )]
 
 transform = Transform( -4.88762e-08, 0, -0.3, 0.229813, 0.192836, -3.74413e-08, 0.192836, -0.229813, -3.1417e-08, -0.35, -0.35, 0.65 )
 _sections_unfolded = [ "Transform" ]
@@ -111,7 +115,7 @@ _sections_unfolded = [ "Transform" ]
 editor/display_folded = true
 transform = Transform( -0.99945, 0.0331552, -3.20891e-07, 0.0326515, 0.984266, 0.173648, 0.00575766, 0.173553, -0.984808, 0, 1.15, 1.8 )
 visible = false
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="TopSpot1" type="SpotLight" parent="TopSpots" index="0"]
@@ -211,7 +215,7 @@ _sections_unfolded = [ "Transform" ]
 editor/display_folded = true
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -1.15, 1.8 )
 visible = false
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="LongRangeSpot1" type="SpotLight" parent="LongRangeSpots" index="0"]
@@ -260,12 +264,12 @@ spot_angle = 9.5757
 spot_angle_attenuation = 1.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="Alarm" parent="." index="7" instance=ExtResource( 10 )]
+[node name="Alarm" parent="." index="7" instance=ExtResource( 11 )]
 
 transform = Transform( 0.03, 0, 0, 0, -0.03, -9.77524e-09, 0, 9.77524e-09, -0.03, 0, 1.0091, 0.438676 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="SScreen1" parent="." index="8" instance=ExtResource( 11 )]
+[node name="SScreen1" parent="." index="8" instance=ExtResource( 12 )]
 
 editor/display_folded = true
 
@@ -273,17 +277,17 @@ editor/display_folded = true
 
 viewport_texture = SubResource( 1 )
 
-[node name="SScreen2" parent="." index="9" instance=ExtResource( 12 )]
+[node name="SScreen2" parent="." index="9" instance=ExtResource( 13 )]
 
 editor/display_folded = true
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 
 [node name="Screen_2" parent="SScreen2" index="0"]
 
 editor/display_folded = false
 viewport_texture = SubResource( 2 )
 
-[node name="Viewports" parent="." index="10" instance=ExtResource( 14 )]
+[node name="Viewports" parent="." index="10" instance=ExtResource( 15 )]
 
 editor/display_folded = true
 
@@ -297,7 +301,9 @@ _sections_unfolded = [ "Grow Direction", "Margin", "Material", "Rect" ]
 texture = SubResource( 4 )
 data = SubResource( 5 )
 
-[node name="SButton1" parent="." index="11" instance=ExtResource( 15 )]
+[node name="SButton1" parent="." index="11" instance=ExtResource( 16 )]
+
+editor/display_folded = true
 
 [node name="Buttons_1" parent="SButton1" index="0"]
 
@@ -344,49 +350,53 @@ text_label = "Shield"
 
 [node name="Measures" type="Spatial" parent="." index="12"]
 
-[node name="Measure 1" parent="Measures" index="0" instance=ExtResource( 16 )]
+editor/display_folded = true
+
+[node name="Measure 1" parent="Measures" index="0" instance=ExtResource( 17 )]
 
 transform = Transform( -0.0172073, -0.0245746, 1.82634e-09, -1.31134e-09, -1.31134e-09, -0.03, 0.0245746, -0.0172073, -3.22034e-10, 0.82, 0.23, 0.75 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="Measure 2" parent="Measures" index="1" instance=ExtResource( 16 )]
+[node name="Measure 2" parent="Measures" index="1" instance=ExtResource( 17 )]
 
 transform = Transform( -0.0172073, -0.0245746, 1.82634e-09, -1.31134e-09, -1.31134e-09, -0.03, 0.0245746, -0.0172073, -3.22034e-10, 0.82, 0.04, 0.75 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="Measure 3" parent="Measures" index="2" instance=ExtResource( 16 )]
+[node name="Measure 3" parent="Measures" index="2" instance=ExtResource( 17 )]
 
 transform = Transform( -0.0172073, -0.0245746, 1.82634e-09, -1.31134e-09, -1.31134e-09, -0.03, 0.0245746, -0.0172073, -3.22034e-10, 0.82, -0.18, 0.75 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="Measure 4" parent="Measures" index="3" instance=ExtResource( 16 )]
+[node name="Measure 4" parent="Measures" index="3" instance=ExtResource( 17 )]
 
 transform = Transform( -0.0245173, 0.0165527, 0.00499097, -0.000676728, 0.00773502, -0.0289778, -0.0172755, -0.0237945, -0.00594801, -0.75, -0.35, 0.96 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="Measure 5" parent="Measures" index="4" instance=ExtResource( 16 )]
+[node name="Measure 5" parent="Measures" index="4" instance=ExtResource( 17 )]
 
 transform = Transform( -0.0245173, 0.0165527, 0.00499097, -0.000676728, 0.00773502, -0.0289778, -0.0172755, -0.0237945, -0.00594801, -0.82, -0.2, 0.96 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Lights" type="Spatial" parent="." index="13"]
 
-[node name="Light" parent="Lights" index="0" instance=ExtResource( 17 )]
+editor/display_folded = true
+
+[node name="Light" parent="Lights" index="0" instance=ExtResource( 18 )]
 
 transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-08, 0, -1.62921e-08, -0.05, 0, 0.999471, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Light4" parent="Lights" index="1" instance=ExtResource( 17 )]
+[node name="Light4" parent="Lights" index="1" instance=ExtResource( 18 )]
 
 transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-08, 0, -1.62921e-08, -0.05, -0.1, 0.899471, 1.15 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Light2" parent="Lights" index="2" instance=ExtResource( 17 )]
+[node name="Light2" parent="Lights" index="2" instance=ExtResource( 18 )]
 
 transform = Transform( 8.14604e-09, 0.05, -1.62921e-08, 0.05, -8.14603e-09, 1.65806e-08, 1.65806e-08, -1.62921e-08, -0.05, -1.00847, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Light3" parent="Lights" index="3" instance=ExtResource( 17 )]
+[node name="Light3" parent="Lights" index="3" instance=ExtResource( 18 )]
 
 transform = Transform( 1.41065e-08, -0.05, 4.37114e-09, -0.05, -1.41065e-08, -1.65806e-08, 1.65806e-08, -4.37113e-09, -0.05, 1.00847, 0, 0 )
 _sections_unfolded = [ "Transform" ]

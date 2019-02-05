@@ -207,6 +207,8 @@ autostart = true
 
 [connection signal="collision_impact" from="." to="Cockpit" method="_on_Submarine_collision_impact"]
 
+[connection signal="shaky" from="." to="Cockpit" method="_on_Submarine_shaky"]
+
 [connection signal="speed_changed" from="Cockpit" to="." method="_on_Cockpit_speed_changed"]
 
 [connection signal="body_shape_entered" from="Area" to="." method="_on_Area_body_shape_entered"]

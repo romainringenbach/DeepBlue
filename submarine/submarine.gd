@@ -26,6 +26,7 @@ var value
 var collision = false
 
 signal collision_impact()
+signal shaky(force)
 
 func _ready():
 	player_direction = $Cockpit.get_global_transform().basis.z
@@ -106,6 +107,8 @@ func _integrate_forces(state):
 			
 		elif collision == true and (abs(deviation * final_force.length()) <= 8000 or $Area2.get_overlapping_bodies().size() == 1):
 			collision = false
+			
+		$Cockpit/Yaw.force_percent = abs(deviation * final_force.length())/20000
 
 
 func _on_Cockpit_speed_changed(speed_percent):

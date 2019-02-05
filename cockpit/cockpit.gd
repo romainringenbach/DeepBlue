@@ -12,7 +12,7 @@ signal gameover()
 
 var life = 3
 
-
+var max_shaky = 0.3
 
 
 func _ready():
@@ -48,5 +48,6 @@ func _on_Submarine_collision_impact():
 		life -= 1
 		if life == 0:
 			emit_signal('gameover')
-		
+			
+func shake_the_cam(force):
 	
