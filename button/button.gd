@@ -78,7 +78,6 @@ func _on_StaticBody_input_event(camera, event, click_position, click_normal, sha
 					
 				elif toggle == true:
 					toggle = false
-					print("ta maman")
 					if hold == true:
 						$AnimationPlayer2.play('light_off')
 			emit_signal("left_click")
@@ -91,6 +90,9 @@ func _on_AnimationPlayer2_animation_finished(anim_name):
 	if type == 1 and toggle == true and blink_count != blinking_duration:
 		$AnimationPlayer2.play('blink')
 		blink_count += 1
+		
+	if type == 1 and toggle == true and blink_count == blinking_duration:
+		toggle = false
 		
 	if type == 3 and toggle == true:
 		$AnimationPlayer2.play('blink')
