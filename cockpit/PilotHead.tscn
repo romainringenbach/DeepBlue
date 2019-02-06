@@ -1,0 +1,175 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://cockpit/Head.gd" type="Script" id=1]
+[ext_resource path="res://cockpit/Yaw.gd" type="Script" id=2]
+[ext_resource path="res://cockpit/InterpolatedCamera.gd" type="Script" id=3]
+[ext_resource path="res://Dialoguebox/SimpleDialogueBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Dialoguebox/SignalLink.gd" type="Script" id=5]
+
+[sub_resource type="CapsuleShape" id=1]
+
+radius = 0.2
+height = 0.3
+
+[sub_resource type="SphereShape" id=2]
+
+radius = 0.1
+
+[node name="PilotHead" type="Spatial"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23, -0.15 )
+
+[node name="Body" type="StaticBody" parent="." index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 16
+collision_mask = 16
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="Body" index="0"]
+
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -0.42, 0 )
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Head" type="RigidBody" parent="." index="1"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 0 )
+input_ray_pickable = false
+input_capture_on_drag = false
+collision_layer = 16
+collision_mask = 16
+mode = 0
+mass = 10.0
+friction = 0.3
+bounce = 0.3
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = false
+axis_lock_linear_x = false
+axis_lock_linear_y = false
+axis_lock_linear_z = false
+axis_lock_angular_x = false
+axis_lock_angular_y = false
+axis_lock_angular_z = false
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = 0.3
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = 0.3
+script = ExtResource( 1 )
+_sections_unfolded = [ "Angular", "Collision", "Linear", "Transform" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="Head" index="0"]
+
+shape = SubResource( 2 )
+disabled = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="Yaw" type="Spatial" parent="Head" index="1"]
+
+script = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="InterpolatedCamera" type="InterpolatedCamera" parent="Head/Yaw" index="0"]
+
+transform = Transform( -1, 1.5708e-07, -1.50996e-07, 1.5708e-07, 1, 0, 1.50996e-07, -2.37184e-14, -1, 0, 0, 0 )
+keep_aspect = 1
+cull_mask = 1048559
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 2
+projection = 0
+current = true
+fov = 55.0
+size = 1.0
+near = 0.05
+far = 100.0
+target = NodePath("")
+speed = 1.0
+enabled = false
+script = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+MAX_ZOOM = 20
+MAX_UNZOOM = 55
+pas = 5
+
+[node name="SimpleDialogueBox" type="Node2D" parent="Head/Yaw/InterpolatedCamera" index="0" instance=ExtResource( 4 )]
+
+position = Vector2( 534.912, 529.13 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="." index="2"]
+
+nodes/node_a = NodePath("../Body")
+nodes/node_b = NodePath("../Head")
+solver/priority = 1
+collision/exclude_nodes = false
+linear_limit_x/enabled = true
+linear_limit_x/upper_distance = 0.0
+linear_limit_x/lower_distance = 0.0
+linear_limit_x/softness = 0.7
+linear_limit_x/restitution = 0.5
+linear_limit_x/damping = 1.0
+angular_limit_x/enabled = true
+angular_limit_x/upper_angle = 2.0
+angular_limit_x/lower_angle = 2.0
+angular_limit_x/softness = 0.1
+angular_limit_x/restitution = 0.01
+angular_limit_x/damping = 0.1
+angular_limit_x/force_limit = 1.0
+angular_limit_x/erp = 1.0
+angular_motor_x/enabled = false
+angular_motor_x/target_velocity = 0.0
+angular_motor_x/force_limit = 300.0
+linear_limit_y/enabled = true
+linear_limit_y/upper_distance = 0.0
+linear_limit_y/lower_distance = 0.0
+linear_limit_y/softness = 0.7
+linear_limit_y/restitution = 0.5
+linear_limit_y/damping = 1.0
+angular_limit_y/enabled = true
+angular_limit_y/upper_angle = 0.0
+angular_limit_y/lower_angle = 0.0
+angular_limit_y/softness = 0.1
+angular_limit_y/restitution = 0.0
+angular_limit_y/damping = 0.1
+angular_limit_y/force_limit = 1.0
+angular_limit_y/erp = 1.0
+angular_motor_y/enabled = false
+angular_motor_y/target_velocity = 0.0
+angular_motor_y/force_limit = 300.0
+linear_limit_z/enabled = true
+linear_limit_z/upper_distance = 0.0
+linear_limit_z/lower_distance = 0.0
+linear_limit_z/softness = 0.7
+linear_limit_z/restitution = 0.5
+linear_limit_z/damping = 1.0
+angular_limit_z/enabled = true
+angular_limit_z/upper_angle = 2.0
+angular_limit_z/lower_angle = 2.0
+angular_limit_z/softness = 0.1
+angular_limit_z/restitution = 0.0
+angular_limit_z/damping = 0.1
+angular_limit_z/force_limit = 1.0
+angular_limit_z/erp = 1.0
+angular_motor_z/enabled = false
+angular_motor_z/target_velocity = 0.0
+angular_motor_z/force_limit = 300.0
+_sections_unfolded = [ "angular_limit_x", "angular_limit_y", "angular_limit_z", "angular_motor_x", "collision", "nodes" ]
+
+[connection signal="transmit_messages" from="Head/Yaw/InterpolatedCamera/SimpleDialogueBox" to="Head/Yaw/InterpolatedCamera/SimpleDialogueBox/RichTextLabel" method="_on_SimpleDialogueBox_transmit_messages"]
+
+

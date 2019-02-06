@@ -1,6 +1,7 @@
 extends Spatial
 
 signal speed_changed(speed)
+signal reverse_changed()
 
 var current_speed = 0.0
 var real_speed = 0.0
@@ -37,6 +38,8 @@ func _on_Scene_Root_position_changed(percent):
 
 func _on_Reverse_left_click():
 	_update_speed()
+	emit_signal('reverse_changed')
+	
 
 
 func _on_Boost_left_click():

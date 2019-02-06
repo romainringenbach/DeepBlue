@@ -23,7 +23,10 @@ var pos
 var level
 var value
 
+var direction_changed = false
+
 var collision = false
+var shake = false
 
 signal collision_impact()
 signal shaky(force)
@@ -103,12 +106,20 @@ func _integrate_forces(state):
 		if deviation != 0 and abs(deviation * final_force.length()) > 10000 and $Area2.get_overlapping_bodies().size() > 1 and collision == false:
 			emit_signal('collision_impact')
 			collision = true
-			print ('ouch')
+			
 			
 		elif collision == true and (abs(deviation * final_force.length()) <= 8000 or $Area2.get_overlapping_bodies().size() == 1):
 			collision = false
+
+		#if deviation != 0 and abs(deviation * final_force.length()) > 10000 and shake == false:
 			
-		$Cockpit/Yaw.force_percent = abs(deviation * final_force.length())/20000
+		#	shake = true
+		#	shake_force = final_force
+
+		#elif shake == true and abs(deviation * final_force.length()) <= 8000:
+		#	shake = false
+			
+		#print(abs(deviation * final_force.length()))
 
 
 func _on_Cockpit_speed_changed(speed_percent):
@@ -157,3 +168,6 @@ func _on_Area2_body_shape_entered(body_id, body, body_shape, area_shape):
 		
 		
 	pass
+
+func _on_Speed_controller_reverse_changed():
+	direction_changed = true

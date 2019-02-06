@@ -468,42 +468,34 @@ script = ExtResource( 2 )
 material/0 = SubResource( 1 )
 _sections_unfolded = [ "material" ]
 
-[node name="Camera" parent="." index="1"]
-
-visible = false
-
-[node name="Lamp" parent="." index="2"]
-
-visible = false
-
-[node name="NurbsCircle" parent="." index="3"]
+[node name="NurbsCircle" parent="." index="1"]
 
 material/0 = SubResource( 2 )
 _sections_unfolded = [ "material" ]
 
-[node name="Cylinder" parent="." index="4"]
+[node name="Cylinder" parent="." index="2"]
 
 material/0 = SubResource( 3 )
 _sections_unfolded = [ "material" ]
 
-[node name="Cylinder_001" parent="." index="5"]
+[node name="Cylinder_001" parent="." index="3"]
 
 transform = Transform( 0.9, 0, 0, 0, 0, 0, 0, 0, 0.9, 0, 0.462951, 0 )
 material/0 = SubResource( 4 )
 _sections_unfolded = [ "material" ]
 
-[node name="BezierCurve" parent="." index="6"]
+[node name="BezierCurve" parent="." index="4"]
 
 material/0 = SubResource( 5 )
 _sections_unfolded = [ "material" ]
 
-[node name="Cylinder_003" parent="." index="7"]
+[node name="Cylinder_003" parent="." index="5"]
 
 transform = Transform( 0.0866025, 0, 0.05, 0, 0.01, 0, -0.05, 0, 0.0866025, 0, 0.429555, 0 )
 material/0 = SubResource( 6 )
 _sections_unfolded = [ "Transform", "material" ]
 
-[node name="AnimationPlayer" parent="." index="8"]
+[node name="AnimationPlayer" parent="." index="6"]
 
 anims/down_100-50 = SubResource( 7 )
 anims/down_20_0 = SubResource( 8 )

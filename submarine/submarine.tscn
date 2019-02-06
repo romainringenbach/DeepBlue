@@ -113,6 +113,7 @@ STEER_FORCE_UD = 0.8
 
 [node name="Cockpit" parent="." index="0" instance=ExtResource( 2 )]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
@@ -211,6 +212,8 @@ autostart = true
 
 [connection signal="speed_changed" from="Cockpit" to="." method="_on_Cockpit_speed_changed"]
 
+[connection signal="reverse_changed" from="Cockpit/Speed_controller" to="." method="_on_Speed_controller_reverse_changed"]
+
 [connection signal="body_shape_entered" from="Area" to="." method="_on_Area_body_shape_entered"]
 
 [connection signal="body_shape_exited" from="Area" to="." method="_on_Area_body_shape_exited"]
@@ -220,3 +223,4 @@ autostart = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 
+[editable path="Cockpit"]

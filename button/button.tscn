@@ -191,7 +191,7 @@ tracks/0/keys = {
 
 [sub_resource type="BoxShape" id=7]
 
-extents = Vector3( 1, 1, 1 )
+extents = Vector3( 1.08452, 1.17431, 1.09047 )
 
 [node name="Button" instance=ExtResource( 1 )]
 

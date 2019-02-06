@@ -6,12 +6,11 @@ export (float) var MAX_ZOOM = 20
 export (float) var MAX_UNZOOM = 55
 export (float) var pas = 5
 
-var nfov 
 
 func _ready():
 	## Tell Godot that we want to handle input
 	#set_process_input(true)
-	nfov = fov
+	pass
 	
 func look_updown_rotation(rotation = 0):
 	"""
@@ -68,13 +67,13 @@ func _input(event):
 		return mouse(event)
 		
 	if Input.is_action_pressed("zoom"):
-		nfov -= pas
-		if nfov < MAX_ZOOM:
-			nfov = MAX_ZOOM
+		fov -= pas
+		if fov < MAX_ZOOM:
+			fov = MAX_ZOOM
 	if Input.is_action_pressed("unzoom"):
-		nfov += pas
-		if nfov > MAX_UNZOOM:
-			nfov = MAX_UNZOOM
+		fov += pas
+		if fov > MAX_UNZOOM:
+			fov = MAX_UNZOOM
 
 func _enter_tree():
 	"""
