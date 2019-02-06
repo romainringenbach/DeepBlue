@@ -32,6 +32,7 @@ func _set_hold_and_blink():
 	
 func _set_color():
 	$"Cube.001".material_override.emission = color
+	$OmniLight.light_color = color
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -87,9 +88,14 @@ func blink():
 	$AnimationPlayer2.play('blink')
 
 func _on_AnimationPlayer2_animation_finished(anim_name):
-	if type == 1 and toggle == true and blink_count != blinking_duration:
-		$AnimationPlayer2.play('blink')
+	if (type == 1 or type == 2) and toggle == true and blink_count != blinking_duration:
+		if type == 2 and blink_count == blinking_duration -1 :
+			$AnimationPlayer2.play('light_on')
+		else:
+			$AnimationPlayer2.play('blink')
 		blink_count += 1
+		
+		
 		
 	if type == 1 and toggle == true and blink_count == blinking_duration:
 		toggle = false

@@ -17,31 +17,31 @@
 [ext_resource path="res://measure_1/measure.tscn" type="PackedScene" id=15]
 [ext_resource path="res://light/light.tscn" type="PackedScene" id=16]
 
-[sub_resource type="ViewportTexture" id=3]
+[sub_resource type="ViewportTexture" id=1]
 
 resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("Viewports/SonarActif")
 
-[sub_resource type="ViewportTexture" id=4]
+[sub_resource type="ViewportTexture" id=2]
 
 resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("Viewports/SonarPassif")
 
-[sub_resource type="ViewportTexture" id=5]
+[sub_resource type="ViewportTexture" id=3]
 
 resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("Viewports/TopView")
 
-[sub_resource type="ViewportTexture" id=6]
+[sub_resource type="ViewportTexture" id=4]
 
 resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("Viewports/TopView")
 
-[sub_resource type="ImageTexture" id=7]
+[sub_resource type="ImageTexture" id=5]
 
 flags = 7
 storage = 0
@@ -242,7 +242,7 @@ editor/display_folded = true
 
 [node name="Screen_1" parent="SScreen1" index="0"]
 
-viewport_texture = SubResource( 3 )
+viewport_texture = SubResource( 1 )
 
 [node name="SScreen2" parent="." index="9" instance=ExtResource( 11 )]
 
@@ -252,7 +252,7 @@ script = ExtResource( 12 )
 [node name="Screen_2" parent="SScreen2" index="0"]
 
 editor/display_folded = false
-viewport_texture = SubResource( 4 )
+viewport_texture = SubResource( 2 )
 
 [node name="Viewports" parent="." index="10" instance=ExtResource( 13 )]
 
@@ -260,17 +260,15 @@ editor/display_folded = true
 
 [node name="TextureRect" parent="Viewports/SonarActif" index="0"]
 
-texture = SubResource( 5 )
+texture = SubResource( 3 )
 _sections_unfolded = [ "Grow Direction", "Margin", "Material", "Rect" ]
 
 [node name="TextureRect" parent="Viewports/SonarPassif" index="0"]
 
-texture = SubResource( 6 )
-data = SubResource( 7 )
+texture = SubResource( 4 )
+data = SubResource( 5 )
 
 [node name="SButton1" parent="." index="11" instance=ExtResource( 14 )]
-
-editor/display_folded = true
 
 [node name="Buttons_1" parent="SButton1" index="0"]
 
@@ -278,12 +276,12 @@ transform = Transform( 1.62921e-07, -1, -3.25841e-07, -1, -1.62921e-07, 6.98132e
 
 [node name="Button1" parent="SButton1/Buttons_1" index="0"]
 
-color = Color( 1, 1, 1, 1 )
+color = Color( 0.99469, 1, 0.320312, 1 )
 set_up = true
 
 [node name="Button2" parent="SButton1/Buttons_1" index="1"]
 
-color = Color( 1, 1, 1, 1 )
+color = Color( 0.992157, 1, 0.317647, 1 )
 set_up = true
 
 [node name="Button3" parent="SButton1/Buttons_1" index="2"]
@@ -309,7 +307,7 @@ text_label = "Long range spot"
 
 [node name="Label3" parent="SButton1/Buttons_1" index="10"]
 
-text_label = "Alarm simu"
+text_label = "Alarm"
 
 [node name="Label8" parent="SButton1/Buttons_1" index="15"]
 
