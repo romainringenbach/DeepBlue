@@ -1,226 +1,110 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://submarine/submarine.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/cockpit.tscn" type="PackedScene" id=2]
 
-[sub_resource type="CapsuleShape" id=1]
+[sub_resource type="PhysicsMaterial" id=1]
+
+bounce = 0.2
+
+[sub_resource type="CapsuleShape" id=2]
 
 radius = 1.32145
 height = 6.01323
 
-[sub_resource type="CylinderMesh" id=2]
+[sub_resource type="CylinderMesh" id=3]
 
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
-top_radius = 1.0
-bottom_radius = 1.0
-height = 2.0
-radial_segments = 64
-rings = 4
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=4]
 
-render_priority = 0
-flags_transparent = false
-flags_unshaded = false
-flags_vertex_lighting = false
-flags_no_depth_test = false
-flags_use_point_size = false
-flags_world_triplanar = false
-flags_fixed_size = false
-flags_albedo_tex_force_srgb = false
-vertex_color_use_as_albedo = false
-vertex_color_is_srgb = false
-params_diffuse_mode = 0
-params_specular_mode = 0
-params_blend_mode = 0
-params_cull_mode = 0
-params_depth_draw_mode = 0
-params_line_width = 1.0
-params_point_size = 1.0
-params_billboard_mode = 0
-params_grow = false
-params_use_alpha_scissor = false
 albedo_color = Color( 0.34375, 0.34375, 0.34375, 1 )
-metallic = 0.0
-metallic_specular = 0.5
-metallic_texture_channel = 0
 roughness = 0.0
-roughness_texture_channel = 0
-emission_enabled = false
-normal_enabled = false
-rim_enabled = false
-clearcoat_enabled = false
-anisotropy_enabled = false
-ao_enabled = false
-depth_enabled = false
-subsurf_scatter_enabled = false
-transmission_enabled = false
-refraction_enabled = false
-detail_enabled = false
-uv1_scale = Vector3( 1, 1, 1 )
-uv1_offset = Vector3( 0, 0, 0 )
-uv1_triplanar = false
-uv1_triplanar_sharpness = 1.0
-uv2_scale = Vector3( 1, 1, 1 )
-uv2_offset = Vector3( 0, 0, 0 )
-uv2_triplanar = false
-uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
-distance_fade_enable = false
-_sections_unfolded = [ "Albedo" ]
 
-[sub_resource type="SphereShape" id=4]
+[sub_resource type="SphereShape" id=5]
 
 radius = 40.0
 
-[sub_resource type="CapsuleShape" id=5]
+[sub_resource type="CapsuleShape" id=6]
 
 radius = 1.3213
 height = 6.67976
 
 [node name="Submarine" type="RigidBody"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-mode = 0
 mass = 200.0
-friction = 1.0
-bounce = 0.2
+physics_material_override = SubResource( 1 )
 gravity_scale = 0.0
-custom_integrator = false
-continuous_cd = false
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
 can_sleep = false
-axis_lock_linear_x = false
-axis_lock_linear_y = false
-axis_lock_linear_z = false
-axis_lock_angular_x = false
-axis_lock_angular_y = false
-axis_lock_angular_z = false
-linear_velocity = Vector3( 0, 0, 0 )
 linear_damp = 0.3
-angular_velocity = Vector3( 0, 0, 0 )
 angular_damp = 0.3
 script = ExtResource( 1 )
-_sections_unfolded = [ "Angular", "Axis Lock", "Collision", "Linear", "Transform" ]
-FULL_THRUST = 100
-STEER_FORCE_LR = 1.5
-STEER_FORCE_UD = 0.8
 
-[node name="Cockpit" parent="." index="0" instance=ExtResource( 2 )]
-
+[node name="Cockpit" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2 )
 
-[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+[node name="TopSpot1" parent="Cockpit/TopSpots" index="0"]
+light_cull_mask = -1
 
-shape = SubResource( 1 )
-disabled = false
-_sections_unfolded = [ "Transform", "Visibility" ]
+[node name="TopSpot2" parent="Cockpit/TopSpots" index="1"]
+light_cull_mask = -1
 
-[node name="MeshInstance" type="MeshInstance" parent="." index="2"]
+[node name="TopSpot3" parent="Cockpit/TopSpots" index="2"]
+light_cull_mask = -1
 
+[node name="TopSpot4" parent="Cockpit/TopSpots" index="3"]
+light_cull_mask = -1
+
+[node name="LongRangeSpot1" parent="Cockpit/LongRangeSpots" index="0"]
+light_cull_mask = -1
+
+[node name="LongRangeSpot2" parent="Cockpit/LongRangeSpots" index="1"]
+light_cull_mask = -1
+
+[node name="OmniLight" parent="Cockpit/Lights" index="4"]
+light_cull_mask = -1
+
+[node name="OmniLight2" parent="Cockpit/Lights" index="5"]
+light_cull_mask = -1
+
+[node name="OmniLight3" parent="Cockpit/Lights" index="6"]
+light_cull_mask = -1
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 2.15, -3.50279e-07, 0, 0, -1 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 2 )
-skeleton = NodePath("..")
-material/0 = SubResource( 3 )
-_sections_unfolded = [ "Transform", "material" ]
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
 
-[node name="Area" type="Area" parent="." index="3"]
-
-input_ray_pickable = false
-input_capture_on_drag = false
-space_override = 0
-gravity_point = false
-gravity_distance_scale = 0.0
-gravity_vec = Vector3( 0, -1, 0 )
-gravity = 9.8
+[node name="Area" type="Area" parent="."]
 linear_damp = 0.0
 angular_damp = 0.0
-priority = 0.0
-monitoring = true
 monitorable = false
-collision_layer = 1
-collision_mask = 1
-audio_bus_override = false
-audio_bus_name = "Master"
-reverb_bus_enable = false
-reverb_bus_name = "Master"
-reverb_bus_amount = 0.0
-reverb_bus_uniformity = 0.0
-_sections_unfolded = [ "Collision", "Reverb Bus" ]
 
-[node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Area2" type="Area" parent="." index="4"]
-
-input_ray_pickable = false
-input_capture_on_drag = false
-space_override = 0
-gravity_point = false
-gravity_distance_scale = 0.0
-gravity_vec = Vector3( 0, -1, 0 )
-gravity = 9.8
-linear_damp = 0.0
-angular_damp = 0.0
-priority = 0.0
-monitoring = true
-monitorable = false
-collision_layer = 1
-collision_mask = 1
-audio_bus_override = false
-audio_bus_name = "Master"
-reverb_bus_enable = false
-reverb_bus_name = "Master"
-reverb_bus_amount = 0.0
-reverb_bus_uniformity = 0.0
-_sections_unfolded = [ "Collision", "Reverb Bus" ]
-
-[node name="CollisionShape" type="CollisionShape" parent="Area2" index="0"]
-
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 5 )
-disabled = false
 
-[node name="Timer" type="Timer" parent="." index="5"]
+[node name="Area2" type="Area" parent="."]
+linear_damp = 0.0
+angular_damp = 0.0
+monitorable = false
 
-process_mode = 1
+[node name="CollisionShape" type="CollisionShape" parent="Area2"]
+shape = SubResource( 6 )
+
+[node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
-one_shot = false
 autostart = true
 
 [connection signal="body_entered" from="." to="Cockpit" method="_on_Submarine_body_entered"]
-
 [connection signal="collision_impact" from="." to="Cockpit" method="_on_Submarine_collision_impact"]
-
 [connection signal="shaky" from="." to="Cockpit" method="_on_Submarine_shaky"]
-
 [connection signal="speed_changed" from="Cockpit" to="." method="_on_Cockpit_speed_changed"]
-
 [connection signal="reverse_changed" from="Cockpit/Speed_controller" to="." method="_on_Speed_controller_reverse_changed"]
-
 [connection signal="body_shape_entered" from="Area" to="." method="_on_Area_body_shape_entered"]
-
 [connection signal="body_shape_exited" from="Area" to="." method="_on_Area_body_shape_exited"]
-
 [connection signal="body_shape_entered" from="Area2" to="." method="_on_Area2_body_shape_entered"]
-
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-
 
 [editable path="Cockpit"]

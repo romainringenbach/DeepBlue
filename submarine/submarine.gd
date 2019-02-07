@@ -35,6 +35,7 @@ func _ready():
 	player_direction = $Cockpit.get_global_transform().basis.z
 	$Cockpit/Viewports/TopView/Yaw.target = get_path()
 	$Cockpit/Viewports/BottomView/Yaw.target = get_path()
+	bounce = 0.6
 	
 
 func get_input():
@@ -111,15 +112,7 @@ func _integrate_forces(state):
 		elif collision == true and (abs(deviation * final_force.length()) <= 8000 or $Area2.get_overlapping_bodies().size() == 1):
 			collision = false
 
-		#if deviation != 0 and abs(deviation * final_force.length()) > 10000 and shake == false:
-			
-		#	shake = true
-		#	shake_force = final_force
-
-		#elif shake == true and abs(deviation * final_force.length()) <= 8000:
-		#	shake = false
-			
-		#print(abs(deviation * final_force.length()))
+		print (abs(deviation * final_force.length()))
 
 
 func _on_Cockpit_speed_changed(speed_percent):
