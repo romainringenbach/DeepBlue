@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://cockpit/dome/crack_generator.gd" type="Script" id=1]
-[ext_resource path="res://blender_models/dome_craking.png" type="Texture" id=2]
+[ext_resource path="res://blender_models/dome_cracking2.png" type="Texture" id=2]
 
 [sub_resource type="Shader" id=1]
 
@@ -19,48 +19,45 @@ void fragment()
 	//color_tmp.a = 1.0;
 	
 	
+	//Apply correction to texture 
+	vec2 uv2 = UV;
+	
+	
 	vec2 begin_n = begin/1024.0;
 	begin_n.y = 1.0 - begin_n.y;
 	float dist = 1.0/1024.0;
 	
-
-	if (UV.x >= begin_n.x-dist && UV.x <= begin_n.x+dist && UV.y >= begin_n.y-dist && UV.y <= begin_n.y+dist){
-		color_tmp = vec4(1.0,1.0,1.0,1.0);
-	} else {
+	bool neightboor_is_white = false;
 	
-		bool neightboor_is_white = false;
-		
-		/*
-		for (float u = UV.x - 2.0*dist ; u <= UV.x + 2.0*dist ; u += dist)
+	/*
+	for (float u = UV.x - 2.0*dist ; u <= UV.x + 2.0*dist ; u += dist)
+	{
+		for (float v = UV.y - 2.0*dist ; v <= UV.y + 2.0*dist ; v += dist)
 		{
-			for (float v = UV.y - 2.0*dist ; v <= UV.y + 2.0*dist ; v += dist)
-			{
-				if (u >= 0.0 && u <= 1.0 && v >= 0.0 && v <= 1.0){
-					if (texture(previous,vec2(u,v)).r > 0.0){
-						neightboor_is_white = true;
-					}
+			if (u >= 0.0 && u <= 1.0 && v >= 0.0 && v <= 1.0){
+				if (texture(previous,vec2(u,v)).r > 0.0){
+					neightboor_is_white = true;
 				}
 			}
-		}*/
-		
-		if (UV.x > begin_n.x){
-			if (length(begin_n-UV) <= float(distance_i)/1024.0){
-				neightboor_is_white = true;
-			}
-		} else {
-			if (length(begin_n-vec2(UV.x+1.0,UV.y)) <= float(distance_i)/1024.0){
-				neightboor_is_white = true;
-			}
 		}
-		
-		
-		
-		
-		if (neightboor_is_white && texture(cracking,UV).r > 0.9 && texture(cracking,UV).a > 0.9)
-		{
-			color_tmp = vec4(1.0,1.0,1.0,1.0);
-		}
+	}*/
 	
+	if (uv2.x > begin_n.x){
+		if (length(begin_n-uv2) <= float(distance_i)/1024.0){
+			neightboor_is_white = true;
+		}
+	} else {
+		if (length(begin_n-vec2(uv2.x+1.0,uv2.y)) <= float(distance_i)/1024.0){
+			neightboor_is_white = true;
+		}
+	}
+	
+	
+	
+	
+	if (neightboor_is_white && texture(cracking,uv2).r > 0.9 && texture(cracking,uv2).a > 0.9)
+	{
+		color_tmp = vec4(1.0,1.0,1.0,1.0);
 	}
 	
 	COLOR = color_tmp;
@@ -80,7 +77,11 @@ shader_param/distance_i = null
 shader_param/cracking = ExtResource( 2 )
 shader_param/previous = SubResource( 2 )
 
-[sub_resource type="Shader" id=4]
+[sub_resource type="ViewportTexture" id=4]
+
+viewport_path = NodePath("CrackPass")
+
+[sub_resource type="Shader" id=5]
 
 code = "shader_type canvas_item;
 
@@ -184,15 +185,15 @@ void fragment(){
 	
 }"
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=6]
 
-shader = SubResource( 4 )
+shader = SubResource( 5 )
 
-[sub_resource type="ViewportTexture" id=6]
+[sub_resource type="ViewportTexture" id=7]
 
 viewport_path = NodePath("CrackPass")
 
-[sub_resource type="ViewportTexture" id=7]
+[sub_resource type="ViewportTexture" id=8]
 
 viewport_path = NodePath("CrackPass")
 
@@ -209,17 +210,17 @@ render_target_update_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="CrackPass"]
 material = SubResource( 3 )
-texture = ExtResource( 2 )
+texture = SubResource( 4 )
 stretch_mode = 4
 
 [node name="Noise" type="Viewport" parent="."]
 size = Vector2( 1024, 1024 )
 
 [node name="TextureRect" type="TextureRect" parent="Noise"]
-material = SubResource( 5 )
+material = SubResource( 6 )
 margin_right = 40.0
 margin_bottom = 40.0
-texture = SubResource( 6 )
+texture = SubResource( 7 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.02
@@ -227,7 +228,7 @@ autostart = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 visible = false
-texture = SubResource( 7 )
+texture = SubResource( 8 )
 
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.58076 )
