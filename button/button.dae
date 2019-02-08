@@ -12,13 +12,10 @@
 </asset>
 <library_images>
 	<image id="id-image-3" name="Material Diffuse Color.001">
-		<init_from></init_from>
 	</image>
 	<image id="id-image-10" name="Material.002 Diffuse Color">
-		<init_from></init_from>
 	</image>
 	<image id="id-image-18" name="Material.001 Diffuse Color">
-		<init_from></init_from>
 	</image>
 </library_images>
 <library_effects>

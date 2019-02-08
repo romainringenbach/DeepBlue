@@ -15,3 +15,4 @@ dest_files=[ "res://.import/panel_button.obj-d92a6f2f878b7263c5dcfb2016d9d869.me
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true
