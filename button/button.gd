@@ -31,7 +31,7 @@ func _set_hold_and_blink():
 		blink = false
 	
 func _set_color():
-	$"Cube.001".material_override.emission = color
+	$"Cube001".material_override.emission = color
 	$OmniLight.light_color = color
 
 func _ready():
