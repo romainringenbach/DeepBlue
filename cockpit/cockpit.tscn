@@ -19,436 +19,213 @@
 
 [sub_resource type="ViewportTexture" id=1]
 
-resource_local_to_scene = true
-flags = 0
 viewport_path = NodePath("Viewports/SonarActif")
 
 [sub_resource type="ViewportTexture" id=2]
 
-resource_local_to_scene = true
-flags = 0
 viewport_path = NodePath("Viewports/SonarPassif")
 
 [sub_resource type="ViewportTexture" id=3]
 
-resource_local_to_scene = true
-flags = 0
 viewport_path = NodePath("Viewports/TopView")
 
 [sub_resource type="ViewportTexture" id=4]
 
-resource_local_to_scene = true
-flags = 0
 viewport_path = NodePath("Viewports/TopView")
 
 [sub_resource type="ImageTexture" id=5]
 
-flags = 7
-storage = 0
-lossy_quality = 0.7
-flags = 7
 size = Vector2( 1, 1 )
 
 [node name="Spatial" type="Spatial"]
-
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
-minimum_impact_force = 5.0
 
-[node name="PilotHead" parent="." index="0" instance=ExtResource( 2 )]
+[node name="PilotHead" parent="." instance=ExtResource( 2 )]
 
-[node name="Cockpit" parent="." index="1" instance=ExtResource( 3 )]
-
+[node name="Cockpit" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.20686 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Radio" parent="." index="2" instance=ExtResource( 4 )]
-
+[node name="Radio" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.5, -0.866025, -3.25841e-07, -0.866025, -0.5, 0, -1.62921e-07, 2.82187e-07, -1, 0.65, 0.4, 0.15 )
-_sections_unfolded = [ "Transform", "material" ]
 
-[node name="Main_controller" parent="." index="3" instance=ExtResource( 5 )]
-
+[node name="Main_controller" parent="." instance=ExtResource( 5 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -0.65, 0.95 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Speed_controller" parent="." index="4" instance=ExtResource( 6 )]
-
+[node name="Speed_controller" parent="." instance=ExtResource( 6 )]
 transform = Transform( -4.88762e-08, 0, -0.3, 0.229813, 0.192836, -3.74413e-08, 0.192836, -0.229813, -3.1417e-08, -0.35, -0.35, 0.65 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="TopSpots" type="Spatial" parent="." index="5"]
-
+[node name="TopSpots" type="Spatial" parent="."]
 editor/display_folded = true
 transform = Transform( -0.99945, 0.0331552, -3.20891e-07, 0.0326515, 0.984266, 0.173648, 0.00575766, 0.173553, -0.984808, 0, 1.15, 1.8 )
 visible = false
 script = ExtResource( 7 )
-_sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="TopSpot1" type="SpotLight" parent="TopSpots" index="0"]
-
+[node name="TopSpot1" type="SpotLight" parent="TopSpots"]
 transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, 0.6, 0, 0 )
-layers = 1
-light_color = Color( 1, 1, 1, 1 )
-light_energy = 1.0
-light_indirect_energy = 1.0
-light_negative = false
-light_specular = 0.5
-light_bake_mode = 1
-light_cull_mask = -1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_bias = 0.15
-shadow_contact = 0.0
-shadow_reverse_cull_face = false
-editor_only = false
 spot_range = 3.89909
-spot_attenuation = 1.0
 spot_angle = 13.6036
-spot_angle_attenuation = 1.0
-_sections_unfolded = [ "Light", "Transform" ]
 
-[node name="TopSpot2" type="SpotLight" parent="TopSpots" index="1"]
-
+[node name="TopSpot2" type="SpotLight" parent="TopSpots"]
 transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, 0.2, 0, 0 )
-layers = 1
-light_color = Color( 1, 1, 1, 1 )
-light_energy = 1.0
-light_indirect_energy = 1.0
-light_negative = false
-light_specular = 0.5
-light_bake_mode = 1
-light_cull_mask = -1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_bias = 0.15
-shadow_contact = 0.0
-shadow_reverse_cull_face = false
-editor_only = false
 spot_range = 3.89909
-spot_attenuation = 1.0
 spot_angle = 13.6036
-spot_angle_attenuation = 1.0
-_sections_unfolded = [ "Transform" ]
 
-[node name="TopSpot3" type="SpotLight" parent="TopSpots" index="2"]
-
+[node name="TopSpot3" type="SpotLight" parent="TopSpots"]
 transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, -0.2, 0, 0 )
-layers = 1
-light_color = Color( 1, 1, 1, 1 )
-light_energy = 1.0
-light_indirect_energy = 1.0
-light_negative = false
-light_specular = 0.5
-light_bake_mode = 1
-light_cull_mask = -1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_bias = 0.15
-shadow_contact = 0.0
-shadow_reverse_cull_face = false
-editor_only = false
 spot_range = 3.89909
-spot_attenuation = 1.0
 spot_angle = 13.6036
-spot_angle_attenuation = 1.0
-_sections_unfolded = [ "Transform" ]
 
-[node name="TopSpot4" type="SpotLight" parent="TopSpots" index="3"]
-
+[node name="TopSpot4" type="SpotLight" parent="TopSpots"]
 transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, -0.6, 0, 0 )
-layers = 1
-light_color = Color( 1, 1, 1, 1 )
-light_energy = 1.0
-light_indirect_energy = 1.0
-light_negative = false
-light_specular = 0.5
-light_bake_mode = 1
-light_cull_mask = -1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_bias = 0.15
-shadow_contact = 0.0
-shadow_reverse_cull_face = false
-editor_only = false
 spot_range = 3.89909
-spot_attenuation = 1.0
 spot_angle = 13.6036
-spot_angle_attenuation = 1.0
-_sections_unfolded = [ "Transform" ]
 
-[node name="LongRangeSpots" type="Spatial" parent="." index="6"]
-
+[node name="LongRangeSpots" type="Spatial" parent="."]
 editor/display_folded = true
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -1.15, 1.8 )
 visible = false
 script = ExtResource( 8 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="LongRangeSpot1" type="SpotLight" parent="LongRangeSpots" index="0"]
-
+[node name="LongRangeSpot1" type="SpotLight" parent="LongRangeSpots"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
-layers = 1
-light_color = Color( 1, 1, 1, 1 )
-light_energy = 1.0
-light_indirect_energy = 1.0
-light_negative = false
-light_specular = 0.5
-light_bake_mode = 1
-light_cull_mask = -1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_bias = 0.15
-shadow_contact = 0.0
-shadow_reverse_cull_face = false
-editor_only = false
 spot_range = 19.4481
-spot_attenuation = 1.0
 spot_angle = 9.5757
-spot_angle_attenuation = 1.0
-_sections_unfolded = [ "Spot", "Transform" ]
 
-[node name="LongRangeSpot2" type="SpotLight" parent="LongRangeSpots" index="1"]
-
+[node name="LongRangeSpot2" type="SpotLight" parent="LongRangeSpots"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
-layers = 1
-light_color = Color( 1, 1, 1, 1 )
-light_energy = 1.0
-light_indirect_energy = 1.0
-light_negative = false
-light_specular = 0.5
-light_bake_mode = 1
-light_cull_mask = -1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_bias = 0.15
-shadow_contact = 0.0
-shadow_reverse_cull_face = false
-editor_only = false
 spot_range = 19.4481
-spot_attenuation = 1.0
 spot_angle = 9.5757
-spot_angle_attenuation = 1.0
-_sections_unfolded = [ "Transform" ]
 
-[node name="Alarm" parent="." index="7" instance=ExtResource( 9 )]
-
+[node name="Alarm" parent="." instance=ExtResource( 9 )]
 transform = Transform( 0.03, 0, 0, 0, -0.03, -9.77524e-09, 0, 9.77524e-09, -0.03, 0, 1.0091, 0.438676 )
-_sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="SScreen1" parent="." index="8" instance=ExtResource( 10 )]
-
+[node name="SScreen1" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 
 [node name="Screen_1" parent="SScreen1" index="0"]
-
 viewport_texture = SubResource( 1 )
 
-[node name="SScreen2" parent="." index="9" instance=ExtResource( 11 )]
-
+[node name="SScreen2" parent="." instance=ExtResource( 11 )]
 editor/display_folded = true
 script = ExtResource( 12 )
 
 [node name="Screen_2" parent="SScreen2" index="0"]
-
 editor/display_folded = false
 viewport_texture = SubResource( 2 )
 
-[node name="Viewports" parent="." index="10" instance=ExtResource( 13 )]
-
+[node name="Viewports" parent="." instance=ExtResource( 13 )]
 editor/display_folded = true
 
 [node name="TextureRect" parent="Viewports/SonarActif" index="0"]
-
 texture = SubResource( 3 )
-_sections_unfolded = [ "Grow Direction", "Margin", "Material", "Rect" ]
 
 [node name="TextureRect" parent="Viewports/SonarPassif" index="0"]
-
 texture = SubResource( 4 )
 data = SubResource( 5 )
 
-[node name="SButton1" parent="." index="11" instance=ExtResource( 14 )]
+[node name="SButton1" parent="." instance=ExtResource( 14 )]
+editor/display_folded = true
 
 [node name="Buttons_1" parent="SButton1" index="0"]
-
 transform = Transform( 1.62921e-07, -1, -3.25841e-07, -1, -1.62921e-07, 6.98132e-08, -6.98132e-08, 3.25841e-07, -1, 0.75, -2.98023e-08, 0.15 )
 
 [node name="Button1" parent="SButton1/Buttons_1" index="0"]
-
 color = Color( 0.99469, 1, 0.320312, 1 )
 set_up = true
 
 [node name="Button2" parent="SButton1/Buttons_1" index="1"]
-
 color = Color( 0.992157, 1, 0.317647, 1 )
 set_up = true
 
 [node name="Button3" parent="SButton1/Buttons_1" index="2"]
-
 type = 3
 color = Color( 1, 0, 0, 1 )
 set_up = true
 
 [node name="Button8" parent="SButton1/Buttons_1" index="7"]
-
 type = 2
 color = Color( 1, 0, 0, 1 )
 blinking_duration = 5
 set_up = true
 
 [node name="Label1" parent="SButton1/Buttons_1" index="8"]
-
 text_label = "Short range spot"
 
 [node name="Label2" parent="SButton1/Buttons_1" index="9"]
-
 text_label = "Long range spot"
 
 [node name="Label3" parent="SButton1/Buttons_1" index="10"]
-
 text_label = "Alarm"
 
 [node name="Label8" parent="SButton1/Buttons_1" index="15"]
-
 text_label = "Shield"
 
-[node name="Measures" type="Spatial" parent="." index="12"]
-
+[node name="Measures" type="Spatial" parent="."]
 editor/display_folded = true
 
-[node name="Measure 1" parent="Measures" index="0" instance=ExtResource( 15 )]
-
+[node name="Measure 1" parent="Measures" instance=ExtResource( 15 )]
 transform = Transform( -0.0172073, -0.0245746, 1.82634e-09, -1.31134e-09, -1.31134e-09, -0.03, 0.0245746, -0.0172073, -3.22034e-10, 0.82, 0.23, 0.75 )
-_sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="Measure 2" parent="Measures" index="1" instance=ExtResource( 15 )]
-
+[node name="Measure 2" parent="Measures" instance=ExtResource( 15 )]
 transform = Transform( -0.0172073, -0.0245746, 1.82634e-09, -1.31134e-09, -1.31134e-09, -0.03, 0.0245746, -0.0172073, -3.22034e-10, 0.82, 0.04, 0.75 )
-_sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="Measure 3" parent="Measures" index="2" instance=ExtResource( 15 )]
-
+[node name="Measure 3" parent="Measures" instance=ExtResource( 15 )]
 transform = Transform( -0.0172073, -0.0245746, 1.82634e-09, -1.31134e-09, -1.31134e-09, -0.03, 0.0245746, -0.0172073, -3.22034e-10, 0.82, -0.18, 0.75 )
-_sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="Measure 4" parent="Measures" index="3" instance=ExtResource( 15 )]
-
+[node name="Measure 4" parent="Measures" instance=ExtResource( 15 )]
 transform = Transform( -0.0245173, 0.0165527, 0.00499097, -0.000676728, 0.00773502, -0.0289778, -0.0172755, -0.0237945, -0.00594801, -0.75, -0.35, 0.96 )
-_sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="Measure 5" parent="Measures" index="4" instance=ExtResource( 15 )]
-
+[node name="Measure 5" parent="Measures" instance=ExtResource( 15 )]
 transform = Transform( -0.0245173, 0.0165527, 0.00499097, -0.000676728, 0.00773502, -0.0289778, -0.0172755, -0.0237945, -0.00594801, -0.82, -0.2, 0.96 )
-_sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="Lights" type="Spatial" parent="." index="13"]
-
+[node name="Lights" type="Spatial" parent="."]
 editor/display_folded = true
 
-[node name="Light" parent="Lights" index="0" instance=ExtResource( 16 )]
-
+[node name="Light" parent="Lights" instance=ExtResource( 16 )]
 transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-08, 0, -1.62921e-08, -0.05, 0, 0.999471, 0 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Light4" parent="Lights" index="1" instance=ExtResource( 16 )]
-
+[node name="Light4" parent="Lights" instance=ExtResource( 16 )]
 transform = Transform( 0.05, 0, 0, 0, -0.05, 1.62921e-08, 0, -1.62921e-08, -0.05, -0.1, 0.899471, 1.15 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Light2" parent="Lights" index="2" instance=ExtResource( 16 )]
-
+[node name="Light2" parent="Lights" instance=ExtResource( 16 )]
 transform = Transform( 8.14604e-09, 0.05, -1.62921e-08, 0.05, -8.14603e-09, 1.65806e-08, 1.65806e-08, -1.62921e-08, -0.05, -1.00847, 0, 0 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Light3" parent="Lights" index="3" instance=ExtResource( 16 )]
-
+[node name="Light3" parent="Lights" instance=ExtResource( 16 )]
 transform = Transform( 1.41065e-08, -0.05, 4.37114e-09, -0.05, -1.41065e-08, -1.65806e-08, 1.65806e-08, -4.37113e-09, -0.05, 1.00847, 0, 0 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="OmniLight" type="OmniLight" parent="Lights" index="4"]
-
-layers = 1
+[node name="OmniLight" type="OmniLight" parent="Lights"]
 light_color = Color( 0.027451, 0, 0.552941, 1 )
 light_energy = 0.7
-light_indirect_energy = 1.0
-light_negative = false
-light_specular = 0.5
-light_bake_mode = 1
-light_cull_mask = -1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_bias = 0.15
-shadow_contact = 0.0
-shadow_reverse_cull_face = false
-editor_only = false
 omni_range = 1.2
 omni_attenuation = 0.189464
-omni_shadow_mode = 1
-omni_shadow_detail = 1
-_sections_unfolded = [ "Light", "Omni" ]
 
-[node name="OmniLight2" type="OmniLight" parent="Lights" index="5"]
-
+[node name="OmniLight2" type="OmniLight" parent="Lights"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9 )
-layers = 1
 light_color = Color( 0.0304403, 0, 0.554688, 1 )
 light_energy = 0.7
-light_indirect_energy = 1.0
-light_negative = false
-light_specular = 0.5
-light_bake_mode = 1
-light_cull_mask = -1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_bias = 0.15
-shadow_contact = 0.0
-shadow_reverse_cull_face = false
-editor_only = false
 omni_range = 1.2
 omni_attenuation = 0.189464
-omni_shadow_mode = 1
-omni_shadow_detail = 1
-_sections_unfolded = [ "Light", "Omni" ]
 
-[node name="OmniLight3" type="OmniLight" parent="Lights" index="6"]
-
+[node name="OmniLight3" type="OmniLight" parent="Lights"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8 )
-layers = 1
 light_color = Color( 0.027451, 0, 0.552941, 1 )
 light_energy = 0.7
-light_indirect_energy = 1.0
-light_negative = false
-light_specular = 0.5
-light_bake_mode = 1
-light_cull_mask = -1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_bias = 0.15
-shadow_contact = 0.0
-shadow_reverse_cull_face = false
-editor_only = false
 omni_range = 1.2
 omni_attenuation = 0.189464
-omni_shadow_mode = 1
-omni_shadow_detail = 1
-_sections_unfolded = [ "Light", "Omni" ]
 
 [connection signal="speed_changed" from="Speed_controller" to="." method="_on_Speed_controller_speed_changed"]
-
 [connection signal="alarm" from="Viewports/SonarPassif/TextureRect" to="SScreen2" method="_on_TextureRect_alarm"]
-
 [connection signal="left_click" from="SButton1/Buttons_1/Button1" to="TopSpots" method="_on_Button1_left_click"]
-
 [connection signal="left_click" from="SButton1/Buttons_1/Button2" to="LongRangeSpots" method="_on_Button2_left_click"]
-
 [connection signal="left_click" from="SButton1/Buttons_1/Button3" to="Alarm" method="stop"]
-
 [connection signal="left_click" from="SButton1/Buttons_1/Button8" to="Cockpit" method="_on_Button8_left_click"]
 
-
 [editable path="SScreen1"]
+
 [editable path="SScreen2"]
+
 [editable path="Viewports"]
+
 [editable path="SButton1"]
+
 [editable path="SButton1/Buttons_1"]

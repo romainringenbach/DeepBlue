@@ -42,33 +42,6 @@ script = ExtResource( 1 )
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2 )
 
-[node name="TopSpot1" parent="Cockpit/TopSpots" index="0"]
-light_cull_mask = -1
-
-[node name="TopSpot2" parent="Cockpit/TopSpots" index="1"]
-light_cull_mask = -1
-
-[node name="TopSpot3" parent="Cockpit/TopSpots" index="2"]
-light_cull_mask = -1
-
-[node name="TopSpot4" parent="Cockpit/TopSpots" index="3"]
-light_cull_mask = -1
-
-[node name="LongRangeSpot1" parent="Cockpit/LongRangeSpots" index="0"]
-light_cull_mask = -1
-
-[node name="LongRangeSpot2" parent="Cockpit/LongRangeSpots" index="1"]
-light_cull_mask = -1
-
-[node name="OmniLight" parent="Cockpit/Lights" index="4"]
-light_cull_mask = -1
-
-[node name="OmniLight2" parent="Cockpit/Lights" index="5"]
-light_cull_mask = -1
-
-[node name="OmniLight3" parent="Cockpit/Lights" index="6"]
-light_cull_mask = -1
-
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 2 )
 
