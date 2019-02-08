@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/dome.obj-f6a328dbca8d6bbcab498cfc0cd67dc6.mesh"
+
+[deps]
+
+files=[ "res://.import/dome.obj-f6a328dbca8d6bbcab498cfc0cd67dc6.mesh" ]
+
+source_file="res://cockpit/dome/dome.obj"
+dest_files=[ "res://.import/dome.obj-f6a328dbca8d6bbcab498cfc0cd67dc6.mesh", "res://.import/dome.obj-f6a328dbca8d6bbcab498cfc0cd67dc6.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true
