@@ -1,7 +1,8 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://cockpit/dome/crack_generator.gd" type="Script" id=1]
-[ext_resource path="res://blender_models/dome_cracking2.png" type="Texture" id=2]
+[ext_resource path="res://cockpit/dome/dome_cracking2.png" type="Texture" id=2]
+
 
 [sub_resource type="Shader" id=1]
 
