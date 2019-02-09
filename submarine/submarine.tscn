@@ -39,7 +39,6 @@ angular_damp = 0.3
 script = ExtResource( 1 )
 
 [node name="Cockpit" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
