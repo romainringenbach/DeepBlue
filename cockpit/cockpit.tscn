@@ -218,7 +218,7 @@ omni_range = 1.1
 omni_attenuation = 1.1892
 
 [node name="Light3" parent="Lights" instance=ExtResource( 16 )]
-transform = Transform( 1.41065e-08, -0.05, 4.37114e-09, -0.05, -1.41065e-08, -1.65806e-08, 1.65806e-08, -4.37113e-09, -0.05, 0, 0, 1.49 )
+transform = Transform( 1.41065e-08, -0.05, 4.37114e-09, -0.05, -1.41065e-08, -1.65806e-08, 1.65806e-08, -4.37113e-09, -0.05, 1, 0, 0 )
 
 [connection signal="speed_changed" from="Speed_controller" to="." method="_on_Speed_controller_speed_changed"]
 [connection signal="alarm" from="Viewports/SonarPassif/TextureRect" to="SScreen2" method="_on_TextureRect_alarm"]
