@@ -3,14 +3,14 @@
 [ext_resource path="res://submarine/submarine.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/cockpit.tscn" type="PackedScene" id=2]
 
-[sub_resource type="PhysicsMaterial" id=1]
+[sub_resource type="PhysicsMaterial" id=7]
 
-bounce = 0.2
+bounce = 1.0
 
 [sub_resource type="CapsuleShape" id=2]
 
 radius = 1.32145
-height = 6.01323
+height = 6.5658
 
 [sub_resource type="CylinderMesh" id=3]
 
@@ -26,12 +26,12 @@ radius = 40.0
 
 [sub_resource type="CapsuleShape" id=6]
 
-radius = 1.3213
-height = 6.67976
+radius = 1.42926
+height = 6.76901
 
 [node name="Submarine" type="RigidBody"]
 mass = 200.0
-physics_material_override = SubResource( 1 )
+physics_material_override = SubResource( 7 )
 gravity_scale = 0.0
 can_sleep = false
 linear_damp = 0.3
