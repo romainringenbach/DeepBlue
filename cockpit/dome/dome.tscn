@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://cockpit/dome.dae" type="PackedScene" id=1]
 [ext_resource path="res://cockpit/dome/dome.gd" type="Script" id=2]
 [ext_resource path="res://cockpit/dome/dome_cracking2.png" type="Texture" id=3]
+
+[sub_resource type="ViewportTexture" id=6]
+
+viewport_path = NodePath("Viewport")
 
 [sub_resource type="Shader" id=1]
 
@@ -14,6 +18,8 @@ render_mode cull_disabled;
 uniform sampler2D cracking;
 uniform vec2 begin;
 uniform int distance_i;
+
+varying vec2 real_uv;
 
 bool is_in_craking_texture(vec2 uv)
 {
@@ -57,19 +63,43 @@ bool is_in_craking(vec2 uv, bool n)
 
 void vertex()
 {
-	/*if (is_in_craking(UV,false))
-	{
-		VERTEX.z -= 0.5;
-		VERTEX.y += 0.2;
-	}*/
+	float PI = 3.14159265359;
+	
+	real_uv = UV;
+	
+	
+	/*
+	float teta_y = sin(TIME+length(VERTEX)) * PI;
+	float teta_x = sin(TIME);
+	
+	
+	mat3 rot_y = mat3(
+		vec3(cos(teta_y),0.0,sin(teta_y)),
+		vec3(0.0,1.0,0.0),
+		vec3(-sin(teta_y),0.0,cos(teta_y))
+	);
+	
+	mat3 rot_x = mat3(
+		vec3(1.0,0.0,0.0),
+		vec3(0.0,cos(teta_x),-sin(teta_x)),
+		vec3(0.0,sin(teta_x),cos(teta_x))
+	);
+	
+	NORMAL = rot_y*rot_x*NORMAL;
+	TANGENT = rot_y*rot_x*TANGENT;
+	BINORMAL = rot_y*rot_x*BINORMAL;*/
+	
+	
 }
 
 
 void fragment()
 {
+	// --- cracking
+	
 	vec4 color_tmp = vec4(0.0,0.0,0.0,0.0);
 
-	if (is_in_craking(UV,false))
+	if (is_in_craking(real_uv,false))
 	{
 		color_tmp = vec4(1.0);
 	}
@@ -77,8 +107,6 @@ void fragment()
 	ALBEDO = color_tmp.rgb;
 	ALPHA = color_tmp.a;
 	
-	//ALBEDO = vec3(1.0,0.0,0.0);
-	//ALPHA = 1.0;
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -95,16 +123,78 @@ resource_local_to_scene = true
 next_pass = SubResource( 2 )
 params_cull_mode = 2
 params_depth_draw_mode = 1
-albedo_color = Color( 0.278431, 0.278431, 0.278431, 0.0352941 )
+albedo_color = Color( 0.0156863, 0.54902, 1, 0.415686 )
+albedo_texture = SubResource( 6 )
 roughness = 0.0
-depth_enabled = true
-depth_scale = 0.6
-depth_deep_parallax = false
-depth_flip_tangent = false
-depth_flip_binormal = false
 refraction_enabled = true
 refraction_scale = 0.01
 refraction_texture_channel = 0
+
+[sub_resource type="Shader" id=4]
+
+code = "shader_type canvas_item;
+
+vec3 hash(vec3 p) {
+    p = vec3(dot(p, vec3(127.1, 311.7, 74.7)),
+             dot(p, vec3(269.5, 183.3, 246.1)),
+             dot(p, vec3(113.5, 271.9, 124.6)));
+
+    return -1.0 + 2.0 * fract(sin(p) * 43758.5453123);
+}
+
+float noise(vec3 p) {
+  vec3 i = floor(p);
+  vec3 f = fract(p);
+  vec3 u = f * f * (3.0 - 2.0 * f);
+
+  return mix(mix(mix(dot(hash(i + vec3(0.0, 0.0, 0.0)), f - vec3(0.0, 0.0, 0.0)),
+                     dot(hash(i + vec3(1.0, 0.0, 0.0)), f - vec3(1.0, 0.0, 0.0)), u.x),
+                 mix(dot(hash(i + vec3(0.0, 1.0, 0.0)), f - vec3(0.0, 1.0, 0.0)),
+                     dot(hash(i + vec3(1.0, 1.0, 0.0)), f - vec3(1.0, 1.0, 0.0)), u.x), u.y),
+             mix(mix(dot(hash(i + vec3(0.0, 0.0, 1.0)), f - vec3(0.0, 0.0, 1.0)),
+                     dot(hash(i + vec3(1.0, 0.0, 1.0)), f - vec3(1.0, 0.0, 1.0)), u.x),
+                 mix(dot(hash(i + vec3(0.0, 1.0, 1.0)), f - vec3(0.0, 1.0, 1.0)),
+                     dot(hash(i + vec3(1.0, 1.0, 1.0)), f - vec3(1.0, 1.0, 1.0)), u.x), u.y), u.z );
+}
+
+void fragment() {
+    	// --- noise 
+	
+	float theta = UV.y * 3.14159;
+	float phi = UV.x * 3.14159 * 2.0;
+	vec3 unit = vec3(0.0, 0.0, 0.0);
+	
+	unit.x = sin(phi) * sin(theta);
+	unit.y = cos(theta) * -1.0;
+	unit.z = cos(phi) * sin(theta);
+	unit = normalize(unit);
+	
+	float DF = 0.0;
+
+    // Add a random position
+    float a = 0.0;
+    vec3 vel = vec3(TIME*.1);
+    DF += noise(unit+vel)*.25+.25;
+	
+	float time_dis = 0.15*TIME;
+	float coeff = abs(sin(time_dis));
+	float t = time_dis;
+	float tt = acos(length(vec2(cos(t)*coeff,sin(t)*coeff)));
+	
+	a = noise(unit*vec3(cos(t)*coeff,sin(t)*coeff,sin(tt)))*3.1415;
+	
+	float aa = acos(length(vec2(cos(a)*coeff,sin(a)*coeff)));
+    vel = vec3(cos(a)*coeff,sin(a)*coeff,sin(aa));
+    DF += noise(unit+vel)*0.05+.45;
+		
+	float c = 1.0-smoothstep(.3,.9,fract(DF));
+	
+	COLOR.xyz = vec3(0.8*c,0.8*c, c);
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+
+shader = SubResource( 4 )
 
 [node name="dome" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -124,5 +214,16 @@ visible = false
 [node name="Timer" type="Timer" parent="." index="4"]
 wait_time = 0.01
 autostart = true
+
+[node name="Viewport" type="Viewport" parent="." index="5"]
+size = Vector2( 1024, 512 )
+hdr = false
+disable_3d = true
+usage = 0
+
+[node name="ColorRect" type="ColorRect" parent="Viewport" index="0"]
+material = SubResource( 5 )
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
