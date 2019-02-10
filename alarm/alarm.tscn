@@ -57,7 +57,7 @@ tracks/0/keys = {
 "values": [ Vector3( 89.9802, 180, 180 ), Vector3( 89.9802, 90, 180 ), Vector3( 89.9802, 0, 180 ), Vector3( 89.9802, -90, 180 ), Vector3( 89.9802, -180, 180 ) ]
 }
 
-[node name="Scene Root" instance=ExtResource( 1 )]
+[node name="Scene Root" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Cylinder" parent="." index="0"]

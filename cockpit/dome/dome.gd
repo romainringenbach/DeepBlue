@@ -4,8 +4,14 @@ extends Spatial
 # var a = 2
 # var b = "textvar"
 
-var playing = true
+var cracking = false
 var distance = 0
+
+var distance1 = 100
+var distance2 = 200
+var distance3 = 1024
+
+var max_distance = 0.0
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -18,14 +24,19 @@ func _process(delta):
 	# Update game logic here.
 	pass
 	
-	
-func play():
-	pass
-	
-func reset():
-	pass
+func crack():
+	cracking = true
+	if max_distance == 0.0:
+		max_distance = distance1
+	elif max_distance == distance1:
+		max_distance = distance2
+	elif max_distance == distance2:
+		max_distance = distance3
 
 func _on_Timer_timeout():
 	
-	distance += 1
-	$Sphere.material_override.next_pass.set_shader_param('distance_i',distance)
+	if cracking == true:
+		distance += 1
+		$Sphere.material_override.next_pass.set_shader_param('distance_i',distance)
+	if distance >= max_distance:
+		cracking = false
