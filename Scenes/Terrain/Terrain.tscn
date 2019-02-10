@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=1]
 [ext_resource path="res://addons/zylann.hterrain/tools/icons/icon_heightmap_node.svg" type="Texture" id=2]
@@ -15,6 +15,20 @@
 [ext_resource path="res://Scripts/Camera.gd" type="Script" id=13]
 [ext_resource path="res://Scripts/fps.gd" type="Script" id=14]
 [ext_resource path="res://Scripts/Infos.gd" type="Script" id=15]
+[ext_resource path="res://Scenes/Vehicles/CargoShip.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/Containers/Containers_Piled.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Corals/Coral_Table.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/Containers/Container2.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Containers/Container1.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/Terrain/Scripts/Followpath.gd" type="Script" id=21]
+[ext_resource path="res://Scenes/Fishes/FierceShark.tscn" type="PackedScene" id=22]
+
+[sub_resource type="Curve3D" id=1]
+
+_data = {
+"points": PoolVector3Array( -3.53702, 0, 19.985, 3.53702, 0, -19.985, 67.1952, 0.324341, -9.32629, 37.8285, 0, 4.81995, -37.8285, 0, -4.81995, 15.1952, 0.324341, -58.3263, 13.0269, 0, -22.6556, -13.0269, 0, 22.6556, -55.8048, 0.324341, -27.3263, -19.5404, 0, -16.4253, 19.5404, 0, 16.4253, -65.8048, 0.324341, 47.6737, -42.196, 0, 22.3724, 42.196, 0, -22.3724, 24.1952, 0.324341, 61.6737, 0, 0, 0, 0, 0, 0, 67.1952, 0.324341, -9.32629 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0 )
+}
 
 [node name="Node" type="Node"]
 
@@ -72,9 +86,48 @@ script = ExtResource( 15 )
 
 [node name="Doodads" type="Node" parent="."]
 
+[node name="CargoShip" parent="Doodads" instance=ExtResource( 16 )]
+transform = Transform( 0.190434, 0.0904613, 0.977523, -0.429077, 0.903268, 6.39374e-09, -0.882965, -0.419432, 0.210828, 167.386, 106.702, 240.192 )
+
+[node name="Containers_Piled" parent="Doodads" instance=ExtResource( 17 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 202.958, 101.571, 282.854 )
+
 [node name="SharkBoss" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 245.446, 306.786, 678.747 )
 
 [node name="StartPoint" type="Spatial" parent="."]
 transform = Transform( 0.213542, 0, -0.976934, 0, 1, 0, 0.976934, 0, 0.213542, 40.2347, 102.313, 377.609 )
+
+[node name="Decor" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="Coral_Table" parent="Decor" instance=ExtResource( 18 )]
+transform = Transform( 0.973064, -0.0216222, -0.22952, 0, 0.995592, -0.0937905, 0.230537, 0.0912642, 0.968774, 147.815, 106.228, 345.672 )
+
+[node name="Loot" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="Container2" parent="Loot" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 222.9, 301.191, 669.952 )
+
+[node name="Container3" parent="Loot" instance=ExtResource( 19 )]
+transform = Transform( 0.92279, -0.0170194, 0.384926, 0, 0.999024, 0.0441715, -0.385302, -0.040761, 0.92189, 223.585, 303.611, 673.744 )
+
+[node name="Container1" parent="Loot" instance=ExtResource( 20 )]
+transform = Transform( 0.779814, 0, 0.626011, 0, 1, 0, -0.626011, 0, 0.779814, 225.478, 301.277, 677.267 )
+
+[node name="Bosses" type="Node" parent="."]
+
+[node name="FierceShark" type="Node" parent="Bosses"]
+
+[node name="Path" type="Path" parent="Bosses/FierceShark"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 245.805, 305.676, 676.326 )
+curve = SubResource( 1 )
+script = ExtResource( 21 )
+loop_duration = 40.0
+
+[node name="PathFollow" type="PathFollow" parent="Bosses/FierceShark/Path"]
+rotation_mode = 4
+
+[node name="FierceShark" parent="Bosses/FierceShark/Path/PathFollow" instance=ExtResource( 22 )]
 
