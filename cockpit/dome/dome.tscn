@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://cockpit/dome.dae" type="PackedScene" id=1]
 [ext_resource path="res://cockpit/dome/dome.gd" type="Script" id=2]
 [ext_resource path="res://cockpit/dome/dome_cracking2.png" type="Texture" id=3]
+
 [sub_resource type="Shader" id=1]
 
 code = "shader_type spatial;
@@ -86,7 +87,7 @@ render_priority = 1
 shader = SubResource( 1 )
 shader_param/begin = Vector2( 690, 597 )
 shader_param/distance_i = null
-shader_param/cracking = ExtResource( 4 )
+shader_param/cracking = ExtResource( 3 )
 
 [sub_resource type="SpatialMaterial" id=3]
 
@@ -110,6 +111,7 @@ script = ExtResource( 2 )
 
 [node name="Sphere" parent="." index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0211585 )
+layers = 16384
 material_override = SubResource( 3 )
 
 [node name="Spot001" parent="." index="1"]

@@ -35,7 +35,6 @@ func _ready():
 	player_direction = $Cockpit.get_global_transform().basis.z
 	$Cockpit/Viewports/TopView/Yaw.target = get_path()
 	$Cockpit/Viewports/BottomView/Yaw.target = get_path()
-	bounce = 0.6
 	
 
 func get_input():
@@ -104,7 +103,7 @@ func _integrate_forces(state):
 
 		deviation = acos(final_force.dot(player_direction*current_speed)/(final_force.length()*(player_direction*s).length()))
 	
-		if deviation != 0 and abs(deviation * final_force.length()) > 10000 and $Area2.get_overlapping_bodies().size() > 1 and collision == false:
+		if ((deviation != 0 and abs(deviation * final_force.length()) > 10000) or (final_force.length() < 0.5 and current_speed != 0) ) and $Area2.get_overlapping_bodies().size() > 1 and collision == false:
 			emit_signal('collision_impact')
 			collision = true
 			
