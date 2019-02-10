@@ -108,7 +108,6 @@ void fragment()
 
 [resource]
 
-render_priority = 0
 shader = SubResource( 1 )
 shader_param/z_torsion_value = 0.1
 shader_param/z_torsion_frequency = -5
@@ -129,5 +128,4 @@ shader_param/roughness_texture_channel = Plane( 0, 1, 0, 0 )
 shader_param/uv1_scale = Vector3( 1, 1, 1 )
 shader_param/uv1_offset = Vector3( 0, 0, 0 )
 shader_param/albedo_map = ExtResource( 1 )
-_sections_unfolded = [ "shader_param" ]
 
