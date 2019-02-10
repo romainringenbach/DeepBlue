@@ -93,8 +93,63 @@ void vertex()
 }
 
 
-void fragment()
-{
+vec3 hash(vec3 p) {
+    p = vec3(dot(p, vec3(127.1, 311.7, 74.7)),
+             dot(p, vec3(269.5, 183.3, 246.1)),
+             dot(p, vec3(113.5, 271.9, 124.6)));
+
+    return -1.0 + 2.0 * fract(sin(p) * 43758.5453123);
+}
+
+float noise(vec3 p) {
+  vec3 i = floor(p);
+  vec3 f = fract(p);
+  vec3 u = f * f * (3.0 - 2.0 * f);
+
+  return mix(mix(mix(dot(hash(i + vec3(0.0, 0.0, 0.0)), f - vec3(0.0, 0.0, 0.0)),
+                     dot(hash(i + vec3(1.0, 0.0, 0.0)), f - vec3(1.0, 0.0, 0.0)), u.x),
+                 mix(dot(hash(i + vec3(0.0, 1.0, 0.0)), f - vec3(0.0, 1.0, 0.0)),
+                     dot(hash(i + vec3(1.0, 1.0, 0.0)), f - vec3(1.0, 1.0, 0.0)), u.x), u.y),
+             mix(mix(dot(hash(i + vec3(0.0, 0.0, 1.0)), f - vec3(0.0, 0.0, 1.0)),
+                     dot(hash(i + vec3(1.0, 0.0, 1.0)), f - vec3(1.0, 0.0, 1.0)), u.x),
+                 mix(dot(hash(i + vec3(0.0, 1.0, 1.0)), f - vec3(0.0, 1.0, 1.0)),
+                     dot(hash(i + vec3(1.0, 1.0, 1.0)), f - vec3(1.0, 1.0, 1.0)), u.x), u.y), u.z );
+}
+
+void fragment() {
+    	// --- noise 
+	
+	/*float theta = UV.y * 3.14159;
+	float phi = UV.x * 3.14159 * 2.0;
+	vec3 unit = vec3(0.0, 0.0, 0.0);
+	
+	unit.x = sin(phi) * sin(theta);
+	unit.y = cos(theta) * -1.0;
+	unit.z = cos(phi) * sin(theta);
+	unit = normalize(unit);*/
+	
+	vec3 unit = normalize(VERTEX);
+	
+	float DF = 0.0;
+
+    // Add a random position
+    float a = 0.0;
+    vec3 vel = vec3(TIME*.1);
+    DF += noise(unit+vel)*.25+.25;
+	
+	float time_dis = 0.15*TIME;
+	float coeff = abs(sin(time_dis));
+	float t = time_dis;
+	float tt = acos(length(vec2(cos(t)*coeff,sin(t)*coeff)));
+	
+	a = noise(unit*vec3(cos(t)*coeff,sin(t)*coeff,sin(tt)))*3.1415;
+	
+	float aa = acos(length(vec2(cos(a)*coeff,sin(a)*coeff)));
+    vel = vec3(cos(a)*coeff,sin(a)*coeff,sin(aa));
+    DF += noise(unit+vel)*0.05+.45;
+		
+	float c = 1.0-smoothstep(.3,.9,fract(DF));
+
 	// --- cracking
 	
 	vec4 color_tmp = vec4(0.0,0.0,0.0,0.0);
@@ -104,8 +159,8 @@ void fragment()
 		color_tmp = vec4(1.0);
 	}
 	
-	ALBEDO = color_tmp.rgb;
-	ALPHA = color_tmp.a;
+	ALBEDO = color_tmp.rgb;//vec3(c);
+	ALPHA = color_tmp.a;//+c*3.0;
 	
 }"
 
@@ -121,9 +176,10 @@ shader_param/cracking = ExtResource( 3 )
 
 resource_local_to_scene = true
 next_pass = SubResource( 2 )
+flags_transparent = true
 params_cull_mode = 2
 params_depth_draw_mode = 1
-albedo_color = Color( 0.0156863, 0.54902, 1, 0.415686 )
+albedo_color = Color( 0.333333, 0.564706, 0.701961, 0.294118 )
 albedo_texture = SubResource( 6 )
 roughness = 0.0
 refraction_enabled = true
@@ -189,7 +245,7 @@ void fragment() {
 		
 	float c = 1.0-smoothstep(.3,.9,fract(DF));
 	
-	COLOR.xyz = vec3(0.8*c,0.8*c, c);
+	COLOR = vec4(0.0,0.0, c, c);
 }"
 
 [sub_resource type="ShaderMaterial" id=5]
@@ -217,6 +273,7 @@ autostart = true
 
 [node name="Viewport" type="Viewport" parent="." index="5"]
 size = Vector2( 1024, 512 )
+transparent_bg = true
 hdr = false
 disable_3d = true
 usage = 0

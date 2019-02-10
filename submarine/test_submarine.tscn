@@ -4,7 +4,10 @@
 
 [sub_resource type="Environment" id=1]
 
+background_mode = 1
+background_color = Color( 0, 0.113725, 0.168627, 1 )
 ambient_light_color = Color( 0.517647, 0.517647, 0.517647, 0.52549 )
+ambient_light_energy = 0.0
 
 [sub_resource type="PhysicsMaterial" id=2]
 
@@ -111,4 +114,12 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Cube9"]
 shape = SubResource( 4 )
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( -0.637709, -0.770278, 1.1478e-08, 0.178083, -0.147434, 0.972908, -0.749409, 0.620432, 0.231193, 22.4102, 92.5929, 0 )
+light_color = Color( 0.745098, 0.960784, 1, 1 )
+spot_range = 400.0
+spot_attenuation = 1.8025
+spot_angle = 54.3
+spot_angle_attenuation = 1.41421
 
