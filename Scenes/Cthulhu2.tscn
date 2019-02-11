@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://models/Statues/Cthulhu2/statue2.glb" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/CthulhuLoot.gd" type="Script" id=2]
+[ext_resource path="res://Shaders/Disappear.shader" type="Shader" id=3]
+[ext_resource path="res://models/Statues/Cthulhu2/ctulhu-statue_baseColor.jpg" type="Texture" id=4]
+[ext_resource path="res://models/Particles/noise.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/CthulhuParticle.tscn" type="PackedScene" id=6]
+
+[sub_resource type="ShaderMaterial" id=4]
+
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.5
+shader_param/roughness = 0.5
+shader_param/emission_color = Color( 0, 0, 0, 1 )
+shader_param/emission_strength = 3.0
+shader_param/metallic_texture_channel = Plane( 0, 0, 1, 0 )
+shader_param/roughness_texture_channel = Plane( 0, 1, 0, 0 )
+shader_param/noise_threshold = 1.0
+shader_param/albedo_map = ExtResource( 4 )
+shader_param/noise_map = ExtResource( 5 )
+
+[sub_resource type="SphereShape" id=2]
+
+radius = 8.0
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "Glow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Object_5:material/0:shader_param/emission_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.0156863, 0.0980392, 0.0235294, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="Cthulhu2" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Object_5" parent="." index="0"]
+use_in_baked_light = true
+material/0 = SubResource( 4 )
+
+[node name="Area" type="Area" parent="Object_5" index="0"]
+input_ray_pickable = true
+collision_layer = 128
+
+[node name="CollisionShape" type="CollisionShape" parent="Object_5/Area" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19802, -2.18357 )
+shape = SubResource( 2 )
+
+[node name="CthulhuParticle" parent="." index="1" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.64675 )
+
+[node name="Anim" type="AnimationPlayer" parent="." index="2"]
+autoplay = "Glow"
+playback_speed = 0.3
+anims/Glow = SubResource( 3 )
+
