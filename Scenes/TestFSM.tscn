@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/Fishes/FierceShark.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Fishes/TestFSM.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/CubeTest.gd" type="Script" id=3]
+
+[sub_resource type="PlaneMesh" id=1]
+
+
+[sub_resource type="SpatialMaterial" id=2]
+
+albedo_color = Color( 0.654902, 0.654902, 0.654902, 1 )
+
+[sub_resource type="Curve3D" id=3]
+
+bake_interval = 0.1
+_data = {
+"points": PoolVector3Array( 1.52889, 0, -0.0530272, -1.52889, 0, 0.0530272, 0.045915, 0, -4.31825, 0.947096, 0, -1.71683, -0.947096, 0, 1.71683, -4.44926, 0, -2.15759, -0.646928, 0, -0.8959, 0.646928, 0, 0.8959, -4.72245, 0, 2.53627, -1.8794, 0, 0.0391521, 1.8794, 0, -0.0391521, 0.0707507, 0, 4.42375, -0.812635, 0, 1.24138, 0.812635, 0, -1.24138, 3.84571, 0, 2.28792, 0.620189, 0, 1.77252, -0.620189, 0, -1.77252, 3.77127, 0, -1.96378, 0, 0, 0, 0, 0, 0, 0.045915, 0, -4.31825, 0, 0, 0, 0, 0, 0, 0.045915, 0, -4.31825 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="SphereShape" id=4]
+
+radius = 12.0
+
+[sub_resource type="CubeMesh" id=5]
+
+
+[sub_resource type="BoxShape" id=6]
+
+
+[node name="Spatial" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
+visible = false
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.886974, 0.461819, 0, -0.461819, 0.886974, 0, 2.01841, 0 )
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Path" type="Path" parent="Node"]
+curve = SubResource( 3 )
+
+[node name="PathFollow" type="PathFollow" parent="Node/Path"]
+rotation_mode = 4
+
+[node name="Area" type="Area" parent="Node/Path/PathFollow"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Node/Path/PathFollow/Area"]
+shape = SubResource( 4 )
+
+[node name="FierceShark" parent="Node/Path/PathFollow/Area" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0.319, 15, -0.444 )
+
+[node name="CubeTest" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1858, 0, 0 )
+mesh = SubResource( 5 )
+material/0 = null
+script = ExtResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="CubeTest"]
+
+[node name="CollisionShape" type="CollisionShape" parent="CubeTest/StaticBody"]
+shape = SubResource( 6 )
+
