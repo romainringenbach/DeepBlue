@@ -33,13 +33,14 @@ material/1 = ExtResource( 2 )
 material/2 = ExtResource( 2 )
 
 [node name="StaticBody" type="StaticBody" parent="defaultMaterial052" index="0"]
+collision_layer = 256
 
 [node name="CollisionShape" type="CollisionShape" parent="defaultMaterial052/StaticBody" index="0"]
-transform = Transform( 1, 0, 0, 0, -4.37113e-08, -0.999999, 0, 0.999999, -4.37113e-08, 0, 5.52271, 3.85043 )
+transform = Transform( 1, 0, 0, 0, -4.37113e-008, -0.999999, 0, 0.999999, -4.37113e-008, 0, 5.52271, 3.85043 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="defaultMaterial052/StaticBody" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 4.9738e-14, 0, -4.9738e-14, 1, 0, -46.7838, -26.5629 )
+transform = Transform( 1, 0, 0, 0, 1, 4.9738e-014, 0, -4.9738e-014, 1, 0, -46.7838, -26.5629 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape3" type="CollisionShape" parent="defaultMaterial052/StaticBody" index="2"]
@@ -47,7 +48,7 @@ transform = Transform( 1, 0, 0, 0, 0.939691, 0.342019, 0, -0.342019, 0.939691, -
 shape = SubResource( 3 )
 
 [node name="CollisionShape4" type="CollisionShape" parent="defaultMaterial052/StaticBody" index="3"]
-transform = Transform( 1, 0, 0, 0, 0.999999, 1.06581e-13, 0, -1.06581e-13, 0.999999, -0.442595, -68.3943, -16.0046 )
+transform = Transform( 1, 0, 0, 0, 0.999999, 1.06581e-013, 0, -1.06581e-013, 0.999999, -0.442595, -68.3943, -16.0046 )
 shape = SubResource( 4 )
 
 [node name="CollisionShape5" type="CollisionShape" parent="defaultMaterial052/StaticBody" index="4"]

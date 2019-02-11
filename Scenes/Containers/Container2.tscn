@@ -29,6 +29,7 @@ extents = Vector3( 1.19923, 1.22475, 3.09766 )
 mesh = SubResource( 1 )
 
 [node name="StaticBody" type="StaticBody" parent="Container" index="0"]
+collision_layer = 128
 
 [node name="CollisionShape" type="CollisionShape" parent="Container/StaticBody" index="0"]
 shape = SubResource( 2 )

@@ -12,6 +12,7 @@ data = PoolVector3Array( -7.259, -2.5818, 3.4627, -7.2317, -2.5818, 3.4818, -7.2
 use_in_baked_light = true
 
 [node name="StaticBody" type="StaticBody" parent="Containers_Piled" index="0"]
+collision_layer = 256
 
 [node name="CollisionShape" type="CollisionShape" parent="Containers_Piled/StaticBody" index="0"]
 shape = SubResource( 1 )
