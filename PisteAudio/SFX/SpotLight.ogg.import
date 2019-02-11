@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SpotLight.ogg-174bc02d780a04a2fb74a74a9fedc5dc.oggstr"
+
+[deps]
+
+source_file="res://PisteAudio/SFX/SpotLight.ogg"
+dest_files=[ "res://.import/SpotLight.ogg-174bc02d780a04a2fb74a74a9fedc5dc.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

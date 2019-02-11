@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/buttonSound.ogg-4adbae1d6c25e9a71ef0ab9c58eaccf8.oggstr"
+
+[deps]
+
+source_file="res://PisteAudio/SFX/buttonSound.ogg"
+dest_files=[ "res://.import/buttonSound.ogg-4adbae1d6c25e9a71ef0ab9c58eaccf8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,48 +1,44 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://button_panel/panel_button.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://textures/Material/Wood.tres" type="Material" id=2]
+[ext_resource path="res://textures/Material/Metal1.tres" type="Material" id=2]
 [ext_resource path="res://cockpit/Copper.material" type="Material" id=3]
 [ext_resource path="res://radio_panel/radio_panel.gd" type="Script" id=4]
-[ext_resource path="res://textures/Textures/[2K]Fabric08/Fabric08_col.jpg" type="Texture" id=5]
-[ext_resource path="res://textures/Textures/[2K]Fabric08/Fabric08_AO.jpg" type="Texture" id=6]
-[ext_resource path="res://textures/Textures/[2K]Fabric08/Fabric08_nrm.jpg" type="Texture" id=7]
-[ext_resource path="res://textures/Textures/[2K]Fabric08/Fabric08_rgh.jpg" type="Texture" id=8]
-[ext_resource path="res://button/button.tscn" type="PackedScene" id=9]
-[ext_resource path="res://label/label.tscn" type="PackedScene" id=10]
-[ext_resource path="res://radio_panel/radio_audio_streams.tscn" type="PackedScene" id=11]
+[ext_resource path="res://textures/Material/Wood.tres" type="Material" id=5]
+[ext_resource path="res://textures/Textures/[2K]Fabric08/Fabric08_col.jpg" type="Texture" id=6]
+[ext_resource path="res://textures/Textures/[2K]Fabric08/Fabric08_AO.jpg" type="Texture" id=7]
+[ext_resource path="res://textures/Textures/[2K]Fabric08/Fabric08_nrm.jpg" type="Texture" id=8]
+[ext_resource path="res://textures/Textures/[2K]Fabric08/Fabric08_rgh.jpg" type="Texture" id=9]
+[ext_resource path="res://button/button.tscn" type="PackedScene" id=10]
+[ext_resource path="res://label/label.tscn" type="PackedScene" id=11]
+[ext_resource path="res://radio_panel/radio_audio_streams.tscn" type="PackedScene" id=12]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="CylinderMesh" id=1]
 
-albedo_color = Color( 0.449219, 0.220497, 0.108795, 1 )
+material = ExtResource( 5 )
+
+[sub_resource type="SpatialMaterial" id=2]
+
+albedo_texture = ExtResource( 6 )
 roughness = 0.0
-
-[sub_resource type="CylinderMesh" id=2]
-
-material = SubResource( 1 )
-
-[sub_resource type="SpatialMaterial" id=3]
-
-albedo_texture = ExtResource( 5 )
-roughness = 0.0
-roughness_texture = ExtResource( 8 )
+roughness_texture = ExtResource( 9 )
 normal_enabled = true
 normal_scale = 1.0
-normal_texture = ExtResource( 7 )
+normal_texture = ExtResource( 8 )
 ao_enabled = true
 ao_light_affect = 0.0
-ao_texture = ExtResource( 6 )
+ao_texture = ExtResource( 7 )
 ao_on_uv2 = false
 ao_texture_channel = 0
 uv1_scale = Vector3( 2, 1, 0.2 )
 uv1_triplanar_sharpness = 0.0853775
 uv2_triplanar_sharpness = 0.108819
 
-[sub_resource type="SphereMesh" id=4]
+[sub_resource type="SphereMesh" id=3]
 
-material = SubResource( 3 )
+material = SubResource( 2 )
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=4]
 
 extents = Vector3( 0.202174, 0.0710901, 0.437322 )
 
@@ -57,41 +53,41 @@ script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 0.15, 0, 0, 0, 0.03, 0, 0, 0, 0.15, 0, 0.04, 0.19 )
-mesh = SubResource( 2 )
+mesh = SubResource( 1 )
 material/0 = null
 
 [node name="MeshInstance" type="MeshInstance" parent="MeshInstance"]
 transform = Transform( 0.9, 0, 0, 0, 0.5, 0, 0, 0, 0.9, 0, 0.972322, 0 )
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 material/0 = null
 
-[node name="Button1" parent="." instance=ExtResource( 9 )]
+[node name="Button1" parent="." instance=ExtResource( 10 )]
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.03, 0.0651402, -0.3 )
 color = Color( 0, 1, 0.132812, 1 )
 set_up = true
 
-[node name="Button2" parent="." instance=ExtResource( 9 )]
+[node name="Button2" parent="." instance=ExtResource( 10 )]
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.03, 0.0651402, -0.1 )
 type = 1
 color = Color( 0.0546875, 1, 0, 1 )
 set_up = true
 
-[node name="Label1" parent="." instance=ExtResource( 10 )]
+[node name="Label1" parent="." instance=ExtResource( 11 )]
 transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.1, 0.0648082, -0.3 )
 text_label = "On/Off"
 
-[node name="Label2" parent="." instance=ExtResource( 10 )]
+[node name="Label2" parent="." instance=ExtResource( 11 )]
 transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.1, 0.0648082, -0.1 )
 text_label = "Next channel"
 
-[node name="Streams" parent="." instance=ExtResource( 11 )]
+[node name="Streams" parent="." instance=ExtResource( 12 )]
 
 [node name="StaticBody" type="StaticBody" parent="."]
 collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.423677, 0.536511, 0 )
