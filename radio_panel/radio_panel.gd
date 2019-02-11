@@ -80,7 +80,7 @@ func _process(delta):
 			noiseSound.stop()
 			switch_channel = false
 		if elapsedTimeNoise *0.001 > 1.0 and !channelChanged:
-			musicChannel[currentChannel].set_unit_db(-10)
+			musicChannel[currentChannel].set_unit_db(-20)
 			channelChanged = true
 	
 	#ADD du bruit sur la musique en cours avec une proba de 3 %
@@ -93,6 +93,7 @@ func _process(delta):
 			var audiostream = load('res://PisteAudio/Radio Tuning Sound Effect.ogg')
 			var begin_time = randf()*(audiostream.get_length()-5)
 			noiseSound2.set_stream(audiostream)
+			noiseSound2.set_unit_db(-20)
 			noiseSound2.play(begin_time)
 			start_noise_time2= time
 			noise = true
@@ -116,7 +117,7 @@ func _on_Button1_left_click():
 	emit_signal("on_button_1")
 	if !playing :
 		playing = true
-		musicChannel[currentChannel].set_unit_db(-10)
+		musicChannel[currentChannel].set_unit_db(-20)
 	else:
 		musicChannel[currentChannel].set_unit_db(-80)
 		playing = false
@@ -124,7 +125,8 @@ func _on_Button1_left_click():
 #Bouton pour changer de channel
 func _on_Button2_left_click():
 	emit_signal("on_button_2")
-	_changeChannel()
+	if(playing):
+		_changeChannel()
 
 #On change la musique quand celle ci se termine
 func _change_music(index):
@@ -145,6 +147,7 @@ func _changeChannel():
 	var audiostream = load('res://PisteAudio/Radio Tuning Sound Effect.ogg')
 	var begin_time = randf()*(audiostream.get_length()-2)
 	noiseSound.set_stream(audiostream)
+	noiseSound.set_unit_db(-20)
 	noiseSound.play(begin_time)
 	start_noise_time = OS.get_ticks_msec()
 	switch_channel = true

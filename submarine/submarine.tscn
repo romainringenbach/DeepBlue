@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://submarine/submarine.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/cockpit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PisteAudio/SFX/ScreamSubmarine.ogg" type="AudioStream" id=3]
 
 [sub_resource type="PhysicsMaterial" id=1]
 
@@ -44,6 +45,15 @@ script = ExtResource( 1 )
 [node name="Cockpit" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2 )
+
+[node name="Motor" parent="Cockpit/Cockpit" index="25"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0516123, 0, -1.85076 )
+unit_size = 2.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cockpit/Cockpit" index="27"]
+stream = ExtResource( 3 )
+volume_db = -17.165
+autoplay = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 2 )
