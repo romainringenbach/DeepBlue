@@ -1,6 +1,7 @@
 extends Spatial
 
 signal speed_changed(speed)
+signal mode_changed(mode)
 signal reverse_changed()
 
 var current_speed = 0.0
@@ -19,6 +20,8 @@ var motorSound
 var boostMode = false
 var boostOver = false
 var prev_speed = real_speed
+
+var lateral_mode = false
 
 var pitch_scale
 var volume_db
@@ -43,12 +46,12 @@ func _process(delta):
 	motorSound.set_volume_db(volume_db)
 
 func _update_speed():
-	if $Boost.toggle == true:
+	if $MeshInstance2/Boost.toggle == true:
 		current_speed = BOOST_SPEED
 		
 	else:
 		current_speed = real_speed
-	if ($Reverse.toggle == true and current_speed > 0) or ($Reverse.toggle == false and current_speed < 0):
+	if ($MeshInstance2/Reverse.toggle == true and current_speed > 0) or ($MeshInstance2/Reverse.toggle == false and current_speed < 0):
 		current_speed = -current_speed
 		
 	
@@ -75,3 +78,15 @@ func _on_Boost_left_click():
 func _on_Boost_button_blinking_terminated():
 	boostMode = false
 	_update_speed()
+
+
+func _on_SpeedController2_position_changed(percent):
+	pass # Replace with function body.
+
+
+func _on_Lateral_left_click():
+	if lateral_mode == true:
+		lateral_mode = false
+	else:
+		lateral_mode = true
+	emit_signal("mode_changed",lateral_mode)

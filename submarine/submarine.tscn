@@ -43,7 +43,6 @@ angular_damp = 0.3
 script = ExtResource( 1 )
 
 [node name="Cockpit" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2 )
 
 [node name="Motor" parent="Cockpit/Cockpit" index="25"]
@@ -85,6 +84,7 @@ autostart = true
 
 [connection signal="collision_impact" from="." to="Cockpit" method="_on_Submarine_collision_impact"]
 [connection signal="speed_changed" from="Cockpit" to="." method="_on_Cockpit_speed_changed"]
+[connection signal="mode_changed" from="Cockpit/Speed_controller" to="." method="_on_Speed_controller_mode_changed"]
 [connection signal="reverse_changed" from="Cockpit/Speed_controller" to="." method="_on_Speed_controller_reverse_changed"]
 [connection signal="body_shape_entered" from="Area" to="." method="_on_Area_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area" to="." method="_on_Area_body_shape_exited"]

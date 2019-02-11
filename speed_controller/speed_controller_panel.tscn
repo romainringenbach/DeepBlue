@@ -1,55 +1,62 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://speed_controller/speed_controller_panel.gd" type="Script" id=1]
 [ext_resource path="res://textures/Material/Metal1.tres" type="Material" id=2]
-[ext_resource path="res://speed_controller/speed_controller.tscn" type="PackedScene" id=3]
-[ext_resource path="res://button/button.tscn" type="PackedScene" id=4]
-[ext_resource path="res://label/label.tscn" type="PackedScene" id=5]
+[ext_resource path="res://button/button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://label/label.tscn" type="PackedScene" id=4]
+[ext_resource path="res://speed_controller/speed_controller.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CubeMesh" id=1]
 
 material = ExtResource( 2 )
 
-[sub_resource type="PlaneMesh" id=2]
-
-
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.09025, 0, 0, 0, 0.55, 0, 0, 0 )
+transform = Transform( 0.556875, 0, 0, 0, 0.09025, 0, 0, 0, 0.4125, -0.5, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="Scene Root" parent="." instance=ExtResource( 3 )]
-transform = Transform( -4.88762e-008, 0, -0.3, 0, 0.3, 0, 0.3, 0, -4.88762e-008, 0.45, 0.15, 0 )
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 0.587748, -0.0580116, 0, 0.493179, 0.0691355, 0, 0, 0, 0.185625, 0.526746, 0.45, 0.2 )
+mesh = SubResource( 1 )
+material/0 = null
 
-[node name="MeshInstance" type="MeshInstance" parent="Scene Root"]
-transform = Transform( 1.15514, 0, -5.80295e-009, 0, 1, 0, -5.80356e-009, 0, 1.11952, 0, -0.179956, 0 )
-mesh = SubResource( 2 )
-material/0 = ExtResource( 2 )
-
-[node name="Reverse" parent="." instance=ExtResource( 4 )]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.65, 0.0902985, -0.3 )
+[node name="Reverse" parent="MeshInstance2" instance=ExtResource( 3 )]
+transform = Transform( 0.130336, 8.16269e-09, 0, 0, 1.10803, 0, 0, 0, 0.538721, -0.425868, 1.00054, 0 )
 color = Color( 0, 1, 0.152941, 1 )
 set_up = true
 
-[node name="Boost" parent="." instance=ExtResource( 4 )]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.65, 0.0902985, 0.3 )
+[node name="Lateral" parent="MeshInstance2" instance=ExtResource( 3 )]
+transform = Transform( 0.130336, 8.16269e-09, 0, 0, 1.10803, 0, 0, 0, 0.538721, 0.160643, 1.00054, -3.21102e-07 )
+color = Color( 0, 1, 0.152941, 1 )
+set_up = true
+
+[node name="Boost" parent="MeshInstance2" instance=ExtResource( 3 )]
+transform = Transform( 0.130336, 8.16269e-09, 0, 0, 1.10803, 0, 0, 0, 0.538721, 0.747153, 1.00054, 0 )
 type = 1
 color = Color( 0, 1, 0.15625, 1 )
 blinking_duration = 20
 set_up = true
 
-[node name="Reverse_l" parent="." instance=ExtResource( 5 )]
-transform = Transform( -2.44381e-008, 0, -0.15, 0, 0.15, 0, 0.15, 0, -2.44381e-008, -0.85101, 0.0995724, -0.3 )
+[node name="Reverse_l" parent="MeshInstance2" instance=ExtResource( 4 )]
+transform = Transform( -3.18515e-08, 1.4429e-08, -0.195503, 0, 1.66205, 0, 0.808081, 0, -1.31653e-07, -0.687855, 1.10329, 0 )
 text_label = "Reverse"
 
-[node name="Boost_l" parent="." instance=ExtResource( 5 )]
-transform = Transform( -2.44381e-008, 0, -0.15, 0, 0.15, 0, 0.15, 0, -2.44381e-008, -0.85101, 0.0995724, 0.3 )
+[node name="Boost_l" parent="MeshInstance2" instance=ExtResource( 4 )]
+transform = Transform( -3.18515e-08, 1.4429e-08, -0.195503, 0, 1.66205, 0, 0.808081, 0, -1.31653e-07, 0.485166, 1.10329, 0 )
 text_label = "Boost"
 
+[node name="Lateral_l" parent="MeshInstance2" instance=ExtResource( 4 )]
+transform = Transform( -3.18515e-08, 1.4429e-08, -0.195503, 0, 1.66205, 0, 0.808081, 0, -1.31653e-07, -0.101344, 1.10329, -1.60551e-07 )
+text_label = "Crab Mode"
+
+[node name="Scene Root" parent="." instance=ExtResource( 5 )]
+transform = Transform( -4.88762e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -4.88762e-08, -0.6, 0.15, 0 )
+
+[connection signal="left_click" from="MeshInstance2/Reverse" to="." method="_on_Reverse_left_click"]
+[connection signal="left_click" from="MeshInstance2/Lateral" to="." method="_on_Lateral_left_click"]
+[connection signal="button_blinking_terminated" from="MeshInstance2/Boost" to="." method="_on_Boost_button_blinking_terminated"]
+[connection signal="left_click" from="MeshInstance2/Boost" to="." method="_on_Boost_left_click"]
 [connection signal="position_changed" from="Scene Root" to="." method="_on_Scene_Root_position_changed"]
-[connection signal="left_click" from="Reverse" to="." method="_on_Reverse_left_click"]
-[connection signal="button_blinking_terminated" from="Boost" to="." method="_on_Boost_button_blinking_terminated"]
-[connection signal="left_click" from="Boost" to="." method="_on_Boost_left_click"]
