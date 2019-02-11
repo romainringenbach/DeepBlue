@@ -1,14 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://cockpit/dome.dae" type="PackedScene" id=1]
 [ext_resource path="res://cockpit/dome/dome.gd" type="Script" id=2]
 [ext_resource path="res://cockpit/dome/dome_cracking2.png" type="Texture" id=3]
 
-[sub_resource type="ViewportTexture" id=6]
+[sub_resource type="ViewportTexture" id=9]
 
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=2]
 
 code = "shader_type spatial;
 
@@ -16,6 +16,7 @@ render_mode cull_disabled;
 
 
 uniform sampler2D cracking;
+uniform sampler2D noise_dust;
 uniform vec2 begin;
 uniform int distance_i;
 
@@ -152,41 +153,48 @@ void fragment() {
 
 	// --- cracking
 	
-	vec4 color_tmp = vec4(0.0,0.0,0.0,0.0);
+	vec4 color_tmp = vec4(0.0);
 
 	if (is_in_craking(real_uv,false))
 	{
 		color_tmp = vec4(1.0);
 	}
 	
-	ALBEDO = color_tmp.rgb;//vec3(c);
-	ALPHA = color_tmp.a;//+c*3.0;
+	vec4 nd = texture(noise_dust,UV);
+	
+	ALBEDO = max(max(color_tmp.rgb,nd.rgb),vec3(0.4,0.3,0.0));
+	ALPHA = max(max(color_tmp.a,nd.a*3.0),0.5);
 	
 }"
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ViewportTexture" id=7]
 
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="ShaderMaterial" id=3]
+
+resource_local_to_scene = true
 render_priority = 1
-shader = SubResource( 1 )
+shader = SubResource( 2 )
 shader_param/begin = Vector2( 690, 597 )
 shader_param/distance_i = null
 shader_param/cracking = ExtResource( 3 )
+shader_param/noise_dust = SubResource( 7 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=8]
 
 resource_local_to_scene = true
-next_pass = SubResource( 2 )
-flags_transparent = true
+next_pass = SubResource( 3 )
 params_cull_mode = 2
 params_depth_draw_mode = 1
-albedo_color = Color( 0.333333, 0.564706, 0.701961, 0.294118 )
-albedo_texture = SubResource( 6 )
+albedo_color = Color( 1, 1, 1, 0 )
+albedo_texture = SubResource( 9 )
 roughness = 0.0
 refraction_enabled = true
 refraction_scale = 0.01
 refraction_texture_channel = 0
 
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=5]
 
 code = "shader_type canvas_item;
 
@@ -243,14 +251,14 @@ void fragment() {
     vel = vec3(cos(a)*coeff,sin(a)*coeff,sin(aa));
     DF += noise(unit+vel)*0.05+.45;
 		
-	float c = 1.0-smoothstep(.3,.9,fract(DF));
+	float c = 1.0-smoothstep(.1,1.0,fract(DF));
 	
-	COLOR = vec4(0.0,0.0, c, c);
+	COLOR = vec4(c)*.6;
 }"
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=6]
 
-shader = SubResource( 4 )
+shader = SubResource( 5 )
 
 [node name="dome" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -258,7 +266,7 @@ script = ExtResource( 2 )
 [node name="Sphere" parent="." index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0211585 )
 layers = 16384
-material_override = SubResource( 3 )
+material_override = SubResource( 8 )
 
 [node name="Spot001" parent="." index="1"]
 visible = false
@@ -272,14 +280,14 @@ wait_time = 0.01
 autostart = true
 
 [node name="Viewport" type="Viewport" parent="." index="5"]
-size = Vector2( 1024, 512 )
+size = Vector2( 2048, 1024 )
 transparent_bg = true
 hdr = false
 disable_3d = true
 usage = 0
 
 [node name="ColorRect" type="ColorRect" parent="Viewport" index="0"]
-material = SubResource( 5 )
+material = SubResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 

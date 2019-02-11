@@ -35,7 +35,6 @@ func _ready():
 	player_direction = $Cockpit.get_global_transform().basis.z
 	$Cockpit/Viewports/TopView/Yaw.target = get_path()
 	$Cockpit/Viewports/BottomView/Yaw.target = get_path()
-	
 
 func get_input():
 	
@@ -78,7 +77,7 @@ func _integrate_forces(state):
 	elif rotation.x < -0.1:
 		state.apply_torque_impulse(Vector3(STEER_FORCE_UD/5,0,0))
 		
-	if (impulse_down):
+	if rotation.x < -0.1:
 		state.apply_torque_impulse(Vector3(STEER_FORCE_UD,0,0))
 	elif rotation.x > 0.1:
 		state.apply_torque_impulse(Vector3(-STEER_FORCE_UD/5,0,0))
@@ -87,6 +86,8 @@ func _integrate_forces(state):
 		state.apply_torque_impulse(Vector3(0,0,STEER_FORCE_UD/5))
 	if rotation.z > 0.1:
 		state.apply_torque_impulse(Vector3(0,0,-STEER_FORCE_UD/5))
+		
+
 		
 	state.integrate_forces()
 	
@@ -101,17 +102,23 @@ func _integrate_forces(state):
 			s = fake_speed
 
 
-		deviation = acos(final_force.dot(player_direction*current_speed)/(final_force.length()*(player_direction*s).length()))
-	
-		if ((deviation != 0 and abs(deviation * final_force.length()) > 10000) or (final_force.length() < 0.5 and current_speed != 0) ) and $Area2.get_overlapping_bodies().size() > 1 and collision == false:
-			emit_signal('collision_impact')
-			collision = true
+		#deviation = acos(final_force.dot(player_direction*current_speed)/(final_force.length()*(player_direction*s).length()))
+		
+		#or (final_force.length() < 0.5 and current_speed != 0)
+		#if ((deviation != 0 and abs(deviation * final_force.length()) > 10000)  ) and $Area2.get_overlapping_bodies().size() > 1 and collision == false:
+		#	emit_signal('collision_impact')
+		#	collision = true
 			
 			
-		elif collision == true and (abs(deviation * final_force.length()) <= 8000 or $Area2.get_overlapping_bodies().size() == 1):
-			collision = false
+		#elif collision == true and (abs(deviation * final_force.length()) <= 8000 or $Area2.get_overlapping_bodies().size() == 1):
+		#	collision = false
 
-		print (abs(deviation * final_force.length()))
+		for body in get_colliding_bodies ( ):
+			var body_velocity = Vector3(0,0,0)
+			if body is KinematicBody:
+				body_velocity = body.linear_velocity
+				
+			#print ((linear_velocity-body_velocity).length())
 
 
 func _on_Cockpit_speed_changed(speed_percent):
@@ -151,15 +158,12 @@ func _on_Timer_timeout():
 
 
 func _on_Area2_body_shape_entered(body_id, body, body_shape, area_shape):
-	if body_id in echos:
-		value = echos[body_id]
-		pos = value['body'].global_transform.origin
-		var body_speed = pos - value['old_body_position']
+	var body_velocity = Vector3(0,0,0)
+	if body is KinematicBody:
+		body_velocity = body.linear_velocity
 		
-		var sub_speed = player_direction*current_speed
-		
-		
-	pass
+	if ((linear_velocity-body_velocity).length()) > 1.3:
+		emit_signal("collision_impact")
 
 func _on_Speed_controller_reverse_changed():
 	direction_changed = true
