@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://submarine/submarine.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/simple_cube.tscn" type="PackedScene" id=2]
 
 [sub_resource type="Environment" id=1]
 
 background_mode = 1
-background_color = Color( 0, 0.113725, 0.168627, 1 )
+background_color = Color( 0.317647, 0.4, 0.47451, 1 )
 ambient_light_color = Color( 0.517647, 0.517647, 0.517647, 0.52549 )
 ambient_light_energy = 0.0
 
@@ -13,111 +14,33 @@ ambient_light_energy = 0.0
 
 bounce = 0.2
 
-[sub_resource type="CubeMesh" id=3]
-
-
-[sub_resource type="BoxShape" id=4]
-
-
 [node name="WorldEnvironment" type="WorldEnvironment"]
 environment = SubResource( 1 )
 
 [node name="RigidBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0167294, 0.0114255, 9.34601e-05 )
 physics_material_override = SubResource( 2 )
 
-[node name="Cube1" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.5 )
+[node name="Cube1" parent="." instance=ExtResource( 2 )]
 
-[node name="MeshInstance" type="MeshInstance" parent="Cube1"]
-mesh = SubResource( 3 )
-material/0 = null
+[node name="Cube2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.38168, 0, 6.5 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Cube1"]
-shape = SubResource( 4 )
+[node name="Cube3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.01921, 0, 6.5 )
 
-[node name="Cube2" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 0, 6.5 )
+[node name="Cube4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.01921, 5.69035, -1.21445 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Cube2"]
-mesh = SubResource( 3 )
-material/0 = null
+[node name="Cube5" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.63372, 5.69035, 7.96713 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Cube2"]
-shape = SubResource( 4 )
-
-[node name="Cube3" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.95, 0, 6.5 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Cube3"]
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Cube3"]
-shape = SubResource( 4 )
-
-[node name="Cube4" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.95, 0, 1.9 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Cube4"]
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Cube4"]
-shape = SubResource( 4 )
-
-[node name="Cube5" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.95, 0, -2.9 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Cube5"]
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Cube5"]
-shape = SubResource( 4 )
-
-[node name="Cube6" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.95, 0, -8.3 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Cube6"]
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Cube6"]
-shape = SubResource( 4 )
-
-[node name="Cube7" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05, -3.5, 1.4 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Cube7"]
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Cube7"]
-shape = SubResource( 4 )
-
-[node name="Cube8" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1, 3.75, 1.4 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Cube8"]
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Cube8"]
-shape = SubResource( 4 )
-
-[node name="Cube9" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6, 3, -3.4 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Cube9"]
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Cube9"]
-shape = SubResource( 4 )
+[node name="Cube6" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.83303, -3.7199, 1.12723 )
 
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( -0.637709, -0.770278, 1.1478e-08, 0.178083, -0.147434, 0.972908, -0.749409, 0.620432, 0.231193, 22.4102, 92.5929, 0 )
-light_color = Color( 0.745098, 0.960784, 1, 1 )
+light_color = Color( 0.478431, 0.686275, 0.862745, 1 )
 spot_range = 400.0
 spot_attenuation = 1.8025
 spot_angle = 54.3

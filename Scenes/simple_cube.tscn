@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="PhysicsMaterial" id=5]
+
+bounce = 1.0
+
+[sub_resource type="CubeMesh" id=3]
+
+
+[sub_resource type="BoxShape" id=4]
+
+
+[node name="Cube1" type="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.5 )
+physics_material_override = SubResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 4 )
+

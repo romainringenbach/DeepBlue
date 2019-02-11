@@ -40,11 +40,13 @@ transform = Transform( 1, -1.74846e-007, 3.0198e-011, -3.0198e-011, -0.000345425
 material/0 = ExtResource( 4 )
 
 [node name="SpotLight" type="SpotLight" parent="Sphere" index="0"]
-transform = Transform( 1, 1.18968e-007, 4.66865e-008, -4.67276e-008, 0.680371, -0.732868, -1.18952e-007, 0.732868, 0.680371, -5.18682e-015, 0.13436, 0 )
+
+transform = Transform( 1, 1.35598e-07, 6.44255e-08, -6.44727e-08, 0.775461, -0.631395, -1.35575e-07, 0.631395, 0.775461, 3.69496e-15, 0.13436, 0 )
+
 visible = false
 layers = 32769
 light_color = Color( 1, 0, 0, 1 )
-spot_range = 4.42869
+spot_range = 6.19943
 spot_attenuation = 0.108819
 spot_angle = 57.1265
 
