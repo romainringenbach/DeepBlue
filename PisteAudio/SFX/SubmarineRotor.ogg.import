@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SubmarineRotor.ogg-b67864c067b5d79730090f5bfe461ebf.oggstr"
+
+[deps]
+
+source_file="res://PisteAudio/SFX/SubmarineRotor.ogg"
+dest_files=[ "res://.import/SubmarineRotor.ogg-b67864c067b5d79730090f5bfe461ebf.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

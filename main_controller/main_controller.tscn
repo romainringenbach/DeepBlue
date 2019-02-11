@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://main_controller/main_controller.dae" type="PackedScene" id=1]
 [ext_resource path="res://main_controller/main_controller.gd" type="Script" id=2]
 [ext_resource path="res://textures/Material/Metal1.tres" type="Material" id=3]
 [ext_resource path="res://textures/Material/Metal.tres" type="Material" id=4]
-[ext_resource path="res://textures/Material/LeatherLuxe.tres" type="Material" id=5]
+[ext_resource path="res://main_controller/HydraLogo.png" type="Texture" id=5]
+[ext_resource path="res://textures/Material/LeatherLuxe.tres" type="Material" id=6]
 
 [sub_resource type="ArrayMesh" id=1]
 
@@ -22,9 +23,12 @@ surfaces/0 = {
 "vertex_count": 6709
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="CylinderMesh" id=2]
 
-resource_name = "left"
+material = ExtResource( 4 )
+
+[sub_resource type="Animation" id=3]
+
 tracks/0/type = "value"
 tracks/0/path = NodePath("Cylinder/Cube_002:rotation_degrees")
 tracks/0/interp = 1
@@ -38,9 +42,8 @@ tracks/0/keys = {
 "values": [ Vector3( 7.05105e-006, 1.87477, 90 ), Vector3( -10, 1.87477, 90 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
-resource_name = "r_left"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Cylinder/Cube_002:rotation_degrees")
 tracks/0/interp = 1
@@ -54,9 +57,8 @@ tracks/0/keys = {
 "values": [ Vector3( -10, 1.87477, 90 ), Vector3( 0, 1.87477, 90 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
-resource_name = "r_right"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Cylinder/Cube_002:rotation_degrees")
 tracks/0/interp = 1
@@ -70,9 +72,8 @@ tracks/0/keys = {
 "values": [ Vector3( 10, 1.87477, 90 ), Vector3( 0, 1.87477, 90 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 
-resource_name = "right"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Cylinder/Cube_002:rotation_degrees")
 tracks/0/interp = 1
@@ -84,21 +85,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 7.05105e-006, 1.87477, 90 ), Vector3( 10, 1.87477, 90 ) ]
-}
-
-[sub_resource type="Animation" id=6]
-
-tracks/0/type = "value"
-tracks/0/path = NodePath("Cylinder:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector3( 57.9613, 9.04677e-006, -90 ), Vector3( 51.6633, 7.73719e-006, -90 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -113,7 +99,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 51.6633, 1e-005, -90 ), Vector3( 57.9613, 1e-005, -90 ) ]
+"values": [ Vector3( 57.9613, 9.04677e-006, -90 ), Vector3( 51.6633, 7.73719e-006, -90 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -128,12 +114,26 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 60.864, 9.85705e-006, -90 ), Vector3( 57.9613, 1e-005, -90 ) ]
+"values": [ Vector3( 51.6633, 1e-005, -90 ), Vector3( 57.9613, 1e-005, -90 ) ]
 }
 
 [sub_resource type="Animation" id=9]
 
-resource_name = "up"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cylinder:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 60.864, 9.85705e-006, -90 ), Vector3( 57.9613, 1e-005, -90 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+
 tracks/0/type = "value"
 tracks/0/path = NodePath("Cylinder:rotation_degrees")
 tracks/0/interp = 1
@@ -166,22 +166,34 @@ use_in_baked_light = true
 mesh = SubResource( 1 )
 material/0 = ExtResource( 4 )
 
+[node name="MeshInstance" type="MeshInstance" parent="Cylinder/Cube_002" index="0"]
+transform = Transform( 0.6, 6.83009e-013, 7.20064e-011, -3.41061e-013, 1.2, -2.02656e-005, -2.72848e-012, 1.66893e-006, 19, 0, -0.0259628, 0.221649 )
+layers = 32768
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Sprite3D" type="Sprite3D" parent="Cylinder/Cube_002/MeshInstance" index="0"]
+transform = Transform( -0.5, -7.54979e-008, 5.32907e-015, 0, 0, -0.6, 7.54979e-008, -0.5, 2.98023e-008, -0.00983111, 1.08117, 0.0337875 )
+layers = 32768
+opacity = 0.81
+texture = ExtResource( 5 )
+
 [node name="Cube_002" parent="." index="2"]
 visible = false
 layers = 32768
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 6 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="3"]
-anims/left = SubResource( 2 )
-anims/r_left = SubResource( 3 )
-anims/r_right = SubResource( 4 )
-anims/right = SubResource( 5 )
+anims/left = SubResource( 3 )
+anims/r_left = SubResource( 4 )
+anims/r_right = SubResource( 5 )
+anims/right = SubResource( 6 )
 
 [node name="AnimationPlayer" parent="." index="4"]
-anims/down = SubResource( 6 )
-anims/r_down = SubResource( 7 )
-anims/r_up = SubResource( 8 )
-anims/up = SubResource( 9 )
+anims/down = SubResource( 7 )
+anims/r_down = SubResource( 8 )
+anims/r_up = SubResource( 9 )
+anims/up = SubResource( 10 )
 
 [connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_AnimationPlayer2_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

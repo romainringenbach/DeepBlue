@@ -116,7 +116,7 @@ material/0 = null
 shape = SubResource( 4 )
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( -0.637709, -0.770278, 1.1478e-08, 0.178083, -0.147434, 0.972908, -0.749409, 0.620432, 0.231193, 22.4102, 92.5929, 0 )
+transform = Transform( -0.637709, -0.770278, 1.1478e-008, 0.178083, -0.147434, 0.972908, -0.749409, 0.620432, 0.231193, 22.4102, 92.5929, 0 )
 light_color = Color( 0.745098, 0.960784, 1, 1 )
 spot_range = 400.0
 spot_attenuation = 1.8025

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/TorpilleLaunch.ogg-52d63fd26ad0936e5e04c5c8628e93f1.oggstr"
+
+[deps]
+
+source_file="res://PisteAudio/SFX/TorpilleLaunch.ogg"
+dest_files=[ "res://.import/TorpilleLaunch.ogg-52d63fd26ad0936e5e04c5c8628e93f1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
