@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=1]
 [ext_resource path="res://addons/zylann.hterrain/tools/icons/icon_heightmap_node.svg" type="Texture" id=2]
@@ -22,9 +22,10 @@
 [ext_resource path="res://Scenes/Weeds/Seaweed2.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scenes/Containers/Container2.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Scenes/Containers/Container1.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Scenes/Terrain/Scripts/Followpath.gd" type="Script" id=23]
-[ext_resource path="res://Scenes/Fishes/FierceShark.tscn" type="PackedScene" id=24]
-[ext_resource path="res://Scenes/Fishes/CoralFish.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Scenes/Fishes/FierceShark.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Scenes/Terrain/Scripts/BossFierceShark.gd" type="Script" id=24]
+[ext_resource path="res://Scenes/Terrain/Scripts/Followpath.gd" type="Script" id=25]
+[ext_resource path="res://Scenes/Fishes/CoralFish.tscn" type="PackedScene" id=26]
 
 [sub_resource type="Curve3D" id=1]
 
@@ -34,11 +35,15 @@ _data = {
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0 )
 }
 
-[sub_resource type="Curve3D" id=2]
+[sub_resource type="SphereShape" id=2]
+
+radius = 52.087
+
+[sub_resource type="Curve3D" id=3]
 
 bake_interval = 0.15
 _data = {
-"points": PoolVector3Array( 0.170261, 0, -2.28152, -0.170261, 0, 2.28152, 4.5532, 7.62939e-06, -7.16656, 1.49818, 0.000732422, -0.987701, -1.49818, -0.000732422, 0.987701, 0.807388, 7.62939e-06, -2.22891, 1.77087, 0.000602722, 0.0678711, -1.77087, -0.000602722, -0.0678711, -5.62036, -1.22861, -1.57675, 0.74942, 0.000427246, 1.94092, -0.74942, -0.000427246, -1.94092, -11.1993, -0.282608, -4.87582, -1.05564, 0, 1.53235, 1.05564, 0, -1.53235, -9.43559, 0.896736, -10.459, -2.07722, 0, 0.374573, 2.07722, 0, -0.374573, -3.07464, 2.28882e-05, -13.0577, -1.70264, 0, -1.32803, 1.70264, 0, 1.32803, 3.61972, 0.050621, -11.9522, 0.0993462, 0.279343, -2.27026, -0.0993462, -0.279343, 2.27026, 4.5532, 7.62939e-06, -7.16656 ),
+"points": PoolVector3Array( 0.170261, 0, -2.28152, -0.170261, 0, 2.28152, 4.5532, 7.62939e-006, -7.16656, 1.49818, 0.000732422, -0.987701, -1.49818, -0.000732422, 0.987701, 0.807388, 7.62939e-006, -2.22891, 1.77087, 0.000602722, 0.0678711, -1.77087, -0.000602722, -0.0678711, -5.62036, -1.22861, -1.57675, 0.74942, 0.000427246, 1.94092, -0.74942, -0.000427246, -1.94092, -11.1993, -0.282608, -4.87582, -1.05564, 0, 1.53235, 1.05564, 0, -1.53235, -9.43559, 0.896736, -10.459, -2.07722, 0, 0.374573, 2.07722, 0, -0.374573, -3.07464, 2.28882e-005, -13.0577, -1.70264, 0, -1.32803, 1.70264, 0, 1.32803, 3.61972, 0.050621, -11.9522, 0.0993462, 0.279343, -2.27026, -0.0993462, -0.279343, 2.27026, 4.5532, 7.62939e-006, -7.16656 ),
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 )
 }
 
@@ -72,7 +77,7 @@ _detail_objects_data = null
 transform = Transform( 0.478984, 0.595481, -0.644962, -0.295044, 0.801194, 0.520612, 0.826755, -0.0590723, 0.559452, 168.524, 199.578, 599.198 )
 
 [node name="FlyCam" type="Spatial" parent="."]
-transform = Transform( -0.802901, 0, -0.596113, 0, 1, 0, 0.596113, 0, -0.802901, 214.836, 347.123, 626.323 )
+transform = Transform( -0.888265, 0, -0.459332, 0, 1, 0, 0.459332, 0, -0.888265, 228.204, 335.08, 643.126 )
 script = ExtResource( 12 )
 
 [node name="Camera" type="Camera" parent="FlyCam"]
@@ -100,42 +105,42 @@ script = ExtResource( 15 )
 editor/display_folded = true
 
 [node name="CargoShip" parent="Doodads" instance=ExtResource( 16 )]
-transform = Transform( 0.190434, 0.0904613, 0.977523, -0.429077, 0.903268, 6.39374e-09, -0.882965, -0.419432, 0.210828, 167.386, 106.702, 240.192 )
+transform = Transform( 0.190434, 0.0904613, 0.977523, -0.429077, 0.903268, 6.39374e-009, -0.882965, -0.419432, 0.210828, 167.386, 106.702, 240.192 )
 
 [node name="Containers_Piled" parent="Doodads" instance=ExtResource( 17 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 202.958, 101.571, 282.854 )
 
-[node name="Decor" type="Node" parent="."]
+[node name="CoralsWeeds" type="Node" parent="Doodads"]
 editor/display_folded = true
 
-[node name="Coral_Table" parent="Decor" instance=ExtResource( 18 )]
+[node name="Coral_Table" parent="Doodads/CoralsWeeds" instance=ExtResource( 18 )]
 transform = Transform( 0.973064, -0.0216222, -0.22952, 0, 0.995592, -0.0937905, 0.230537, 0.0912642, 0.968774, 147.827, 105.695, 345.623 )
 
-[node name="Coral_Table2" parent="Decor" instance=ExtResource( 18 )]
+[node name="Coral_Table2" parent="Doodads/CoralsWeeds" instance=ExtResource( 18 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 28.9941, 89.954, 350.878 )
 
-[node name="Seaweed1" parent="Decor" instance=ExtResource( 19 )]
+[node name="Seaweed1" parent="Doodads/CoralsWeeds" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8173, 89.8368, 354.505 )
 
-[node name="Seaweed2" parent="Decor" instance=ExtResource( 19 )]
+[node name="Seaweed2" parent="Doodads/CoralsWeeds" instance=ExtResource( 19 )]
 transform = Transform( 0.634415, 0, 0.295833, 0, 0.7, 0, -0.295833, 0, 0.634415, 24.2566, 90.0056, 350.759 )
 
-[node name="Seaweed3" parent="Decor" instance=ExtResource( 19 )]
+[node name="Seaweed3" parent="Doodads/CoralsWeeds" instance=ExtResource( 19 )]
 transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 31.5173, 90.1308, 346.334 )
 
-[node name="Seaweed4" parent="Decor" instance=ExtResource( 20 )]
+[node name="Seaweed4" parent="Doodads/CoralsWeeds" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4517, 90.0145, 352.226 )
 
-[node name="Seaweed7" parent="Decor" instance=ExtResource( 20 )]
+[node name="Seaweed7" parent="Doodads/CoralsWeeds" instance=ExtResource( 20 )]
 transform = Transform( 1.11183, 0, -0.451469, 0, 1.2, 0, 0.451469, 0, 1.11183, 22.0872, 90.0145, 351.918 )
 
-[node name="Seaweed6" parent="Decor" instance=ExtResource( 20 )]
+[node name="Seaweed6" parent="Doodads/CoralsWeeds" instance=ExtResource( 20 )]
 transform = Transform( 0.634415, 0, 0.295833, 0, 0.7, 0, -0.295833, 0, 0.634415, 21.8423, 90.0145, 353.162 )
 
-[node name="Seaweed5" parent="Decor" instance=ExtResource( 20 )]
+[node name="Seaweed5" parent="Doodads/CoralsWeeds" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.3186, 90.0145, 347.308 )
 
-[node name="Seaweed8" parent="Decor" instance=ExtResource( 20 )]
+[node name="Seaweed8" parent="Doodads/CoralsWeeds" instance=ExtResource( 20 )]
 transform = Transform( 1.08757, 0, -0.507142, 0, 1.2, 0, 0.507142, 0, 1.08757, 33.1005, 90.0145, 344.609 )
 
 [node name="Loot" type="Node" parent="."]
@@ -151,20 +156,24 @@ transform = Transform( 0.92279, -0.0170194, 0.384926, 0, 0.999024, 0.0441715, -0
 transform = Transform( 0.779814, 0, 0.626011, 0, 1, 0, -0.626011, 0, 0.779814, 225.478, 301.277, 677.267 )
 
 [node name="Bosses" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="FierceShark" type="Node" parent="Bosses"]
 
 [node name="Path" type="Path" parent="Bosses/FierceShark"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 245.805, 305.676, 676.326 )
 curve = SubResource( 1 )
-script = ExtResource( 23 )
-loop_duration = 20.0
 
 [node name="PathFollow" type="PathFollow" parent="Bosses/FierceShark/Path"]
 rotation_mode = 4
 
-[node name="FierceShark" parent="Bosses/FierceShark/Path/PathFollow" instance=ExtResource( 24 )]
+[node name="Area" type="Area" parent="Bosses/FierceShark/Path/PathFollow"]
+collision_layer = 512
+
+[node name="CollisionShape" type="CollisionShape" parent="Bosses/FierceShark/Path/PathFollow/Area"]
+shape = SubResource( 2 )
+
+[node name="FierceShark" parent="Bosses/FierceShark/Path/PathFollow/Area" instance=ExtResource( 23 )]
+script = ExtResource( 24 )
 
 [node name="StartPoint" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 57.3557, 101.831, 407.212 )
@@ -175,12 +184,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 57.3557, 101.831, 407.212 )
 
 [node name="Path" type="Path" parent="FishesSchools/CoralFishes1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.834, 93.9494, 357.57 )
-curve = SubResource( 2 )
-script = ExtResource( 23 )
+curve = SubResource( 3 )
+script = ExtResource( 25 )
 loop_duration = 20.0
 
 [node name="PathFollow" type="PathFollow" parent="FishesSchools/CoralFishes1/Path"]
 rotation_mode = 4
 
-[node name="CoralFish" parent="FishesSchools/CoralFishes1/Path/PathFollow" instance=ExtResource( 25 )]
+[node name="CoralFish" parent="FishesSchools/CoralFishes1/Path/PathFollow" instance=ExtResource( 26 )]
 
