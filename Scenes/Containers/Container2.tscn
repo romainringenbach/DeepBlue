@@ -26,10 +26,11 @@ extents = Vector3( 1.19923, 1.22475, 3.09766 )
 [node name="Container2" index="0" instance=ExtResource( 1 )]
 
 [node name="Container" parent="." index="0"]
+use_in_baked_light = true
 mesh = SubResource( 1 )
 
 [node name="StaticBody" type="StaticBody" parent="Container" index="0"]
-collision_layer = 128
+collision_layer = 256
 
 [node name="CollisionShape" type="CollisionShape" parent="Container/StaticBody" index="0"]
 shape = SubResource( 2 )
