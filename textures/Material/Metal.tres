@@ -1,9 +1,9 @@
 [gd_resource type="SpatialMaterial" load_steps=5 format=2]
 
-[ext_resource path="res://textures/Textures/Metal19/Metal19_col.jpg" type="Texture" id=1]
-[ext_resource path="res://textures/Textures/Metal19/Metal19_met.jpg" type="Texture" id=2]
-[ext_resource path="res://textures/Textures/Metal19/Metal19_nrm.jpg" type="Texture" id=3]
-[ext_resource path="res://textures/Textures/Metal19/Metal19_rgh.jpg" type="Texture" id=4]
+[ext_resource path="res://textures/Textures/[2K]Pipe01/Pipe01_col.jpg" type="Texture" id=1]
+[ext_resource path="res://textures/Textures/[2K]Pipe01/Pipe01_met.jpg" type="Texture" id=2]
+[ext_resource path="res://textures/Textures/[2K]Pipe01/Pipe01_nrm.jpg" type="Texture" id=3]
+[ext_resource path="res://textures/Textures/[2K]Pipe01/Pipe01_rgh.jpg" type="Texture" id=4]
 
 [resource]
 
@@ -17,4 +17,7 @@ roughness_texture_channel = 1
 normal_enabled = true
 normal_scale = 1.0
 normal_texture = ExtResource( 3 )
+uv1_scale = Vector3( -0.01, 0.31, -0.09 )
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.0853775
 

@@ -1,89 +1,79 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://button_panel/panel_button.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://button_panel/button_panel.gd" type="Script" id=2]
-[ext_resource path="res://button/button.tscn" type="PackedScene" id=3]
-[ext_resource path="res://button_panel/TestButton.gd" type="Script" id=4]
-[ext_resource path="res://label/label.tscn" type="PackedScene" id=5]
+[ext_resource path="res://textures/Material/Metal1.tres" type="Material" id=2]
+[ext_resource path="res://button_panel/button_panel.gd" type="Script" id=3]
+[ext_resource path="res://button/button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://button_panel/TestButton.gd" type="Script" id=5]
+[ext_resource path="res://label/label.tscn" type="PackedScene" id=6]
 
-[sub_resource type="SpatialMaterial" id=1]
-
-roughness = 0.0
-
-[sub_resource type="SpatialMaterial" id=2]
-
-roughness = 0.0
-
-[sub_resource type="SpatialMaterial" id=3]
-
-roughness = 0.0
-
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=1]
 
 extents = Vector3( 0.206732, 0.0701488, 0.393011 )
 
 [node name="MeshInstance" type="MeshInstance"]
+layers = 32768
 mesh = ExtResource( 1 )
-material/0 = SubResource( 1 )
-material/1 = SubResource( 2 )
-material/2 = SubResource( 3 )
-script = ExtResource( 2 )
+material/0 = ExtResource( 2 )
+material/1 = ExtResource( 2 )
+material/2 = ExtResource( 2 )
+script = ExtResource( 3 )
 
-[node name="Button1" parent="." instance=ExtResource( 3 )]
+[node name="Button1" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.0946739, 0.065596, 0.310664 )
 
-[node name="Button2" parent="." instance=ExtResource( 3 )]
+[node name="Button2" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.0946738, 0.065596, 0.110664 )
 
-[node name="Button3" parent="." instance=ExtResource( 3 )]
+[node name="Button3" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.0946738, 0.065596, -0.0893355 )
 
-[node name="Button4" parent="." instance=ExtResource( 3 )]
+[node name="Button4" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.0946738, 0.065596, -0.289336 )
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 
-[node name="Button5" parent="." instance=ExtResource( 3 )]
+[node name="Button5" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.0553262, 0.065596, 0.310664 )
 
-[node name="Button6" parent="." instance=ExtResource( 3 )]
+[node name="Button6" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.0553262, 0.065596, 0.110664 )
 
-[node name="Button7" parent="." instance=ExtResource( 3 )]
+[node name="Button7" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.0553262, 0.065596, -0.0893355 )
 
-[node name="Button8" parent="." instance=ExtResource( 3 )]
+[node name="Button8" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.0553262, 0.065596, -0.289336 )
 
-[node name="Label1" parent="." instance=ExtResource( 5 )]
-transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, -0.02, 0.0652456, 0.31 )
+[node name="Label1" parent="." instance=ExtResource( 6 )]
+transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, -0.02, 0.0652456, 0.31 )
 text_label = ""
 
-[node name="Label2" parent="." instance=ExtResource( 5 )]
-transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, -0.02, 0.0652456, 0.11 )
+[node name="Label2" parent="." instance=ExtResource( 6 )]
+transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, -0.02, 0.0652456, 0.11 )
 text_label = ""
 
-[node name="Label3" parent="." instance=ExtResource( 5 )]
-transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, -0.02, 0.0652456, -0.09 )
+[node name="Label3" parent="." instance=ExtResource( 6 )]
+transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, -0.02, 0.0652456, -0.09 )
 text_label = ""
 
-[node name="Label4" parent="." instance=ExtResource( 5 )]
-transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, -0.02, 0.0652456, -0.29 )
+[node name="Label4" parent="." instance=ExtResource( 6 )]
+transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, -0.02, 0.0652456, -0.29 )
 text_label = ""
 
-[node name="Label5" parent="." instance=ExtResource( 5 )]
-transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.12, 0.0652456, 0.31 )
+[node name="Label5" parent="." instance=ExtResource( 6 )]
+transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.12, 0.0652456, 0.31 )
 text_label = ""
 
-[node name="Label6" parent="." instance=ExtResource( 5 )]
-transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.12, 0.0652456, 0.11 )
+[node name="Label6" parent="." instance=ExtResource( 6 )]
+transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.12, 0.0652456, 0.11 )
 text_label = ""
 
-[node name="Label7" parent="." instance=ExtResource( 5 )]
-transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.12, 0.0652456, -0.09 )
+[node name="Label7" parent="." instance=ExtResource( 6 )]
+transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.12, 0.0652456, -0.09 )
 text_label = ""
 
-[node name="Label8" parent="." instance=ExtResource( 5 )]
-transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.12, 0.0652456, -0.29 )
+[node name="Label8" parent="." instance=ExtResource( 6 )]
+transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.12, 0.0652456, -0.29 )
 text_label = ""
 
 [node name="StaticBody" type="StaticBody" parent="."]
@@ -91,5 +81,5 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 

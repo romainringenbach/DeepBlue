@@ -1,325 +1,28 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://measure_1/measure.dae" type="PackedScene" id=1]
 [ext_resource path="res://measure_1/measure.gd" type="Script" id=2]
+[ext_resource path="res://textures/Material/Metal1.tres" type="Material" id=3]
+[ext_resource path="res://cockpit/Copper.material" type="Material" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 
-render_priority = 0
-flags_transparent = false
-flags_unshaded = false
-flags_vertex_lighting = false
-flags_no_depth_test = false
-flags_use_point_size = false
-flags_world_triplanar = false
-flags_fixed_size = false
-flags_albedo_tex_force_srgb = false
-vertex_color_use_as_albedo = false
-vertex_color_is_srgb = false
-params_diffuse_mode = 0
-params_specular_mode = 0
-params_blend_mode = 0
-params_cull_mode = 0
-params_depth_draw_mode = 0
-params_line_width = 1.0
-params_point_size = 1.0
-params_billboard_mode = 0
-params_grow = false
-params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
-metallic = 0.0
-metallic_specular = 0.5
-metallic_texture_channel = 0
 roughness = 0.0
-roughness_texture_channel = 0
-emission_enabled = false
-normal_enabled = false
-rim_enabled = false
-clearcoat_enabled = false
-anisotropy_enabled = false
-ao_enabled = false
-depth_enabled = false
-subsurf_scatter_enabled = false
-transmission_enabled = false
-refraction_enabled = false
-detail_enabled = false
-uv1_scale = Vector3( 1, 1, 1 )
-uv1_offset = Vector3( 0, 0, 0 )
-uv1_triplanar = false
-uv1_triplanar_sharpness = 1.0
-uv2_scale = Vector3( 1, 1, 1 )
-uv2_offset = Vector3( 0, 0, 0 )
-uv2_triplanar = false
-uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
-distance_fade_enable = false
-
-[sub_resource type="SpatialMaterial" id=2]
-
-render_priority = 0
-flags_transparent = false
-flags_unshaded = false
-flags_vertex_lighting = false
-flags_no_depth_test = false
-flags_use_point_size = false
-flags_world_triplanar = false
-flags_fixed_size = false
-flags_albedo_tex_force_srgb = false
-vertex_color_use_as_albedo = false
-vertex_color_is_srgb = false
-params_diffuse_mode = 0
-params_specular_mode = 0
-params_blend_mode = 0
-params_cull_mode = 0
-params_depth_draw_mode = 0
-params_line_width = 1.0
-params_point_size = 1.0
-params_billboard_mode = 0
-params_grow = false
-params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
-metallic = 0.0
-metallic_specular = 0.5
-metallic_texture_channel = 0
-roughness = 0.0
-roughness_texture_channel = 0
-emission_enabled = false
-normal_enabled = false
-rim_enabled = false
-clearcoat_enabled = false
-anisotropy_enabled = false
-ao_enabled = false
-depth_enabled = false
-subsurf_scatter_enabled = false
-transmission_enabled = false
-refraction_enabled = false
-detail_enabled = false
-uv1_scale = Vector3( 1, 1, 1 )
-uv1_offset = Vector3( 0, 0, 0 )
-uv1_triplanar = false
-uv1_triplanar_sharpness = 1.0
-uv2_scale = Vector3( 1, 1, 1 )
-uv2_offset = Vector3( 0, 0, 0 )
-uv2_triplanar = false
-uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
-distance_fade_enable = false
-
-[sub_resource type="SpatialMaterial" id=3]
-
-render_priority = 0
-flags_transparent = false
-flags_unshaded = false
-flags_vertex_lighting = false
-flags_no_depth_test = false
-flags_use_point_size = false
-flags_world_triplanar = false
-flags_fixed_size = false
-flags_albedo_tex_force_srgb = false
-vertex_color_use_as_albedo = false
-vertex_color_is_srgb = false
-params_diffuse_mode = 0
-params_specular_mode = 0
-params_blend_mode = 0
-params_cull_mode = 0
-params_depth_draw_mode = 0
-params_line_width = 1.0
-params_point_size = 1.0
-params_billboard_mode = 0
-params_grow = false
-params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
-metallic = 0.0
-metallic_specular = 0.5
-metallic_texture_channel = 0
-roughness = 0.0
-roughness_texture_channel = 0
-emission_enabled = false
-normal_enabled = false
-rim_enabled = false
-clearcoat_enabled = false
-anisotropy_enabled = false
-ao_enabled = false
-depth_enabled = false
-subsurf_scatter_enabled = false
-transmission_enabled = false
-refraction_enabled = false
-detail_enabled = false
-uv1_scale = Vector3( 1, 1, 1 )
-uv1_offset = Vector3( 0, 0, 0 )
-uv1_triplanar = false
-uv1_triplanar_sharpness = 1.0
-uv2_scale = Vector3( 1, 1, 1 )
-uv2_offset = Vector3( 0, 0, 0 )
-uv2_triplanar = false
-uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
-distance_fade_enable = false
-
-[sub_resource type="SpatialMaterial" id=4]
-
-render_priority = 0
-flags_transparent = true
-flags_unshaded = false
-flags_vertex_lighting = false
-flags_no_depth_test = false
-flags_use_point_size = false
-flags_world_triplanar = false
-flags_fixed_size = false
-flags_albedo_tex_force_srgb = false
-vertex_color_use_as_albedo = false
-vertex_color_is_srgb = false
-params_diffuse_mode = 0
-params_specular_mode = 0
-params_blend_mode = 0
-params_cull_mode = 0
-params_depth_draw_mode = 0
-params_line_width = 1.0
-params_point_size = 1.0
-params_billboard_mode = 0
-params_grow = false
-params_use_alpha_scissor = false
-albedo_color = Color( 0.136719, 0.136719, 0.136719, 0.386745 )
-metallic = 0.0
-metallic_specular = 0.5
-metallic_texture_channel = 0
-roughness = 0.0
-roughness_texture_channel = 0
-emission_enabled = false
-normal_enabled = false
-rim_enabled = false
-clearcoat_enabled = false
-anisotropy_enabled = false
-ao_enabled = false
-depth_enabled = false
-subsurf_scatter_enabled = false
-transmission_enabled = false
-refraction_enabled = false
-detail_enabled = false
-uv1_scale = Vector3( 1, 1, 1 )
-uv1_offset = Vector3( 0, 0, 0 )
-uv1_triplanar = false
-uv1_triplanar_sharpness = 1.0
-uv2_scale = Vector3( 1, 1, 1 )
-uv2_offset = Vector3( 0, 0, 0 )
-uv2_triplanar = false
-uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
-distance_fade_enable = false
-_sections_unfolded = [ "Albedo" ]
-
-[sub_resource type="SpatialMaterial" id=5]
-
-render_priority = 0
-flags_transparent = false
-flags_unshaded = false
-flags_vertex_lighting = false
-flags_no_depth_test = false
-flags_use_point_size = false
-flags_world_triplanar = false
-flags_fixed_size = false
-flags_albedo_tex_force_srgb = false
-vertex_color_use_as_albedo = false
-vertex_color_is_srgb = false
-params_diffuse_mode = 0
-params_specular_mode = 0
-params_blend_mode = 0
-params_cull_mode = 0
-params_depth_draw_mode = 0
-params_line_width = 1.0
-params_point_size = 1.0
-params_billboard_mode = 0
-params_grow = false
-params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
-metallic = 0.0
-metallic_specular = 0.5
-metallic_texture_channel = 0
-roughness = 0.0
-roughness_texture_channel = 0
-emission_enabled = false
-normal_enabled = false
-rim_enabled = false
-clearcoat_enabled = false
-anisotropy_enabled = false
-ao_enabled = false
-depth_enabled = false
-subsurf_scatter_enabled = false
-transmission_enabled = false
-refraction_enabled = false
-detail_enabled = false
-uv1_scale = Vector3( 1, 1, 1 )
-uv1_offset = Vector3( 0, 0, 0 )
-uv1_triplanar = false
-uv1_triplanar_sharpness = 1.0
-uv2_scale = Vector3( 1, 1, 1 )
-uv2_offset = Vector3( 0, 0, 0 )
-uv2_triplanar = false
-uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
-distance_fade_enable = false
-
-[sub_resource type="SpatialMaterial" id=6]
-
-render_priority = 0
-flags_transparent = false
-flags_unshaded = false
-flags_vertex_lighting = false
-flags_no_depth_test = false
-flags_use_point_size = false
-flags_world_triplanar = false
-flags_fixed_size = false
-flags_albedo_tex_force_srgb = false
-vertex_color_use_as_albedo = false
-vertex_color_is_srgb = false
-params_diffuse_mode = 0
-params_specular_mode = 0
-params_blend_mode = 0
-params_cull_mode = 0
-params_depth_draw_mode = 0
-params_line_width = 1.0
-params_point_size = 1.0
-params_billboard_mode = 0
-params_grow = false
-params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
-metallic = 0.0
-metallic_specular = 0.5
-metallic_texture_channel = 0
-roughness = 0.0
-roughness_texture_channel = 0
 emission_enabled = true
-emission = Color( 0.761725, 0.782196, 1, 1 )
+emission = Color( 0.933333, 0.933333, 0.933333, 1 )
 emission_energy = 1.0
 emission_operator = 0
 emission_on_uv2 = false
-normal_enabled = false
-rim_enabled = false
-clearcoat_enabled = false
-anisotropy_enabled = false
-ao_enabled = false
-depth_enabled = false
-subsurf_scatter_enabled = false
-transmission_enabled = false
-refraction_enabled = false
-detail_enabled = false
-uv1_scale = Vector3( 1, 1, 1 )
-uv1_offset = Vector3( 0, 0, 0 )
-uv1_triplanar = false
-uv1_triplanar_sharpness = 1.0
-uv2_scale = Vector3( 1, 1, 1 )
-uv2_offset = Vector3( 0, 0, 0 )
-uv2_triplanar = false
-uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
-distance_fade_enable = false
-_sections_unfolded = [ "Emission" ]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="SpatialMaterial" id=2]
+
+flags_transparent = true
+albedo_color = Color( 0.136719, 0.136719, 0.136719, 0.386745 )
+roughness = 0.0
+
+[sub_resource type="Animation" id=3]
 
 length = 8.0
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Cylinder_003:rotation_degrees")
 tracks/0/interp = 1
@@ -333,11 +36,9 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 30, 0 ), Vector3( 0, 29, 0 ), Vector3( 0, 30, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 182, 0 ), Vector3( 0, 181, 0 ), Vector3( 0, 183, 0 ), Vector3( 0, 182, 0 ), Vector3( 0, 180, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=4]
 
 length = 3.0
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Cylinder_003:rotation_degrees")
 tracks/0/interp = 1
@@ -351,11 +52,9 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 280, 0 ), Vector3( 0, 279, 0 ), Vector3( 0, 280, 0 ), Vector3( 0, 330, 0 ), Vector3( 0, 331, 0 ), Vector3( 0, 330.5, 0 ), Vector3( 0, 330, 0 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=5]
 
 length = 5.0
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Cylinder_003:rotation_degrees")
 tracks/0/interp = 1
@@ -369,11 +68,9 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 180, 0 ), Vector3( 0, 179, 0 ), Vector3( 0, 280, 0 ), Vector3( 0, 281, 0 ), Vector3( 0, 280.5, 0 ), Vector3( 0, 279, 0 ), Vector3( 0, 281, 0 ), Vector3( 0, 280, 0 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=6]
 
 length = 10.0
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Cylinder_003:rotation_degrees")
 tracks/0/interp = 1
@@ -387,11 +84,9 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 30, 0 ), Vector3( 0, 29, 0 ), Vector3( 0, 30, 0 ), Vector3( 0, 330, 0 ), Vector3( 0, 330.5, 0 ), Vector3( 0, 331, 0 ), Vector3( 0, 330, 0 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=7]
 
 length = 3.0
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Cylinder_003:rotation_degrees")
 tracks/0/interp = 1
@@ -405,11 +100,9 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 330, 0 ), Vector3( 0, 331, 0 ), Vector3( 0, 330, 0 ), Vector3( 0, 279.5, 0 ), Vector3( 0, 279, 0 ), Vector3( 0, 280, 0 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=8]
 
 length = 5.0
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Cylinder_003:rotation_degrees")
 tracks/0/interp = 1
@@ -423,11 +116,9 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 280, 0 ), Vector3( 0, 281, 0 ), Vector3( 0, 280, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 180.5, 0 ), Vector3( 0, 181, 0 ), Vector3( 0, 180, 0 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=9]
 
 length = 8.0
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Cylinder_003:rotation_degrees")
 tracks/0/interp = 1
@@ -441,11 +132,9 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 180, 0 ), Vector3( 0, 181, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 30, 0 ), Vector3( 0, 29.5, 0 ), Vector3( 0, 29, 0 ), Vector3( 0, 30, 0 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=10]
 
 length = 10.0
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Cylinder_003:rotation_degrees")
 tracks/0/interp = 1
@@ -460,51 +149,36 @@ tracks/0/keys = {
 }
 
 [node name="Scene Root" instance=ExtResource( 1 )]
-
 script = ExtResource( 2 )
 
 [node name="Cylinder_002" parent="." index="0"]
-
 material/0 = SubResource( 1 )
-_sections_unfolded = [ "material" ]
 
 [node name="NurbsCircle" parent="." index="1"]
-
-material/0 = SubResource( 2 )
-_sections_unfolded = [ "material" ]
+transform = Transform( 0.9, 0, 0, 0, 0.844793, 0, 0, 0, 0.9, 0.00466514, 0.417616, 0.00399387 )
+material/0 = ExtResource( 3 )
 
 [node name="Cylinder" parent="." index="2"]
-
-material/0 = SubResource( 3 )
-_sections_unfolded = [ "material" ]
+material/0 = ExtResource( 4 )
 
 [node name="Cylinder_001" parent="." index="3"]
-
 transform = Transform( 0.9, 0, 0, 0, 0, 0, 0, 0, 0.9, 0, 0.462951, 0 )
-material/0 = SubResource( 4 )
-_sections_unfolded = [ "material" ]
+material/0 = SubResource( 2 )
 
 [node name="BezierCurve" parent="." index="4"]
-
-material/0 = SubResource( 5 )
-_sections_unfolded = [ "material" ]
+material/0 = ExtResource( 4 )
 
 [node name="Cylinder_003" parent="." index="5"]
-
 transform = Transform( 0.0866025, 0, 0.05, 0, 0.01, 0, -0.05, 0, 0.0866025, 0, 0.429555, 0 )
-material/0 = SubResource( 6 )
-_sections_unfolded = [ "Transform", "material" ]
+material/0 = ExtResource( 4 )
 
 [node name="AnimationPlayer" parent="." index="6"]
-
-anims/down_100-50 = SubResource( 7 )
-anims/down_20_0 = SubResource( 8 )
-anims/down_50_20 = SubResource( 9 )
-anims/down_full = SubResource( 10 )
-anims/up_0_20 = SubResource( 11 )
-anims/up_20_50 = SubResource( 12 )
-anims/up_50_100 = SubResource( 13 )
-anims/up_full = SubResource( 14 )
-_sections_unfolded = [ "Playback Options" ]
-
+anims/down_100-50 = SubResource( 3 )
+anims/down_20_0 = SubResource( 4 )
+anims/down_50_20 = SubResource( 5 )
+anims/down_full = SubResource( 6 )
+anims/up_0_20 = SubResource( 7 )
+anims/up_20_50 = SubResource( 8 )
+anims/up_50_100 = SubResource( 9 )
+anims/up_full = SubResource( 10 )
 

@@ -1,0 +1,106 @@
+[gd_resource type="SpatialMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://cockpit/dome/dome_cracking2.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type spatial;
+
+render_mode cull_disabled;
+
+
+uniform sampler2D cracking;
+uniform vec2 begin;
+uniform int distance_i;
+
+bool is_in_craking_texture(vec2 uv)
+{
+	 return(texture(cracking,uv).r > 0.9 && texture(cracking,uv).a > 0.9);
+}
+
+bool is_in_craking(vec2 uv, bool n)
+{
+	vec2 begin_n = begin/1024.0;
+	begin_n.y = 1.0 - begin_n.y;
+	
+	bool neightboor_is_white = false;
+	
+	if (uv.x > begin_n.x){
+		if (length(begin_n-uv) <= float(distance_i)/1024.0){
+			neightboor_is_white = true;
+		}
+	} else {
+		if (length(begin_n-vec2(uv.x+1.0,uv.y)) <= float(distance_i)/1024.0){
+			neightboor_is_white = true;
+		}
+	}
+
+	float d = 1.0/1024.0;
+	bool is_crack = false;
+	if (n){
+		for (float x = uv.x - d ; x <= uv.x + d ; x+= d){
+			for (float y = uv.y - d ; y <= uv.y + d ; y+= d){
+				if (is_in_craking_texture(vec2(x,y))){
+					is_crack = true;	
+				}
+			}
+		}
+	} else {
+		is_crack = is_in_craking_texture(uv);
+	}
+	
+	return (neightboor_is_white && is_crack);
+	
+}
+
+void vertex()
+{
+	/*if (is_in_craking(UV,false))
+	{
+		VERTEX.z -= 0.5;
+		VERTEX.y += 0.2;
+	}*/
+}
+
+
+void fragment()
+{
+	vec4 color_tmp = vec4(0.0,0.0,0.0,0.0);
+
+	if (is_in_craking(UV,false))
+	{
+		color_tmp = vec4(1.0);
+	}
+	
+	ALBEDO = color_tmp.rgb;
+	ALPHA = color_tmp.a;
+	
+	//ALBEDO = vec3(1.0,0.0,0.0);
+	//ALPHA = 1.0;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 1
+shader = SubResource( 1 )
+shader_param/begin = Vector2( 690, 597 )
+shader_param/distance_i = null
+shader_param/cracking = ExtResource( 1 )
+
+[resource]
+
+resource_local_to_scene = true
+next_pass = SubResource( 2 )
+params_cull_mode = 2
+params_depth_draw_mode = 1
+albedo_color = Color( 0.278431, 0.278431, 0.278431, 0.0352941 )
+roughness = 0.0
+depth_enabled = true
+depth_scale = 0.6
+depth_deep_parallax = false
+depth_flip_tangent = false
+depth_flip_binormal = false
+refraction_enabled = true
+refraction_scale = 0.01
+refraction_texture_channel = 0
+

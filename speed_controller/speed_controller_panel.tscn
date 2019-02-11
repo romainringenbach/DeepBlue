@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://speed_controller/speed_controller_panel.gd" type="Script" id=1]
-[ext_resource path="res://textures/Material/Metal.tres" type="Material" id=2]
+[ext_resource path="res://textures/Material/Metal1.tres" type="Material" id=2]
 [ext_resource path="res://speed_controller/speed_controller.tscn" type="PackedScene" id=3]
 [ext_resource path="res://button/button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://label/label.tscn" type="PackedScene" id=5]
@@ -25,7 +25,7 @@ material/0 = null
 transform = Transform( -4.88762e-008, 0, -0.3, 0, 0.3, 0, 0.3, 0, -4.88762e-008, 0.45, 0.15, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Scene Root"]
-transform = Transform( 1.15514, 0, -5.80295e-009, 0, 1, 0, -5.80353e-009, 0, 1.11952, 0, -0.179956, 0 )
+transform = Transform( 1.15514, 0, -5.80295e-009, 0, 1, 0, -5.80356e-009, 0, 1.11952, 0, -0.179956, 0 )
 mesh = SubResource( 2 )
 material/0 = ExtResource( 2 )
 

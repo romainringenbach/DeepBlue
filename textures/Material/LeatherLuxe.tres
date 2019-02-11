@@ -1,0 +1,19 @@
+[gd_resource type="SpatialMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://textures/Textures/[2K]Leather11/Leather11_col.jpg" type="Texture" id=1]
+[ext_resource path="res://textures/Textures/[2K]Leather11/Leather11_nrm.jpg" type="Texture" id=2]
+[ext_resource path="res://textures/Textures/[2K]Leather11/Leather11_rgh.jpg" type="Texture" id=3]
+
+[resource]
+
+albedo_color = Color( 1, 0, 0, 1 )
+albedo_texture = ExtResource( 1 )
+metallic_specular = 0.19
+roughness_texture = ExtResource( 3 )
+normal_enabled = true
+normal_scale = 0.66
+normal_texture = ExtResource( 2 )
+uv1_scale = Vector3( 2.99, 3.17, 1 )
+uv1_triplanar = true
+uv1_triplanar_sharpness = 1.0
+

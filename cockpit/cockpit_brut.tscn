@@ -7,9 +7,6 @@
 [ext_resource path="res://cockpit/shield_opening.ogg" type="AudioStream" id=5]
 [ext_resource path="res://cockpit/cockpit_brut2.tscn" type="PackedScene" id=6]
 
-
-
-
 [sub_resource type="SpatialMaterial" id=1]
 
 albedo_color = Color( 0.352941, 0.352941, 0.352941, 1 )
@@ -265,7 +262,7 @@ visible = false
 material/0 = SubResource( 1 )
 
 [node name="dome" parent="." index="1" instance=ExtResource( 3 )]
-transform = Transform( -0.8, 0, -3.11531e-07, 0, 0.8, 0, 3.11531e-07, 0, -0.8, 0, 0, 4.76322 )
+transform = Transform( -0.8, 0, -3.11531e-007, 0, 0.8, 0, 3.11531e-007, 0, -0.8, 0, 0, 4.76322 )
 
 [node name="Sphere" parent="." index="2"]
 visible = false
