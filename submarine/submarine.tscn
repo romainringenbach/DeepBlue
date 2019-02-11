@@ -3,7 +3,7 @@
 [ext_resource path="res://submarine/submarine.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/cockpit.tscn" type="PackedScene" id=2]
 
-[sub_resource type="PhysicsMaterial" id=7]
+[sub_resource type="PhysicsMaterial" id=1]
 
 friction = 0.5
 bounce = 0.5
@@ -32,7 +32,7 @@ height = 6.76901
 
 [node name="Submarine" type="RigidBody"]
 mass = 200.0
-physics_material_override = SubResource( 7 )
+physics_material_override = SubResource( 1 )
 gravity_scale = 0.0
 contacts_reported = 10
 contact_monitor = true
@@ -45,11 +45,14 @@ script = ExtResource( 1 )
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2 )
 
+[node name="Alarm" parent="Cockpit" index="7"]
+transform = Transform( 0.03, 0, 0, 0, -0.03, -9.77524e-009, 0, 9.77524e-009, -0.03, 0, 1.0091, 0.438676 )
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 2.15, -3.50279e-07, 0, 0, -1 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-007, -1, 0, 2.15, -3.50279e-007, 0, 0, -1 )
 mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 

@@ -87,7 +87,7 @@ layers = 32769
 material/0 = ExtResource( 7 )
 
 [node name="OmniLight" type="OmniLight" parent="." index="21"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.12462 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00589997, 0, 2.12462 )
 layers = 32768
 light_energy = 0.5
 light_cull_mask = -1015808
@@ -95,7 +95,7 @@ omni_range = 1.0
 omni_attenuation = 0.0245183
 
 [node name="OmniLight2" type="OmniLight" parent="." index="22"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.79641 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.350155, 0, 2.88238 )
 layers = 32768
 light_energy = 0.5
 light_cull_mask = -1015808

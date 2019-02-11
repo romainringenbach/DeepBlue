@@ -2,8 +2,8 @@
 
 [ext_resource path="res://button/button.dae" type="PackedScene" id=1]
 [ext_resource path="res://button/button.gd" type="Script" id=2]
-[ext_resource path="res://button/Material_001.material" type="Material" id=3]
-[ext_resource path="res://button/Material.material" type="Material" id=4]
+[ext_resource path="res://textures/Material/Plastic.tres" type="Material" id=3]
+[ext_resource path="res://textures/Material/Metal.tres" type="Material" id=4]
 [ext_resource path="res://button/AnimationPlayer2.gd" type="Script" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
@@ -127,7 +127,7 @@ extents = Vector3( 1.08452, 1.17431, 1.09047 )
 albedo_color = Color( 0, 0, 0, 1 )
 roughness = 0.0
 
-[node name="Button" instance=ExtResource( 1 )]
+[node name="Button" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Cube" parent="." index="0"]
@@ -139,7 +139,7 @@ material/0 = ExtResource( 3 )
 material_override = SubResource( 1 )
 
 [node name="Lamp" parent="." index="2"]
-transform = Transform( -1, -3.82137e-15, 8.74228e-08, -8.74228e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, 0, 0.396496, 0 )
+transform = Transform( -1, -3.82137e-015, 8.74228e-008, -8.74228e-008, 4.37114e-008, -1, 0, -1, -4.37114e-008, 0, 0.396496, 0 )
 visible = false
 light_color = Color( 0, 1, 0.15625, 1 )
 light_energy = 16.0
@@ -168,7 +168,6 @@ shape = SubResource( 6 )
 
 [node name="OmniLight" type="OmniLight" parent="." index="7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20343, 0 )
-visible = false
 light_indirect_energy = 0.0
 light_bake_mode = 0
 omni_range = 0.1
