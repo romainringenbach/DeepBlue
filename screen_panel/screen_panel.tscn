@@ -14,7 +14,7 @@
 [ext_resource path="res://button/button.tscn" type="PackedScene" id=12]
 [ext_resource path="res://label/label.tscn" type="PackedScene" id=13]
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=1]
 
 flags_transparent = true
 albedo_color = Color( 1, 1, 1, 0.2 )
@@ -32,7 +32,7 @@ uv1_scale = Vector3( -0.01, 0.31, -0.09 )
 uv1_triplanar = true
 uv1_triplanar_sharpness = 0.0853775
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=2]
 
 resource_name = "Metal"
 params_cull_mode = 2
@@ -49,15 +49,15 @@ normal_enabled = true
 normal_scale = 1.0
 normal_texture = ExtResource( 8 )
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape" id=3]
 
 extents = Vector3( 0.289867, 0.0616582, 0.440533 )
 
 [node name="MeshInstance" type="MeshInstance"]
-layers = 32768
+layers = 1024
 mesh = ExtResource( 1 )
-material/0 = SubResource( 2 )
-material/1 = SubResource( 3 )
+material/0 = SubResource( 1 )
+material/1 = SubResource( 2 )
 material/2 = ExtResource( 10 )
 material/3 = ExtResource( 10 )
 script = ExtResource( 11 )
@@ -72,16 +72,16 @@ transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.05, 0.0584707, 0.3
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.1, 0.0584707, 0.3 )
 
 [node name="Label1" parent="." instance=ExtResource( 13 )]
-transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, -0.120454, 0.0571333, 0.3 )
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, -0.120454, 0.0571333, 0.3 )
 
 [node name="Label2" parent="." instance=ExtResource( 13 )]
-transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.0295464, 0.0571333, 0.3 )
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.0295464, 0.0571333, 0.3 )
 
 [node name="Label3" parent="." instance=ExtResource( 13 )]
-transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.179546, 0.0571333, 0.3 )
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.179546, 0.0571333, 0.3 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( -1.62921e-007, 1, -0.000598029, 5.22814e-011, -0.000598029, -1, -1, -1.62921e-007, 4.515e-011, 0.000752471, 0.052391, -0.06 )
+transform = Transform( -1.62921e-07, 1, -0.000598029, 5.22814e-11, -0.000598029, -1, -1, -1.62921e-07, 4.515e-11, 0.000752471, 0.052391, -0.06 )
 pixel_size = 0.0005
 transparent = false
 region_rect = Rect2( 0, 0, 100, 100 )
@@ -91,5 +91,5 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 

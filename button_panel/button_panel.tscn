@@ -12,7 +12,7 @@
 extents = Vector3( 0.206732, 0.0701488, 0.393011 )
 
 [node name="MeshInstance" type="MeshInstance"]
-layers = 32768
+layers = 1024
 mesh = ExtResource( 1 )
 material/0 = ExtResource( 2 )
 material/1 = ExtResource( 2 )
@@ -45,35 +45,35 @@ transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.0553262, 0.065596, 
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.0553262, 0.065596, -0.289336 )
 
 [node name="Label1" parent="." instance=ExtResource( 6 )]
-transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, -0.02, 0.0652456, 0.31 )
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, -0.02, 0.0652456, 0.31 )
 text_label = ""
 
 [node name="Label2" parent="." instance=ExtResource( 6 )]
-transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, -0.02, 0.0652456, 0.11 )
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, -0.02, 0.0652456, 0.11 )
 text_label = ""
 
 [node name="Label3" parent="." instance=ExtResource( 6 )]
-transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, -0.02, 0.0652456, -0.09 )
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, -0.02, 0.0652456, -0.09 )
 text_label = ""
 
 [node name="Label4" parent="." instance=ExtResource( 6 )]
-transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, -0.02, 0.0652456, -0.29 )
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, -0.02, 0.0652456, -0.29 )
 text_label = ""
 
 [node name="Label5" parent="." instance=ExtResource( 6 )]
-transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.12, 0.0652456, 0.31 )
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.12, 0.0652456, 0.31 )
 text_label = ""
 
 [node name="Label6" parent="." instance=ExtResource( 6 )]
-transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.12, 0.0652456, 0.11 )
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.12, 0.0652456, 0.11 )
 text_label = ""
 
 [node name="Label7" parent="." instance=ExtResource( 6 )]
-transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.12, 0.0652456, -0.09 )
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.12, 0.0652456, -0.09 )
 text_label = ""
 
 [node name="Label8" parent="." instance=ExtResource( 6 )]
-transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.12, 0.0652456, -0.29 )
+transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.12, 0.0652456, -0.29 )
 text_label = ""
 
 [node name="StaticBody" type="StaticBody" parent="."]

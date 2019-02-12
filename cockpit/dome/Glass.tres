@@ -100,7 +100,4 @@ depth_scale = 0.6
 depth_deep_parallax = false
 depth_flip_tangent = false
 depth_flip_binormal = false
-refraction_enabled = true
-refraction_scale = 0.01
-refraction_texture_channel = 0
 
