@@ -92,13 +92,13 @@ autoplay = true
 stream = ExtResource( 9 )
 script = ExtResource( 10 )
 
-[node name="Radio" parent="." instance=ExtResource( 9 )]
+[node name="Radio" parent="." instance=ExtResource( 11 )]
 transform = Transform( 0.5, -0.866025, -3.25841e-07, -0.866025, -0.5, 0, -1.62921e-07, 2.82187e-07, -1, 0.65, 0.4, 0.15 )
 
-[node name="Main_controller" parent="." instance=ExtResource( 10 )]
+[node name="Main_controller" parent="." instance=ExtResource( 12 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -0.65, 0.95 )
 
-[node name="Speed_controller" parent="." instance=ExtResource( 11 )]
+[node name="Speed_controller" parent="." instance=ExtResource( 13 )]
 transform = Transform( -4.88762e-08, 0, -0.3, 0.172073, 0.245745, -2.80342e-08, 0.245745, -0.172073, -4.0037e-08, -0.38, -0.4, 0.58 )
 
 [node name="TopSpots" type="Spatial" parent="."]
@@ -151,7 +151,7 @@ spot_angle = 9.5757
 stream = ExtResource( 15 )
 volume_db = 24.0
 
-[node name="Alarm" parent="." instance=ExtResource( 15 )]
+[node name="Alarm" parent="." instance=ExtResource( 17 )]
 transform = Transform( 0.03, 0, 0, 0, -0.03, -9.77524e-09, 0, 9.77524e-09, -0.03, 0, 1.0091, 0.438676 )
 
 [node name="SScreen1" parent="." instance=ExtResource( 18 )]
@@ -217,13 +217,13 @@ text_label = "Shield"
 
 [node name="Measures" type="Spatial" parent="."]
 
-[node name="Measure 1" parent="Measures" instance=ExtResource( 21 )]
+[node name="Measure 1" parent="Measures" instance=ExtResource( 23 )]
 transform = Transform( -0.0172073, -0.0245746, 1.82634e-09, -1.31134e-09, -1.31134e-09, -0.03, 0.0245746, -0.0172073, -3.22034e-10, 0.82, 0.23, 0.75 )
 
-[node name="Measure 2" parent="Measures" instance=ExtResource( 21 )]
+[node name="Measure 2" parent="Measures" instance=ExtResource( 23 )]
 transform = Transform( -0.0172073, -0.0245746, 1.82634e-09, -1.31134e-09, -1.31134e-09, -0.03, 0.0245746, -0.0172073, -3.22034e-10, 0.82, 0.04, 0.75 )
 
-[node name="Measure 3" parent="Measures" instance=ExtResource( 21 )]
+[node name="Measure 3" parent="Measures" instance=ExtResource( 23 )]
 transform = Transform( -0.0172073, -0.0245746, 1.82634e-09, -1.31134e-09, -1.31134e-09, -0.03, 0.0245746, -0.0172073, -3.22034e-10, 0.82, -0.18, 0.75 )
 
 [node name="Measure 4" parent="Measures" instance=ExtResource( 23 )]
