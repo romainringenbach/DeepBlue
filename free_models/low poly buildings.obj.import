@@ -15,3 +15,4 @@ dest_files=[ "res://.import/low poly buildings.obj-137f5d7c6d640e5c188171c0c64f1
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true
