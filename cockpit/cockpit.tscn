@@ -60,7 +60,6 @@ unit_db = -10.0
 unit_size = 3.0
 max_db = 6.0
 pitch_scale = 1.33
-bus = "Motor"
 emission_angle_enabled = true
 emission_angle_degrees = 90.0
 
@@ -95,37 +94,38 @@ volume_db = -1.009
 bus = "Echo"
 script = ExtResource( 10 )
 
-[node name="Radio" parent="." instance=ExtResource( 11 )]
-transform = Transform( 0.5, -0.866025, -3.25841e-007, -0.866025, -0.5, 0, -1.62921e-007, 2.82187e-007, -1, 0.65, 0.4, 0.15 )
+[node name="Radio" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.5, -0.866025, -3.25841e-07, -0.866025, -0.5, 0, -1.62921e-07, 2.82187e-07, -1, 0.65, 0.4, 0.15 )
 
-[node name="Main_controller" parent="." instance=ExtResource( 12 )]
-transform = Transform( -1, 0, -3.25841e-007, 0, 1, 0, 3.25841e-007, 0, -1, 0, -0.65, 0.95 )
+[node name="Main_controller" parent="." instance=ExtResource( 10 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -0.65, 0.95 )
 
-[node name="Speed_controller" parent="." instance=ExtResource( 13 )]
-transform = Transform( -4.88762e-008, 0, -0.3, 0.229813, 0.192836, -3.74413e-008, 0.192836, -0.229813, -3.1417e-008, -0.35, -0.35, 0.65 )
+[node name="Speed_controller" parent="." instance=ExtResource( 11 )]
+transform = Transform( -4.88762e-08, 0, -0.3, 0.172073, 0.245745, -2.80342e-08, 0.245745, -0.172073, -4.0037e-08, -0.38, -0.4, 0.58 )
 
 [node name="TopSpots" type="Spatial" parent="."]
-transform = Transform( -0.99945, 0.0331552, -3.20891e-007, 0.0326515, 0.984266, 0.173648, 0.00575766, 0.173553, -0.984808, 0, 1.15, 1.8 )
+editor/display_folded = true
+transform = Transform( -0.99945, 0.0331552, -3.20891e-07, 0.0326515, 0.984266, 0.173648, 0.00575766, 0.173553, -0.984808, 0, 1.15, 1.8 )
 visible = false
 script = ExtResource( 14 )
 
 [node name="TopSpot1" type="SpotLight" parent="TopSpots"]
-transform = Transform( 1, 5.23599e-008, 0, -5.23599e-008, 1, 0, 0, 0, 1, 0.6, 0, 0 )
+transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, 0.6, 0, 0 )
 spot_range = 3.89909
 spot_angle = 13.6036
 
 [node name="TopSpot2" type="SpotLight" parent="TopSpots"]
-transform = Transform( 1, 5.23599e-008, 0, -5.23599e-008, 1, 0, 0, 0, 1, 0.2, 0, 0 )
+transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, 0.2, 0, 0 )
 spot_range = 3.89909
 spot_angle = 13.6036
 
 [node name="TopSpot3" type="SpotLight" parent="TopSpots"]
-transform = Transform( 1, 5.23599e-008, 0, -5.23599e-008, 1, 0, 0, 0, 1, -0.2, 0, 0 )
+transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, -0.2, 0, 0 )
 spot_range = 3.89909
 spot_angle = 13.6036
 
 [node name="TopSpot4" type="SpotLight" parent="TopSpots"]
-transform = Transform( 1, 5.23599e-008, 0, -5.23599e-008, 1, 0, 0, 0, 1, -0.6, 0, 0 )
+transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, -0.6, 0, 0 )
 spot_range = 3.89909
 spot_angle = 13.6036
 
@@ -134,7 +134,8 @@ stream = ExtResource( 15 )
 volume_db = 10.874
 
 [node name="LongRangeSpots" type="Spatial" parent="."]
-transform = Transform( -1, 0, -3.25841e-007, 0, 1, 0, 3.25841e-007, 0, -1, 0, -1.15, 1.8 )
+editor/display_folded = true
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -1.15, 1.8 )
 visible = false
 script = ExtResource( 16 )
 
@@ -152,8 +153,8 @@ spot_angle = 9.5757
 stream = ExtResource( 15 )
 volume_db = 24.0
 
-[node name="Alarm" parent="." instance=ExtResource( 17 )]
-transform = Transform( 0.03, 0, 0, 0, -0.03, -9.77524e-009, 0, 9.77524e-009, -0.03, 0, 1.0091, 0.438676 )
+[node name="Alarm" parent="." instance=ExtResource( 15 )]
+transform = Transform( 0.03, 0, 0, 0, -0.03, -9.77524e-09, 0, 9.77524e-09, -0.03, 0, 1.0091, 0.438676 )
 
 [node name="SScreen1" parent="." instance=ExtResource( 18 )]
 
@@ -183,7 +184,7 @@ editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000458293, -0.000401467, 0.00112503 )
 
 [node name="Buttons_1" parent="SButton1" index="0"]
-transform = Transform( 1.62921e-007, -1, -3.25841e-007, -1, -1.62921e-007, 6.98132e-008, -6.98132e-008, 3.25841e-007, -1, 0.75, -2.98023e-008, 0.15 )
+transform = Transform( 1.62921e-07, -1, -3.25841e-07, -1, -1.62921e-07, 6.98132e-08, -6.98132e-08, 3.25841e-07, -1, 0.75, -2.98023e-08, 0.15 )
 
 [node name="Button1" parent="SButton1/Buttons_1" index="0"]
 color = Color( 0.99469, 1, 0.320312, 1 )
@@ -218,14 +219,14 @@ text_label = "Shield"
 
 [node name="Measures" type="Spatial" parent="."]
 
-[node name="Measure 1" parent="Measures" instance=ExtResource( 23 )]
-transform = Transform( -0.0172073, -0.0245746, 1.82634e-009, -1.31134e-009, -1.31134e-009, -0.03, 0.0245746, -0.0172073, -3.22034e-010, 0.82, 0.23, 0.75 )
+[node name="Measure 1" parent="Measures" instance=ExtResource( 21 )]
+transform = Transform( -0.0172073, -0.0245746, 1.82634e-09, -1.31134e-09, -1.31134e-09, -0.03, 0.0245746, -0.0172073, -3.22034e-10, 0.82, 0.23, 0.75 )
 
-[node name="Measure 2" parent="Measures" instance=ExtResource( 23 )]
-transform = Transform( -0.0172073, -0.0245746, 1.82634e-009, -1.31134e-009, -1.31134e-009, -0.03, 0.0245746, -0.0172073, -3.22034e-010, 0.82, 0.04, 0.75 )
+[node name="Measure 2" parent="Measures" instance=ExtResource( 21 )]
+transform = Transform( -0.0172073, -0.0245746, 1.82634e-09, -1.31134e-09, -1.31134e-09, -0.03, 0.0245746, -0.0172073, -3.22034e-10, 0.82, 0.04, 0.75 )
 
-[node name="Measure 3" parent="Measures" instance=ExtResource( 23 )]
-transform = Transform( -0.0172073, -0.0245746, 1.82634e-009, -1.31134e-009, -1.31134e-009, -0.03, 0.0245746, -0.0172073, -3.22034e-010, 0.82, -0.18, 0.75 )
+[node name="Measure 3" parent="Measures" instance=ExtResource( 21 )]
+transform = Transform( -0.0172073, -0.0245746, 1.82634e-09, -1.31134e-09, -1.31134e-09, -0.03, 0.0245746, -0.0172073, -3.22034e-10, 0.82, -0.18, 0.75 )
 
 [node name="Measure 4" parent="Measures" instance=ExtResource( 23 )]
 transform = Transform( -0.0245173, 0.0165527, 0.00499097, -0.000676728, 0.00773502, -0.0289778, -0.0172755, -0.0237945, -0.00594801, -0.75, -0.35, 0.96 )
@@ -241,6 +242,12 @@ transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0
 
 [node name="Lights3" parent="." instance=ExtResource( 24 )]
 transform = Transform( 0.565685, -0.565685, 0, 0.565685, 0.565685, 0, 0, 0, 1, 0, 0, 1.33 )
+
+[node name="T" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="B" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 
 [connection signal="speed_changed" from="Speed_controller" to="." method="_on_Speed_controller_speed_changed"]
 [connection signal="alarm" from="Viewports/SonarPassif/TextureRect" to="SScreen2" method="_on_TextureRect_alarm"]

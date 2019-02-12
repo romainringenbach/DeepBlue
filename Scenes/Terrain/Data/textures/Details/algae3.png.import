@@ -2,30 +2,55 @@
 
 importer="texture"
 type="StreamTexture"
+<<<<<<< HEAD
 path="res://.import/algae3.png-38c0eb059337dcc0029ec5bc7bae910c.stex"
+=======
+path.s3tc="res://.import/algae3.png-38c0eb059337dcc0029ec5bc7bae910c.s3tc.stex"
+path.etc2="res://.import/algae3.png-38c0eb059337dcc0029ec5bc7bae910c.etc2.stex"
+>>>>>>> aa2b727eb1475020b6b9326a3ce4b3e276bac634
 
 [deps]
 
 source_file="res://Scenes/Terrain/Data/textures/Details/algae3.png"
+<<<<<<< HEAD
 dest_files=[ "res://.import/algae3.png-38c0eb059337dcc0029ec5bc7bae910c.stex" ]
 
 [params]
 
 compress/mode=0
+=======
+dest_files=[ "res://.import/algae3.png-38c0eb059337dcc0029ec5bc7bae910c.s3tc.stex", "res://.import/algae3.png-38c0eb059337dcc0029ec5bc7bae910c.etc2.stex" ]
+
+[params]
+
+compress/mode=2
+>>>>>>> aa2b727eb1475020b6b9326a3ce4b3e276bac634
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
+<<<<<<< HEAD
 flags/repeat=0
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
+=======
+flags/repeat=true
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=1
+>>>>>>> aa2b727eb1475020b6b9326a3ce4b3e276bac634
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
+<<<<<<< HEAD
 detect_3d=true
+=======
+detect_3d=false
+>>>>>>> aa2b727eb1475020b6b9326a3ce4b3e276bac634
 svg/scale=1.0

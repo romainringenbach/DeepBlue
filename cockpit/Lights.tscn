@@ -7,17 +7,17 @@ transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0
 
 [node name="Light" parent="." instance=ExtResource( 1 )]
 transform = Transform( -1.31134e-09, -0.03, 0, 0.03, -1.31134e-09, 0, 0, 0, 0.03, 1, 0, 0 )
-color = Color( 1, 0.913725, 0.345098, 0.807843 )
+color = Color( 1, 0.784314, 0.376471, 1 )
 
 [node name="Light2" parent="." instance=ExtResource( 1 )]
 transform = Transform( -1.31134e-09, 0.03, 0, -0.03, -1.31134e-09, 0, 0, 0, 0.03, -1, 0, 0 )
-color = Color( 1, 0.913725, 0.345098, 0.807843 )
+color = Color( 1, 0.784314, 0.376471, 1 )
 
 [node name="Light3" parent="." instance=ExtResource( 1 )]
 transform = Transform( -0.03, 2.62268e-09, 0, -2.62268e-09, -0.03, 0, 0, 0, 0.03, 0, 1, 0 )
-color = Color( 1, 0.913725, 0.345098, 0.807843 )
+color = Color( 1, 0.784314, 0.376471, 1 )
 
 [node name="Light4" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, -1, 0 )
-color = Color( 1, 0.913725, 0.345098, 0.807843 )
+color = Color( 1, 0.784314, 0.376471, 1 )
 

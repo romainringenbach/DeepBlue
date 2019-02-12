@@ -36,10 +36,10 @@ func _on_Submarine_collision_impact():
 
 	$SButton1/Buttons_1/Button3.blink()
 	$Alarm.play()
-	$Cockpit/dome.crack()
+	
 	
 	if $Cockpit.shield_closed == false :
-	
+		$Cockpit/dome.crack()
 		$"Measures/Measure 1".down()
 		$"Measures/Measure 2".down()
 		$"Measures/Measure 3".down()

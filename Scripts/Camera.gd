@@ -35,7 +35,7 @@ func _input(event):
 			distance = max(distance+1, 0)
 			update_rotations()
 			
-		elif event.button_index == BUTTON_LEFT:
+		elif event.pressed and event.button_index == BUTTON_LEFT:
 			throw_cube()
 	
 	elif event is InputEventMouseMotion:

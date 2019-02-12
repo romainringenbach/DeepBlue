@@ -28,6 +28,8 @@ var direction_changed = false
 var collision = false
 var shake = false
 
+var lateral_mode = false
+
 signal collision_impact()
 signal shaky(force)
 
@@ -67,19 +69,38 @@ func _process(delta):
 
 
 func _integrate_forces(state):
-	state.add_force(player_direction*current_speed, Vector3())
-	if (impulse_left):
-		state.apply_torque_impulse(Vector3(0,STEER_FORCE_LR,0))
-	if (impulse_right):
-		state.apply_torque_impulse(Vector3(0,-STEER_FORCE_LR,0))
-	if (impulse_up):
-		state.apply_torque_impulse(Vector3(-STEER_FORCE_UD,0,0))
-	elif rotation.x < -0.1:
-		state.apply_torque_impulse(Vector3(STEER_FORCE_UD/5,0,0))
+	
+	if lateral_mode == false:
+	
+		state.add_force(player_direction*current_speed, Vector3())
+		if (impulse_left):
+			state.apply_torque_impulse(Vector3(0,STEER_FORCE_LR,0))
+		if (impulse_right):
+			state.apply_torque_impulse(Vector3(0,-STEER_FORCE_LR,0))
+		if (impulse_up):
+			state.apply_torque_impulse(Vector3(-STEER_FORCE_UD,0,0))
+		if (impulse_down):
+			state.apply_torque_impulse(Vector3(STEER_FORCE_UD,0,0))
+		
+	else:
+		
+		var x_r = player_direction.cross(Vector3(0,1,0))
+		var y_r = player_direction.cross(Vector3(1,0,0))
+		
+		if (impulse_left):
+			state.add_force($Cockpit/T.get_global_transform().basis.z*current_speed*.5, Vector3())
+		if (impulse_right):
+			state.add_force(-$Cockpit/T.get_global_transform().basis.z*current_speed*.5, Vector3())
+		if (impulse_up):
+			state.add_force(-$Cockpit/B.get_global_transform().basis.z*current_speed*.5, Vector3())
+		if (impulse_down):
+			state.add_force($Cockpit/B.get_global_transform().basis.z*current_speed*.5, Vector3())
+		
+	# correct submarine orientation
 		
 	if rotation.x < -0.1:
-		state.apply_torque_impulse(Vector3(STEER_FORCE_UD,0,0))
-	elif rotation.x > 0.1:
+		state.apply_torque_impulse(Vector3(STEER_FORCE_UD/5,0,0))
+	if rotation.x > 0.1:
 		state.apply_torque_impulse(Vector3(-STEER_FORCE_UD/5,0,0))
 		
 	if rotation.z < -0.1:
@@ -167,3 +188,7 @@ func _on_Area2_body_shape_entered(body_id, body, body_shape, area_shape):
 
 func _on_Speed_controller_reverse_changed():
 	direction_changed = true
+
+
+func _on_Speed_controller_mode_changed(mode):
+	lateral_mode = mode

@@ -7,6 +7,7 @@
 
 
 [node name="RigidBody" type="RigidBody"]
+collision_mask = 897
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )

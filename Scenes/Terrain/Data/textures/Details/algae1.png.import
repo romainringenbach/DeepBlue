@@ -20,12 +20,20 @@ flags/repeat=0
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
+<<<<<<< HEAD
 flags/srgb=2
+=======
+flags/srgb=1
+>>>>>>> aa2b727eb1475020b6b9326a3ce4b3e276bac634
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
+<<<<<<< HEAD
 detect_3d=true
+=======
+detect_3d=false
+>>>>>>> aa2b727eb1475020b6b9326a3ce4b3e276bac634
 svg/scale=1.0
