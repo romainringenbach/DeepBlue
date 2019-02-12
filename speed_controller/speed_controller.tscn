@@ -34,8 +34,5 @@ transform = Transform( -5.6426e-008, 0.2, 0, -0.0415823, -1.17316e-008, -0.19563
 layers = 32768
 material/0 = ExtResource( 4 )
 
-[node name="OmniLight" type="OmniLight" parent="." index="4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46332, 1.6199 )
-
 [connection signal="input_event" from="StaticBody" to="." method="_on_StaticBody_input_event"]
 [connection signal="mouse_exited" from="StaticBody" to="." method="_on_StaticBody_mouse_exited"]

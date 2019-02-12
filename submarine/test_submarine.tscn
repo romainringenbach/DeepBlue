@@ -18,7 +18,7 @@ bounce = 0.2
 environment = SubResource( 1 )
 
 [node name="RigidBody" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0167294, 0.0114255, 9.34601e-05 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0167294, 0.0114255, 9.34601e-005 )
 physics_material_override = SubResource( 2 )
 
 [node name="Cube1" parent="." instance=ExtResource( 2 )]
@@ -39,7 +39,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.63372, 5.69035, 7.96713 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.83303, -3.7199, 1.12723 )
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( -0.637709, -0.770278, 1.1478e-08, 0.178083, -0.147434, 0.972908, -0.749409, 0.620432, 0.231193, 22.4102, 92.5929, 0 )
+transform = Transform( -0.637709, -0.770278, 1.1478e-008, 0.178083, -0.147434, 0.972908, -0.749409, 0.620432, 0.231193, 22.4102, 92.5929, 0 )
 light_color = Color( 0.478431, 0.686275, 0.862745, 1 )
 spot_range = 400.0
 spot_attenuation = 1.8025

@@ -38,7 +38,7 @@ set_up = true
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.65, 0.0902985, 0.3 )
 type = 1
 color = Color( 0, 1, 0.15625, 1 )
-blinking_duration = 20
+blinking_duration = 15
 set_up = true
 
 [node name="Reverse_l" parent="." instance=ExtResource( 5 )]

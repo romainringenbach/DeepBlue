@@ -13,10 +13,12 @@ var distance3 = 1024
 
 var max_distance = 0.0
 
+var audioStream
 func _ready():
-	# Called when the node is added to the scene for the first time.
+	# Called wh"AudioStreamPlayer3D"en the node is added to the scene for the first time.
 	# Initialization here
 	# $CrackPass/TextureRect.material.set_shader_param('previous',$CrackPass.get_texture())
+	audioStream = $"AudioStreamPlayer3D"
 	pass
 
 func _process(delta):
@@ -26,6 +28,7 @@ func _process(delta):
 	
 func crack():
 	cracking = true
+	audioStream.play(2.0)
 	if max_distance == 0.0:
 		max_distance = distance1
 	elif max_distance == distance1:
@@ -40,3 +43,5 @@ func _on_Timer_timeout():
 		$Sphere.material_override.next_pass.set_shader_param('distance_i',distance)
 	if distance >= max_distance:
 		cracking = false
+		audioStream.stop()
+		

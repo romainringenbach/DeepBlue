@@ -1,23 +1,21 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://cockpit/Head.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/Yaw.gd" type="Script" id=2]
 [ext_resource path="res://cockpit/InterpolatedCamera.gd" type="Script" id=3]
 [ext_resource path="res://Dialoguebox/SimpleDialogueBox.tscn" type="PackedScene" id=4]
 
-[sub_resource type="PhysicsMaterial" id=1]
-
-bounce = 0.3
-
-[sub_resource type="CapsuleShape" id=2]
+[sub_resource type="CapsuleShape" id=1]
 
 radius = 0.2
 height = 0.3
 
-[sub_resource type="PhysicsMaterial" id=5]
+[sub_resource type="PhysicsMaterial" id=2]
 
+friction = 0.3
+bounce = 0.3
 
-[sub_resource type="SphereShape" id=4]
+[sub_resource type="SphereShape" id=3]
 
 radius = 0.1
 
@@ -28,11 +26,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23, -0.15 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24, 0 )
 collision_layer = 16
 collision_mask = 16
-physics_material_override = SubResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Body"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -0.42, 0 )
-shape = SubResource( 2 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-007, -1, 0, 1, -1.62921e-007, 0, -0.42, 0 )
+shape = SubResource( 1 )
 
 [node name="Head" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 0 )
@@ -40,15 +37,14 @@ input_ray_pickable = false
 collision_layer = 16
 collision_mask = 16
 mass = 10.0
-physics_material_override = SubResource( 5 )
-gravity_scale = 0.6
+physics_material_override = SubResource( 2 )
 can_sleep = false
 linear_damp = 0.3
 angular_damp = 0.3
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Head"]
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 disabled = true
 
 [node name="Yaw" type="Spatial" parent="Head"]
@@ -75,12 +71,10 @@ angular_limit_x/restitution = 0.01
 angular_limit_x/damping = 0.1
 angular_limit_x/force_limit = 1.0
 angular_limit_x/erp = 1.0
-linear_spring_y/enabled = true
-angular_limit_y/upper_angle = 0.01
-angular_limit_y/lower_angle = 0.01
-angular_limit_y/softness = 0.01
+angular_limit_y/softness = 0.1
 angular_limit_y/damping = 0.1
-angular_limit_y/erp = 0.0
+angular_limit_y/force_limit = 1.0
+angular_limit_y/erp = 1.0
 angular_limit_z/upper_angle = 2.0
 angular_limit_z/lower_angle = 2.0
 angular_limit_z/softness = 0.1
