@@ -2,11 +2,8 @@
 
 [ext_resource path="res://cockpit/dome.dae" type="PackedScene" id=1]
 [ext_resource path="res://cockpit/dome/dome.gd" type="Script" id=2]
-[ext_resource path="res://PisteAudio/SFX/Glass-Break.ogg" type="AudioStream" id=3]
-
-[sub_resource type="ViewportTexture" id=1]
-
-viewport_path = NodePath("Viewport")
+[ext_resource path="res://cockpit/dome/dome_cracking2.png" type="Texture" id=3]
+[ext_resource path="res://PisteAudio/SFX/Glass-Break.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Shader" id=2]
 
@@ -167,7 +164,7 @@ void fragment() {
 
 }"
 
-[sub_resource type="ViewportTexture" id=3]
+[sub_resource type="ViewportTexture" id=8]
 
 viewport_path = NodePath("Viewport")
 
@@ -179,20 +176,17 @@ shader = SubResource( 2 )
 shader_param/begin = Vector2( 690, 597 )
 shader_param/distance_i = null
 shader_param/cracking = ExtResource( 3 )
-shader_param/noise_dust = SubResource( 3 )
+shader_param/noise_dust = SubResource( 8 )
 
 [sub_resource type="SpatialMaterial" id=5]
 
 resource_local_to_scene = true
 next_pass = SubResource( 4 )
+flags_transparent = true
 params_cull_mode = 2
 params_depth_draw_mode = 1
-albedo_color = Color( 1, 1, 1, 0 )
-albedo_texture = SubResource( 1 )
+albedo_color = Color( 1, 1, 1, 0.121569 )
 roughness = 0.0
-refraction_enabled = true
-refraction_scale = 0.01
-refraction_texture_channel = 0
 
 [sub_resource type="Shader" id=6]
 
@@ -292,7 +286,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="CrackAudio" type="AudioStreamPlayer3D" parent="." index="6"]
-stream = ExtResource( 3 )
+stream = ExtResource( 4 )
 unit_db = 80.0
 unit_size = 33.1
 bus = "Crack"

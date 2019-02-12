@@ -18,7 +18,7 @@ bounce = 0.2
 environment = SubResource( 1 )
 
 [node name="RigidBody" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0167294, 0.0114255, 9.34601e-005 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0167294, 0.0114255, 9.34601e-05 )
 physics_material_override = SubResource( 2 )
 
 [node name="Cube1" parent="." instance=ExtResource( 2 )]
