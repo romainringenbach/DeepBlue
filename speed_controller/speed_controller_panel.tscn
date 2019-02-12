@@ -39,7 +39,7 @@ set_up = true
 transform = Transform( 0.130336, 8.16269e-09, 0, 0, 1.10803, 0, 0, 0, 0.538721, 0.747153, 1.00054, 0 )
 type = 1
 color = Color( 0, 1, 0.15625, 1 )
-blinking_duration = 20
+blinking_duration = 15
 set_up = true
 
 [node name="Reverse_l" parent="MeshInstance2" instance=ExtResource( 4 )]

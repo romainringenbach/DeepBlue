@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://cockpit/cockpit.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/PilotHead.tscn" type="PackedScene" id=2]
@@ -8,20 +8,22 @@
 [ext_resource path="res://PisteAudio/SFX/creakinMetalShip.ogg" type="AudioStream" id=6]
 [ext_resource path="res://PisteAudio/SFX/underwater002.ogg" type="AudioStream" id=7]
 [ext_resource path="res://PisteAudio/SFX/ambientSound.ogg" type="AudioStream" id=8]
-[ext_resource path="res://radio_panel/radio_panel.tscn" type="PackedScene" id=9]
-[ext_resource path="res://main_controller/main_controller.tscn" type="PackedScene" id=10]
-[ext_resource path="res://speed_controller/speed_controller_panel.tscn" type="PackedScene" id=11]
-[ext_resource path="res://cockpit/TopSpots.gd" type="Script" id=12]
-[ext_resource path="res://PisteAudio/SFX/SpotLight.ogg" type="AudioStream" id=13]
-[ext_resource path="res://cockpit/LongRangeSpots.gd" type="Script" id=14]
-[ext_resource path="res://alarm/alarm.tscn" type="PackedScene" id=15]
-[ext_resource path="res://cockpit/SScreen1.tscn" type="PackedScene" id=16]
-[ext_resource path="res://cockpit/SScreen2.tscn" type="PackedScene" id=17]
-[ext_resource path="res://cockpit/SScreen2.gd" type="Script" id=18]
-[ext_resource path="res://cockpit/Viewports.tscn" type="PackedScene" id=19]
-[ext_resource path="res://cockpit/SButton1.tscn" type="PackedScene" id=20]
-[ext_resource path="res://measure_1/measure.tscn" type="PackedScene" id=21]
-[ext_resource path="res://cockpit/Lights.tscn" type="PackedScene" id=22]
+[ext_resource path="res://PisteAudio/SFX/whales.ogg" type="AudioStream" id=9]
+[ext_resource path="res://cockpit/Whale.gd" type="Script" id=10]
+[ext_resource path="res://radio_panel/radio_panel.tscn" type="PackedScene" id=11]
+[ext_resource path="res://main_controller/main_controller.tscn" type="PackedScene" id=12]
+[ext_resource path="res://speed_controller/speed_controller_panel.tscn" type="PackedScene" id=13]
+[ext_resource path="res://cockpit/TopSpots.gd" type="Script" id=14]
+[ext_resource path="res://PisteAudio/SFX/SpotLight.ogg" type="AudioStream" id=15]
+[ext_resource path="res://cockpit/LongRangeSpots.gd" type="Script" id=16]
+[ext_resource path="res://alarm/alarm.tscn" type="PackedScene" id=17]
+[ext_resource path="res://cockpit/SScreen1.tscn" type="PackedScene" id=18]
+[ext_resource path="res://cockpit/SScreen2.tscn" type="PackedScene" id=19]
+[ext_resource path="res://cockpit/SScreen2.gd" type="Script" id=20]
+[ext_resource path="res://cockpit/Viewports.tscn" type="PackedScene" id=21]
+[ext_resource path="res://cockpit/SButton1.tscn" type="PackedScene" id=22]
+[ext_resource path="res://measure_1/measure.tscn" type="PackedScene" id=23]
+[ext_resource path="res://cockpit/Lights.tscn" type="PackedScene" id=24]
 
 [sub_resource type="ViewportTexture" id=1]
 
@@ -87,21 +89,23 @@ volume_db = 5.0
 autoplay = true
 
 [node name="Whale" type="AudioStreamPlayer" parent="Cockpit"]
+stream = ExtResource( 9 )
+script = ExtResource( 10 )
 
-[node name="Radio" parent="." instance=ExtResource( 9 )]
+[node name="Radio" parent="." instance=ExtResource( 11 )]
 transform = Transform( 0.5, -0.866025, -3.25841e-07, -0.866025, -0.5, 0, -1.62921e-07, 2.82187e-07, -1, 0.65, 0.4, 0.15 )
 
-[node name="Main_controller" parent="." instance=ExtResource( 10 )]
+[node name="Main_controller" parent="." instance=ExtResource( 12 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -0.65, 0.95 )
 
-[node name="Speed_controller" parent="." instance=ExtResource( 11 )]
+[node name="Speed_controller" parent="." instance=ExtResource( 13 )]
 transform = Transform( -4.88762e-08, 0, -0.3, 0.172073, 0.245745, -2.80342e-08, 0.245745, -0.172073, -4.0037e-08, -0.38, -0.4, 0.58 )
 
 [node name="TopSpots" type="Spatial" parent="."]
 editor/display_folded = true
 transform = Transform( -0.99945, 0.0331552, -3.20891e-07, 0.0326515, 0.984266, 0.173648, 0.00575766, 0.173553, -0.984808, 0, 1.15, 1.8 )
 visible = false
-script = ExtResource( 12 )
+script = ExtResource( 14 )
 
 [node name="TopSpot1" type="SpotLight" parent="TopSpots"]
 transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, 0.6, 0, 0 )
@@ -124,14 +128,14 @@ spot_range = 3.89909
 spot_angle = 13.6036
 
 [node name="SpotLight" type="AudioStreamPlayer" parent="TopSpots"]
-stream = ExtResource( 13 )
+stream = ExtResource( 15 )
 volume_db = 10.874
 
 [node name="LongRangeSpots" type="Spatial" parent="."]
 editor/display_folded = true
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -1.15, 1.8 )
 visible = false
-script = ExtResource( 14 )
+script = ExtResource( 16 )
 
 [node name="LongRangeSpot1" type="SpotLight" parent="LongRangeSpots"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
@@ -144,26 +148,26 @@ spot_range = 19.4481
 spot_angle = 9.5757
 
 [node name="SpotLight" type="AudioStreamPlayer" parent="LongRangeSpots"]
-stream = ExtResource( 13 )
+stream = ExtResource( 15 )
 volume_db = 24.0
 
-[node name="Alarm" parent="." instance=ExtResource( 15 )]
+[node name="Alarm" parent="." instance=ExtResource( 17 )]
 transform = Transform( 0.03, 0, 0, 0, -0.03, -9.77524e-09, 0, 9.77524e-09, -0.03, 0, 1.0091, 0.438676 )
 
-[node name="SScreen1" parent="." instance=ExtResource( 16 )]
+[node name="SScreen1" parent="." instance=ExtResource( 18 )]
 
 [node name="Screen_1" parent="SScreen1" index="0"]
 viewport_texture = SubResource( 1 )
 
-[node name="SScreen2" parent="." instance=ExtResource( 17 )]
+[node name="SScreen2" parent="." instance=ExtResource( 19 )]
 editor/display_folded = true
-script = ExtResource( 18 )
+script = ExtResource( 20 )
 
 [node name="Screen_2" parent="SScreen2" index="0"]
 editor/display_folded = false
 viewport_texture = SubResource( 2 )
 
-[node name="Viewports" parent="." instance=ExtResource( 19 )]
+[node name="Viewports" parent="." instance=ExtResource( 21 )]
 editor/display_folded = true
 
 [node name="TextureRect" parent="Viewports/SonarActif" index="0"]
@@ -173,7 +177,7 @@ texture = SubResource( 3 )
 texture = SubResource( 4 )
 data = SubResource( 5 )
 
-[node name="SButton1" parent="." instance=ExtResource( 20 )]
+[node name="SButton1" parent="." instance=ExtResource( 22 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000458293, -0.000401467, 0.00112503 )
 
@@ -213,28 +217,28 @@ text_label = "Shield"
 
 [node name="Measures" type="Spatial" parent="."]
 
-[node name="Measure 1" parent="Measures" instance=ExtResource( 21 )]
+[node name="Measure 1" parent="Measures" instance=ExtResource( 23 )]
 transform = Transform( -0.0172073, -0.0245746, 1.82634e-09, -1.31134e-09, -1.31134e-09, -0.03, 0.0245746, -0.0172073, -3.22034e-10, 0.82, 0.23, 0.75 )
 
-[node name="Measure 2" parent="Measures" instance=ExtResource( 21 )]
+[node name="Measure 2" parent="Measures" instance=ExtResource( 23 )]
 transform = Transform( -0.0172073, -0.0245746, 1.82634e-09, -1.31134e-09, -1.31134e-09, -0.03, 0.0245746, -0.0172073, -3.22034e-10, 0.82, 0.04, 0.75 )
 
-[node name="Measure 3" parent="Measures" instance=ExtResource( 21 )]
+[node name="Measure 3" parent="Measures" instance=ExtResource( 23 )]
 transform = Transform( -0.0172073, -0.0245746, 1.82634e-09, -1.31134e-09, -1.31134e-09, -0.03, 0.0245746, -0.0172073, -3.22034e-10, 0.82, -0.18, 0.75 )
 
-[node name="Measure 4" parent="Measures" instance=ExtResource( 21 )]
+[node name="Measure 4" parent="Measures" instance=ExtResource( 23 )]
 transform = Transform( -0.0245173, 0.0165527, 0.00499097, -0.000676728, 0.00773502, -0.0289778, -0.0172755, -0.0237945, -0.00594801, -0.75, -0.35, 0.96 )
 
-[node name="Measure 5" parent="Measures" instance=ExtResource( 21 )]
+[node name="Measure 5" parent="Measures" instance=ExtResource( 23 )]
 transform = Transform( -0.0245173, 0.0165527, 0.00499097, -0.000676728, 0.00773502, -0.0289778, -0.0172755, -0.0237945, -0.00594801, -0.82, -0.2, 0.96 )
 
-[node name="Lights" parent="." instance=ExtResource( 22 )]
+[node name="Lights" parent="." instance=ExtResource( 24 )]
 transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, -0.08 )
 
-[node name="Lights2" parent="." instance=ExtResource( 22 )]
+[node name="Lights2" parent="." instance=ExtResource( 24 )]
 transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, -0.93 )
 
-[node name="Lights3" parent="." instance=ExtResource( 22 )]
+[node name="Lights3" parent="." instance=ExtResource( 24 )]
 transform = Transform( 0.565685, -0.565685, 0, 0.565685, 0.565685, 0, 0, 0, 1, 0, 0, 1.33 )
 
 [node name="T" type="Spatial" parent="."]
