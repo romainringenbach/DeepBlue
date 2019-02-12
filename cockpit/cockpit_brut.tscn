@@ -262,7 +262,7 @@ visible = false
 material/0 = SubResource( 1 )
 
 [node name="dome" parent="." index="1" instance=ExtResource( 3 )]
-transform = Transform( -0.8, 0, -3.11531e-007, 0, 0.8, 0, 3.11531e-007, 0, -0.8, 0, 0, 4.76322 )
+transform = Transform( -0.8, 0, -3.11531e-07, 0, 0.8, 0, 3.11531e-07, 0, -0.8, 0, 0, 4.76322 )
 
 [node name="Sphere" parent="." index="2"]
 visible = false
