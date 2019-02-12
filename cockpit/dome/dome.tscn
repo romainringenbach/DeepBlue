@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://cockpit/dome.dae" type="PackedScene" id=1]
 [ext_resource path="res://cockpit/dome/dome.gd" type="Script" id=2]
@@ -291,7 +291,7 @@ material = SubResource( 7 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="6"]
+[node name="CrackAudio" type="AudioStreamPlayer3D" parent="." index="6"]
 stream = ExtResource( 3 )
 unit_db = 80.0
 unit_size = 33.1

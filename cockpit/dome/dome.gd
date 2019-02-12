@@ -18,7 +18,7 @@ func _ready():
 	# Called wh"AudioStreamPlayer3D"en the node is added to the scene for the first time.
 	# Initialization here
 	# $CrackPass/TextureRect.material.set_shader_param('previous',$CrackPass.get_texture())
-	audioStream = $"AudioStreamPlayer3D"
+	audioStream = $"CrackAudio"
 	pass
 
 func _process(delta):

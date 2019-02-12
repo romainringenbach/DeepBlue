@@ -5,11 +5,8 @@
 [ext_resource path="res://cockpit/dome/dome.tscn" type="PackedScene" id=3]
 [ext_resource path="res://cockpit/shield_closing.ogg" type="AudioStream" id=4]
 [ext_resource path="res://cockpit/shield_opening.ogg" type="AudioStream" id=5]
-[ext_resource path="res://textures/Textures/[2K]Metal24/Metal24_col.jpg" type="Texture" id=6]
-[ext_resource path="res://textures/Textures/[2K]Metal24/Metal24_met.jpg" type="Texture" id=7]
-[ext_resource path="res://textures/Textures/[2K]Metal24/Metal24_nrm.jpg" type="Texture" id=8]
-[ext_resource path="res://textures/Textures/[2K]Metal24/Metal24_rgh.jpg" type="Texture" id=9]
-[ext_resource path="res://cockpit/cockpit_brut2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://textures/Textures/greenMetal/green_metal_rust_diff_1k.jpg" type="Texture" id=6]
+[ext_resource path="res://cockpit/cockpit_brut2.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -238,28 +235,12 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="SpatialMaterial" id=24]
+[sub_resource type="SpatialMaterial" id=23]
 
-resource_name = "RustedMetal"
-params_cull_mode = 2
-albedo_color = Color( 0.556863, 0.513726, 0.513726, 1 )
+albedo_color = Color( 0.360784, 0.360784, 0.360784, 1 )
 albedo_texture = ExtResource( 6 )
-metallic = 0.98
-metallic_specular = 0.8
-metallic_texture = ExtResource( 7 )
-metallic_texture_channel = 2
-roughness = 0.96
-roughness_texture = ExtResource( 9 )
-roughness_texture_channel = 1
-normal_enabled = true
-normal_scale = 1.0
-normal_texture = ExtResource( 8 )
-refraction_enabled = true
-refraction_scale = 0.05
-refraction_texture_channel = 0
-uv1_triplanar = true
 
-[sub_resource type="ArrayMesh" id=23]
+[sub_resource type="ArrayMesh" id=24]
 
 surfaces/0 = {
 "aabb": AABB( -0.981799, -0.9818, 0.184189, 1.9636, 1.9636, 0.815807 ),
@@ -281,7 +262,7 @@ visible = false
 material/0 = SubResource( 1 )
 
 [node name="dome" parent="." index="1" instance=ExtResource( 3 )]
-transform = Transform( -0.8, 0, -3.11531e-07, 0, 0.8, 0, 3.11531e-07, 0, -0.8, 0, 0, 4.76322 )
+transform = Transform( -0.8, 0, -3.11531e-007, 0, 0.8, 0, 3.11531e-007, 0, -0.8, 0, 0, 4.76322 )
 
 [node name="Sphere" parent="." index="2"]
 visible = false

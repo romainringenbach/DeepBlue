@@ -74,21 +74,17 @@ transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.05, 0.0584707, 0.3
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.1, 0.0584707, 0.3 )
 
 [node name="Label1" parent="." instance=ExtResource( 13 )]
-<<<<<<< HEAD
 transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, -0.120454, 0.0571333, 0.3 )
 text_label = "On / Off"
-=======
-transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, -0.120454, 0.0571333, 0.3 )
->>>>>>> aa2b727eb1475020b6b9326a3ce4b3e276bac634
 
 [node name="Label2" parent="." instance=ExtResource( 13 )]
-transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.0295464, 0.0571333, 0.3 )
+transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.0295464, 0.0571333, 0.3 )
 
 [node name="Label3" parent="." instance=ExtResource( 13 )]
-transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.179546, 0.0571333, 0.3 )
+transform = Transform( -8.14603e-009, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-009, 0.179546, 0.0571333, 0.3 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( -1.62921e-07, 1, -0.000598029, 5.22814e-11, -0.000598029, -1, -1, -1.62921e-07, 4.515e-11, 0.000752471, 0.052391, -0.06 )
+transform = Transform( -1.62921e-007, 1, -0.000598029, 5.22814e-011, -0.000598029, -1, -1, -1.62921e-007, 4.515e-011, 0.000752471, 0.052391, -0.06 )
 pixel_size = 0.0005
 transparent = false
 region_rect = Rect2( 0, 0, 100, 100 )
@@ -99,16 +95,11 @@ collision_mask = 16
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 shape = SubResource( 3 )
-<<<<<<< HEAD
 
 [node name="SonarSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 14 )
-unit_db = 20.194
-unit_size = 21.4
-max_db = 3.379
-bus = "Echo"
+unit_db = 80.0
+unit_size = 22.3
 script = ExtResource( 15 )
-=======
->>>>>>> aa2b727eb1475020b6b9326a3ce4b3e276bac634
 
 [connection signal="left_click" from="Button1" to="SonarSound" method="_on_Button1_left_click"]
