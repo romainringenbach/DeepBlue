@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=8 format=2]
+[gd_resource type="AudioBusLayout" load_steps=9 format=2]
 
 [sub_resource type="AudioEffectHighPassFilter" id=1]
 
@@ -49,6 +49,11 @@ volume_db = 4.0
 resource_name = "LowPassFilter"
 cutoff_hz = 1000.0
 
+[sub_resource type="AudioEffectAmplify" id=8]
+
+resource_name = "Amplify"
+volume_db = 8.08
+
 [resource]
 
 bus/1/name = "RadioEffect"
@@ -83,4 +88,12 @@ bus/3/effect/0/effect = SubResource( 6 )
 bus/3/effect/0/enabled = true
 bus/3/effect/1/effect = SubResource( 7 )
 bus/3/effect/1/enabled = true
+bus/4/name = "Crack"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = "Master"
+bus/4/effect/0/effect = SubResource( 8 )
+bus/4/effect/0/enabled = true
 

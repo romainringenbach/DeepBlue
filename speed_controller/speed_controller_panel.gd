@@ -39,10 +39,10 @@ func _process(delta):
 	if boostMode:
 		pitch_scale = motorSound.get_pitch_scale() + 0.001*audioSpeedBoost
 		motorSound.set_pitch_scale(clamp(pitch_scale,pitch_scale,2.5))
-		volume_db = clamp(volume_db+0.01, MIN_UNIT_DB+current_speed*MAX_UNIT_DB/BOOST_SPEED ,MAX_UNIT_DB)	
+		volume_db = clamp(volume_db+0.01, MIN_UNIT_DB+abs(current_speed)*MAX_UNIT_DB/BOOST_SPEED ,MAX_UNIT_DB)	
 	else:
-		volume_db = clamp(volume_db - 0.01,MIN_UNIT_DB+current_speed*DIFFERENCES/BOOST_SPEED, MAX_UNIT_DB) 
-		motorSound.set_pitch_scale(clamp(motorSound.get_pitch_scale()-0.001*audioSpeedBoost,1+current_speed/2,2.5))
+		volume_db = clamp(volume_db - 0.01,MIN_UNIT_DB+abs(current_speed)*DIFFERENCES/BOOST_SPEED, MAX_UNIT_DB) 
+		motorSound.set_pitch_scale(clamp(motorSound.get_pitch_scale()-0.001*audioSpeedBoost,1+abs(current_speed)/2,2.5))
 	motorSound.set_volume_db(volume_db)
 
 func _update_speed():
