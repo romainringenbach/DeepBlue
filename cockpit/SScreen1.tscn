@@ -24,6 +24,5 @@ viewport_texture = SubResource( 1 )
 color = Color( 0, 1, 0.203922, 1 )
 set_up = true
 
-[connection signal="left_click" from="Screen_1/Button2" to="SonarSound" method="_on_Button2_left_click"]
 
 [editable path="Screen_1"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://cockpit/cockpit.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/PilotHead.tscn" type="PackedScene" id=2]
@@ -18,32 +18,21 @@
 [ext_resource path="res://cockpit/LongRangeSpots.gd" type="Script" id=16]
 [ext_resource path="res://alarm/alarm.tscn" type="PackedScene" id=17]
 [ext_resource path="res://cockpit/SScreen1.tscn" type="PackedScene" id=18]
-[ext_resource path="res://cockpit/SScreen2.tscn" type="PackedScene" id=19]
-[ext_resource path="res://cockpit/SScreen2.gd" type="Script" id=20]
-[ext_resource path="res://cockpit/Viewports.tscn" type="PackedScene" id=21]
+[ext_resource path="res://cockpit/SScreen1.gd" type="Script" id=19]
+[ext_resource path="res://cockpit/SScreen2.tscn" type="PackedScene" id=20]
+[ext_resource path="res://cockpit/SScreen2.gd" type="Script" id=21]
 [ext_resource path="res://cockpit/SButton1.tscn" type="PackedScene" id=22]
 [ext_resource path="res://measure_1/measure.tscn" type="PackedScene" id=23]
 [ext_resource path="res://cockpit/Lights.tscn" type="PackedScene" id=24]
+[ext_resource path="res://cockpit/Viewports.tscn" type="PackedScene" id=25]
 
-[sub_resource type="ViewportTexture" id=1]
+[sub_resource type="ViewportTexture" id=10]
 
 viewport_path = NodePath("Viewports/SonarActif")
 
-[sub_resource type="ViewportTexture" id=2]
+[sub_resource type="ViewportTexture" id=9]
 
 viewport_path = NodePath("Viewports/SonarPassif")
-
-[sub_resource type="ViewportTexture" id=3]
-
-viewport_path = NodePath("Viewports/TopView")
-
-[sub_resource type="ViewportTexture" id=4]
-
-viewport_path = NodePath("Viewports/TopView")
-
-[sub_resource type="ImageTexture" id=5]
-
-size = Vector2( 1, 1 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 1 )
@@ -155,27 +144,16 @@ volume_db = 24.0
 transform = Transform( 0.03, 0, 0, 0, -0.03, -9.77524e-09, 0, 9.77524e-09, -0.03, 0, 1.0091, 0.438676 )
 
 [node name="SScreen1" parent="." instance=ExtResource( 18 )]
+script = ExtResource( 19 )
 
-[node name="Screen_1" parent="SScreen1" index="0"]
-viewport_texture = SubResource( 1 )
+[node name="Screen_1" parent="SScreen1" index="1"]
+viewport_texture = SubResource( 10 )
 
-[node name="SScreen2" parent="." instance=ExtResource( 19 )]
-editor/display_folded = true
-script = ExtResource( 20 )
+[node name="SScreen2" parent="." instance=ExtResource( 20 )]
+script = ExtResource( 21 )
 
 [node name="Screen_2" parent="SScreen2" index="0"]
-editor/display_folded = false
-viewport_texture = SubResource( 2 )
-
-[node name="Viewports" parent="." instance=ExtResource( 21 )]
-editor/display_folded = true
-
-[node name="TextureRect" parent="Viewports/SonarActif" index="0"]
-texture = SubResource( 3 )
-
-[node name="TextureRect" parent="Viewports/SonarPassif" index="0"]
-texture = SubResource( 4 )
-data = SubResource( 5 )
+viewport_texture = SubResource( 9 )
 
 [node name="SButton1" parent="." instance=ExtResource( 22 )]
 editor/display_folded = true
@@ -247,8 +225,10 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0
 [node name="B" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 
+[node name="Viewports" parent="." instance=ExtResource( 25 )]
+
 [connection signal="speed_changed" from="Speed_controller" to="." method="_on_Speed_controller_speed_changed"]
-[connection signal="alarm" from="Viewports/SonarPassif/TextureRect" to="SScreen2" method="_on_TextureRect_alarm"]
+[connection signal="left_click" from="SScreen1/Screen_1/Button2" to="Viewports" method="_on_Button2_left_click"]
 [connection signal="left_click" from="SButton1/Buttons_1/Button1" to="TopSpots" method="_on_Button1_left_click"]
 [connection signal="left_click" from="SButton1/Buttons_1/Button2" to="LongRangeSpots" method="_on_Button2_left_click"]
 [connection signal="left_click" from="SButton1/Buttons_1/Button3" to="Alarm" method="stop"]
@@ -256,10 +236,12 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 
 [editable path="SScreen1"]
 
-[editable path="SScreen2"]
+[editable path="SScreen1/Screen_1"]
 
-[editable path="Viewports"]
+[editable path="SScreen2"]
 
 [editable path="SButton1"]
 
 [editable path="SButton1/Buttons_1"]
+
+[editable path="Viewports"]

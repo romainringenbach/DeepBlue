@@ -1,6 +1,7 @@
 extends MeshInstance
 
 export (ViewportTexture) var viewport_texture
+export (Texture) var none_texture
 
 # class member variables go here, for example:
 # var a = 2
@@ -24,4 +25,4 @@ func _on_Button1_left_click():
 	if $Button1.toggle == true:
 		$Sprite3D.texture = viewport_texture
 	else:
-		$Sprite3D.texture = null
+		$Sprite3D.texture = none_texture

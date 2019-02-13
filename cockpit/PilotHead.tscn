@@ -28,7 +28,7 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape" type="CollisionShape" parent="Body"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-007, -1, 0, 1, -1.62921e-007, 0, -0.42, 0 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -0.42, 0 )
 shape = SubResource( 1 )
 
 [node name="Head" type="RigidBody" parent="."]
@@ -51,7 +51,7 @@ disabled = true
 script = ExtResource( 2 )
 
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="Head/Yaw"]
-transform = Transform( -1, 1.5708e-007, -1.50996e-007, 1.5708e-007, 1, 0, 1.50996e-007, -2.37184e-014, -1, 0, 0, 0 )
+transform = Transform( -1, 1.5708e-07, -1.50996e-07, 1.5708e-07, 1, 0, 1.50996e-07, -2.37184e-14, -1, 0, 0, 0 )
 cull_mask = 1048559
 doppler_tracking = 2
 current = true
@@ -59,6 +59,7 @@ fov = 55.0
 script = ExtResource( 3 )
 
 [node name="SimpleDialogueBox" parent="Head/Yaw/InterpolatedCamera" instance=ExtResource( 4 )]
+visible = false
 
 [node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="."]
 nodes/node_a = NodePath("../Body")

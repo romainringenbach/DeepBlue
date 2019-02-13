@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://screen_panel/screen_panel.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://textures/Textures/[2K]Pipe01/Pipe01_col.jpg" type="Texture" id=2]
@@ -11,9 +11,10 @@
 [ext_resource path="res://textures/Textures/AnotherMetal/Metal14_rgh.jpg" type="Texture" id=9]
 [ext_resource path="res://cockpit/RustedMetal2.material" type="Material" id=10]
 [ext_resource path="res://screen_panel/screen_panel.gd" type="Script" id=11]
-[ext_resource path="res://button/button.tscn" type="PackedScene" id=12]
-[ext_resource path="res://label/label.tscn" type="PackedScene" id=13]
-[ext_resource path="res://cockpit/SonarAlert.tscn" type="PackedScene" id=14]
+[ext_resource path="res://cockpit/black.png" type="Texture" id=12]
+[ext_resource path="res://button/button.tscn" type="PackedScene" id=13]
+[ext_resource path="res://label/label.tscn" type="PackedScene" id=14]
+[ext_resource path="res://cockpit/SonarAlert.tscn" type="PackedScene" id=15]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -62,35 +63,37 @@ material/1 = SubResource( 2 )
 material/2 = ExtResource( 10 )
 material/3 = ExtResource( 10 )
 script = ExtResource( 11 )
+none_texture = ExtResource( 12 )
 
-[node name="Button1" parent="." instance=ExtResource( 12 )]
+[node name="Button1" parent="." instance=ExtResource( 13 )]
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.2, 0.0584707, 0.3 )
 color = Color( 0, 1, 0.0156863, 1 )
 set_up = true
 
-[node name="Button2" parent="." instance=ExtResource( 12 )]
+[node name="Button2" parent="." instance=ExtResource( 13 )]
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.05, 0.0584707, 0.3 )
 
-[node name="Button3" parent="." instance=ExtResource( 12 )]
+[node name="Button3" parent="." instance=ExtResource( 13 )]
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.1, 0.0584707, 0.3 )
 type = 3
 color = Color( 1, 0, 0, 1 )
 set_up = true
 
-[node name="Label1" parent="." instance=ExtResource( 13 )]
+[node name="Label1" parent="." instance=ExtResource( 14 )]
 transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, -0.120454, 0.0571333, 0.3 )
 text_label = "On / Off"
 
-[node name="Label2" parent="." instance=ExtResource( 13 )]
+[node name="Label2" parent="." instance=ExtResource( 14 )]
 transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.0295464, 0.0571333, 0.3 )
 
-[node name="Label3" parent="." instance=ExtResource( 13 )]
+[node name="Label3" parent="." instance=ExtResource( 14 )]
 transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.179546, 0.0571333, 0.3 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( -1.62921e-07, 1, -0.000598029, 5.22814e-11, -0.000598029, -1, -1, -1.62921e-07, 4.515e-11, 0.000752471, 0.052391, -0.06 )
 pixel_size = 0.0005
 transparent = false
+texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 100, 100 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
@@ -100,7 +103,7 @@ collision_mask = 16
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 shape = SubResource( 3 )
 
-[node name="SonarAlert" parent="." instance=ExtResource( 14 )]
+[node name="SonarAlert" parent="." instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [connection signal="left_click" from="Button1" to="." method="_on_Button1_left_click"]
