@@ -3,8 +3,6 @@
 [ext_resource path="res://submarine/submarine.tscn" type="PackedScene" id=1]
 [ext_resource path="res://pseudo_level/Buildings.tscn" type="PackedScene" id=2]
 
-
-
 [sub_resource type="Environment" id=1]
 
 background_mode = 1
