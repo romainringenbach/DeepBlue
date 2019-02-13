@@ -45,7 +45,7 @@ material/0 = SubResource( 4 )
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 layers = 1025
-light_energy = 0.7
+light_energy = 0.4
 light_specular = 0.26
 light_cull_mask = -1014784
 spot_range = 3.11831

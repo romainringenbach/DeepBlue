@@ -55,7 +55,7 @@ stream = ExtResource( 3 )
 volume_db = -17.165
 autoplay = true
 
-[node name="Measures" parent="Cockpit" index="12"]
+[node name="Measures" parent="Cockpit" index="11"]
 editor/display_folded = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

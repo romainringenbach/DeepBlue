@@ -13,7 +13,7 @@
 
 ambient_light_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="Shader" id=12]
+[sub_resource type="Shader" id=2]
 
 code = "shader_type canvas_item;
 
@@ -72,9 +72,9 @@ void fragment() {
 	COLOR = line_color*0.8 + color + texture(bg,UV);
 }"
 
-[sub_resource type="ShaderMaterial" id=13]
+[sub_resource type="ShaderMaterial" id=3]
 
-shader = SubResource( 12 )
+shader = SubResource( 2 )
 shader_param/updating = false
 shader_param/rotation_degrees = 1.11
 shader_param/bg = ExtResource( 3 )
@@ -82,13 +82,13 @@ shader_param/top = ExtResource( 4 )
 shader_param/bottom = ExtResource( 4 )
 shader_param/green_line = ExtResource( 5 )
 
-[sub_resource type="ImageTexture" id=14]
+[sub_resource type="ImageTexture" id=4]
 
 
-[sub_resource type="ImageTexture" id=15]
+[sub_resource type="ImageTexture" id=5]
 
 
-[sub_resource type="Shader" id=9]
+[sub_resource type="Shader" id=6]
 
 code = "shader_type canvas_item;
 
@@ -119,12 +119,12 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=10]
+[sub_resource type="ShaderMaterial" id=7]
 
-shader = SubResource( 9 )
+shader = SubResource( 6 )
 shader_param/slide = null
 
-[sub_resource type="ImageTexture" id=11]
+[sub_resource type="ImageTexture" id=8]
 
 
 [node name="Viewports" type="Spatial"]
@@ -176,12 +176,12 @@ usage = 0
 render_target_update_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="SonarActif"]
-material = SubResource( 13 )
+material = SubResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 6 )
-top = SubResource( 14 )
-bottom = SubResource( 15 )
+top = SubResource( 4 )
+bottom = SubResource( 5 )
 
 [node name="SonarPassif" type="Viewport" parent="."]
 size = Vector2( 1000, 1000 )
@@ -194,10 +194,10 @@ usage = 0
 render_target_update_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="SonarPassif"]
-material = SubResource( 10 )
+material = SubResource( 7 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 7 )
 useless = ExtResource( 8 )
-data = SubResource( 11 )
+data = SubResource( 8 )
 

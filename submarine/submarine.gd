@@ -78,13 +78,13 @@ func _integrate_forces(state):
 	if lateral_mode == false:
 	
 		state.add_force(player_direction*current_speed, Vector3())
-		if (impulse_left):
+		if (impulse_left == true):
 			state.apply_torque_impulse(Vector3(0,STEER_FORCE_LR,0))
-		if (impulse_right):
+		if (impulse_right == true):
 			state.apply_torque_impulse(Vector3(0,-STEER_FORCE_LR,0))
-		if (impulse_up):
+		if (impulse_up == true):
 			state.apply_torque_impulse(Vector3(-STEER_FORCE_UD,0,0))
-		if (impulse_down):
+		if (impulse_down == true):
 			state.apply_torque_impulse(Vector3(STEER_FORCE_UD,0,0))
 		
 	else:
@@ -92,25 +92,25 @@ func _integrate_forces(state):
 		var x_r = player_direction.cross(Vector3(0,1,0))
 		var y_r = player_direction.cross(Vector3(1,0,0))
 		
-		if (impulse_left):
+		if (impulse_left == true):
 			state.add_force($Cockpit/T.get_global_transform().basis.z*current_speed*.5, Vector3())
-		if (impulse_right):
+		if (impulse_right == true):
 			state.add_force(-$Cockpit/T.get_global_transform().basis.z*current_speed*.5, Vector3())
-		if (impulse_up):
+		if (impulse_up == true):
 			state.add_force(-$Cockpit/B.get_global_transform().basis.z*current_speed*.5, Vector3())
-		if (impulse_down):
+		if (impulse_down == true):
 			state.add_force($Cockpit/B.get_global_transform().basis.z*current_speed*.5, Vector3())
 		
 	# correct submarine orientation
 		
-	if rotation.x < -0.1:
+	if rotation.x < -0.001:
 		state.apply_torque_impulse(Vector3(STEER_FORCE_UD/5,0,0))
-	if rotation.x > 0.1:
+	if rotation.x > 0.001:
 		state.apply_torque_impulse(Vector3(-STEER_FORCE_UD/5,0,0))
 		
-	if rotation.z < -0.1:
+	if rotation.z < -0.001:
 		state.apply_torque_impulse(Vector3(0,0,STEER_FORCE_UD/5))
-	if rotation.z > 0.1:
+	if rotation.z > 0.001:
 		state.apply_torque_impulse(Vector3(0,0,-STEER_FORCE_UD/5))
 		
 
