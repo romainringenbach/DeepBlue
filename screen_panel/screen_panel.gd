@@ -9,8 +9,8 @@ export (ViewportTexture) var viewport_texture
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
+	pass
 	
-	$Sprite3D.texture = viewport_texture
 	
 	
 
@@ -18,3 +18,10 @@ func _ready():
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 #	pass
+
+
+func _on_Button1_left_click():
+	if $Button1.toggle == true:
+		$Sprite3D.texture = viewport_texture
+	else:
+		$Sprite3D.texture = null

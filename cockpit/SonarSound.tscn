@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://PisteAudio/SFX/SonarSound.ogg" type="AudioStream" id=1]
+[ext_resource path="res://screen_panel/SonarSound.gd" type="Script" id=2]
+
+[node name="SonarSound" type="AudioStreamPlayer3D"]
+stream = ExtResource( 1 )
+unit_db = 80.0
+unit_size = 22.3
+script = ExtResource( 2 )
+
