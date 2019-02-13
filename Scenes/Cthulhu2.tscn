@@ -7,7 +7,7 @@
 [ext_resource path="res://models/Particles/noise.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/CthulhuParticle.tscn" type="PackedScene" id=6]
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=1]
 
 resource_local_to_scene = true
 shader = ExtResource( 3 )
@@ -48,11 +48,12 @@ script = ExtResource( 2 )
 
 [node name="Object_5" parent="." index="0"]
 use_in_baked_light = true
-material/0 = SubResource( 4 )
+material/0 = SubResource( 1 )
 
 [node name="Area" type="Area" parent="Object_5" index="0"]
 input_ray_pickable = true
 collision_layer = 128
+collision_mask = 3
 
 [node name="CollisionShape" type="CollisionShape" parent="Object_5/Area" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19802, -2.18357 )

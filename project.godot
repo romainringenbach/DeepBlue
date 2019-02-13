@@ -27,12 +27,12 @@ _global_script_class_icons={
 [application]
 
 config/name="DeepBlue"
-run/main_scene="res://cockpit/cockpit.tscn"
+run/main_scene="res://pseudo_level/level0.tscn"
 config/icon="res://icon.png"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "MagicaVoxelImporter" )
+enabled=PoolStringArray( "zylann.hterrain" )
 
 [input]
 
@@ -84,6 +84,13 @@ unzoom={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="Submarine"
+3d_physics/layer_8="Loot"
+3d_physics/layer_9="Doodads"
+3d_physics/layer_10="Boss"
 
 [rendering]
 
