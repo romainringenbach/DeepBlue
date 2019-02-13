@@ -5,21 +5,101 @@
 	 [
 		{
 			"id"      : 0,
-			"name"    : "MacGrubber",
-			"text"    : "Salut ! On m'a dit que t'étais nouveau dans le milieu. Je vais t'aider un peu à prendre en main ton nouveau joujou.",
+			"name"    : "George",
+			"text"    : "Salut ! On m'a dit que t'étais nouveau dans le milieu. Je vais t'aider un peu à prendre en main ton nouveau joujou. On m'appelle le Playboy des fonds marins. Mais tu peux aussi m'appeler George.",
 			"next_id" : 1,
 			"choices" : []
 		},
 
 		{
 			"id"      : 1,
-			"name"    : "MacGrubber",
-			"text"    : "Déjà commence par allumer les spots. T'as deux boutons sur ta gauche. Un pour les spots courte portée, l'autre pour la longue portée.",
+			"name"    : "George",
+			"text"    : "Regarde un peu autour de toi (bouge la souris). Tu peux te pencher pour y voir mieux (zoom avec la molette).",
 			"next_id" : 2,
 			"choices" : []
+		},
+
+		{
+			"id"      : 2,
+			"name"    : "George",
+			"text"    : "Super. Déjà commence par allumer les [color=lime]spots[/color]. T'as deux boutons sur ta gauche. Un pour les spots [color=teal]courte portée[/color], l'autre pour la [color=red]longue portée[/color].",
+			"next_id" : 3,
+			"choices" : []
+		},
+
+		{
+			"id"      : 3,
+			"name"    : "George",
+			"text"    : "C'est ok pour les spots ?",
+			"next_id" : 4,
+			"choices" : [
+				{
+					"text"    : "Yep",
+					"next_id" : 5
+				},
+
+				{
+					"text"    : "Attends!",
+					"next_id" : 4
+				}
+			]
+		},
+
+		{
+			"id"      : 4,
+			"name"    : "George",
+			"text"    : "Ben alors qu'est-ce que t'attends ? Allume-les !",
+			"next_id" : 3,
+			"choices" : []
+		},
+
+		{
+			"id"      : 5,
+			"name"    : "George",
+			"text"    : "Bon début, tu devrais y voir plus clair. Devant toi tu as un [color=lime]manche[/color], c'est avec ça que tu diriges le sub. (z,q,s,d).\nEssaie un peu pour voir.",
+			"next_id" : 6,
+			"choices" : []
+		},
+
+		{
+			"id"      : 6,
+			"name"    : "George",
+			"text"    : "Sur la droite du manche, t'as une grosse [color=lime]manette des gaz[/color]. C'est pour mettre...les gaz. Essaie un peu, mais va doucement pour commencer !",
+			"next_id" : 7,
+			"choices" : []
+		},
+
+		{
+			"id"      : 7,
+			"name"    : "George",
+			"text"    : "Sur le côté droit t'as les sonars. Jettes-y un coup d'oeil de temps en temps, tu verras les choses arriver avant qu'elles percutent ton sub !",
+			"next_id" : 8,
+			"choices" : []
+		},
+
+		{
+			"id"      : 8,
+			"name"    : "George",
+			"text"    : "Sur le côté gauche en haut on t'a mis une radio, pour pas que tu t'ennuies. T'as déjà écouté [color=lime]Radio Océan[/color] ? Le meilleur son des fonds marins !",
+			"next_id" : 9,
+			"choices" : []
+		},
+
+		{
+			"id"      : 9,
+			"name"    : "George",
+			"text"    : "Oh, dernière chose. Si jamais t'entends une alarme, tu pourras pas la rater, appuie sur le bouton [color=red]Alarm[/color] sur le panel de gauche. Ce sera sans doute parce que t'as percuté un truc.",
+			"next_id" : 10,
+			"choices" : []
+		},
+
+		{
+			"id"      : 10,
+			"name"    : "George",
+			"text"    : "Allez, je file. Bonne exploration !",
+			"next_id" : -1,
+			"choices" : []
 		}
-
-
 	]
 
 }

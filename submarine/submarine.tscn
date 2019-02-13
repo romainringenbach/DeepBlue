@@ -55,6 +55,9 @@ stream = ExtResource( 3 )
 volume_db = -17.165
 autoplay = true
 
+[node name="Measures" parent="Cockpit" index="12"]
+editor/display_folded = true
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 2 )
 
@@ -68,7 +71,7 @@ linear_damp = 0.0
 angular_damp = 0.0
 monitorable = false
 collision_layer = 2
-collision_mask = 897
+collision_mask = 899
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 5 )
@@ -77,7 +80,7 @@ shape = SubResource( 5 )
 linear_damp = 0.0
 angular_damp = 0.0
 monitorable = false
-collision_mask = 897
+collision_mask = 899
 
 [node name="CollisionShape" type="CollisionShape" parent="Area2"]
 shape = SubResource( 6 )

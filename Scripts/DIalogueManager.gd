@@ -20,7 +20,7 @@
 extends Panel
 
 #---File---#
-var file_name = "dialogue_1.json" # You could pass a new file here on area body enter or whenever you feel like
+var file_name = "tuto1.json" # You could pass a new file here on area body enter or whenever you feel like
 var nodes # containes all the nodes of the current dialogue
 
 
@@ -46,8 +46,8 @@ onready var dialogueButtons = [$Control/DialogueButton,$Control/DialogueButton2,
 func _ready():
 	rand_seed(OS.get_unix_time())
 	#----HERE FOR PREVIEW----#
-	LoadFile(file_name)
-	StartDialogue()
+#	LoadFile(file_name)
+#	StartDialogue()
 
 
 func LoadFile(fname):
@@ -64,6 +64,7 @@ func LoadFile(fname):
 	else:
 		print("Dialogue: File Open Error")
 	file.close()
+	print("File loaded")
 	if force:
 		StartDialogue()
 	
@@ -117,8 +118,8 @@ func UpdateUI():
 			if dialogueButtons[0].is_connected("pressed",self,"_on_Button_Pressed"):
 				dialogueButtons[0].disconnect("pressed",self,"_on_Button_Pressed")
 			
-		dialogueName.text = curent_node_name
-		dialogueText.text = curent_node_text
+		dialogueName.bbcode_text = curent_node_name
+		dialogueText.bbcode_text = curent_node_text
 		if curent_node_choices.size() > 0:
 			for x in clamp(curent_node_choices.size(),0,3):
 				dialogueButtons[x].text = curent_node_choices[x]["text"]

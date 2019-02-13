@@ -35,7 +35,7 @@ custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_colors/selection_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
-text = "Hello World! Today's Lucky Number is 42!"
+bbcode_enabled = true
 
 [node name="DialogueName" type="RichTextLabel" parent="."]
 anchor_right = 1.0

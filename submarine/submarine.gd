@@ -30,6 +30,8 @@ var shake = false
 
 var lateral_mode = false
 
+onready var dialogs_mgr = get_node("Cockpit/PilotHead/Head/Yaw/InterpolatedCamera/Dialogs/DialogueUI")
+
 signal collision_impact()
 signal shaky(force)
 
@@ -37,6 +39,9 @@ func _ready():
 	player_direction = $Cockpit.get_global_transform().basis.z
 	$Cockpit/Viewports/TopView/Yaw.target = get_path()
 	$Cockpit/Viewports/BottomView/Yaw.target = get_path()
+	
+	dialogs_mgr.LoadFile("tuto1.json")
+	dialogs_mgr.StartDialogue()
 
 func get_input():
 	
@@ -156,6 +161,11 @@ func _on_Area_body_shape_entered(body_id, body, body_shape, area_shape):
 	for child in body.get_children():
 		if child is VisualInstance:
 			child.layers += 262144
+	
+	if body.get_collision_layer_bit(7): # Loot near
+		dialogs_mgr.EndDialogue()
+		dialogs_mgr.LoadFile("loot_near.json")
+		dialogs_mgr.StartDialogue()
 
 func _on_Area_body_shape_exited(body_id, body, body_shape, area_shape):
 	if body_id in echos:
@@ -185,6 +195,11 @@ func _on_Area2_body_shape_entered(body_id, body, body_shape, area_shape):
 		
 	if ((linear_velocity-body_velocity).length()) > 1.3:
 		emit_signal("collision_impact")
+		
+	if body.get_collision_layer_bit(7): # Loot taken
+		dialogs_mgr.EndDialogue()
+		dialogs_mgr.LoadFile("loot_taken.json")
+		dialogs_mgr.StartDialogue()
 
 func _on_Speed_controller_reverse_changed():
 	direction_changed = true
