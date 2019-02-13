@@ -26,13 +26,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.687604, 0.33 )
 shape = SubResource( 2 )
 
 [node name="Cylinder" parent="." index="1"]
-layers = 1024
+layers = 33792
 material/0 = ExtResource( 3 )
 
 [node name="Cylinder_001" parent="." index="2"]
 transform = Transform( -5.6426e-08, 0.2, 0, -0.0415823, -1.17316e-08, -0.19563, -0.19563, -5.5193e-08, 0.0415823, -0.635763, 0, 0 )
-layers = 1024
+layers = 33792
 material/0 = ExtResource( 4 )
+
+[node name="SpotLight" type="SpotLight" parent="." index="4"]
+transform = Transform( 1, 0, 0, 0, -0.268617, 0.963247, 0, -0.963247, -0.268617, 0, 3.03083, 0 )
+light_energy = 0.3
+spot_range = 1.33824
 
 [connection signal="input_event" from="StaticBody" to="." method="_on_StaticBody_input_event"]
 [connection signal="mouse_exited" from="StaticBody" to="." method="_on_StaticBody_mouse_exited"]
