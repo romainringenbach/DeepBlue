@@ -15,3 +15,10 @@ func _ready():
 
 func _on_Spatial_near_active_sonar():
 	$Screen_1.alarm()
+
+
+func _on_Button2_left_click():
+	if $Screen_1/Button1.toggle == true:
+		$SonarSound.playing = true
+	else:
+		$SonarSound.playing = false

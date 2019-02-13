@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://cockpit/Viewports.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/SonarCamera.gd" type="Script" id=2]
@@ -45,7 +45,7 @@ void fragment() {
 	uv_value = (uv_value -0.5) * rotation_matrix + 0.5;
 	line_color = texture(green_line,uv_value);}
 	
-    vec4 color = vec4(0,0,0,1);
+    vec4 color = vec4(0,0,0,0);
 	vec4 color2 = vec4(0,0,0,1);
 	vec4 color3 = vec4(0,0,0,1);
 	vec2 size = vec2(1000,1000);
@@ -81,6 +81,12 @@ shader_param/bg = ExtResource( 3 )
 shader_param/top = ExtResource( 4 )
 shader_param/bottom = ExtResource( 4 )
 shader_param/green_line = ExtResource( 5 )
+
+[sub_resource type="ImageTexture" id=14]
+
+
+[sub_resource type="ImageTexture" id=15]
+
 
 [sub_resource type="Shader" id=9]
 
@@ -161,23 +167,31 @@ target = NodePath("../..")
 
 [node name="SonarActif" type="Viewport" parent="."]
 size = Vector2( 1000, 1000 )
+transparent_bg = true
 handle_input_locally = false
+msaa = 1
 hdr = false
 disable_3d = true
 usage = 0
+render_target_update_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="SonarActif"]
 material = SubResource( 13 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 6 )
+top = SubResource( 14 )
+bottom = SubResource( 15 )
 
 [node name="SonarPassif" type="Viewport" parent="."]
 size = Vector2( 1000, 1000 )
+transparent_bg = true
 handle_input_locally = false
+msaa = 1
 hdr = false
 disable_3d = true
 usage = 0
+render_target_update_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="SonarPassif"]
 material = SubResource( 10 )

@@ -6,8 +6,10 @@ extends ColorRect
 
 
 var updating = false
-var top
-var bottom
+
+
+export (ImageTexture) var top
+export (ImageTexture) var bottom
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,8 +18,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if updating == true:
-		top = get_parent().get_parent().get_node("TopView").get_texture()
-		bottom = get_parent().get_parent().get_node("BottomView").get_texture()
+		top.create_from_image(get_parent().get_parent().get_node("TopView").get_texture().get_data())
+		bottom.create_from_image(get_parent().get_parent().get_node("BottomView").get_texture().get_data())
 		material.set_shader_param("top",top)
 		material.set_shader_param("bottom",bottom)
 
