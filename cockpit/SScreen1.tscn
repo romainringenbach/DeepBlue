@@ -26,6 +26,12 @@ viewport_texture = SubResource( 1 )
 color = Color( 0, 1, 0.203922, 1 )
 set_up = true
 
+[node name="Label2" parent="Screen_1" index="4"]
+text_label = "Enable Sonar"
+
+[node name="Label3" parent="Screen_1" index="5"]
+text_label = "Alarm"
+
 [connection signal="left_click" from="Screen_1/Button2" to="." method="_on_Button2_left_click"]
 
 [editable path="Screen_1"]
