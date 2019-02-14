@@ -30,6 +30,11 @@ config/name="DeepBlue"
 run/main_scene="res://Scenes/Terrain/Terrain.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=1280
+window/size/height=720
+
 [editor_plugins]
 
 enabled=PoolStringArray( "zylann.hterrain" )

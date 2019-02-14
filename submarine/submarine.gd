@@ -34,6 +34,7 @@ onready var dialogs_mgr = get_node("Cockpit/PilotHead/Head/Yaw/InterpolatedCamer
 
 signal collision_impact()
 signal shaky(force)
+signal near_body()
 
 func _ready():
 	player_direction = $Cockpit.get_global_transform().basis.z
@@ -82,10 +83,10 @@ func _integrate_forces(state):
 			state.apply_torque_impulse(Vector3(0,STEER_FORCE_LR,0))
 		if (impulse_right == true):
 			state.apply_torque_impulse(Vector3(0,-STEER_FORCE_LR,0))
-		if (impulse_up == true):
-			state.apply_torque_impulse(Vector3(-STEER_FORCE_UD,0,0))
-		if (impulse_down == true):
-			state.apply_torque_impulse(Vector3(STEER_FORCE_UD,0,0))
+		#if (impulse_up == true):
+		#	state.apply_torque_impulse(Vector3(-STEER_FORCE_UD,0,0))
+		#if (impulse_down == true):
+		#	state.apply_torque_impulse(Vector3(STEER_FORCE_UD,0,0))
 		
 	else:
 		
@@ -157,23 +158,19 @@ func _on_Cockpit_speed_changed(speed_percent):
 
 
 func _on_Area_body_shape_entered(body_id, body, body_shape, area_shape):
-	echos[body_id] = {'body':body,'body_shape':body_shape,'area_shape':area_shape,'old_body_position':body.global_transform.origin}
 	for child in body.get_children():
 		if child is VisualInstance:
 			child.layers += 262144
+	if body.get_parent() is VisualInstance:
+		body.get_parent().layers += 262144
 	
-	if body.get_collision_layer_bit(7): # Loot near
-		dialogs_mgr.EndDialogue()
-		dialogs_mgr.LoadFile("loot_near.json")
-		dialogs_mgr.StartDialogue()
-
+		
 func _on_Area_body_shape_exited(body_id, body, body_shape, area_shape):
-	if body_id in echos:
-		echos.erase(body_id)
-		for child in body.get_children():
-			if child is VisualInstance:
-				child.layers -= 262144
-
+	for child in body.get_children():
+		if child is VisualInstance:
+			child.layers -= 262144
+	if body.get_parent() is VisualInstance:
+		body.get_parent().layers -= 262144
 
 func _on_Timer_timeout():
 	level = 0
@@ -207,3 +204,20 @@ func _on_Speed_controller_reverse_changed():
 
 func _on_Speed_controller_mode_changed(mode):
 	lateral_mode = mode
+
+
+func _on_Area3_body_entered(body):
+	emit_signal("near_body")
+	if body.get_collision_layer_bit(7): # Loot near
+		dialogs_mgr.EndDialogue()
+		dialogs_mgr.LoadFile("loot_near.json")
+		dialogs_mgr.StartDialogue()
+
+
+func _on_Area4_body_shape_entered(body_id, body, body_shape, area_shape):
+	echos[body_id] = {'body':body,'body_shape':body_shape,'area_shape':area_shape,'old_body_position':body.global_transform.origin}
+
+
+func _on_Area4_body_shape_exited(body_id, body, body_shape, area_shape):
+	if body_id in echos:
+		echos.erase(body_id)

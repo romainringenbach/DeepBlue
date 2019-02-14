@@ -48,3 +48,6 @@ func _on_Submarine_collision_impact():
 		life -= 1
 		if life == 0:
 			emit_signal('gameover')
+
+func _on_Submarine_near_body():
+	$SScreen1/Screen_1/SonarAlert.alarm()
