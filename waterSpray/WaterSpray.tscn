@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://waterSpray/foam.png" type="Texture" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 0.709804, 0.870588, 0.976471, 1 )
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="Gradient" id=2]
+
+
+[sub_resource type="GradientTexture" id=3]
+
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+
+max_value = 1.7
+_data = [ Vector2( 0, 1.34368 ), 0.0, 0.0, 0, 0, Vector2( 0.530408, 1.28384 ), 0.0, 0.0, 0, 0, Vector2( 0.976387, 0.56576 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+
+emission_shape = 1
+emission_sphere_radius = 0.2
+spread = 6.0
+gravity = Vector3( 0, 0.15, 0 )
+initial_velocity = 8.0
+angular_velocity = 100.0
+angular_velocity_random = 1.0
+linear_accel = 4.0
+linear_accel_random = 0.5
+tangential_accel = 7.55
+angle = 6.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[sub_resource type="QuadMesh" id=7]
+
+
+[node name="Particles" type="Particles"]
+transform = Transform( -0.00145935, -0.299966, 0.00103446, 0.0999622, -0.00435272, 0.00701042, -0.00233154, 0.00113638, 0.299916, 0, 0, 0 )
+material_override = SubResource( 1 )
+amount = 2000
+speed_scale = 1.9
+randomness = 1.0
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 7 )
+
