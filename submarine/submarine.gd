@@ -104,14 +104,14 @@ func _integrate_forces(state):
 	# correct submarine orientation
 		
 	if rotation.x < -0.001:
-		state.apply_torque_impulse(Vector3(STEER_FORCE_UD/5,0,0))
+		state.apply_torque_impulse(Vector3(STEER_FORCE_UD,0,0))
 	if rotation.x > 0.001:
-		state.apply_torque_impulse(Vector3(-STEER_FORCE_UD/5,0,0))
+		state.apply_torque_impulse(Vector3(-STEER_FORCE_UD,0,0))
 		
 	if rotation.z < -0.001:
-		state.apply_torque_impulse(Vector3(0,0,STEER_FORCE_UD/5))
+		state.apply_torque_impulse(Vector3(0,0,STEER_FORCE_UD))
 	if rotation.z > 0.001:
-		state.apply_torque_impulse(Vector3(0,0,-STEER_FORCE_UD/5))
+		state.apply_torque_impulse(Vector3(0,0,-STEER_FORCE_UD))
 		
 
 		
