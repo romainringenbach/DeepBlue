@@ -14,8 +14,6 @@ var impulse_right = false
 var impulse_up = false
 var impulse_down = false
 
-var fake_speed = 0.01
-
 var player_direction = Vector3()
 
 var echos = {}
@@ -33,7 +31,6 @@ var lateral_mode = false
 onready var dialogs_mgr = get_node("Cockpit/PilotHead/Head/Yaw/InterpolatedCamera/Dialogs/DialogueUI")
 
 signal collision_impact()
-signal shaky(force)
 signal near_body()
 
 func _ready():
@@ -47,8 +44,6 @@ func _ready():
 func get_input():
 	
 	player_direction = $Cockpit.get_global_transform().basis.z
-	
-	
 	
 	if Input.is_action_pressed("ui_left"):
 		impulse_left = true
@@ -83,15 +78,12 @@ func _integrate_forces(state):
 			state.apply_torque_impulse(Vector3(0,STEER_FORCE_LR,0))
 		if (impulse_right == true):
 			state.apply_torque_impulse(Vector3(0,-STEER_FORCE_LR,0))
-		#if (impulse_up == true):
-		#	state.apply_torque_impulse(Vector3(-STEER_FORCE_UD,0,0))
-		#if (impulse_down == true):
-		#	state.apply_torque_impulse(Vector3(STEER_FORCE_UD,0,0))
+		if (impulse_up == true):
+			state.apply_torque_impulse(Vector3(-STEER_FORCE_UD,0,0))
+		if (impulse_down == true):
+			state.apply_torque_impulse(Vector3(STEER_FORCE_UD,0,0))
 		
 	else:
-		
-		var x_r = player_direction.cross(Vector3(0,1,0))
-		var y_r = player_direction.cross(Vector3(1,0,0))
 		
 		if (impulse_left == true):
 			state.add_force($Cockpit/T.get_global_transform().basis.z*current_speed*.5, Vector3())
@@ -103,61 +95,16 @@ func _integrate_forces(state):
 			state.add_force($Cockpit/B.get_global_transform().basis.z*current_speed*.5, Vector3())
 		
 	# correct submarine orientation
-		
-	if rotation.x < -0.001:
-		state.apply_torque_impulse(Vector3(STEER_FORCE_UD,0,0))
-	if rotation.x > 0.001:
-		state.apply_torque_impulse(Vector3(-STEER_FORCE_UD,0,0))
-		
-	if rotation.z < -0.001:
-		state.apply_torque_impulse(Vector3(0,0,STEER_FORCE_UD))
-	if rotation.z > 0.001:
-		state.apply_torque_impulse(Vector3(0,0,-STEER_FORCE_UD))
-		
-
-		
-	state.integrate_forces()
 	
-	var final_force = state.get_linear_velocity() / state.get_inverse_mass() /state.step
-
-	var deviation = 0
-
-	if final_force.length() != 0 and (player_direction*current_speed).length() != 0:
-
-		var s = current_speed
-		if s == 0:
-			s = fake_speed
-
-
-		#deviation = acos(final_force.dot(player_direction*current_speed)/(final_force.length()*(player_direction*s).length()))
-		
-		#or (final_force.length() < 0.5 and current_speed != 0)
-		#if ((deviation != 0 and abs(deviation * final_force.length()) > 10000)  ) and $Area2.get_overlapping_bodies().size() > 1 and collision == false:
-		#	emit_signal('collision_impact')
-		#	collision = true
-			
-			
-		#elif collision == true and (abs(deviation * final_force.length()) <= 8000 or $Area2.get_overlapping_bodies().size() == 1):
-		#	collision = false
-
-		for body in get_colliding_bodies ( ):
-			var body_velocity = Vector3(0,0,0)
-			if body is KinematicBody:
-				body_velocity = body.linear_velocity
-				
-			#print ((linear_velocity-body_velocity).length())
+	state.add_force(-state.total_gravity*(mass+$RigidBody.mass), Vector3())
 
 
 func _on_Cockpit_speed_changed(speed_percent):
 	
 	current_speed = FULL_THRUST*speed_percent
-	if current_speed < 0:
-		fake_speed = -1
-	elif current_speed > 0:
-		fake_speed = 1
 
 
-func _on_Area_body_shape_entered(body_id, body, body_shape, area_shape):
+func _on_Area_body_entered(body):
 	for child in body.get_children():
 		if child is VisualInstance:
 			child.layers += 262144
@@ -165,7 +112,7 @@ func _on_Area_body_shape_entered(body_id, body, body_shape, area_shape):
 		body.get_parent().layers += 262144
 	
 		
-func _on_Area_body_shape_exited(body_id, body, body_shape, area_shape):
+func _on_Area_body_exited(body):
 	for child in body.get_children():
 		if child is VisualInstance:
 			child.layers -= 262144

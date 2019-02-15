@@ -80,6 +80,7 @@ autoplay = true
 
 [node name="Whale" type="AudioStreamPlayer" parent="Cockpit"]
 stream = ExtResource( 9 )
+volume_db = -4.0
 script = ExtResource( 10 )
 
 [node name="Radio" parent="." instance=ExtResource( 11 )]

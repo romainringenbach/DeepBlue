@@ -59,7 +59,6 @@ func _ready():
 		
 		musicChannel[i].set_stream(audiostream)
 		musicChannel[i].set_unit_db(-80)
-		print(musicChannel[i].get_unit_db())
 		musicChannel[i].play(0.0)
 		startTime[i] = OS.get_ticks_msec()
 		counterMusic[i] += 1

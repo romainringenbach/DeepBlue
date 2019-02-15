@@ -96,6 +96,13 @@ unzoom={
 3d_physics/layer_8="Loot"
 3d_physics/layer_9="Doodads"
 3d_physics/layer_10="Boss"
+3d_physics/layer_15="TestGeometry"
+3d_physics/layer_19="HeadAndBody"
+3d_physics/layer_20="Buttons"
+
+[physics]
+
+3d/physics_engine="Bullet"
 
 [rendering]
 

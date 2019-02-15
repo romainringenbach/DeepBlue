@@ -150,7 +150,7 @@ extents = Vector3( 1.08452, 1.17431, 1.09047 )
 albedo_color = Color( 0, 0, 0, 1 )
 roughness = 0.0
 
-[node name="Button" instance=ExtResource( 1 )]
+[node name="Button" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Cube" parent="." index="0"]

@@ -10,4 +10,5 @@ func _ready():
 	pass
 
 func _process(delta):
-	self.text = str(Performance.get_monitor(Performance.TIME_FPS))
+	#self.text = str(Performance.get_monitor(Performance.TIME_FPS))
+	pass

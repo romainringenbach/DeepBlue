@@ -253,7 +253,7 @@ surfaces/0 = {
 "vertex_count": 36180
 }
 
-[node name="Scene Root" index="0" instance=ExtResource( 1 )]
+[node name="Scene Root" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="BezierCircle_002" parent="." index="0"]
@@ -358,6 +358,7 @@ material/0 = null
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="23"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17246, 4.38593 )
 stream = ExtResource( 4 )
+unit_db = 3.0
 
 [node name="Scene Root" parent="." index="24" instance=ExtResource( 6 )]
 

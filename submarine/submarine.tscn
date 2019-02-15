@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://submarine/submarine.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/cockpit.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 
 [sub_resource type="PhysicsMaterial" id=1]
 
-rough = true
 bounce = 0.7
 
 [sub_resource type="CapsuleShape" id=2]
@@ -39,17 +38,28 @@ radius = 20.0
 
 radius = 40.0
 
+[sub_resource type="PhysicsMaterial" id=9]
+
+rough = true
+absorbent = true
+
+[sub_resource type="SphereShape" id=10]
+
+radius = 0.1
+
 [node name="Submarine" type="RigidBody"]
+collision_mask = 17280
 mass = 200.0
 physics_material_override = SubResource( 1 )
-gravity_scale = 0.0
 can_sleep = false
 axis_lock_angular_z = true
 linear_damp = 0.3
 angular_damp = 0.3
 script = ExtResource( 1 )
+STEER_FORCE_UD = 3.0
 
 [node name="Cockpit" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2 )
 
 [node name="Cockpit" parent="Cockpit" index="1"]
@@ -75,56 +85,73 @@ transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 2.15, -3.50279e-07, 0, 0
 mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
-[node name="Area" type="Area" parent="."]
+[node name="ActifSonar" type="Area" parent="."]
 linear_damp = 0.0
 angular_damp = 0.0
 monitorable = false
-collision_layer = 258
-collision_mask = 899
+collision_mask = 17280
 
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
+[node name="CollisionShape" type="CollisionShape" parent="ActifSonar"]
 shape = SubResource( 5 )
 
-[node name="Area2" type="Area" parent="."]
+[node name="CollisionDetection" type="Area" parent="."]
 linear_damp = 0.0
 angular_damp = 0.0
 monitorable = false
-collision_mask = 899
+collision_layer = 0
+collision_mask = 17280
 
-[node name="CollisionShape" type="CollisionShape" parent="Area2"]
+[node name="CollisionShape" type="CollisionShape" parent="CollisionDetection"]
 shape = SubResource( 6 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
 
-[node name="Area3" type="Area" parent="."]
-collision_layer = 257
-collision_mask = 899
+[node name="NearAlarm" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 17280
 
-[node name="CollisionShape" type="CollisionShape" parent="Area3"]
+[node name="CollisionShape" type="CollisionShape" parent="NearAlarm"]
 shape = SubResource( 7 )
 
-[node name="Area4" type="Area" parent="."]
-collision_layer = 257
-collision_mask = 899
+[node name="PassifSonar" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 17280
 
-[node name="CollisionShape" type="CollisionShape" parent="Area4"]
+[node name="CollisionShape" type="CollisionShape" parent="PassifSonar"]
 shape = SubResource( 8 )
+
+[node name="RigidBody" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0592475, -2.35808, 0 )
+collision_layer = 0
+collision_mask = 0
+mass = 50.0
+physics_material_override = SubResource( 9 )
+can_sleep = false
+linear_damp = 0.1
+angular_damp = 0.1
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.488487, 0 )
+shape = SubResource( 10 )
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="."]
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../RigidBody")
 
 [connection signal="body_entered" from="." to="Cockpit" method="_on_Submarine_body_entered"]
 [connection signal="collision_impact" from="." to="Cockpit" method="_on_Submarine_collision_impact"]
 [connection signal="near_body" from="." to="Cockpit" method="_on_Submarine_near_body"]
-[connection signal="shaky" from="." to="Cockpit" method="_on_Submarine_shaky"]
 [connection signal="speed_changed" from="Cockpit" to="." method="_on_Cockpit_speed_changed"]
 [connection signal="mode_changed" from="Cockpit/Speed_controller" to="." method="_on_Speed_controller_mode_changed"]
 [connection signal="reverse_changed" from="Cockpit/Speed_controller" to="." method="_on_Speed_controller_reverse_changed"]
-[connection signal="body_shape_entered" from="Area" to="." method="_on_Area_body_shape_entered"]
-[connection signal="body_shape_exited" from="Area" to="." method="_on_Area_body_shape_exited"]
-[connection signal="body_shape_entered" from="Area2" to="." method="_on_Area2_body_shape_entered"]
+[connection signal="body_entered" from="ActifSonar" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="ActifSonar" to="." method="_on_Area_body_exited"]
+[connection signal="body_shape_entered" from="CollisionDetection" to="." method="_on_Area2_body_shape_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="body_entered" from="Area3" to="." method="_on_Area3_body_entered"]
-[connection signal="body_shape_entered" from="Area4" to="." method="_on_Area4_body_shape_entered"]
-[connection signal="body_shape_exited" from="Area4" to="." method="_on_Area4_body_shape_exited"]
+[connection signal="body_entered" from="NearAlarm" to="." method="_on_Area3_body_entered"]
+[connection signal="body_shape_entered" from="PassifSonar" to="." method="_on_Area4_body_shape_entered"]
+[connection signal="body_shape_exited" from="PassifSonar" to="." method="_on_Area4_body_shape_exited"]
 
 [editable path="Cockpit"]

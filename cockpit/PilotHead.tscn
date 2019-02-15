@@ -25,8 +25,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23, -0.15 )
 [node name="Body" type="StaticBody" parent="."]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24, 0 )
-collision_layer = 16
-collision_mask = 16
+collision_layer = 262144
+collision_mask = 262144
 
 [node name="CollisionShape" type="CollisionShape" parent="Body"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -0.42, 0 )
@@ -35,8 +35,8 @@ shape = SubResource( 1 )
 [node name="Head" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 0 )
 input_ray_pickable = false
-collision_layer = 16
-collision_mask = 16
+collision_layer = 262144
+collision_mask = 262144
 mass = 10.0
 physics_material_override = SubResource( 2 )
 can_sleep = false
@@ -59,9 +59,7 @@ current = true
 fov = 55.0
 script = ExtResource( 3 )
 
-
 [node name="Dialogs" parent="Head/Yaw/InterpolatedCamera" instance=ExtResource( 4 )]
-
 
 [node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="."]
 nodes/node_a = NodePath("../Body")

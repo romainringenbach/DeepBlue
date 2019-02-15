@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=1]
+[ext_resource path="res://addons/zylann.hterrain/tools/icons/icon_heightmap_node.svg" type="Texture" id=2]
+[ext_resource path="res://Scenes/Terrain2/Data/data.hterrain" type="Resource" id=3]
+[ext_resource path="res://submarine/submarine.tscn" type="PackedScene" id=4]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="HTerrain" type="Spatial" parent="."]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_icon": ExtResource( 2 )
+}
+_terrain_data = ExtResource( 3 )
+chunk_size = 32
+shader_type = "Classic4"
+custom_shader = null
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = false
+shader_params/u_globalmap_blend_start = null
+shader_params/u_globalmap_blend_distance = null
+ground/albedo_bump_0 = null
+ground/normal_roughness_0 = null
+ground/albedo_bump_1 = null
+ground/normal_roughness_1 = null
+ground/albedo_bump_2 = null
+ground/normal_roughness_2 = null
+ground/albedo_bump_3 = null
+ground/normal_roughness_3 = null
+_detail_objects_data = null
+
+[node name="Submarine" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 134.517, 21.7524, 251.252 )
+
