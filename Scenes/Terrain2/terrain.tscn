@@ -3,7 +3,7 @@
 [ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=1]
 [ext_resource path="res://addons/zylann.hterrain/tools/icons/icon_heightmap_node.svg" type="Texture" id=2]
 [ext_resource path="res://Scenes/Terrain2/Data/data.hterrain" type="Resource" id=3]
-[ext_resource path="res://submarine/submarine.tscn" type="PackedScene" id=4]
+[ext_resource path="res://submarine/submarine_wrapper.tscn" type="PackedScene" id=4]
 
 [node name="Spatial" type="Spatial"]
 
@@ -31,6 +31,6 @@ ground/albedo_bump_3 = null
 ground/normal_roughness_3 = null
 _detail_objects_data = null
 
-[node name="Submarine" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 134.517, 21.7524, 251.252 )
+[node name="Spatial" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 171.085, 14.8552, 175.99 )
 
