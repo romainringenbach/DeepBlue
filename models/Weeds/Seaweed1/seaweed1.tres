@@ -44,6 +44,9 @@ uniform sampler2D normal_map : hint_normal;
 uniform vec3 uv1_scale;
 uniform vec3 uv1_offset;
 
+uniform float distance_fade_min : hint_range(0,1000);
+uniform float distance_fade_max : hint_range(0,1000);
+
 void vertex()
 {
 	float time_sin = sin( TIME * frequency );
@@ -99,6 +102,8 @@ void fragment()
 	vec4 albedo_tex = texture(albedo_map,UV);
 	ALBEDO = albedo.rgb * albedo_tex.rgb;
 	NORMALMAP = texture(normal_map,UV).rgb;
+	// Distance fade
+	ALPHA *= clamp(smoothstep(distance_fade_min,distance_fade_max,-VERTEX.z),0.0,1.0);
 	float metallic_tex = dot(texture(metallic_map,UV),metallic_texture_channel);
 	METALLIC = metallic_tex * metallic;
 	float roughness_tex = dot(texture(roughness_map,UV),roughness_texture_channel);
@@ -108,7 +113,6 @@ void fragment()
 
 [resource]
 
-render_priority = 0
 shader = SubResource( 1 )
 shader_param/z_torsion_value = 0.1
 shader_param/z_torsion_frequency = 2.0
@@ -128,6 +132,7 @@ shader_param/metallic_texture_channel = Plane( 0, 0, 1, 0 )
 shader_param/roughness_texture_channel = Plane( 0, 1, 0, 0 )
 shader_param/uv1_scale = Vector3( 1, 1, 1 )
 shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/distance_fade_min = 3.0
+shader_param/distance_fade_max = 6.0
 shader_param/albedo_map = ExtResource( 1 )
-_sections_unfolded = [ "shader_param" ]
 

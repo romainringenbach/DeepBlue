@@ -7,20 +7,12 @@
 [node name="Seaweed2" index="0" instance=ExtResource( 1 )]
 
 [node name="Group2" parent="." index="0"]
-
 material/0 = ExtResource( 2 )
 script = ExtResource( 3 )
-_sections_unfolded = [ "material" ]
 frequency = 1.5
 z_torsion_frequency = 1.5
 z_wave_frequency = 1.5
-translations_x = 0.0
-translations_y = 0.0
-translations_z = 0.0
 yaw = 0.05
 pitch = 0.05
-roll = 0.0
 z_torsion = 0.05
-z_wave = 0
-
 

@@ -204,7 +204,7 @@ func _process(delta):
 	pass
 "
 
-[sub_resource type="Curve3D" id=12]
+[sub_resource type="Curve3D" id=11]
 
 bake_interval = 0.15
 _data = {
@@ -212,7 +212,7 @@ _data = {
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 }
 
-[sub_resource type="Environment" id=11]
+[sub_resource type="Environment" id=12]
 
 background_mode = 1
 background_color = Color( 0, 0.352941, 0.462745, 1 )
@@ -304,7 +304,6 @@ spot_range = 134.5
 spot_attenuation = 3.605
 
 [node name="CoralsWeeds" type="Spatial" parent="Doodads"]
-editor/display_folded = true
 
 [node name="Coral_Table2" parent="Doodads/CoralsWeeds" instance=ExtResource( 19 )]
 transform = Transform( 1.37537, 0, -1.45202, -0.451021, 1.90107, -0.427212, 1.3802, 0.621232, 1.30734, 28.9941, 90.6113, 350.878 )
@@ -478,6 +477,7 @@ light_energy = 16.0
 spot_range = 6.6
 
 [node name="Cthulhu1" parent="Doodads" instance=ExtResource( 23 )]
+editor/display_folded = true
 transform = Transform( -1.98776, 0, 0.220907, 0, 2, 0, -0.220907, 0, -1.98776, 385.436, 305.392, 666.937 )
 
 [node name="SpotLight" type="SpotLight" parent="Doodads/Cthulhu1"]
@@ -496,6 +496,7 @@ spot_range = 221.6
 spot_attenuation = 4.75683
 
 [node name="Containers" type="Node" parent="Doodads"]
+editor/display_folded = true
 
 [node name="Container3" parent="Doodads/Containers" instance=ExtResource( 24 )]
 transform = Transform( 0.979245, 0, 0.202676, 0, 1, 0, -0.202676, 0, 0.979246, 223.585, 303.417, 673.744 )
@@ -571,8 +572,10 @@ spot_range = 27.3
 spot_attenuation = 2.0
 
 [node name="Bosses" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="FierceShark" type="Spatial" parent="Bosses"]
+editor/display_folded = true
 
 [node name="Path" type="Path" parent="Bosses/FierceShark"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 245.805, 305.676, 676.326 )
@@ -668,20 +671,20 @@ rotation_mode = 4
 
 [node name="SwordFish" parent="FishesSchools/SwordFish/Path/PathFollow" instance=ExtResource( 33 )]
 
-[node name="Spatial" type="Spatial" parent="FishesSchools"]
+[node name="StrangeFish" type="Spatial" parent="FishesSchools"]
+editor/display_folded = true
 transform = Transform( -0.0632385, -0.997998, 7.53468e-08, 0, 7.54979e-08, 1, -0.997998, 0.0632385, -4.77437e-09, 120.439, 201.877, 368.88 )
 
-[node name="Path" type="Path" parent="FishesSchools/Spatial"]
-curve = SubResource( 12 )
+[node name="Path" type="Path" parent="FishesSchools/StrangeFish"]
+curve = SubResource( 11 )
 
-[node name="PathFollow" type="PathFollow" parent="FishesSchools/Spatial/Path"]
+[node name="PathFollow" type="PathFollow" parent="FishesSchools/StrangeFish/Path"]
 rotation_mode = 4
 
-[node name="StrangeFish" parent="FishesSchools/Spatial/Path/PathFollow" instance=ExtResource( 34 )]
+[node name="StrangeFish" parent="FishesSchools/StrangeFish/Path/PathFollow" instance=ExtResource( 34 )]
 
 [node name="Submarine" parent="." instance=ExtResource( 35 )]
 transform = Transform( -0.838273, 0, 0.545251, 0, 1, 0, -0.545251, 0, -0.838273, 57.356, 115.817, 452.857 )
-FULL_THRUST = 200
 
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( -0.959504, -1.42977e-08, -0.281695, -0.155635, 0.833517, 0.53012, 0.234798, 0.552494, -0.799763, 0, 868.571, 0 )
@@ -689,4 +692,5 @@ light_color = Color( 0.466667, 0.760784, 0.996078, 1 )
 spot_range = 1000.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 11 )
+environment = SubResource( 12 )
+

@@ -6,8 +6,5 @@
 [node name="Seaweed1" index="0" instance=ExtResource( 1 )]
 
 [node name="Tumbleweed6_Tumbleweed6_0" parent="." index="0"]
-
 material/0 = ExtResource( 2 )
-_sections_unfolded = [ "material" ]
-
 
