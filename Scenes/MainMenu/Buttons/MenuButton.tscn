@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/MainMenu/MenuFont48.tres" type="DynamicFont" id=1]
+
+[node name="MenuButton" type="Button"]
+margin_right = 1040.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 360, 60 )
+custom_colors/font_color_hover = Color( 0.0470588, 0.0980392, 0.439216, 1 )
+flat = true
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.0470588, 0.0980392, 0.439216, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+text = "Label"
+
