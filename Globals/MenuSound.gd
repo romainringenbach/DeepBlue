@@ -4,7 +4,11 @@ var menu_sound = preload("res://PisteAudio/SFX/ambientSound.ogg")
 
 func _ready():
 	self.set_stream(menu_sound)
-	self.play(0.0)
 	
 func stop_audio():
-	self.stop()
+	if self.is_playing():
+		self.stop()
+	
+func play_audio():
+	if !self.is_playing():
+		self.play(0.0)
