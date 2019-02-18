@@ -233,6 +233,7 @@ amount = 8000
 script = ExtResource( 25 )
 
 [node name="PilotHead" parent="." instance=ExtResource( 26 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.177206, -0.279487 )
 
 [connection signal="gameover" from="." to="Particles" method="_on_Spatial_gameover"]
 [connection signal="speed_changed" from="Speed_controller" to="." method="_on_Speed_controller_speed_changed"]
