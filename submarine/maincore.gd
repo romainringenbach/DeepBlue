@@ -3,9 +3,9 @@ extends RigidBody
 #export var TURN_SPEED = 7
 #export var LOW_THRUST = 50
 #export var MED_THRUST = 100
-export var FULL_THRUST = 100
-export var STEER_FORCE_LR = 1.5
-export var STEER_FORCE_UD = 0.8
+export var FULL_THRUST = 300
+export var STEER_FORCE_LR = 1.8
+export var STEER_FORCE_UD = 1.0
 
 var current_speed = 0.0;
 
@@ -28,10 +28,15 @@ var shake = false
 
 var lateral_mode = false
 
-onready var dialogs_mgr = get_node("Cockpit/PilotHead/Head/Yaw/InterpolatedCamera/Dialogs/DialogueUI")
+onready var dialogs_mgr = get_node("Cockpit/PilotHead/Yaw/InterpolatedCamera/Dialogs/DialogueUI")
 
 signal collision_impact()
 signal near_body()
+
+
+
+var total_mass
+var float_mass
 
 func _ready():
 	player_direction = $Cockpit.get_global_transform().basis.z
@@ -40,6 +45,9 @@ func _ready():
 	
 	dialogs_mgr.LoadFile("tuto1.json")
 	dialogs_mgr.StartDialogue()
+	
+	float_mass = get_parent().get_node("Float").mass
+	total_mass = mass + float_mass
 
 func get_input():
 
@@ -70,7 +78,7 @@ func _process(delta):
 
 
 func _integrate_forces(state):
-
+	
 	if lateral_mode == false:
 
 		state.add_force(player_direction*current_speed, Vector3())
@@ -84,7 +92,6 @@ func _integrate_forces(state):
 			state.apply_torque_impulse(Vector3(STEER_FORCE_UD,0,0))
 
 	else:
-
 		if (impulse_left == true):
 			state.add_force($Cockpit/T.get_global_transform().basis.z*current_speed*.5, Vector3())
 		if (impulse_right == true):
@@ -95,8 +102,9 @@ func _integrate_forces(state):
 			state.add_force($Cockpit/B.get_global_transform().basis.z*current_speed*.5, Vector3())
 
 	# correct submarine orientation
+	
 
-	state.add_force(-state.total_gravity*(mass+get_parent().get_node('Float').mass), Vector3())
+	state.add_force(-state.total_gravity*mass, Vector3())
 
 
 func _on_Cockpit_speed_changed(speed_percent):

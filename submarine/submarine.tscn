@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://submarine/submarine.gd" type="Script" id=1]
+[ext_resource path="res://submarine/maincore.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/cockpit.tscn" type="PackedScene" id=2]
-[ext_resource path="res://PisteAudio/SFX/ScreamSubmarine.ogg" type="AudioStream" id=3]
 
 [sub_resource type="PhysicsMaterial" id=1]
 
@@ -38,7 +37,16 @@ radius = 20.0
 
 radius = 40.0
 
-[node name="Submarine" type="RigidBody"]
+[sub_resource type="PhysicsMaterial" id=9]
+
+
+[sub_resource type="SphereShape" id=10]
+
+radius = 0.3
+
+[node name="Spatial" type="Spatial"]
+
+[node name="MainCore" type="RigidBody" parent="."]
 collision_mask = 17280
 mass = 200.0
 physics_material_override = SubResource( 1 )
@@ -48,82 +56,75 @@ linear_damp = 0.3
 angular_damp = 0.3
 script = ExtResource( 1 )
 
-[node name="Cockpit" parent="." instance=ExtResource( 2 )]
+[node name="Cockpit" parent="MainCore" instance=ExtResource( 2 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2 )
 
-[node name="Cockpit" parent="Cockpit" index="0"]
-editor/display_folded = true
-
-[node name="Motor" parent="Cockpit/Cockpit" index="25"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0516123, 0, -1.85076 )
-unit_size = 2.0
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cockpit/Cockpit" index="27"]
-stream = ExtResource( 3 )
-volume_db = -17.165
-autoplay = true
-
-[node name="Measures" parent="Cockpit" index="10"]
-editor/display_folded = true
-
-[node name="CollisionShape" type="CollisionShape" parent="."]
+[node name="CollisionShape" type="CollisionShape" parent="MainCore"]
 shape = SubResource( 2 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="MeshInstance" type="MeshInstance" parent="MainCore"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 2.15, -3.50279e-07, 0, 0, -1 )
 mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
-[node name="ActifSonar" type="Area" parent="."]
+[node name="ActifSonar" type="Area" parent="MainCore"]
 linear_damp = 0.0
 angular_damp = 0.0
 monitorable = false
 collision_mask = 17280
 
-[node name="CollisionShape" type="CollisionShape" parent="ActifSonar"]
+[node name="CollisionShape" type="CollisionShape" parent="MainCore/ActifSonar"]
 shape = SubResource( 5 )
 
-[node name="CollisionDetection" type="Area" parent="."]
+[node name="CollisionDetection" type="Area" parent="MainCore"]
 linear_damp = 0.0
 angular_damp = 0.0
 monitorable = false
 collision_layer = 0
 collision_mask = 17280
 
-[node name="CollisionShape" type="CollisionShape" parent="CollisionDetection"]
+[node name="CollisionShape" type="CollisionShape" parent="MainCore/CollisionDetection"]
 shape = SubResource( 6 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="MainCore"]
 wait_time = 0.1
 autostart = true
 
-[node name="NearAlarm" type="Area" parent="."]
+[node name="NearAlarm" type="Area" parent="MainCore"]
 collision_layer = 0
 collision_mask = 17280
 
-[node name="CollisionShape" type="CollisionShape" parent="NearAlarm"]
+[node name="CollisionShape" type="CollisionShape" parent="MainCore/NearAlarm"]
 shape = SubResource( 7 )
 
-[node name="PassifSonar" type="Area" parent="."]
+[node name="PassifSonar" type="Area" parent="MainCore"]
 collision_layer = 0
 collision_mask = 17280
 
-[node name="CollisionShape" type="CollisionShape" parent="PassifSonar"]
+[node name="CollisionShape" type="CollisionShape" parent="MainCore/PassifSonar"]
 shape = SubResource( 8 )
 
-[connection signal="body_entered" from="." to="Cockpit" method="_on_Submarine_body_entered"]
-[connection signal="collision_impact" from="." to="Cockpit" method="_on_Submarine_collision_impact"]
-[connection signal="near_body" from="." to="Cockpit" method="_on_Submarine_near_body"]
-[connection signal="speed_changed" from="Cockpit" to="." method="_on_Cockpit_speed_changed"]
-[connection signal="mode_changed" from="Cockpit/Speed_controller" to="." method="_on_Speed_controller_mode_changed"]
-[connection signal="reverse_changed" from="Cockpit/Speed_controller" to="." method="_on_Speed_controller_reverse_changed"]
-[connection signal="body_entered" from="ActifSonar" to="." method="_on_Area_body_entered"]
-[connection signal="body_exited" from="ActifSonar" to="." method="_on_Area_body_exited"]
-[connection signal="body_shape_entered" from="CollisionDetection" to="." method="_on_Area2_body_shape_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="body_entered" from="NearAlarm" to="." method="_on_Area3_body_entered"]
-[connection signal="body_shape_entered" from="PassifSonar" to="." method="_on_Area4_body_shape_entered"]
-[connection signal="body_shape_exited" from="PassifSonar" to="." method="_on_Area4_body_shape_exited"]
+[node name="Float" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.91684, 0 )
+mass = 10.0
+physics_material_override = SubResource( 9 )
 
-[editable path="Cockpit"]
+[node name="CollisionShape" type="CollisionShape" parent="Float"]
+shape = SubResource( 10 )
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="."]
+nodes/node_a = NodePath("../MainCore")
+nodes/node_b = NodePath("../Float")
+
+[connection signal="body_entered" from="MainCore" to="MainCore/Cockpit" method="_on_Submarine_body_entered"]
+[connection signal="collision_impact" from="MainCore" to="MainCore/Cockpit" method="_on_Submarine_collision_impact"]
+[connection signal="near_body" from="MainCore" to="MainCore/Cockpit" method="_on_Submarine_near_body"]
+[connection signal="speed_changed" from="MainCore/Cockpit" to="MainCore" method="_on_Cockpit_speed_changed"]
+[connection signal="body_entered" from="MainCore/ActifSonar" to="MainCore" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="MainCore/ActifSonar" to="MainCore" method="_on_Area_body_exited"]
+[connection signal="body_shape_entered" from="MainCore/CollisionDetection" to="MainCore" method="_on_Area2_body_shape_entered"]
+[connection signal="timeout" from="MainCore/Timer" to="MainCore" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="MainCore/NearAlarm" to="MainCore" method="_on_Area3_body_entered"]
+[connection signal="body_shape_entered" from="MainCore/PassifSonar" to="MainCore" method="_on_Area4_body_shape_entered"]
+[connection signal="body_shape_exited" from="MainCore/PassifSonar" to="MainCore" method="_on_Area4_body_shape_exited"]

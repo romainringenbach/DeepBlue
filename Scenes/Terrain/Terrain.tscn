@@ -34,7 +34,7 @@
 [ext_resource path="res://Scenes/Fishes/HammerHead.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Scenes/Fishes/SwordFish.tscn" type="PackedScene" id=33]
 [ext_resource path="res://Scenes/Fishes/StrangeFish.tscn" type="PackedScene" id=34]
-[ext_resource path="res://submarine/submarine_wrapper.tscn" type="PackedScene" id=35]
+[ext_resource path="res://submarine/submarine.tscn" type="PackedScene" id=35]
 
 [sub_resource type="GDScript" id=1]
 
@@ -292,6 +292,7 @@ align = 3
 script = ExtResource( 17 )
 
 [node name="Doodads" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="CargoShip" parent="Doodads" instance=ExtResource( 18 )]
 editor/display_folded = true
@@ -304,6 +305,7 @@ spot_range = 134.5
 spot_attenuation = 3.605
 
 [node name="CoralsWeeds" type="Spatial" parent="Doodads"]
+editor/display_folded = true
 
 [node name="Coral_Table2" parent="Doodads/CoralsWeeds" instance=ExtResource( 19 )]
 transform = Transform( 1.37537, 0, -1.45202, -0.451021, 1.90107, -0.427212, 1.3802, 0.621232, 1.30734, 28.9941, 90.6113, 350.878 )
