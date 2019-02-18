@@ -19,6 +19,7 @@ material/2 = ExtResource( 4 )
 script = ExtResource( 5 )
 translations_x = 0.1
 translations_y = 0.1
+translations_z = 0.1
 yaw = 0.1
 pitch = 0.1
 z_torsion = 0.2
