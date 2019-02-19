@@ -104,7 +104,7 @@ func _integrate_forces(state):
 	# correct submarine orientation
 	
 
-	state.add_force(-state.total_gravity*mass, Vector3())
+	state.add_force(-state.total_gravity*(mass+float_mass), Vector3())
 
 
 func _on_Cockpit_speed_changed(speed_percent):
