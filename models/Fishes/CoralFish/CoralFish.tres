@@ -110,14 +110,14 @@ void fragment()
 [resource]
 
 shader = SubResource( 1 )
-shader_param/z_torsion_value = 0.3
-shader_param/z_torsion_frequency = 7.0
-shader_param/z_wave_value = 0.01
-shader_param/z_wave_frequency = 5.0
-shader_param/frequency = 5.0
-shader_param/yaw_value = 0.3
-shader_param/pitch_value = 0.0
-shader_param/roll_value = 0
+shader_param/z_torsion_value = 0.1
+shader_param/z_torsion_frequency = 2.0
+shader_param/z_wave_value = 0
+shader_param/z_wave_frequency = 2.0
+shader_param/frequency = 5
+shader_param/yaw_value = 0.1
+shader_param/pitch_value = 0
+shader_param/roll_value = 0.1
 shader_param/translations = Vector3( 0, 0, 0 )
 shader_param/albedo = Color( 1, 1, 1, 1 )
 shader_param/specular = 0.5

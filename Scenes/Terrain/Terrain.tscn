@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=1]
 [ext_resource path="res://addons/zylann.hterrain/tools/icons/icon_heightmap_node.svg" type="Texture" id=2]
@@ -30,11 +30,12 @@
 [ext_resource path="res://Scenes/Cthulhu2.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Scenes/Fishes/FierceShark.tscn" type="PackedScene" id=29]
 [ext_resource path="res://Scenes/Terrain/Scripts/BossFierceShark.gd" type="Script" id=30]
-[ext_resource path="res://Scenes/Fishes/CoralFish.tscn" type="PackedScene" id=31]
-[ext_resource path="res://Scenes/Fishes/HammerHead.tscn" type="PackedScene" id=32]
-[ext_resource path="res://Scenes/Fishes/SwordFish.tscn" type="PackedScene" id=33]
-[ext_resource path="res://Scenes/Fishes/StrangeFish.tscn" type="PackedScene" id=34]
-[ext_resource path="res://submarine/submarine.tscn" type="PackedScene" id=35]
+[ext_resource path="res://models/Fishes/CoralFish/CoralFish.mesh" type="ArrayMesh" id=31]
+[ext_resource path="res://Scenes/Terrain/CoralFishesMultiMesh.gd" type="Script" id=32]
+[ext_resource path="res://Scenes/Fishes/HammerHead.tscn" type="PackedScene" id=33]
+[ext_resource path="res://Scenes/Fishes/SwordFish.tscn" type="PackedScene" id=34]
+[ext_resource path="res://Scenes/Fishes/StrangeFish.tscn" type="PackedScene" id=35]
+[ext_resource path="res://submarine/submarine.tscn" type="PackedScene" id=36]
 
 [sub_resource type="GDScript" id=1]
 
@@ -148,7 +149,13 @@ func _process(delta):
 	pass
 "
 
-[sub_resource type="Curve3D" id=7]
+[sub_resource type="MultiMesh" id=7]
+
+transform_format = 1
+custom_data_format = 2
+mesh = ExtResource( 31 )
+
+[sub_resource type="Curve3D" id=8]
 
 bake_interval = 0.15
 _data = {
@@ -156,7 +163,7 @@ _data = {
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 )
 }
 
-[sub_resource type="GDScript" id=8]
+[sub_resource type="GDScript" id=9]
 
 script/source = "extends Path
 
@@ -176,7 +183,7 @@ func _process(delta):
 	pass
 "
 
-[sub_resource type="Curve3D" id=9]
+[sub_resource type="Curve3D" id=10]
 
 bake_interval = 0.15
 _data = {
@@ -184,7 +191,7 @@ _data = {
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 )
 }
 
-[sub_resource type="GDScript" id=10]
+[sub_resource type="GDScript" id=11]
 
 script/source = "extends Path
 
@@ -204,7 +211,7 @@ func _process(delta):
 	pass
 "
 
-[sub_resource type="Curve3D" id=11]
+[sub_resource type="Curve3D" id=12]
 
 bake_interval = 0.15
 _data = {
@@ -212,7 +219,7 @@ _data = {
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 }
 
-[sub_resource type="Environment" id=12]
+[sub_resource type="Environment" id=13]
 
 background_mode = 1
 background_color = Color( 0, 0.352941, 0.462745, 1 )
@@ -607,7 +614,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 57.3557, 101.831, 407.212 )
 visible = false
 
 [node name="FishesSchools" type="Spatial" parent="."]
-editor/display_folded = true
 
 [node name="CoralFishes1" type="Spatial" parent="FishesSchools"]
 
@@ -619,73 +625,55 @@ script = SubResource( 6 )
 [node name="PathFollow" type="PathFollow" parent="FishesSchools/CoralFishes1/Path"]
 rotation_mode = 4
 
-[node name="CoralFish" parent="FishesSchools/CoralFishes1/Path/PathFollow" instance=ExtResource( 31 )]
-
-[node name="CoralFish2" parent="FishesSchools/CoralFishes1/Path/PathFollow" instance=ExtResource( 31 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.435509, 0.317192, 0 )
-
-[node name="CoralFish3" parent="FishesSchools/CoralFishes1/Path/PathFollow" instance=ExtResource( 31 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.840527, 0.190697, 0 )
-
-[node name="CoralFish4" parent="FishesSchools/CoralFishes1/Path/PathFollow" instance=ExtResource( 31 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.937122, 0.671143, 0.0179443 )
-
-[node name="CoralFish5" parent="FishesSchools/CoralFishes1/Path/PathFollow" instance=ExtResource( 31 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0570488, 0.511223, -0.517365 )
-
-[node name="CoralFish6" parent="FishesSchools/CoralFishes1/Path/PathFollow" instance=ExtResource( 31 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.225964, 0.511223, 0.421906 )
-
-[node name="CoralFish7" parent="FishesSchools/CoralFishes1/Path/PathFollow" instance=ExtResource( 31 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.225964, 0.192284, -0.86087 )
-
-[node name="CoralFish8" parent="FishesSchools/CoralFishes1/Path/PathFollow" instance=ExtResource( 31 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.413055, -0.116241, -0.492676 )
-
-[node name="CoralFish9" parent="FishesSchools/CoralFishes1/Path/PathFollow" instance=ExtResource( 31 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.647533, 0.599907, -0.492676 )
+[node name="MultiMeshInstance" type="MultiMeshInstance" parent="FishesSchools/CoralFishes1/Path/PathFollow"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+cast_shadow = 0
+multimesh = SubResource( 7 )
+script = ExtResource( 32 )
+fish_number = 50
+diameter = 5.0
 
 [node name="HammerHead" type="Spatial" parent="FishesSchools"]
 editor/display_folded = true
 
 [node name="Path" type="Path" parent="FishesSchools/HammerHead"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 113.504, 97.2832, 410.407 )
-curve = SubResource( 7 )
-script = SubResource( 8 )
+curve = SubResource( 8 )
+script = SubResource( 9 )
 
 [node name="PathFollow" type="PathFollow" parent="FishesSchools/HammerHead/Path"]
 rotation_mode = 4
 loop = false
 
-[node name="HammerHead" parent="FishesSchools/HammerHead/Path/PathFollow" instance=ExtResource( 32 )]
+[node name="HammerHead" parent="FishesSchools/HammerHead/Path/PathFollow" instance=ExtResource( 33 )]
 
 [node name="SwordFish" type="Spatial" parent="FishesSchools"]
 editor/display_folded = true
 
 [node name="Path" type="Path" parent="FishesSchools/SwordFish"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 172.438, 98.543, 336.67 )
-curve = SubResource( 9 )
-script = SubResource( 10 )
+curve = SubResource( 10 )
+script = SubResource( 11 )
 loop_duration = 15.0
 
 [node name="PathFollow" type="PathFollow" parent="FishesSchools/SwordFish/Path"]
 rotation_mode = 4
 
-[node name="SwordFish" parent="FishesSchools/SwordFish/Path/PathFollow" instance=ExtResource( 33 )]
+[node name="SwordFish" parent="FishesSchools/SwordFish/Path/PathFollow" instance=ExtResource( 34 )]
 
 [node name="StrangeFish" type="Spatial" parent="FishesSchools"]
 editor/display_folded = true
 transform = Transform( -0.0632385, -0.997998, 7.53468e-08, 0, 7.54979e-08, 1, -0.997998, 0.0632385, -4.77437e-09, 120.439, 201.877, 368.88 )
 
 [node name="Path" type="Path" parent="FishesSchools/StrangeFish"]
-curve = SubResource( 11 )
+curve = SubResource( 12 )
 
 [node name="PathFollow" type="PathFollow" parent="FishesSchools/StrangeFish/Path"]
 rotation_mode = 4
 
-[node name="StrangeFish" parent="FishesSchools/StrangeFish/Path/PathFollow" instance=ExtResource( 34 )]
+[node name="StrangeFish" parent="FishesSchools/StrangeFish/Path/PathFollow" instance=ExtResource( 35 )]
 
-[node name="Submarine" parent="." instance=ExtResource( 35 )]
+[node name="Submarine" parent="." instance=ExtResource( 36 )]
 transform = Transform( -0.838273, 0, 0.545251, 0, 1, 0, -0.545251, 0, -0.838273, 57.356, 115.817, 452.857 )
 
 [node name="SpotLight" type="SpotLight" parent="."]
@@ -694,5 +682,5 @@ light_color = Color( 0.466667, 0.760784, 0.996078, 1 )
 spot_range = 1000.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 12 )
+environment = SubResource( 13 )
 
