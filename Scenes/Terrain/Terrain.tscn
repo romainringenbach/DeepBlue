@@ -219,9 +219,10 @@ background_color = Color( 0, 0.352941, 0.462745, 1 )
 background_energy = 0.3
 ambient_light_energy = 0.0
 
-[node name="Node" type="Spatial"]
+[node name="Level1" type="Spatial"]
 
 [node name="HTerrain" type="Spatial" parent="."]
+editor/display_folded = true
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_icon": ExtResource( 2 )
@@ -609,7 +610,6 @@ visible = false
 editor/display_folded = true
 
 [node name="CoralFishes1" type="Spatial" parent="FishesSchools"]
-editor/display_folded = true
 
 [node name="Path" type="Path" parent="FishesSchools/CoralFishes1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.834, 93.9494, 357.57 )

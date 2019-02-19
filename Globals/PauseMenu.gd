@@ -2,12 +2,16 @@ extends Control
 
 var main_title_scene = preload("res://Scenes/MainMenu/MainMenu.tscn")
 
+var game_levels = ["Level1"]
+
 func _ready():
 	pass
 
 func _input(event):
 	if event.is_action_released("pause"):
-		toggle_game_pause()
+		var current_scene : String = get_tree().get_current_scene().name
+		if current_scene in game_levels:
+			toggle_game_pause()
 
 func _on_BackBtn_pressed():
 	toggle_game_pause()

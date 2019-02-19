@@ -16,9 +16,9 @@ size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 473.0
-margin_top = 216.0
+margin_top = 207.0
 margin_right = 807.0
-margin_bottom = 504.0
+margin_bottom = 513.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 60
@@ -42,13 +42,13 @@ text = "Settings"
 [node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
 margin_top = 228.0
 margin_right = 334.0
-margin_bottom = 288.0
+margin_bottom = 306.0
 
 [node name="BackBtn" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer2"]
-margin_left = 117.0
-margin_right = 217.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 100, 60 )
+margin_left = 103.0
+margin_right = 231.0
+margin_bottom = 78.0
+rect_min_size = Vector2( 128, 78 )
 flat = true
 script = ExtResource( 3 )
 
