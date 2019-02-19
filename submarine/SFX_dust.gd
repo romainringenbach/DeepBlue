@@ -10,4 +10,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	global_transform.origin = get_parent().get_node("MainCore").global_transform.origin
+	global_transform.basis.z = get_parent().get_node("MainCore").global_transform.basis.z

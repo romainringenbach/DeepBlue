@@ -51,3 +51,7 @@ func _on_Submarine_collision_impact():
 
 func _on_Submarine_near_body():
 	$SScreen1/Screen_1/SonarAlert.alarm()
+
+
+func _on_Speed_controller_reverse_changed():
+	pass # Replace with function body.

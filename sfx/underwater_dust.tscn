@@ -1,25 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [sub_resource type="ParticlesMaterial" id=1]
 
 emission_shape = 1
-emission_sphere_radius = 3.0
+emission_sphere_radius = 0.5
 spread = 180.0
 initial_velocity = 10.0
 initial_velocity_random = 1.0
-angular_velocity = 10.0
-angular_velocity_random = 1.0
 linear_accel = 10.0
 linear_accel_random = 1.0
 radial_accel = 10.0
 radial_accel_random = 1.0
 tangential_accel = 10.0
 tangential_accel_random = 1.0
-damping = 10.0
+damping = 1.0
 damping_random = 1.0
-angle = 90.0
-angle_random = 1.0
-scale = 1.5
+scale = 2.0
 scale_random = 1.0
 
 [sub_resource type="SpatialMaterial" id=2]
@@ -28,22 +24,62 @@ flags_transparent = true
 albedo_color = Color( 1, 1, 1, 0.239216 )
 metallic = 0.46
 metallic_specular = 0.72
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 0.1
+emission_operator = 0
+emission_on_uv2 = false
 
 [sub_resource type="SphereMesh" id=3]
 
 material = SubResource( 2 )
-radius = 0.05
-height = 0.1
+radius = 0.02
+height = 0.04
 radial_segments = 32
 rings = 16
+
+[sub_resource type="ParticlesMaterial" id=4]
+
+emission_shape = 2
+emission_box_extents = Vector3( 2, 2, 1 )
+gravity = Vector3( 0, 0, 9.81 )
+radial_accel = 5.0
+radial_accel_random = 1.0
+tangential_accel = 5.0
+tangential_accel_random = 1.0
+
+[sub_resource type="SpatialMaterial" id=5]
+
+flags_transparent = true
+params_blend_mode = 1
+albedo_color = Color( 1, 1, 1, 0.0941176 )
+
+[sub_resource type="SphereMesh" id=6]
+
+material = SubResource( 5 )
+radius = 0.01
+height = 0.02
+radial_segments = 16
+rings = 8
 
 [node name="Spatial" type="Spatial"]
 
 [node name="Particles" type="Particles" parent="."]
-amount = 30
+emitting = false
+amount = 50
 speed_scale = 0.02
 randomness = 0.44
-visibility_aabb = AABB( -4, -0.456287, -4, 8, 0.966285, 8 )
+visibility_aabb = AABB( -1, -1, -1, 2, 2, 2 )
 process_material = SubResource( 1 )
 draw_pass_1 = SubResource( 3 )
+
+[node name="Particles2" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.797286 )
+emitting = false
+amount = 20000
+speed_scale = 0.4
+randomness = 0.48
+visibility_aabb = AABB( -2, -2, -1, 4, 4, 2 )
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 6 )
 

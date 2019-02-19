@@ -1,9 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://submarine/maincore.gd" type="Script" id=1]
-[ext_resource path="res://cockpit/cockpit.tscn" type="PackedScene" id=2]
-[ext_resource path="res://sfx/underwater_dust.tscn" type="PackedScene" id=3]
-[ext_resource path="res://sfx/underwater_dust.gd" type="Script" id=4]
+[ext_resource path="res://submarine/submarine.gd" type="Script" id=1]
+[ext_resource path="res://submarine/maincore.gd" type="Script" id=2]
+[ext_resource path="res://cockpit/cockpit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://submarine/SFX_dust.gd" type="Script" id=4]
+[ext_resource path="res://sfx/underwater_dust.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sfx/underwater_dust.gd" type="Script" id=6]
 
 [sub_resource type="PhysicsMaterial" id=1]
 
@@ -47,6 +49,7 @@ radius = 40.0
 radius = 0.3
 
 [node name="Spatial" type="Spatial"]
+script = ExtResource( 1 )
 
 [node name="MainCore" type="RigidBody" parent="."]
 collision_mask = 17280
@@ -56,10 +59,9 @@ can_sleep = false
 axis_lock_angular_z = true
 linear_damp = 0.3
 angular_damp = 0.3
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
-[node name="Cockpit" parent="MainCore" instance=ExtResource( 2 )]
-editor/display_folded = true
+[node name="Cockpit" parent="MainCore" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="MainCore"]
@@ -119,13 +121,19 @@ shape = SubResource( 10 )
 nodes/node_a = NodePath("../MainCore")
 nodes/node_b = NodePath("../Float")
 
-[node name="Spatial" parent="." instance=ExtResource( 3 )]
+[node name="SFX_dust" type="Spatial" parent="."]
 script = ExtResource( 4 )
+
+[node name="Spatial" parent="SFX_dust" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.87398 )
+script = ExtResource( 6 )
 
 [connection signal="body_entered" from="MainCore" to="MainCore/Cockpit" method="_on_Submarine_body_entered"]
 [connection signal="collision_impact" from="MainCore" to="MainCore/Cockpit" method="_on_Submarine_collision_impact"]
 [connection signal="near_body" from="MainCore" to="MainCore/Cockpit" method="_on_Submarine_near_body"]
 [connection signal="speed_changed" from="MainCore/Cockpit" to="MainCore" method="_on_Cockpit_speed_changed"]
+[connection signal="mode_changed" from="MainCore/Cockpit/Speed_controller" to="MainCore" method="_on_Speed_controller_mode_changed"]
+[connection signal="reverse_changed" from="MainCore/Cockpit/Speed_controller" to="MainCore/Cockpit" method="_on_Speed_controller_reverse_changed"]
 [connection signal="body_entered" from="MainCore/ActifSonar" to="MainCore" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="MainCore/ActifSonar" to="MainCore" method="_on_Area_body_exited"]
 [connection signal="body_shape_entered" from="MainCore/CollisionDetection" to="MainCore" method="_on_Area2_body_shape_entered"]
@@ -133,3 +141,5 @@ script = ExtResource( 4 )
 [connection signal="body_entered" from="MainCore/NearAlarm" to="MainCore" method="_on_Area3_body_entered"]
 [connection signal="body_shape_entered" from="MainCore/PassifSonar" to="MainCore" method="_on_Area4_body_shape_entered"]
 [connection signal="body_shape_exited" from="MainCore/PassifSonar" to="MainCore" method="_on_Area4_body_shape_exited"]
+
+[editable path="MainCore/Cockpit"]
