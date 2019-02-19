@@ -607,7 +607,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 57.3557, 101.831, 407.212 )
 visible = false
 
 [node name="FishesSchools" type="Spatial" parent="."]
-editor/display_folded = true
 
 [node name="CoralFishes1" type="Spatial" parent="FishesSchools"]
 

@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://submarine/maincore.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/cockpit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sfx/underwater_dust.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sfx/underwater_dust.gd" type="Script" id=4]
 
 [sub_resource type="PhysicsMaterial" id=1]
 
@@ -116,6 +118,9 @@ shape = SubResource( 10 )
 [node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="."]
 nodes/node_a = NodePath("../MainCore")
 nodes/node_b = NodePath("../Float")
+
+[node name="Spatial" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
 
 [connection signal="body_entered" from="MainCore" to="MainCore/Cockpit" method="_on_Submarine_body_entered"]
 [connection signal="collision_impact" from="MainCore" to="MainCore/Cockpit" method="_on_Submarine_collision_impact"]
