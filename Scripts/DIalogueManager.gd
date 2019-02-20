@@ -38,7 +38,7 @@ var random = false # Start from random node
 onready var dialogueText = $DialogueText
 onready var dialoguePanel = self #Less rewritting if you want to move the script to another object
 onready var dialogueName = $DialogueName
-onready var dialogueButtons = [$Control/DialogueButton,$Control/DialogueButton2,$Control/DialogueButton3,$Control/DialogueButton4]
+onready var dialogueButtons = [$Control/ContinueBtn,$Control/DialogueButton2,$Control/DialogueButton3,$Control/DialogueButton4]
 
 
 
@@ -128,15 +128,15 @@ func UpdateUI():
 
 		if curent_node_choices.size() > 0:
 			for x in clamp(curent_node_choices.size(),0,3):
-				dialogueButtons[x].text = curent_node_choices[x]["text"]
+				dialogueButtons[x+1].get_node("Label").text = curent_node_choices[x]["text"]
 
 				#connecto to button
-				dialogueButtons[x].connect("pressed",self,"_on_Button_Pressed", [curent_node_choices[x]["next_id"]])
+				dialogueButtons[x+1].connect("pressed",self,"_on_Button_Pressed", [curent_node_choices[x]["next_id"]])
 
-				dialogueButtons[x].show()
+				dialogueButtons[x+1].show()
 
 		else:
-			dialogueButtons[0].text = "OK"
+			dialogueButtons[0].get_node("Label").text = "OK"
 			dialogueButtons[0].show()
 			#connect to the button
 			dialogueButtons[0].connect("pressed",self,"_on_Button_Pressed", [curent_node_next_id])
