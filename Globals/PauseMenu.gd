@@ -2,7 +2,7 @@ extends Control
 
 var main_title_scene = preload("res://Scenes/MainMenu/MainMenu.tscn")
 
-var game_levels = ["Level1"]
+var game_levels = ["Terrain1"]
 
 func _ready():
 	pass
