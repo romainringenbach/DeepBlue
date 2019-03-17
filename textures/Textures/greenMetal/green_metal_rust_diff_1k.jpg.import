@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/green_metal_rust_diff_1k.jpg-293cb8574f631581e2313b52a5afd76d.s3tc.stex"
 path.etc2="res://.import/green_metal_rust_diff_1k.jpg-293cb8574f631581e2313b52a5afd76d.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 

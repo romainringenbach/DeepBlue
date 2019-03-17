@@ -6,7 +6,6 @@
 [ext_resource path="res://models/Weeds/Seaweed2/middle_roughness.jpg" type="Texture" id=4]
 
 [sub_resource type="Shader" id=1]
-
 code = "shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
 
@@ -115,16 +114,15 @@ void fragment()
 }"
 
 [resource]
-
 shader = SubResource( 1 )
 shader_param/z_torsion_value = 0.05
 shader_param/z_torsion_frequency = 1.5
-shader_param/z_wave_value = 0
+shader_param/z_wave_value = 0.0
 shader_param/z_wave_frequency = 1.5
 shader_param/frequency = 1.5
 shader_param/yaw_value = 0.05
 shader_param/pitch_value = 0.05
-shader_param/roll_value = 0
+shader_param/roll_value = 0.0
 shader_param/translations = Vector3( 0, 0, 0 )
 shader_param/albedo = Color( 1, 1, 1, 1 )
 shader_param/specular = 0.5

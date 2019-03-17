@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://screen_panel/screen_panel.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://textures/Textures/[2K]Pipe01/Pipe01_col.jpg" type="Texture" id=2]
@@ -17,7 +17,6 @@
 [ext_resource path="res://cockpit/SonarAlert.tscn" type="PackedScene" id=15]
 
 [sub_resource type="SpatialMaterial" id=1]
-
 flags_transparent = true
 albedo_color = Color( 1, 1, 1, 0.2 )
 albedo_texture = ExtResource( 2 )
@@ -35,7 +34,6 @@ uv1_triplanar = true
 uv1_triplanar_sharpness = 0.0853775
 
 [sub_resource type="SpatialMaterial" id=2]
-
 resource_name = "Metal"
 params_cull_mode = 2
 albedo_color = Color( 0.64, 0.64, 0.64, 1 )
@@ -51,8 +49,12 @@ normal_enabled = true
 normal_scale = 1.0
 normal_texture = ExtResource( 8 )
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 12 )
 
+[sub_resource type="QuadMesh" id=4]
+
+[sub_resource type="BoxShape" id=5]
 extents = Vector3( 0.289867, 0.0616582, 0.440533 )
 
 [node name="MeshInstance" type="MeshInstance"]
@@ -91,17 +93,24 @@ transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( -1.62921e-07, 1, -0.000598029, 5.22814e-11, -0.000598029, -1, -1, -1.62921e-07, 4.515e-11, 0.000752471, 0.052391, -0.06 )
+visible = false
 pixel_size = 0.0005
 transparent = false
 texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 100, 100 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -1, 0, 0.5, -4.37114e-08, 0.001, 0.052, -0.06 )
+material_override = SubResource( 3 )
+mesh = SubResource( 4 )
+material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="."]
 collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="SonarAlert" parent="." instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )

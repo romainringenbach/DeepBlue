@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/sand_01_nor.jpg-ba23a4d74db697d77a6c8d77af6eebe1.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

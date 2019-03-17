@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/HydraLogo.jpg-8e71db6ad67459a03325fc7ca37ebedd.s3tc.stex"
 path.etc2="res://.import/HydraLogo.jpg-8e71db6ad67459a03325fc7ca37ebedd.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 

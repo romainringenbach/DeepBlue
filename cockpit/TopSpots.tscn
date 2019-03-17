@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://cockpit/TopSpots.gd" type="Script" id=1]
+[ext_resource path="res://PisteAudio/SFX/SpotLight.ogg" type="AudioStream" id=2]
+
+[node name="TopSpots" type="Spatial"]
+editor/display_folded = true
+transform = Transform( -0.99945, 0.0331552, -3.20891e-07, 0.0326515, 0.984266, 0.173648, 0.00575766, 0.173553, -0.984808, 0, 1.15, 1.8 )
+visible = false
+script = ExtResource( 1 )
+
+[node name="TopSpot1" type="SpotLight" parent="."]
+transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, 0.6, 0, 0 )
+spot_range = 3.89909
+spot_angle = 13.6036
+
+[node name="TopSpot2" type="SpotLight" parent="."]
+transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, 0.2, 0, 0 )
+spot_range = 3.89909
+spot_angle = 13.6036
+
+[node name="TopSpot3" type="SpotLight" parent="."]
+transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, -0.2, 0, 0 )
+spot_range = 3.89909
+spot_angle = 13.6036
+
+[node name="TopSpot4" type="SpotLight" parent="."]
+transform = Transform( 1, 5.23599e-08, 0, -5.23599e-08, 1, 0, 0, 0, 1, -0.6, 0, 0 )
+spot_range = 3.89909
+spot_angle = 13.6036
+
+[node name="SpotLight" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = 10.874
+

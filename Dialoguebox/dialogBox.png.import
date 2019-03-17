@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/dialogBox.png-9511397a5e3787f7f8245349578d9b0a.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

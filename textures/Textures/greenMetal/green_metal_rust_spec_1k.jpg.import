@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/green_metal_rust_spec_1k.jpg-38c37029ee8aa4fbd1eef400c955bffa.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

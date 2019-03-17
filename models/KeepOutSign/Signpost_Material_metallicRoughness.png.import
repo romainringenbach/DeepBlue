@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Signpost_Material_metallicRoughness.png-c6ea699adbab725b6b7ff725beb1a691.s3tc.stex"
 path.etc2="res://.import/Signpost_Material_metallicRoughness.png-c6ea699adbab725b6b7ff725beb1a691.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 

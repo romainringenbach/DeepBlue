@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/sonar_bg.jpg-322d3915a4bb19199af6a0faf2fc0bbf.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

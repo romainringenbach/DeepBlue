@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/ctulhu-statue_baseColor.jpg-16871996403984a7b0537b8f37ec71d9.s3tc.stex"
 path.etc2="res://.import/ctulhu-statue_baseColor.jpg-16871996403984a7b0537b8f37ec71d9.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 

@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/Metal25_disp.jpg-7f645306b5ba3a896f34bb514ed3bf3e.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

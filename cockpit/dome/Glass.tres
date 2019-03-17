@@ -3,7 +3,6 @@
 [ext_resource path="res://cockpit/dome/dome_cracking2.png" type="Texture" id=1]
 
 [sub_resource type="Shader" id=1]
-
 code = "shader_type spatial;
 
 render_mode cull_disabled;
@@ -80,7 +79,6 @@ void fragment()
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
-
 render_priority = 1
 shader = SubResource( 1 )
 shader_param/begin = Vector2( 690, 597 )
@@ -88,7 +86,6 @@ shader_param/distance_i = null
 shader_param/cracking = ExtResource( 1 )
 
 [resource]
-
 resource_local_to_scene = true
 next_pass = SubResource( 2 )
 params_cull_mode = 2

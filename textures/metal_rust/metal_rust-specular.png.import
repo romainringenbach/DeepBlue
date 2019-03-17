@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/metal_rust-specular.png-ee4db3c9ed3f307135693c8dc193b287.s3tc.stex"
 path.etc2="res://.import/metal_rust-specular.png-ee4db3c9ed3f307135693c8dc193b287.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 

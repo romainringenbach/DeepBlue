@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Fabric08_nrm.jpg-c05da7d9d22e559da88c8fb9a2ac1091.s3tc.stex"
 path.etc2="res://.import/Fabric08_nrm.jpg-c05da7d9d22e559da88c8fb9a2ac1091.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 

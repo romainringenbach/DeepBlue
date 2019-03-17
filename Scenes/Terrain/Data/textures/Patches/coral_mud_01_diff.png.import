@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/coral_mud_01_diff.png-47452761e971c55191c191f32073e67a.s3tc.stex"
 path.etc2="res://.import/coral_mud_01_diff.png-47452761e971c55191c191f32073e67a.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 

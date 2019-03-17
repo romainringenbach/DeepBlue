@@ -1,12 +1,10 @@
 [gd_resource type="AudioBusLayout" load_steps=9 format=2]
 
 [sub_resource type="AudioEffectHighPassFilter" id=1]
-
 resource_name = "HighPassFilter"
 resonance = 0.7
 
 [sub_resource type="AudioEffectEQ10" id=2]
-
 resource_name = "EQ10"
 band_db/31_hz = 12.0
 band_db/62_hz = 12.0
@@ -20,7 +18,6 @@ band_db/8000_hz = -12.0
 band_db/16000_hz = -12.0
 
 [sub_resource type="AudioEffectEQ" id=3]
-
 resource_name = "EQ"
 band_db/32_hz = 12.0
 band_db/100_hz = 12.0
@@ -30,32 +27,26 @@ band_db/3200_hz = 12.0
 band_db/10000_hz = -12.0
 
 [sub_resource type="AudioEffectDelay" id=4]
-
 resource_name = "Delay"
 tap1/delay_ms = 350.0
 
 [sub_resource type="AudioEffectLowPassFilter" id=5]
-
 resource_name = "LowPassFilter"
 cutoff_hz = 1000.0
 
 [sub_resource type="AudioEffectAmplify" id=6]
-
 resource_name = "Amplify"
 volume_db = 4.0
 
 [sub_resource type="AudioEffectLowPassFilter" id=7]
-
 resource_name = "LowPassFilter"
 cutoff_hz = 1000.0
 
 [sub_resource type="AudioEffectAmplify" id=8]
-
 resource_name = "Amplify"
 volume_db = 8.08
 
 [resource]
-
 bus/1/name = "RadioEffect"
 bus/1/solo = false
 bus/1/mute = false

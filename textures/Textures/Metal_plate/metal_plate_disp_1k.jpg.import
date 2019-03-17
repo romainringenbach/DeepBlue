@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/metal_plate_disp_1k.jpg-7b5f8a9a9d7d729a432b4a68ecaf73df.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

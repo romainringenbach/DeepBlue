@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/megalodon.png-f06f57afa8f500c46391b026ecab844f.s3tc.stex"
 path.etc2="res://.import/megalodon.png-f06f57afa8f500c46391b026ecab844f.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 

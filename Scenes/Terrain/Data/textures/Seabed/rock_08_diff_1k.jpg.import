@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/rock_08_diff_1k.jpg-6e7b1303cd00c2b33065a4dd14402d06.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

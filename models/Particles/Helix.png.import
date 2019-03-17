@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Helix.png-6154621c1870c08008b2a8b4338575d0.s3tc.stex"
 path.etc2="res://.import/Helix.png-6154621c1870c08008b2a8b4338575d0.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 

@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/global_albedo.png-b63c1dc9414261558fcd9cd84869115f.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
