@@ -2,7 +2,7 @@
 
 This is a student project made for our last year at [École Supérieure d'Ingénieurs de Rennes](https://esir.univ-rennes1.fr/en)
 
-Deep Blue is a vidéo game with a an anxiety-provoking atmosphere where you pilot a sub marine in the deep sea. 
+Deep Blue is a video game with a an anxiety-provoking atmosphere where you pilot a sub marine in the deep sea. 
 
 # Who ?
 
