@@ -8,44 +8,34 @@
 [ext_resource path="res://sfx/underwater_dust.gd" type="Script" id=6]
 
 [sub_resource type="PhysicsMaterial" id=1]
-
 bounce = 0.7
 
 [sub_resource type="CapsuleShape" id=2]
-
 radius = 1.32145
 height = 6.5658
 
 [sub_resource type="CylinderMesh" id=3]
 
-
 [sub_resource type="SpatialMaterial" id=4]
-
 albedo_color = Color( 0.34375, 0.34375, 0.34375, 1 )
 roughness = 0.0
 
 [sub_resource type="SphereShape" id=5]
-
 radius = 100.0
 
 [sub_resource type="CapsuleShape" id=6]
-
 radius = 1.42926
 height = 6.76901
 
 [sub_resource type="SphereShape" id=7]
-
 radius = 20.0
 
 [sub_resource type="SphereShape" id=8]
-
 radius = 40.0
 
 [sub_resource type="PhysicsMaterial" id=9]
 
-
 [sub_resource type="SphereShape" id=10]
-
 radius = 0.3
 
 [node name="Spatial" type="Spatial"]
@@ -63,6 +53,9 @@ script = ExtResource( 2 )
 
 [node name="Cockpit" parent="MainCore" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2 )
+
+[node name="Viewports" parent="MainCore/Cockpit" index="16"]
+editor/display_folded = true
 
 [node name="CollisionShape" type="CollisionShape" parent="MainCore"]
 shape = SubResource( 2 )
@@ -127,7 +120,6 @@ script = ExtResource( 4 )
 [node name="Spatial" parent="SFX_dust" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.87398 )
 script = ExtResource( 6 )
-
 [connection signal="body_entered" from="MainCore" to="MainCore/Cockpit" method="_on_Submarine_body_entered"]
 [connection signal="collision_impact" from="MainCore" to="MainCore/Cockpit" method="_on_Submarine_collision_impact"]
 [connection signal="near_body" from="MainCore" to="MainCore/Cockpit" method="_on_Submarine_near_body"]

@@ -18,7 +18,9 @@ func _on_Spatial_near_active_sonar():
 
 
 func _on_Button2_left_click():
-	if $Screen_1/Button1.toggle == true:
+	if $Screen_1/Button2.toggle == true:
 		$SonarSound.play()
+		print("play")
 	else:
 		$SonarSound.stop()
+		print("stop")

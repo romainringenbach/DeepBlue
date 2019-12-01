@@ -128,4 +128,3 @@ shader_param/uv1_scale = Vector3( 1, 1, 1 )
 shader_param/uv1_offset = Vector3( 0, 0, 0 )
 shader_param/albedo_map = ExtResource( 1 )
 shader_param/normal_map = ExtResource( 2 )
-

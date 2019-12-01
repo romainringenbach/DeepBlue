@@ -4,10 +4,10 @@
 [ext_resource path="res://cockpit/InterpolatedCamera.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Dialog.tscn" type="PackedScene" id=3]
 
-[node name="PilotHead" type="Spatial"]
+[node name="Pilot" type="Spatial"]
 
 [node name="Yaw" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59427, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96404, 0 )
 script = ExtResource( 1 )
 
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="Yaw"]

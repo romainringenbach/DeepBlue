@@ -663,7 +663,6 @@ rotation_mode = 4
 
 [node name="Submarine" parent="." instance=ExtResource( 36 )]
 transform = Transform( -0.838273, 0, 0.545251, 0, 1, 0, -0.545251, 0, -0.838273, 57.356, 115.817, 452.857 )
-sfx_particle = false
 
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( -0.959504, -1.42977e-08, -0.281695, -0.155635, 0.833517, 0.53012, 0.234798, 0.552494, -0.799763, 0, 868.571, 0 )
@@ -672,4 +671,3 @@ spot_range = 1000.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 13 )
-

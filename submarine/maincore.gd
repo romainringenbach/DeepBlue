@@ -128,6 +128,7 @@ func _on_Area_body_exited(body):
 		body.get_parent().layers -= 262144
 
 func _on_Timer_timeout():
+	
 	level = 0
 
 	for key in echos:
@@ -135,7 +136,6 @@ func _on_Timer_timeout():
 		pos = value['body'].global_transform.origin
 		level += max((pos - value['old_body_position']).length()*10.0,10)/(max((pos-global_transform.origin).length()/10.0,1.0))
 		value['old_body_position'] = pos
-
 	$Cockpit/Viewports/SonarPassif/ColorRect._on_data(level)
 
 

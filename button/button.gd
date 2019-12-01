@@ -4,6 +4,12 @@ extends Spatial
 # var a = 2
 # var b = "textvar"
 
+# types :
+# 0 : 2 position mode : on or off 
+# 1 : the button will be blinking for a determined time before action occure (not a action that stand in time, like launching attack)
+# 2 : like 0, but the button will be blinking for a determined time before being "on"
+# 3 : the button will be blinking until the player click on it (used to turn off alarm)
+
 signal left_click()
 
 signal button_blinking_terminated()
@@ -39,7 +45,7 @@ func _ready():
 	# Initialization here
 	if set_up == true:
 		if type >= 3 and type < 0:
-			print('type out of range, 0,1 or 3 are accepted only')
+			print('type out of range, 0,1,2 or 3 are accepted only')
 		else:
 			_set_hold_and_blink()
 			_set_color()
@@ -52,7 +58,7 @@ func _ready():
 
 func set_up_button(ntype,ncolor,nblinking_duration=1):
 	if ntype >= 3 and ntype < 0:
-		print('type out of range, 0,1 or 3 are accepted only')
+		print('type out of range, 0,1,2 or 3 are accepted only')
 	else:
 		type = ntype
 		color = ncolor

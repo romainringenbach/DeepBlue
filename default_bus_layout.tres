@@ -87,4 +87,3 @@ bus/4/volume_db = 0.0
 bus/4/send = "Master"
 bus/4/effect/0/effect = SubResource( 8 )
 bus/4/effect/0/enabled = true
-

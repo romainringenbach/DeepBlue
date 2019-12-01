@@ -26,7 +26,7 @@ func _process(delta):
 
 
 func _on_data(level):
-	
+	print("lol")
 	var img = data.get_data()
 	if img != null:
 		img.lock()

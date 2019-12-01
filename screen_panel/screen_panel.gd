@@ -23,6 +23,6 @@ func _ready():
 
 func _on_Button1_left_click():
 	if $Button1.toggle == true:
-		$Sprite3D.texture = viewport_texture
+		$MeshInstance.material_override.albedo_texture = viewport_texture
 	else:
-		$Sprite3D.texture = none_texture
+		$MeshInstance.material_override.albedo_texture = none_texture

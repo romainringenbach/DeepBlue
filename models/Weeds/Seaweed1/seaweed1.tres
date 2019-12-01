@@ -133,4 +133,3 @@ shader_param/uv1_offset = Vector3( 0, 0, 0 )
 shader_param/distance_fade_min = 3.0
 shader_param/distance_fade_max = 6.0
 shader_param/albedo_map = ExtResource( 1 )
-

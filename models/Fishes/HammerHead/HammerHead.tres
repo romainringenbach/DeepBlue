@@ -131,4 +131,3 @@ shader_param/albedo_map = ExtResource( 1 )
 shader_param/metallic_map = ExtResource( 2 )
 shader_param/roughness_map = ExtResource( 2 )
 shader_param/normal_map = ExtResource( 3 )
-

@@ -97,4 +97,3 @@ depth_scale = 0.6
 depth_deep_parallax = false
 depth_flip_tangent = false
 depth_flip_binormal = false
-
