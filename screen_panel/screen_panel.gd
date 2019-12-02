@@ -13,7 +13,6 @@ func _ready():
 	pass
 	
 	
-	
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
@@ -23,6 +22,6 @@ func _ready():
 
 func _on_Button1_left_click():
 	if $Button1.toggle == true:
-		$MeshInstance.material_override.albedo_texture = viewport_texture
+		$MeshInstance.material_override.set_shader_param("texture_albedo",viewport_texture)
 	else:
-		$MeshInstance.material_override.albedo_texture = none_texture
+		$MeshInstance.material_override.set_shader_param("texture_albedo",none_texture)

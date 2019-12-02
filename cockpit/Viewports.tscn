@@ -10,11 +10,9 @@
 [ext_resource path="res://cockpit/array.png" type="Texture" id=8]
 
 [sub_resource type="Environment" id=1]
-
 ambient_light_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="Shader" id=2]
-
 code = "shader_type canvas_item;
 
 varying vec2 uv_cercle;
@@ -73,7 +71,6 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=3]
-
 shader = SubResource( 2 )
 shader_param/updating = false
 shader_param/rotation_degrees = 1.11
@@ -84,19 +81,16 @@ shader_param/green_line = ExtResource( 5 )
 
 [sub_resource type="ImageTexture" id=4]
 
-
 [sub_resource type="ImageTexture" id=5]
 
-
 [sub_resource type="Shader" id=6]
-
 code = "shader_type canvas_item;
 
 uniform sampler2D data;
 uniform int slide;
 
 void fragment() {
-    vec4 color = vec4(0,0,0,1);
+    vec4 color = vec4(0.0,0.0,0.0,1.0);
 	
 	vec2 uv = UV;
 	uv.x += float(slide)/1000.0;
@@ -115,17 +109,15 @@ void fragment() {
 	
 	//color.r = UV.y;
 	
-	COLOR = color;
+	COLOR = vec4(0.0,0.0,1.0,1.0);
 }
 "
 
 [sub_resource type="ShaderMaterial" id=7]
-
 shader = SubResource( 6 )
 shader_param/slide = null
 
 [sub_resource type="ImageTexture" id=8]
-
 
 [node name="Viewports" type="Spatial"]
 script = ExtResource( 1 )
@@ -202,4 +194,3 @@ anchor_bottom = 1.0
 script = ExtResource( 7 )
 useless = ExtResource( 8 )
 data = SubResource( 8 )
-

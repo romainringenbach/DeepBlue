@@ -24,3 +24,5 @@ func _on_Button2_left_click():
 	else:
 		$SonarSound.stop()
 		print("stop")
+		
+	get_parent().get_node("Viewports/SonarActif/ColorRect").update()

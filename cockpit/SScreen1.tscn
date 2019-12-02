@@ -1,17 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://cockpit/SScreen1.gd" type="Script" id=1]
 [ext_resource path="res://cockpit/SonarSound.tscn" type="PackedScene" id=2]
 [ext_resource path="res://screen_panel/screen_panel.tscn" type="PackedScene" id=3]
-[ext_resource path="res://cockpit/Copper.material" type="Material" id=4]
-[ext_resource path="res://cockpit/black.png" type="Texture" id=5]
-
-[sub_resource type="ViewportTexture" id=1]
-viewport_path = NodePath("SonarActif")
-
-[sub_resource type="SpatialMaterial" id=2]
-resource_local_to_scene = true
-albedo_texture = ExtResource( 5 )
 
 [node name="SScreen1" type="Spatial"]
 script = ExtResource( 1 )
@@ -20,24 +11,3 @@ script = ExtResource( 1 )
 transform = Transform( 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 0, 0, 1, -0.65, -0.25, 0.15 )
 
 [node name="Screen_1" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 0, 0, 1, -0.65, -0.25, 0.15 )
-layers = 1
-material/2 = ExtResource( 4 )
-material/3 = ExtResource( 4 )
-viewport_texture = SubResource( 1 )
-
-[node name="Button2" parent="Screen_1" index="1"]
-color = Color( 0, 1, 0.203922, 1 )
-set_up = true
-
-[node name="Label2" parent="Screen_1" index="4"]
-text_label = "Enable Sonar"
-
-[node name="Label3" parent="Screen_1" index="5"]
-text_label = "Alarm"
-
-[node name="MeshInstance" parent="Screen_1" index="6"]
-material_override = SubResource( 2 )
-[connection signal="left_click" from="Screen_1/Button2" to="." method="_on_Button2_left_click"]
-
-[editable path="Screen_1"]

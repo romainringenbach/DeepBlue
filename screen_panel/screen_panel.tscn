@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://screen_panel/screen_panel.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://textures/Textures/[2K]Pipe01/Pipe01_col.jpg" type="Texture" id=2]
@@ -49,9 +49,64 @@ normal_enabled = true
 normal_scale = 1.0
 normal_texture = ExtResource( 8 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="Shader" id=6]
 resource_local_to_scene = true
-albedo_texture = ExtResource( 12 )
+code = "shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : hint_color;
+uniform sampler2D texture_albedo : hint_albedo;
+uniform float specular;
+uniform float metallic;
+uniform float roughness : hint_range(0,1);
+uniform float point_size : hint_range(0,128);
+uniform sampler2D texture_metallic : hint_white;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_white;
+uniform vec4 roughness_texture_channel;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+
+void light(){
+	DIFFUSE_LIGHT = ALBEDO;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = SubResource( 6 )
+shader_param/albedo = Color( 0, 0, 0, 1 )
+shader_param/specular = 0.0
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/metallic_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/roughness_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/texture_albedo = ExtResource( 12 )
 
 [sub_resource type="QuadMesh" id=4]
 
@@ -94,7 +149,8 @@ transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( -2.18557e-08, -0.5, -4.37114e-08, 0, -2.18557e-08, 1, -0.5, 2.18557e-08, 1.91069e-15, 0.000999998, 0.052, -0.06 )
-material_override = SubResource( 3 )
+layers = 524288
+material_override = SubResource( 7 )
 mesh = SubResource( 4 )
 material/0 = null
 
@@ -107,6 +163,5 @@ shape = SubResource( 5 )
 
 [node name="SonarAlert" parent="." instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-
 [connection signal="left_click" from="Button1" to="." method="_on_Button1_left_click"]
 [connection signal="button_blinking_terminated" from="Button3" to="SonarAlert" method="_on_Button3_button_blinking_terminated"]

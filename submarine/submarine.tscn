@@ -54,9 +54,6 @@ script = ExtResource( 2 )
 [node name="Cockpit" parent="MainCore" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2 )
 
-[node name="Viewports" parent="MainCore/Cockpit" index="16"]
-editor/display_folded = true
-
 [node name="CollisionShape" type="CollisionShape" parent="MainCore"]
 shape = SubResource( 2 )
 
@@ -124,8 +121,6 @@ script = ExtResource( 6 )
 [connection signal="collision_impact" from="MainCore" to="MainCore/Cockpit" method="_on_Submarine_collision_impact"]
 [connection signal="near_body" from="MainCore" to="MainCore/Cockpit" method="_on_Submarine_near_body"]
 [connection signal="speed_changed" from="MainCore/Cockpit" to="MainCore" method="_on_Cockpit_speed_changed"]
-[connection signal="mode_changed" from="MainCore/Cockpit/Speed_controller" to="MainCore" method="_on_Speed_controller_mode_changed"]
-[connection signal="reverse_changed" from="MainCore/Cockpit/Speed_controller" to="MainCore/Cockpit" method="_on_Speed_controller_reverse_changed"]
 [connection signal="body_entered" from="MainCore/ActifSonar" to="MainCore" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="MainCore/ActifSonar" to="MainCore" method="_on_Area_body_exited"]
 [connection signal="body_shape_entered" from="MainCore/CollisionDetection" to="MainCore" method="_on_Area2_body_shape_entered"]
@@ -133,5 +128,3 @@ script = ExtResource( 6 )
 [connection signal="body_entered" from="MainCore/NearAlarm" to="MainCore" method="_on_Area3_body_entered"]
 [connection signal="body_shape_entered" from="MainCore/PassifSonar" to="MainCore" method="_on_Area4_body_shape_entered"]
 [connection signal="body_shape_exited" from="MainCore/PassifSonar" to="MainCore" method="_on_Area4_body_shape_exited"]
-
-[editable path="MainCore/Cockpit"]
