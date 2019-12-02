@@ -180,9 +180,6 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0
 
 [node name="Viewports" parent="." instance=ExtResource( 22 )]
 
-[node name="SonarActif" parent="Viewports" index="2"]
-render_target_v_flip = true
-
 [node name="Particles" parent="." instance=ExtResource( 23 )]
 transform = Transform( 0.00271152, 0.198745, -0.224575, 0.0999622, -0.00435272, 0.00701042, 0.000461976, -0.22468, -0.198788, 0.610275, 0, 1.6864 )
 emitting = false
