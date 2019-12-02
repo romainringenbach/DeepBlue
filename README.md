@@ -4,6 +4,8 @@ This is a student project made for our last year at [École Supérieure d'Ingén
 
 Deep Blue is a video game with a an anxiety-provoking atmosphere where you pilot a sub marine in the deep sea. 
 
+![screenshot](https://raw.githubusercontent.com/nealith/DeepBlue/dev/capture.png)
+
 # Who ?
 
 - [fonspa](https://github.com/fonspa)
