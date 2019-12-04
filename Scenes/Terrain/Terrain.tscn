@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=1]
 [ext_resource path="res://addons/zylann.hterrain/tools/icons/icon_heightmap_node.svg" type="Texture" id=2]
@@ -206,12 +206,6 @@ _data = {
 "points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 7.59329, 13.6319, -105.151, 0.872223, 1.57198, 0.336899, -0.872223, -1.57198, -0.336899, 2.48404, 9.1679, -104.814, 0.536987, 3.90449, -0.0791168, -0.536987, -3.90449, 0.0791168, -2.2886, -1.04839, -103.324, -6.97299, 6.26995, -2.46461, 6.97299, -6.26995, 2.46461, 3.93604, -14.5255, -100.593, -6.5564, -1.30646, -0.0055542, 6.5564, 1.30646, 0.0055542, 20.8518, -16.9132, -95.8766, -1.69479, -7.12715, 0, 1.69479, 7.12715, 0, 30.5927, -5.50635, -97.8766, 3.6749, -4.44719, 0.0399017, -3.6749, 4.44719, -0.0399017, 27.0798, 8.56745, -102.308, 4.7276, -0.912224, 0.116341, -4.7276, 0.912224, -0.116341, 17.4418, 14.4593, -104.759, 1.55161, 0.225632, 0.0579453, -1.55161, -0.225632, -0.0579453, 10.5131, 15.0098, -105.356, 0, 0, 0, 0, 0, 0, 8.17682, 14.1058, -105.217, 0, 0, 0, 0, 0, 0, 7.59329, 13.6319, -105.151 ),
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 }
-
-[sub_resource type="Environment" id=13]
-background_mode = 1
-background_color = Color( 0, 0.352941, 0.462745, 1 )
-background_energy = 0.3
-ambient_light_energy = 0.0
 
 [node name="Terrain1" type="Spatial"]
 
@@ -669,5 +663,8 @@ transform = Transform( -0.959504, -1.42977e-08, -0.281695, -0.155635, 0.833517, 
 light_color = Color( 0.466667, 0.760784, 0.996078, 1 )
 spot_range = 1000.0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 13 )
+[editable path="Submarine"]
+
+[editable path="Submarine/MainCore/Cockpit"]
+
+[editable path="Submarine/MainCore/Cockpit/PilotHead"]
