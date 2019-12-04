@@ -3,26 +3,25 @@
 [ext_resource path="res://Scenes/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://AlegreyaSansSC-Italic.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scenes/MainMenu/Buttons/NewGameBtn.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/MainMenu/Buttons/NewGameBtn.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/MainMenu/Buttons/SettingsBtn.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/MainMenu/Buttons/SettingsBtn.gd" type="Script" id=6]
-[ext_resource path="res://Scenes/MainMenu/Menus/SettingsMenu.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/MainMenu/Buttons/QuitBtn.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/MainMenu/Buttons/QuitBtn.gd" type="Script" id=9]
-[ext_resource path="res://Scenes/MainMenu/DEEP-SEA.jpg" type="Texture" id=10]
-[ext_resource path="res://AlegreyaSansSC-Regular.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Scenes/MainMenu/Buttons/SettingsBtn.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/MainMenu/Buttons/SettingsBtn.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/MainMenu/Menus/SettingsMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/MainMenu/Buttons/QuitBtn.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/MainMenu/Buttons/QuitBtn.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/MainMenu/DEEP-SEA.jpg" type="Texture" id=9]
+[ext_resource path="res://AlegreyaSansSC-Regular.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Menus/MenuSound.tscn" type="PackedScene" id=11]
+
 
 [sub_resource type="DynamicFont" id=1]
-
 size = 70
 use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
-
 size = 24
 use_filter = true
-font_data = ExtResource( 11 )
+font_data = ExtResource( 10 )
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -63,20 +62,19 @@ alignment = 1
 margin_top = 75.0
 margin_right = 360.0
 margin_bottom = 135.0
-script = ExtResource( 4 )
 
-[node name="Settings" parent="Menu/CenterRow/Buttons" instance=ExtResource( 5 )]
+[node name="Settings" parent="Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
 margin_top = 155.0
 margin_right = 360.0
 margin_bottom = 215.0
-script = ExtResource( 6 )
-scene = ExtResource( 7 )
+script = ExtResource( 5 )
+scene = ExtResource( 6 )
 
-[node name="QuitBtn" parent="Menu/CenterRow/Buttons" instance=ExtResource( 8 )]
+[node name="QuitBtn" parent="Menu/CenterRow/Buttons" instance=ExtResource( 7 )]
 margin_top = 235.0
 margin_right = 360.0
 margin_bottom = 295.0
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 
 [node name="CenterContainer" type="CenterContainer" parent="Menu/CenterRow"]
 margin_left = 364.0
@@ -88,7 +86,7 @@ size_flags_vertical = 3
 [node name="TextureRect" type="TextureRect" parent="Menu/CenterRow/CenterContainer"]
 margin_right = 704.0
 margin_bottom = 371.0
-texture = ExtResource( 10 )
+texture = ExtResource( 9 )
 
 [node name="Names" type="Label" parent="Menu"]
 margin_top = 515.0
@@ -101,3 +99,5 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Romain Ringenbach, Quentin Dugne -- Hennequin, Pierre-Adrien Fons
 Version 0.1 02/2019"
 
+[node name="MenuSound" parent="." instance=ExtResource( 11 )]
+[connection signal="button_down" from="Menu/CenterRow/Buttons/NewGameBtn" to="." method="_on_NewGameBtn_button_down"]

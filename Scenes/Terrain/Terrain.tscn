@@ -656,6 +656,7 @@ rotation_mode = 4
 [node name="StrangeFish" parent="FishesSchools/StrangeFish/Path/PathFollow" instance=ExtResource( 35 )]
 
 [node name="Submarine" parent="." instance=ExtResource( 36 )]
+editor/display_folded = true
 transform = Transform( -0.838273, 0, 0.545251, 0, 1, 0, -0.545251, 0, -0.838273, 57.356, 115.817, 452.857 )
 
 [node name="SpotLight" type="SpotLight" parent="."]

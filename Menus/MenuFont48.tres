@@ -3,8 +3,7 @@
 [ext_resource path="res://AlegreyaSansSC-Regular.ttf" type="DynamicFontData" id=1]
 
 [resource]
-
-size = 64
+size = 48
+outline_color = Color( 0, 1, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
-

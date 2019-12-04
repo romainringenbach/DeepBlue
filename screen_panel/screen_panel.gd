@@ -2,6 +2,7 @@ extends MeshInstance
 
 export (ViewportTexture) var viewport_texture
 export (Texture) var none_texture
+export (bool) var already_on
 
 # class member variables go here, for example:
 # var a = 2
@@ -10,7 +11,8 @@ export (Texture) var none_texture
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	pass
+	if already_on == true:
+		$MeshInstance.material_override.set_shader_param("texture_albedo",viewport_texture)
 	
 	
 

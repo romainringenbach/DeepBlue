@@ -18,10 +18,10 @@ export (int) var type = 0
 export (Color) var color = Color()
 export (int) var blinking_duration = 1
 export (bool) var set_up = false
+export (bool) var toggle = false
 
 var blink = false
 var hold = false
-var toggle = false
 var waiting_for_queue_end = false
 var blink_count = 0
 
@@ -39,6 +39,10 @@ func _set_hold_and_blink():
 func _set_color():
 	$"Cube001".material_override.emission = color
 	$OmniLight.light_color = color
+	
+	if toggle == true:
+		$"Cube001".material_override.emission_enabled = true
+		$OmniLight.visible = true
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -87,7 +91,7 @@ func _on_StaticBody_input_event(camera, event, click_position, click_normal, sha
 					toggle = false
 					if hold == true:
 						$AnimationPlayer2.play('light_off')
-			emit_signal("left_click")
+			$AudioStreamPlayer3D._on_Button_left_click()
 
 func blink():
 	toggle = true
@@ -112,3 +116,6 @@ func _on_AnimationPlayer2_animation_finished(anim_name):
 	
 	if toggle == false:
 		emit_signal("button_blinking_terminated")
+		
+	if anim_name == "light_on" or anim_name == "light_off":
+		emit_signal("left_click")
