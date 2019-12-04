@@ -6,7 +6,7 @@
 		{
 			"id"      : 0,
 			"name"    : "George",
-			"text"    : "Oh, on dirait que t'approches d'un truc intéressant.",
+			"text"    : "Oh, it looks like you're approaching something interesting.",
 			"next_id" : 1,
 			"choices" : []
 		},
@@ -14,7 +14,7 @@
 		{
 			"id"      : 1,
 			"name"    : "George",
-			"text"    : "Tu devrais explorer un peu les alentours, tu pourrais tomber sur un [color=teal]artefact[/color]. C'est la compagnie qui serait contente !",
+			"text"    : "You should explore the surroundings a bit, you could come across a [color=teal]artifact[/color]. It's the company that would be happy!",
 			"next_id" : 2,
 			"choices" : []
 		}

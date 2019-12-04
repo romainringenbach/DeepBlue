@@ -6,7 +6,7 @@
 		{
 			"id"      : 0,
 			"name"    : "George",
-			"text"    : "Salut ! On m'a dit que t'étais nouveau dans le milieu. Je vais t'aider un peu à prendre en main ton nouveau joujou. On m'appelle le Playboy des fonds marins. Mais tu peux aussi m'appeler George.",
+			"text"    : "Hi ! I was told that you were new in the middle. I will help you a little to take in hand your new toy. They call me the Seabed's Playboy. But you can call me George too.",
 			"next_id" : 1,
 			"choices" : []
 		},
@@ -14,7 +14,7 @@
 		{
 			"id"      : 1,
 			"name"    : "George",
-			"text"    : "Regarde un peu autour de toi (bouge la souris). Tu peux te pencher pour y voir mieux (zoom avec la molette).",
+			"text"    : "Look a little around you (move the mouse). You can lean to see better (zoom with the wheel).",
 			"next_id" : 2,
 			"choices" : []
 		},
@@ -22,7 +22,7 @@
 		{
 			"id"      : 2,
 			"name"    : "George",
-			"text"    : "Super. Déjà commence par allumer les [color=lime]spots[/color]. T'as deux boutons sur ta gauche. Un pour les spots [color=teal]courte portée[/color], l'autre pour la [color=red]longue portée[/color].",
+			"text"    : "Great. Starts by turning on [color=lime]spots[/color]. You have two buttons on your left. One for the [color=teal]short range spots[/color], the other for [color=red]long range spots[/color].",
 			"next_id" : 3,
 			"choices" : []
 		},
@@ -30,16 +30,16 @@
 		{
 			"id"      : 3,
 			"name"    : "George",
-			"text"    : "C'est ok pour les spots ?",
+			"text"    : "It's ok about the spots?",
 			"next_id" : 4,
 			"choices" : [
 				{
-					"text"    : "Yep",
+					"text"    : "Ok",
 					"next_id" : 5
 				},
 
 				{
-					"text"    : "Attends!",
+					"text"    : "Wait!",
 					"next_id" : 4
 				}
 			]
@@ -48,7 +48,7 @@
 		{
 			"id"      : 4,
 			"name"    : "George",
-			"text"    : "Ben alors qu'est-ce que t'attends ? Allume-les !",
+			"text"    : "What are you waiting for? Turn on them!",
 			"next_id" : 3,
 			"choices" : []
 		},
@@ -56,7 +56,7 @@
 		{
 			"id"      : 5,
 			"name"    : "George",
-			"text"    : "Bon début, tu devrais y voir plus clair. Devant toi tu as un [color=lime]manche[/color], c'est avec ça que tu diriges le sub. (z,q,s,d).\nEssaie un peu pour voir.",
+			"text"    : "Good start, you should see more clearly. In front of you you have a [color=lime] sleeve [/color], that's what you run the sub. (w/z, a/q, s, d). \ n Give it a try to see.",
 			"next_id" : 6,
 			"choices" : []
 		},
@@ -64,7 +64,7 @@
 		{
 			"id"      : 6,
 			"name"    : "George",
-			"text"    : "Sur la droite du manche, t'as une grosse [color=lime]manette des gaz[/color]. C'est pour mettre...les gaz. Essaie un peu, mais va doucement pour commencer !",
+			"text"    : "On the right of the handle, you have a [color=lime]big throttle[/color]. It's to put ... the gases. Try a little, but go slowly to start!",
 			"next_id" : 7,
 			"choices" : []
 		},
@@ -72,7 +72,7 @@
 		{
 			"id"      : 7,
 			"name"    : "George",
-			"text"    : "Sur le côté droit t'as les sonars. Jettes-y un coup d'oeil de temps en temps, tu verras les choses arriver avant qu'elles percutent ton sub !",
+			"text"    : "Sur le côté droit t'as les sonars. Jettes-y un coup d'oeil de temps en temps, tu verras les choses arriver avant qu'elles percutent ton sub ! Oublies pas de les allumer.",
 			"next_id" : 8,
 			"choices" : []
 		},
@@ -80,7 +80,7 @@
 		{
 			"id"      : 8,
 			"name"    : "George",
-			"text"    : "Sur le côté gauche en haut on t'a mis une radio, pour pas que tu t'ennuies. T'as déjà écouté [color=lime]Radio Océan[/color] ? Le meilleur son des fonds marins !",
+			"text"    : "On the left side up we put you a radio, not that you're bored. Have you ever listened [color=lime]Ocean Radio[/color] ? The best sound of the seabed!",
 			"next_id" : 9,
 			"choices" : []
 		},
@@ -88,7 +88,7 @@
 		{
 			"id"      : 9,
 			"name"    : "George",
-			"text"    : "Oh, dernière chose. Si jamais t'entends une alarme, tu pourras pas la rater, appuie sur le bouton [color=red]Alarm[/color] sur le panel de gauche. Ce sera sans doute parce que t'as percuté un truc.",
+			"text"    : "Oh, last thing. If you ever hear an alarm, you can not miss it, press the [color=red]Alarm[/color] button on the left panel. It will probably be because you hit something.",
 			"next_id" : 10,
 			"choices" : []
 		},
@@ -96,7 +96,7 @@
 		{
 			"id"      : 10,
 			"name"    : "George",
-			"text"    : "Allez, je file. Bonne exploration !",
+			"text"    : "Well, I have a blonde who is waiting for me. Good exploration!",
 			"next_id" : -1,
 			"choices" : []
 		}
