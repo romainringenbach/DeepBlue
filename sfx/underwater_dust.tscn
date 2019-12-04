@@ -1,61 +1,102 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [sub_resource type="ParticlesMaterial" id=1]
-
 emission_shape = 1
 emission_sphere_radius = 0.5
 spread = 180.0
 initial_velocity = 10.0
 initial_velocity_random = 1.0
+angular_velocity = 8.48564e-33
 linear_accel = 10.0
 linear_accel_random = 1.0
 radial_accel = 10.0
 radial_accel_random = 1.0
-tangential_accel = 10.0
+tangential_accel = 5.0
 tangential_accel_random = 1.0
 damping = 1.0
 damping_random = 1.0
+angle = 45.0
+angle_random = 1.0
 scale = 2.0
 scale_random = 1.0
+hue_variation = 1.0
+hue_variation_random = 1.0
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="Shader" id=7]
+code = "shader_type spatial;
 
-flags_transparent = true
-albedo_color = Color( 1, 1, 1, 0.239216 )
-metallic = 0.46
-metallic_specular = 0.72
-emission_enabled = true
-emission = Color( 1, 1, 1, 1 )
-emission_energy = 0.1
-emission_operator = 0
-emission_on_uv2 = false
+uniform float size_coeff = 0.003;
+
+uniform sampler2D noise;
+
+uniform float PHI = 1.61803398874989484820459;  // Φ = Golden Ratio   
+
+float gold_noise(in vec3 xyz, in float seed){
+       return fract(tan(distance(xyz*PHI, xyz)*seed)*xyz.x);
+}
+
+
+void vertex() {
+	
+	vec3 vv = (WORLD_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	
+	vec3 freq = vec3(
+		0.4f+sin(TIME+vv.x),
+		1.0f+sin(TIME*1.3f + vv.y),
+		1.1f+sin(TIME*1.1f + vv.z)
+	);
+	
+	
+	
+	float f = sin(NORMAL.x*freq.x + TIME) * sin(NORMAL.y*freq.y + TIME) * sin(NORMAL.z*freq.z + TIME);
+    VERTEX.z += size_coeff * NORMAL.z * freq.z * f;
+    VERTEX.x += size_coeff * NORMAL.x * freq.x * f;
+    VERTEX.y += size_coeff * NORMAL.y * freq.y * f;
+	
+}
+
+void fragment() {
+	
+	ALBEDO = vec3(1.0);
+	ALPHA = 0.2;
+	EMISSION = vec3(0.3);
+}"
+
+[sub_resource type="OpenSimplexNoise" id=9]
+
+[sub_resource type="NoiseTexture" id=10]
+resource_local_to_scene = true
+noise = SubResource( 9 )
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/size_coeff = 0.003
+shader_param/PHI = 1.61803
+shader_param/noise = SubResource( 10 )
 
 [sub_resource type="SphereMesh" id=3]
-
-material = SubResource( 2 )
-radius = 0.02
-height = 0.04
+material = SubResource( 8 )
+radius = 0.005
+height = 0.01
 radial_segments = 32
 rings = 16
 
 [sub_resource type="ParticlesMaterial" id=4]
-
 emission_shape = 2
 emission_box_extents = Vector3( 2, 2, 1 )
 gravity = Vector3( 0, 0, 9.81 )
+angular_velocity = 3.40955e-36
 radial_accel = 5.0
 radial_accel_random = 1.0
 tangential_accel = 5.0
 tangential_accel_random = 1.0
 
 [sub_resource type="SpatialMaterial" id=5]
-
 flags_transparent = true
 params_blend_mode = 1
 albedo_color = Color( 1, 1, 1, 0.0941176 )
 
 [sub_resource type="SphereMesh" id=6]
-
 material = SubResource( 5 )
 radius = 0.01
 height = 0.02
@@ -65,7 +106,7 @@ rings = 8
 [node name="Spatial" type="Spatial"]
 
 [node name="Particles" type="Particles" parent="."]
-emitting = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.492258 )
 amount = 50
 speed_scale = 0.02
 randomness = 0.44
@@ -82,4 +123,3 @@ randomness = 0.48
 visibility_aabb = AABB( -2, -2, -1, 4, 4, 2 )
 process_material = SubResource( 4 )
 draw_pass_1 = SubResource( 6 )
-
