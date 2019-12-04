@@ -662,6 +662,8 @@ transform = Transform( -0.838273, 0, 0.545251, 0, 1, 0, -0.545251, 0, -0.838273,
 transform = Transform( -0.959504, -1.42977e-08, -0.281695, -0.155635, 0.833517, 0.53012, 0.234798, 0.552494, -0.799763, 0, 868.571, 0 )
 light_color = Color( 0.466667, 0.760784, 0.996078, 1 )
 spot_range = 1000.0
+[connection signal="mode_changed" from="Submarine/MainCore/Cockpit/Speed_controller" to="Submarine/MainCore" method="_on_Speed_controller_mode_changed"]
+[connection signal="reverse_changed" from="Submarine/MainCore/Cockpit/Speed_controller" to="Submarine/MainCore" method="_on_Speed_controller_reverse_changed"]
 
 [editable path="Submarine"]
 
