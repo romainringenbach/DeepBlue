@@ -656,18 +656,23 @@ rotation_mode = 4
 [node name="StrangeFish" parent="FishesSchools/StrangeFish/Path/PathFollow" instance=ExtResource( 35 )]
 
 [node name="Submarine" parent="." instance=ExtResource( 36 )]
-editor/display_folded = true
 transform = Transform( -0.838273, 0, 0.545251, 0, 1, 0, -0.545251, 0, -0.838273, 57.356, 115.817, 452.857 )
+
+[node name="Measures" parent="Submarine/MainCore/Cockpit" index="10"]
+editor/display_folded = true
+
+[node name="InterpolatedCamera" parent="Submarine/MainCore/Cockpit/PilotHead/Yaw" index="0"]
+transform = Transform( -3.33333, 5.96046e-07, -4.76837e-07, 5.96046e-07, 3.33333, -5.96046e-08, 4.76837e-07, -5.96047e-08, -3.33333, 0, 0, 0 )
 
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( -0.959504, -1.42977e-08, -0.281695, -0.155635, 0.833517, 0.53012, 0.234798, 0.552494, -0.799763, 0, 868.571, 0 )
 light_color = Color( 0.466667, 0.760784, 0.996078, 1 )
 spot_range = 1000.0
-[connection signal="mode_changed" from="Submarine/MainCore/Cockpit/Speed_controller" to="Submarine/MainCore" method="_on_Speed_controller_mode_changed"]
-[connection signal="reverse_changed" from="Submarine/MainCore/Cockpit/Speed_controller" to="Submarine/MainCore" method="_on_Speed_controller_reverse_changed"]
 
 [editable path="Submarine"]
 
 [editable path="Submarine/MainCore/Cockpit"]
+
+[editable path="Submarine/MainCore/Cockpit/LongRangeSpots"]
 
 [editable path="Submarine/MainCore/Cockpit/PilotHead"]

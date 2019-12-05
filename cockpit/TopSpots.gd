@@ -21,4 +21,8 @@ func _on_Button1_left_click():
 		hide()
 	else:
 		spotLight.play(0.0)
-		show()
+		
+
+
+func _on_SpotLight_finished():
+	show()

@@ -76,8 +76,15 @@ transform = Transform( 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 0, 0, 1, -
 color = Color( 0, 1, 0, 1 )
 set_up = true
 
+[node name="Label2" parent="Screen_1" index="4"]
+text_label = "Toggle sonar"
+
 [node name="MeshInstance" parent="Screen_1" index="6"]
 material_override = SubResource( 2 )
+
+[node name="SonarAlert" parent="Screen_1" index="8"]
+unit_db = 4.0
+max_db = 4.0
 [connection signal="left_click" from="Screen_1/Button2" to="." method="_on_Button2_left_click"]
 
 [editable path="Screen_1"]

@@ -11,15 +11,17 @@ script = ExtResource( 1 )
 
 [node name="LongRangeSpot1" type="SpotLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
-visible = false
-spot_range = 19.4481
+spot_range = 70.0
+spot_attenuation = 0.0915057
 spot_angle = 9.5757
+spot_angle_attenuation = 0.0883884
 
 [node name="LongRangeSpot2" type="SpotLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
-visible = false
-spot_range = 19.4481
+spot_range = 70.0
+spot_attenuation = 0.0915055
 spot_angle = 9.5757
+spot_angle_attenuation = 0.0853776
 
 [node name="SpotLightSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
@@ -32,4 +34,4 @@ light_color = Color( 1, 0.819608, 0.47451, 1 )
 [node name="SpotRight" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
 light_color = Color( 1, 0.819608, 0.47451, 1 )
-
+[connection signal="finished" from="SpotLightSong" to="." method="_on_SpotLightSong_finished"]

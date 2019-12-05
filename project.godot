@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="DeepBlue"
-run/main_scene="res://Scenes/Terrain/Terrain.tscn"
+run/main_scene="res://Menus/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [display]

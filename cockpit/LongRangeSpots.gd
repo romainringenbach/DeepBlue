@@ -19,5 +19,9 @@ func _on_Button2_left_click():
 		hide()
 	else:
 		$SpotLightSong.play(0.0)
-		show()
+		
 
+
+
+func _on_SpotLightSong_finished():
+	show()

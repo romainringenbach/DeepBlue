@@ -37,9 +37,6 @@ func _on_data(level):
 		slide += 1
 		if slide == 1000:
 			slide = 0
-			
-		print("slide",slide)
-		print("data",float(level)/1000.0)
 		
 		material.set_shader_param('slide',slide)
 		material.set_shader_param('data',data)

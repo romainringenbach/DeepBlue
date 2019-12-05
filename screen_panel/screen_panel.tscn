@@ -49,7 +49,7 @@ normal_enabled = true
 normal_scale = 1.0
 normal_texture = ExtResource( 8 )
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id=3]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
@@ -92,9 +92,9 @@ void light(){
 }
 "
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
-shader = SubResource( 6 )
+shader = SubResource( 3 )
 shader_param/albedo = Color( 0, 0, 0, 1 )
 shader_param/specular = 0.0
 shader_param/metallic = 0.0
@@ -108,9 +108,9 @@ shader_param/uv2_scale = Vector3( 1, 1, 1 )
 shader_param/uv2_offset = Vector3( 0, 0, 0 )
 shader_param/texture_albedo = ExtResource( 12 )
 
-[sub_resource type="QuadMesh" id=4]
+[sub_resource type="QuadMesh" id=5]
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=6]
 extents = Vector3( 0.289867, 0.0616582, 0.440533 )
 
 [node name="MeshInstance" type="MeshInstance"]
@@ -143,15 +143,17 @@ text_label = "On / Off"
 
 [node name="Label2" parent="." instance=ExtResource( 14 )]
 transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.0295464, 0.0571333, 0.3 )
+text_label = "Nothing"
 
 [node name="Label3" parent="." instance=ExtResource( 14 )]
 transform = Transform( -8.14603e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -8.14603e-09, 0.179546, 0.0571333, 0.3 )
+text_label = "Alarm"
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( -2.18557e-08, -0.5, -4.37114e-08, 0, -2.18557e-08, 1, -0.5, 2.18557e-08, 1.91069e-15, 0.000999998, 0.052, -0.06 )
 layers = 524288
-material_override = SubResource( 7 )
-mesh = SubResource( 4 )
+material_override = SubResource( 4 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="."]
@@ -159,7 +161,7 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="SonarAlert" parent="." instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )

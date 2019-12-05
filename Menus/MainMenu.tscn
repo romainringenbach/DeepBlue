@@ -20,16 +20,16 @@ normal_enabled = true
 normal_scale = 1.0
 normal_texture = ExtResource( 4 )
 
-[sub_resource type="Environment" id=6]
+[sub_resource type="Environment" id=3]
 background_mode = 1
 background_color = Color( 0, 0.352941, 0.462745, 1 )
 ambient_light_color = Color( 1, 0, 0, 1 )
 ambient_light_energy = 0.0
 
-[sub_resource type="ViewportTexture" id=3]
+[sub_resource type="ViewportTexture" id=4]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=5]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
@@ -72,9 +72,9 @@ void light(){
 }
 "
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=6]
 resource_local_to_scene = true
-shader = SubResource( 4 )
+shader = SubResource( 5 )
 shader_param/albedo = Color( 0, 0, 0, 1 )
 shader_param/specular = 0.0
 shader_param/metallic = 0.0
@@ -98,7 +98,7 @@ material/0 = SubResource( 2 )
 
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
 transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, 0.527579, 0 )
-environment = SubResource( 6 )
+environment = SubResource( 3 )
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 1000, 1000 )
@@ -117,18 +117,22 @@ custom_colors/default_color = Color( 0, 1, 0, 1 )
 custom_colors/selection_color = Color( 0, 1, 0, 1 )
 custom_colors/font_color_selected = Color( 0, 1, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 1, 0, 1 )
-text = "Deep Blue 
+text = "Deep Blue
 
 Our anxiety-provoking atmosphere video game in deep sea, made for our final year at École Supérieure d'Ingénieurs de Rennes
 
 Use the mouse to interact with elements. QWSD/AZSD to move your submarine
+
+Unfortunately, there is no mission objective in this demo :(
+
+But enjoy the pleasure of piloting a submarine and hearing the ambiance of seabed.
 
 Romain Ringenbach, Quentin Dugne -- Hennequin, Pierre-Adrien Fons
 Version 0.2 12/2019"
 scroll_active = false
 
 [node name="Screen" parent="." instance=ExtResource( 6 )]
-viewport_texture = SubResource( 3 )
+viewport_texture = SubResource( 4 )
 already_on = true
 
 [node name="Button3" parent="Screen" index="2"]
@@ -145,7 +149,7 @@ text_label = "Settings"
 text_label = "Quit"
 
 [node name="MeshInstance" parent="Screen" index="6"]
-material_override = SubResource( 5 )
+material_override = SubResource( 6 )
 
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -0.249758, 0.968308, 0, -0.968308, -0.249758, -0.0351701, 0.592922, -0.299636 )
