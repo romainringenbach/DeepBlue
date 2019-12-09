@@ -7,7 +7,6 @@
 [ext_resource path="res://Scripts/fish.gd" type="Script" id=5]
 
 [sub_resource type="BoxShape" id=1]
-
 extents = Vector3( 1, 1.11654, 2.94957 )
 
 [node name="FierceShark" index="0" instance=ExtResource( 1 )]
@@ -30,4 +29,3 @@ collision_layer = 512
 [node name="CollisionShape" type="CollisionShape" parent="ThanatosShark/KinematicBody" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.371547, 0 )
 shape = SubResource( 1 )
-
