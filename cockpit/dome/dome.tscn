@@ -6,7 +6,6 @@
 [ext_resource path="res://PisteAudio/SFX/Glass-Break.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Shader" id=1]
-
 code = "shader_type spatial;
 
 render_mode cull_disabled;
@@ -65,90 +64,9 @@ void vertex()
 
 	real_uv = UV;
 
-
-	/*
-	float teta_y = sin(TIME+length(VERTEX)) * PI;
-	float teta_x = sin(TIME);
-
-
-	mat3 rot_y = mat3(
-		vec3(cos(teta_y),0.0,sin(teta_y)),
-		vec3(0.0,1.0,0.0),
-		vec3(-sin(teta_y),0.0,cos(teta_y))
-	);
-
-	mat3 rot_x = mat3(
-		vec3(1.0,0.0,0.0),
-		vec3(0.0,cos(teta_x),-sin(teta_x)),
-		vec3(0.0,sin(teta_x),cos(teta_x))
-	);
-
-	NORMAL = rot_y*rot_x*NORMAL;
-	TANGENT = rot_y*rot_x*TANGENT;
-	BINORMAL = rot_y*rot_x*BINORMAL;*/
-
-
-}
-
-
-vec3 hash(vec3 p) {
-    p = vec3(dot(p, vec3(127.1, 311.7, 74.7)),
-             dot(p, vec3(269.5, 183.3, 246.1)),
-             dot(p, vec3(113.5, 271.9, 124.6)));
-
-    return -1.0 + 2.0 * fract(sin(p) * 43758.5453123);
-}
-
-float noise(vec3 p) {
-  vec3 i = floor(p);
-  vec3 f = fract(p);
-  vec3 u = f * f * (3.0 - 2.0 * f);
-
-  return mix(mix(mix(dot(hash(i + vec3(0.0, 0.0, 0.0)), f - vec3(0.0, 0.0, 0.0)),
-                     dot(hash(i + vec3(1.0, 0.0, 0.0)), f - vec3(1.0, 0.0, 0.0)), u.x),
-                 mix(dot(hash(i + vec3(0.0, 1.0, 0.0)), f - vec3(0.0, 1.0, 0.0)),
-                     dot(hash(i + vec3(1.0, 1.0, 0.0)), f - vec3(1.0, 1.0, 0.0)), u.x), u.y),
-             mix(mix(dot(hash(i + vec3(0.0, 0.0, 1.0)), f - vec3(0.0, 0.0, 1.0)),
-                     dot(hash(i + vec3(1.0, 0.0, 1.0)), f - vec3(1.0, 0.0, 1.0)), u.x),
-                 mix(dot(hash(i + vec3(0.0, 1.0, 1.0)), f - vec3(0.0, 1.0, 1.0)),
-                     dot(hash(i + vec3(1.0, 1.0, 1.0)), f - vec3(1.0, 1.0, 1.0)), u.x), u.y), u.z );
 }
 
 void fragment() {
-    	// --- noise
-
-	/*float theta = UV.y * 3.14159;
-	float phi = UV.x * 3.14159 * 2.0;
-	vec3 unit = vec3(0.0, 0.0, 0.0);
-
-	unit.x = sin(phi) * sin(theta);
-	unit.y = cos(theta) * -1.0;
-	unit.z = cos(phi) * sin(theta);
-	unit = normalize(unit);*/
-
-	vec3 unit = normalize(VERTEX);
-
-	float DF = 0.0;
-
-    // Add a random position
-    float a = 0.0;
-    vec3 vel = vec3(TIME*.1);
-    DF += noise(unit+vel)*.25+.25;
-
-	float time_dis = 0.15*TIME;
-	float coeff = abs(sin(time_dis));
-	float t = time_dis;
-	float tt = acos(length(vec2(cos(t)*coeff,sin(t)*coeff)));
-
-	a = noise(unit*vec3(cos(t)*coeff,sin(t)*coeff,sin(tt)))*3.1415;
-
-	float aa = acos(length(vec2(cos(a)*coeff,sin(a)*coeff)));
-    vel = vec3(cos(a)*coeff,sin(a)*coeff,sin(aa));
-    DF += noise(unit+vel)*0.05+.45;
-
-	float c = 1.0-smoothstep(.3,.9,fract(DF));
-
-	// --- cracking
 
 	vec4 color_tmp = vec4(0.0);
 
@@ -165,11 +83,9 @@ void fragment() {
 }"
 
 [sub_resource type="ViewportTexture" id=2]
-
 viewport_path = NodePath("Viewport")
 
 [sub_resource type="ShaderMaterial" id=3]
-
 resource_local_to_scene = true
 render_priority = 1
 shader = SubResource( 1 )
@@ -179,7 +95,6 @@ shader_param/cracking = ExtResource( 3 )
 shader_param/noise_dust = SubResource( 2 )
 
 [sub_resource type="SpatialMaterial" id=4]
-
 resource_local_to_scene = true
 next_pass = SubResource( 3 )
 flags_transparent = true
@@ -190,7 +105,6 @@ params_depth_draw_mode = 1
 albedo_color = Color( 1, 1, 1, 0.156863 )
 
 [sub_resource type="Shader" id=5]
-
 code = "shader_type canvas_item;
 
 vec3 hash(vec3 p) {
@@ -217,7 +131,9 @@ float noise(vec3 p) {
 }
 
 void fragment() {
-    	// --- noise
+    
+	
+	// creating a spherical texture : https://docs.godotengine.org/fi/latest/tutorials/viewports/using_viewport_as_texture.html
 
 	float theta = UV.y * 3.14159;
 	float phi = UV.x * 3.14159 * 2.0;
@@ -227,23 +143,21 @@ void fragment() {
 	unit.y = cos(theta) * -1.0;
 	unit.z = cos(phi) * sin(theta);
 	unit = normalize(unit);
+	
+	// Algorythm from https://thebookofshaders.com/edit.php#11/lava-lamp.frag
 
 	float DF = 0.0;
 
     // Add a random position
-    float a = 0.0;
     vec3 vel = vec3(TIME*.1);
     DF += noise(unit+vel)*.25+.25;
 
-	float time_dis = 0.15*TIME;
-	float coeff = abs(sin(time_dis));
-	float t = time_dis;
-	float tt = acos(length(vec2(cos(t)*coeff,sin(t)*coeff)));
+	float t = 0.15*TIME;
+	float coeff = abs(sin(t));
 
-	a = noise(unit*vec3(cos(t)*coeff,sin(t)*coeff,sin(tt)))*3.1415;
-
-	float aa = acos(length(vec2(cos(a)*coeff,sin(a)*coeff)));
-    vel = vec3(cos(a)*coeff,sin(a)*coeff,sin(aa));
+	float a = noise(unit*vec3(cos(t)*coeff,sin(t)*coeff,length(vec2(cos(t)*coeff,sin(t)*coeff))))*3.1415;
+    
+	vel = vec3(cos(a),sin(a),length(vec2(cos(a),sin(a))));
     DF += noise(unit+vel)*0.05+.45;
 
 	float c = 1.0-smoothstep(.1,1.0,fract(DF));
@@ -252,10 +166,9 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=6]
-
 shader = SubResource( 5 )
 
-[node name="dome" instance=ExtResource( 1 )]
+[node name="dome" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Sphere" parent="." index="0"]
@@ -291,5 +204,4 @@ stream = ExtResource( 4 )
 unit_db = 80.0
 unit_size = 33.1
 bus = "Crack"
-
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
