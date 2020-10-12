@@ -2,7 +2,7 @@
 
 This is a student project made for our last year at [École Supérieure d'Ingénieurs de Rennes](https://esir.univ-rennes1.fr/en)
 
-Deep Blue is a video game with a an anxiety-provoking atmosphere where you pilot a sub marine in the deep sea. 
+Deep Blue is a video game that create an anxiety-provoking atmosphere where you pilot a submarine in the deep sea. 
 
 ![screenshot](https://raw.githubusercontent.com/nealith/DeepBlue/dev/capture.png)
 
@@ -14,7 +14,7 @@ Deep Blue is a video game with a an anxiety-provoking atmosphere where you pilot
 
 # Additionnal informations
 
-This project contain third part assets, unfortunately we didn't keep a information about thes third-part assets's origin 
+This project contains third part assets, unfortunately we didn't keep any information about the third-part assets's origin. 
 
 - Musics
 - Sfx
